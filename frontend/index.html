@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="app">
+    <head>
+        <title>
+            APPLICATION_TITLE
+        </title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    </head>
+    <body>
+        <noscript>
+            <p>
+                For a better experience, enable JavaScript in your browser. Go to <a href="http://enable-javascript.com">enable-javascript.com</a> to find out how to do this.
+            </p>
+        </noscript>
+
+        <!--[if lt IE 10]>
+            <p>
+                You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+            </p>
+        <![endif]-->
+
+        <header ng-include="'templates/header.html'"></header>
+
+        <div ui-view></div>
+
+        <footer ng-include="'templates/footer.html'"></footer>
+    </body>
+</html>
