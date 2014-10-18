@@ -15,7 +15,7 @@ div.global-overlay {
     background-color: #ffffff;
     height: 100%;
     padding: 5%;
-    position: absolute;
+    position: fixed;
     width: 100%;
     z-index: 9999;
 }
