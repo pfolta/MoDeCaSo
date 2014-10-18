@@ -24,7 +24,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" onclick="return false;" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Signed in as USERNAME <span class="caret"></span></a>
+                    <a href="#" onclick="return false;" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Signed in as <strong>Username</strong> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
                         <li class="divider"></li>
