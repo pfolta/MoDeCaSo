@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" ng-app>
     <head>
         <title>
             APPLICATION_TITLE
@@ -10,6 +10,7 @@
 
         <link rel="stylesheet" type="text/css" href="/frontend/css/libs/bootstrap-3.2.0.css">
 
+        <script type="text/javascript" src="/frontend/js/libs/angular-1.2.26.js"></script>
         <script type="text/javascript" src="/frontend/js/libs/jquery-2.1.1.js"></script>
         <script type="text/javascript" src="/frontend/js/libs/bootstrap-3.2.0.js"></script>
     </head>
@@ -27,5 +28,9 @@
         <![endif]-->
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-lock"></span> Change Password</button>
+        <br>
+        <br>
+        <input type="text" placeholder="Your Name" autofocus class="form-control" ng-model="name">
+        Hello {{ name }}!
     </body>
 </html>
