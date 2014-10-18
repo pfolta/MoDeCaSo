@@ -5,16 +5,17 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:			/frontend/css/app/main.css
+ * File:			/frontend/css/app/login.css
  * Created:			2014-10-18
  * Last modified:	2014-10-18
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
-body {
-    padding: 50px 0;
+div.login-form {
+    margin: auto;
+    width: 500px;
 }
 
-div.ui-view {
-    padding: 20px;
+div.login-form img {
+    width: 100%;
 }

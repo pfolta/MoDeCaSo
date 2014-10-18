@@ -1,10 +1,10 @@
-<div style="width: 400px; height: 300px; margin: auto; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+<div class="login-form">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Log In</h3>
         </div>
         <div class="panel-body">
-            <img src="/frontend/img/upb-logo.svg" style="width: 100%;">
+            <img src="/frontend/img/upb-logo.svg">
             <form role="form">
                 <div class="form-group">
                     <label for="login_username">Username</label>
