@@ -6,15 +6,23 @@
             APPLICATION_TITLE
         </title>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <link rel="stylesheet" type="text/css" href="/frontend/css/libs/bootstrap-3.2.0.css">
+        <link rel="stylesheet" type="text/css" href="/frontend/css/libs/bootstrap-3.2.0-theme.css">
 
+        <link rel="stylesheet" type="text/css" href="/frontend/css/app/main.css">
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/global-overlays.css">
 
         <script type="text/javascript" src="/frontend/js/libs/angular-1.2.26.js"></script>
+        <script type="text/javascript" src="/frontend/js/libs/angular-ui-router-0.2.11.js"></script>
         <script type="text/javascript" src="/frontend/js/libs/jquery-2.1.1.js"></script>
         <script type="text/javascript" src="/frontend/js/libs/bootstrap-3.2.0.js"></script>
+
+        <script type="text/javascript" src="/frontend/js/app/angular/main.js"></script>
+        <script type="text/javascript" src="/frontend/js/app/angular/router.js"></script>
     </head>
     <body>
         <noscript>
@@ -60,6 +68,8 @@
         </div>
         <![endif]-->
 
-
+        <header ng-include="'/frontend/tpl/header.tpl'"></header>
+        <div ui-view></div>
+        <footer ng-include="'/frontend/tpl/footer.tpl'"></footer>
     </body>
 </html>

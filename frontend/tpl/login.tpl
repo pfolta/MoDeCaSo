@@ -20,8 +20,7 @@
                         <input type="password" id="login_password" placeholder="Password" tabindex="2" class="form-control">
                     </div>
                 </div>
-
-                <button type="submit" class="btn btn-primary" tabindex="3"><span class="glyphicon glyphicon-log-in"></span> Log In</button>
+                <button type="submit" class="btn btn-primary pull-right" tabindex="3"><span class="glyphicon glyphicon-log-in"></span> Log In</button>
             </form>
         </div>
     </div>

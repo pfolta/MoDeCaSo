@@ -1,0 +1,1 @@
+<img src="/frontend/img/upb-logo.svg">
