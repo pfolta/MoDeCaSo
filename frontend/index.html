@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 
-<html lang="en" ng-app="app">
+<html lang="en">
     <head>
         <title>
             APPLICATION_TITLE
         </title>
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="stylesheet" type="text/css" href="/frontend/css/libs/bootstrap-3.2.0.css">
+
+        <script type="text/javascript" src="/frontend/js/libs/jquery-2.1.1.js"></script>
+        <script type="text/javascript" src="/frontend/js/libs/bootstrap-3.2.0.js"></script>
     </head>
     <body>
         <noscript>
@@ -15,15 +21,11 @@
         </noscript>
 
         <!--[if lt IE 10]>
-            <p>
-                You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-            </p>
+        <p>
+            You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+        </p>
         <![endif]-->
 
-        <header ng-include="'tpl/header.html'"></header>
-
-        <div ui-view></div>
-
-        <footer ng-include="'tpl/footer.html'"></footer>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-lock"></span> Change Password</button>
     </body>
 </html>
