@@ -7,24 +7,38 @@
         </div>
         <div class="navbar-left">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#/dashboard">Dashboard</a></li>
-                <li><a href="#/administration">Administration</a></li>
+                <li class="active"><a href="#/dashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-large"></span> Projects <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/projects">Project Overview</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#/projects/1">Project 1</a></li>
+                        <li><a href="#/projects/2">Project 2</a></li>
+                        <li><a href="#/projects/3">Project 3</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Administration <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/administration/global-settings">Global Settings</a></li>
+                        <li><a href="#/administration/user-management">User management</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div class="navbar-right">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" onclick="return false;" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-question-sign"></span> Help <span class="caret"></span></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-question-sign"></span> Help <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#/help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
                         <li class="divider"></li>
                         <li><a href="#/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" onclick="return false;" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Signed in as <strong>Username</strong> <span class="caret"></span></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Signed in as <strong>Username</strong> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
                         <li class="divider"></li>

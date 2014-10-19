@@ -5,9 +5,9 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:            /frontend/js/app/angular/router.js
+ * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-10-18
+ * Last modified:	2014-10-19
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -23,7 +23,8 @@ webapp.config([
                 "login",
                 {
                     url:            "/login",
-                    templateUrl:    "/frontend/tpl/login.tpl"
+                    templateUrl:    "/frontend/tpl/login.tpl",
+                    controller:     "loginCtrl"
                 }
             )
             .state(
@@ -31,6 +32,13 @@ webapp.config([
                 {
                     url:            "/dashboard",
                     templateUrl:    "/frontend/tpl/dashboard.tpl"
+                }
+            )
+            .state(
+                "administration/user-management",
+                {
+                    url:            "/administration/user-management",
+                    templateUrl:    "/frontend/tpl/administration/user-management.tpl"
                 }
             );
     }
