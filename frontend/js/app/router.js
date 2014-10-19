@@ -19,27 +19,77 @@ webapp.config([
         $urlRouterProvider.otherwise("/dashboard");
 
         $stateProvider
-            .state(
-                "login",
-                {
-                    url:            "/login",
-                    templateUrl:    "/frontend/tpl/login.tpl",
-                    controller:     "loginCtrl"
+        .state(
+            "about",
+            {
+                url:            "/about",
+                onEnter: ['$stateParams', '$state', function($stateParams, $state) {
+                    alert("jk");
+                }]
+            }
+        )
+        .state(
+            "/help",
+            {
+                url: "/help",
+                views: {
+                    "mainView": {
+                        templateUrl:    "/frontend/tpl/help/help.tpl"
+                    },
+                    "headerView": {
+                        templateUrl:    "/frontend/tpl/header.tpl"
+                    },
+                    "footerView": {
+                        templateUrl:    "/frontend/tpl/footer.tpl"
+                    }
                 }
-            )
-            .state(
-                "dashboard",
-                {
-                    url:            "/dashboard",
-                    templateUrl:    "/frontend/tpl/dashboard.tpl"
+            }
+        )
+        .state(
+            "/login",
+            {
+                url: "/login",
+                views: {
+                    "mainView": {
+                        templateUrl:    "/frontend/tpl/login.tpl",
+                        controller:     "loginCtrl"
+                    }
                 }
-            )
-            .state(
-                "administration/user-management",
-                {
-                    url:            "/administration/user-management",
-                    templateUrl:    "/frontend/tpl/administration/user-management.tpl"
+            }
+        )
+        .state(
+            "/dashboard",
+            {
+                url: "/dashboard",
+                views: {
+                    "mainView": {
+                        templateUrl:    "/frontend/tpl/dashboard.tpl"
+                    },
+                    "headerView": {
+                        templateUrl:    "/frontend/tpl/header.tpl"
+                    },
+                    "footerView": {
+                        templateUrl:    "/frontend/tpl/footer.tpl"
+                    }
                 }
-            );
+            }
+        )
+        .state(
+            "/administration/user-management",
+            {
+                url: "/administration/user-management",
+                views: {
+                    "mainView": {
+                        templateUrl:    "/frontend/tpl/administration/user-management.tpl"
+                    },
+                    "headerView": {
+                        templateUrl:    "/frontend/tpl/header.tpl"
+                    },
+                    "footerView": {
+                        templateUrl:    "/frontend/tpl/footer.tpl"
+                    }
+                }
+            }
+        );
     }
 ]);

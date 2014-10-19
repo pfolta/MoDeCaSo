@@ -15,14 +15,15 @@ controllers.controller(
     "loginCtrl",
     [
         "$scope",
-        function($scope)
+        "$state",
+        function($scope, $state)
         {
             $scope.login = function()
             {
                 if ($scope.login.username == "dev" && $scope.login.password == "dev") {
 
 
-                    window.location.hash = "/dashboard";
+                    $state.go("/dashboard");
                 } else {
                     /*
                      * Shake login form

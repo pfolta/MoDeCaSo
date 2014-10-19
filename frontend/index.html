@@ -23,6 +23,7 @@
 
         <script type="text/javascript" src="/frontend/js/libs/angular-1.2.26.js"></script>
         <script type="text/javascript" src="/frontend/js/libs/angular-ui-router-0.2.11.js"></script>
+        <script type="text/javascript" src="/frontend/js/libs/angular-1.2.26-animate.js"></script>
         <script type="text/javascript" src="/frontend/js/libs/jquery-2.1.1.js"></script>
         <script type="text/javascript" src="/frontend/js/libs/bootstrap-3.2.0.js"></script>
 
@@ -75,8 +76,8 @@
         </div>
         <![endif]-->
 
-        <header ng-include="'/frontend/tpl/header.tpl'"></header>
-        <div class="ui-view"></div>
-        <footer ng-include="'/frontend/tpl/footer.tpl'"></footer>
+        <div ui-view="headerView"></div>
+        <div ui-view="mainView" class="mainView"></div>
+        <div ui-view="footerView"></div>
     </body>
 </html>

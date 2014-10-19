@@ -7,12 +7,18 @@
  *
  * File:			/frontend/css/app/login.css
  * Created:			2014-10-18
- * Last modified:	2014-10-18
+ * Last modified:	2014-10-19
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 div.login-form {
+    bottom: 0;
+    height: 434px;
+    left: 0;
+    right: 0;
     margin: auto;
+    position: absolute;
+    top: 0;
     width: 500px;
 }
 

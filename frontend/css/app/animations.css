@@ -12,9 +12,9 @@
  */
 
 .shake {
-    animation: shake 0.5s linear;
-    -moz-aniation: shake 0.5s linear;
-    -webkit-animation: shake 0.5s linear;
+    animation: shake 0.5s ease-in-out;
+    -moz-aniation: shake 0.5s ease-in-out;
+    -webkit-animation: shake 0.5s ease-in-out;
 }
 
 @keyframes shake {
@@ -69,4 +69,19 @@
     0%, 100% {
         -webkit-transform: translateX(0);
     }
+}
+
+.mainView.ng-enter {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.mainView.ng-enter {
+    opacity: 0;
+}
+
+.mainView.ng-enter-active {
+    opacity: 1;
 }

@@ -21,6 +21,7 @@ var webapp = angular.module(
     "webapp",
     [
         "controllers",
-        "ui.router"
+        "ui.router",
+        "ngAnimate"
     ]
 );
