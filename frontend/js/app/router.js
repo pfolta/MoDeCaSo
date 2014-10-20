@@ -63,15 +63,14 @@ webapp.config([
                 url: "/logout",
                 controller: "logoutCtrl",
                 onEnter: [
-                    "$state",
                     "authService",
-                    function($state, authService)
+                    function(authService)
                     {
                         console.log("Attempting to Log out!");
 
                         authService.logout();
 
-                        $state.go("/login");
+                        window.location.hash = "/login";
                     }
                 ]
             }

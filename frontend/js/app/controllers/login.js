@@ -15,10 +15,9 @@ controllers.controller(
     "loginCtrl",
     [
         "$scope",
-        "$state",
         "$sce",
         "authService",
-        function($scope, $state, $sce, authService)
+        function($scope, $sce, authService)
         {
             $scope.flash = {
                 "show":     false,
@@ -33,7 +32,7 @@ controllers.controller(
                 if ($scope.login.username == "dev" && $scope.login.password == "dev") {
 
 
-                    $state.go("/dashboard");
+                    window.location.hash = "/dashboard";
                 } else {
                     /*
                      * Set error message
