@@ -11,6 +11,10 @@
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
+*:focus {
+    outline: none !important;
+}
+
 body {
     overflow-y: scroll;
 }
