@@ -15,12 +15,18 @@ controllers.controller(
     "mainCtrl",
     [
         "$scope",
-        function($scope)
+        "$sce",
+        function($scope, $sce)
         {
             $scope.main = {
                 loggedin:   false,
                 user:       {}
-            }
+            };
+
+            $scope.htmlSave = function(text)
+            {
+                return $sce.trustAsHtml(text);
+            };
         }
     ]
 );

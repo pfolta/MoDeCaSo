@@ -21,7 +21,7 @@
                 <li ui-sref-active="active" class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Administration <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a ui-sref="/administration/global-settings">Global Settings</a></li>
+                        <li><a>Global Settings</a></li>
                         <li><a ui-sref="/administration/user-management">User management</a></li>
                     </ul>
                 </li>
@@ -42,7 +42,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
                         <li class="divider"></li>
-                        <li><a href="#/login"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                        <li><a ui-sref="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
                     </ul>
                 </li>
             </ul>

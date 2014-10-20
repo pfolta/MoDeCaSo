@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2014-10-19
+ * Last modified:	2014-10-20
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -15,6 +15,6 @@ body {
     overflow-y: scroll;
 }
 
-div[ui-view] {
-    padding: 20px;
+#mainView {
+    padding: 70px 20px;
 }

@@ -7,9 +7,15 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2014-10-19
+ * Last modified:	2014-10-20
  * Author:			Peter Folta <mail@peterfolta.net>
  */
+
+var services = angular.module(
+    "services",
+    [
+    ]
+);
 
 var controllers = angular.module(
     "controllers",
@@ -20,6 +26,7 @@ var controllers = angular.module(
 var webapp = angular.module(
     "webapp",
     [
+        "services",
         "controllers",
         "ui.router",
         "ngAnimate"

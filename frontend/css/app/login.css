@@ -7,21 +7,35 @@
  *
  * File:			/frontend/css/app/login.css
  * Created:			2014-10-18
- * Last modified:	2014-10-19
+ * Last modified:	2014-10-20
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
-div.login-form {
+#login_container {
+    background-color: #eeeeee;
     bottom: 0;
-    height: 434px;
     left: 0;
-    right: 0;
-    margin: auto;
+    padding-top: 150px;
     position: absolute;
+    right: 0;
     top: 0;
+}
+
+#login_flash {
+    margin-bottom: 50px;
+}
+
+div.login_form {
+    margin: auto;
     width: 500px;
 }
 
-div.login-form img {
+div.login_form > div {
+    -moz-box-shadow: 0 0 10px #888888;
+    -webkit-box-shadow: 0 0 10px #888888;
+    box-shadow: 0 0 10px #888888;
+}
+
+div.login_form img {
     width: 100%;
 }

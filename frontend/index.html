@@ -29,6 +29,8 @@
 
         <script type="text/javascript" src="/frontend/js/app/main.js"></script>
         <script type="text/javascript" src="/frontend/js/app/router.js"></script>
+        <script type="text/javascript" src="/frontend/js/app/services/session.js"></script>
+        <script type="text/javascript" src="/frontend/js/app/services/auth.js"></script>
         <script type="text/javascript" src="/frontend/js/app/controllers/main.js"></script>
         <script type="text/javascript" src="/frontend/js/app/controllers/login.js"></script>
     </head>
@@ -67,17 +69,29 @@
             <div class="alert alert-danger">
                 <strong>Oh snap!</strong> Your browser is too old.
             </div>
-            <h4>
-                Why do I keep seeing this message?
-            </h4>
-            <p>
-                You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-            </p>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">How do I fix this?</h3>
+                </div>
+                <div class="panel-body">
+                    Go to <a href="http://enable-javascript.com">enable-javascript.com</a> to find out how to enable JavaScript in your browser.
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Why do I keep seeing this message?</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+                    </p>
+                </div>
+            </div>
         </div>
         <![endif]-->
 
         <div ui-view="headerView"></div>
-        <div ui-view="mainView" class="mainView"></div>
+        <div ui-view="mainView" id="mainView"></div>
         <div ui-view="footerView"></div>
     </body>
 </html>

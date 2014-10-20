@@ -7,10 +7,31 @@
  *
  * File:			/frontend/css/app/animations.css
  * Created:			2014-10-19
- * Last modified:	2014-10-19
+ * Last modified:	2014-10-20
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
+/*
+ * Page Transitions
+ */
+#mainView.ng-enter {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+#mainView.ng-enter {
+    opacity: 0;
+}
+
+#mainView.ng-enter-active {
+    opacity: 1;
+}
+
+/*
+ * Shake animations (forms, etc.)
+ */
 .shake {
     animation: shake 0.5s ease-in-out;
     -moz-aniation: shake 0.5s ease-in-out;
@@ -69,19 +90,4 @@
     0%, 100% {
         -webkit-transform: translateX(0);
     }
-}
-
-.mainView.ng-enter {
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-}
-
-.mainView.ng-enter {
-    opacity: 0;
-}
-
-.mainView.ng-enter-active {
-    opacity: 1;
 }

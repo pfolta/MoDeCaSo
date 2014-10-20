@@ -58,6 +58,25 @@ webapp.config([
             }
         )
         .state(
+            "/logout",
+            {
+                url: "/logout",
+                controller: "logoutCtrl",
+                onEnter: [
+                    "$state",
+                    "authService",
+                    function($state, authService)
+                    {
+                        console.log("Attempting to Log out!");
+
+                        authService.logout();
+
+                        $state.go("/login");
+                    }
+                ]
+            }
+        )
+        .state(
             "/dashboard",
             {
                 url: "/dashboard",
