@@ -30,8 +30,6 @@ controllers.controller(
             {
                 var response = authService.login($scope.login.username, $scope.login.password);
 
-                alert(response);
-
                 if ($scope.login.username == "dev" && $scope.login.password == "dev") {
 
 
