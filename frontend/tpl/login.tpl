@@ -1,8 +1,6 @@
 <div id="login_container">
     <div class="login_form" id="login_form">
-        <div class="alert alert-dismissable" id="login_flash" ng-show="flash.show" ng-class="flash.type" role="alert">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <span ng-bind-html="htmlSave(flash.message)"></span>
+        <div class="alert" id="login_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="htmlSave(flash.message)" role="alert">
         </div>
         <div class="panel panel-primary">
             <div class="panel-heading">

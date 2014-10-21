@@ -7,15 +7,16 @@
  *
  * File:			/frontend/css/app/login.css
  * Created:			2014-10-18
- * Last modified:	2014-10-20
+ * Last modified:	2014-10-21
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 #login_container {
     background-color: #eeeeee;
     bottom: 0;
+    height: 100%;
     left: 0;
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
 }
@@ -26,6 +27,11 @@
 
 div.login_form {
     margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
     width: 500px;
 }
 

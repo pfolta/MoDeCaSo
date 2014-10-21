@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2014-10-20
+ * Last modified:	2014-10-21
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -44,7 +44,7 @@ controllers.controller(
                     /*
                      * Shake login form
                      */
-                    $("#login_form").addClass("shake").delay(500).queue(function()
+                    $("#login_form").children(2).addClass("shake").delay(500).queue(function()
                     {
                         $(this).removeClass("shake").dequeue();
                     });
