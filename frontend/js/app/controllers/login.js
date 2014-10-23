@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2014-10-21
+ * Last modified:	2014-10-23
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -17,7 +17,8 @@ controllers.controller(
         "$scope",
         "$sce",
         "authService",
-        function($scope, $sce, authService)
+        "cfpLoadingBar",
+        function($scope, $sce, authService, cfpLoadingBar)
         {
             $scope.flash = {
                 "show":     false,
@@ -27,6 +28,8 @@ controllers.controller(
 
             $scope.login = function()
             {
+                cfpLoadingBar.start();
+
                 var response = authService.login($scope.login.username, $scope.login.password);
 
                 if ($scope.login.username == "dev" && $scope.login.password == "dev") {

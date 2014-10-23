@@ -27,7 +27,7 @@
                 </li>
             </ul>
         </div>
-        <div class="navbar-right">
+        <div class="navbar-right" id="top-right">
             <ul class="nav navbar-nav">
                 <li ui-sref-active="active" class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-question-sign"></span> Help <span class="caret"></span></a>
