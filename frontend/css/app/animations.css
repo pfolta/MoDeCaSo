@@ -15,14 +15,14 @@
  * Page Transitions
  */
 div.mainView.ng-enter {
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 div.mainView.ng-enter {
-    left: 100px;
+    left: 50px;
     opacity: 0;
 }
 
@@ -32,10 +32,10 @@ div.mainView.ng-enter-active {
 }
 
 div.mainView.ng-leave {
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 div.mainView.ng-leave {
@@ -44,7 +44,7 @@ div.mainView.ng-leave {
 }
 
 div.mainView.ng-leave-active {
-    left: -100px;
+    left: -50px;
     opacity: 0;
 }
 
