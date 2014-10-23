@@ -7,26 +7,45 @@
  *
  * File:			/frontend/css/app/animations.css
  * Created:			2014-10-19
- * Last modified:	2014-10-20
+ * Last modified:	2014-10-23
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 /*
  * Page Transitions
  */
-#mainView.ng-enter {
+div.mainView.ng-enter {
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
 
-#mainView.ng-enter {
+div.mainView.ng-enter {
+    left: 100px;
     opacity: 0;
 }
 
-#mainView.ng-enter-active {
+div.mainView.ng-enter-active {
+    left: 0;
     opacity: 1;
+}
+
+div.mainView.ng-leave {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+div.mainView.ng-leave {
+    left: 0;
+    opacity: 1;
+}
+
+div.mainView.ng-leave-active {
+    left: -100px;
+    opacity: 0;
 }
 
 /*
