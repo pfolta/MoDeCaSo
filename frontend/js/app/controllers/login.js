@@ -63,6 +63,8 @@ controllers.controller(
                     $("#login_username_group").toggleClass("has-error", true);
                     $("#login_password_group").toggleClass("has-error", true);
                 }
+
+                cfpLoadingBar.complete();
             }
         }
     ]
