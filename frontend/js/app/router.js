@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-10-19
+ * Last modified:	2014-10-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -98,6 +98,7 @@ webapp.config([
                 url: "/administration/user-management",
                 views: {
                     "mainView": {
+                        controller:     "userManagementCtrl",
                         templateUrl:    "/frontend/tpl/administration/user-management.tpl"
                     },
                     "headerView": {
