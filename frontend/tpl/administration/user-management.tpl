@@ -93,7 +93,7 @@
             <td>
                 <span class="label" ng-class="{ 'label-success': user.status == 'active', 'label-default': user.status == 'inactive' }">{{ user.status | uppercase }}</span>
             </td>
-            <td>
+            <td class="text-center">
                 <div class="btn-group btn-group-sm">
                     <button type="button" class="btn btn-warning" title="Edit User"><span class="glyphicon glyphicon-edit"></span></button>
                     <button type="button" class="btn btn-danger" title="Delete User"><span class="glyphicon glyphicon-trash"></span></button>
