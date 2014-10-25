@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2014-10-23
+ * Last modified:	2014-10-25
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -23,11 +23,18 @@ var controllers = angular.module(
     ]
 );
 
+var filters = angular.module(
+    "filters",
+    [
+    ]
+)
+
 var webapp = angular.module(
     "webapp",
     [
         "services",
         "controllers",
+        "filters",
         "ui.router",
         "ngAnimate",
         "angular-loading-bar"

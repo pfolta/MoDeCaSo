@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" id="main_navbar" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" ui-sref="/dashboard">
@@ -21,8 +21,8 @@
                 <li ui-sref-active="active" class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Administration <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a>Global Settings</a></li>
-                        <li><a ui-sref="/administration/user-management">User management</a></li>
+                        <li><a><span class="glyphicon glyphicon-cog"></span> Global Settings</a></li>
+                        <li><a ui-sref="/administration/user-management"><span class="glyphicon glyphicon-user"></span> User management</a></li>
                     </ul>
                 </li>
             </ul>
@@ -34,15 +34,15 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a ui-sref="/help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
                         <li class="divider"></li>
-                        <li><a href="#/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                        <li><a><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Signed in as <strong>Username</strong> <span class="caret"></span></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Signed in as <strong>{{ main.user.username }}</strong> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
                         <li class="divider"></li>
-                        <li><a ui-sref="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                        <li><a ui-sref="/login"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
                     </ul>
                 </li>
             </ul>

@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-10-24
+ * Last modified:	2014-10-25
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -19,15 +19,6 @@ webapp.config([
         $urlRouterProvider.otherwise("/dashboard");
 
         $stateProvider
-        .state(
-            "about",
-            {
-                url:            "/about",
-                onEnter: ['$stateParams', '$state', function($stateParams, $state) {
-                    alert("jk");
-                }]
-            }
-        )
         .state(
             "/help",
             {
@@ -51,28 +42,10 @@ webapp.config([
                 url: "/login",
                 views: {
                     "mainView": {
-                        templateUrl:    "/frontend/tpl/login.tpl",
-                        controller:     "loginCtrl"
+                        controller:     "loginCtrl",
+                        templateUrl:    "/frontend/tpl/login.tpl"
                     }
                 }
-            }
-        )
-        .state(
-            "/logout",
-            {
-                url: "/logout",
-                controller: "logoutCtrl",
-                onEnter: [
-                    "authService",
-                    function(authService)
-                    {
-                        console.log("Attempting to Log out!");
-
-                        authService.logout();
-
-                        window.location.hash = "/login";
-                    }
-                ]
             }
         )
         .state(

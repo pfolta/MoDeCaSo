@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/animations.css
  * Created:			2014-10-19
- * Last modified:	2014-10-23
+ * Last modified:	2014-10-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -15,36 +15,39 @@
  * Page Transitions
  */
 div.mainView.ng-enter {
-    -webkit-transition: all 0.25s ease-in-out;
-    -moz-transition: all 0.25s ease-in-out;
-    -o-transition: all 0.25s ease-in-out;
-    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 div.mainView.ng-enter {
-    left: 50px;
+    left: 100%;
+    transform: translateX(-100%);
     opacity: 0;
 }
 
 div.mainView.ng-enter-active {
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     opacity: 1;
 }
 
 div.mainView.ng-leave {
-    -webkit-transition: all 0.25s ease-in-out;
-    -moz-transition: all 0.25s ease-in-out;
-    -o-transition: all 0.25s ease-in-out;
-    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 div.mainView.ng-leave {
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     opacity: 1;
 }
 
 div.mainView.ng-leave-active {
-    left: -50px;
+    left: 0%;
     opacity: 0;
 }
 

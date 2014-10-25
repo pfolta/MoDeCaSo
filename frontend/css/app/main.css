@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2014-10-24
+ * Last modified:	2014-10-25
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -16,12 +16,32 @@
 }
 
 body {
+    background-color: #eeeeee;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
 div.mainView {
-    padding: 70px 20px;
+    background-color: #ffffff;
+    -moz-box-shadow: 0 0 3px #888888;
+    -webkit-box-shadow: 0 0 3px #888888;
+    box-shadow: 0 0 3px #888888;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 70px auto;
+    min-height: calc(100% - 140px);
+    padding: 20px;
     position: absolute;
-    width: 100%;
+    width: 1200px;
+}
+
+#main_navbar {
+    -moz-box-shadow: 0 0 3px #888888;
+    -webkit-box-shadow: 0 0 3px #888888;
+    box-shadow: 0 0 10px #888888;
+    background-color: #ffffff;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle !important;
 }
