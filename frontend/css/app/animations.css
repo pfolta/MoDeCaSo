@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/animations.css
  * Created:			2014-10-19
- * Last modified:	2014-10-24
+ * Last modified:	2014-10-26
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -23,7 +23,6 @@ div.mainView.ng-enter {
 
 div.mainView.ng-enter {
     left: 100%;
-    transform: translateX(-100%);
     opacity: 0;
 }
 
