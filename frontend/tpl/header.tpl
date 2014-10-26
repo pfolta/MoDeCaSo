@@ -11,11 +11,11 @@
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-large"></span> Projects <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#/projects">Project Overview</a></li>
+                        <li><a>Project Overview</a></li>
                         <li class="divider"></li>
-                        <li><a href="#/projects/1">Project 1</a></li>
-                        <li><a href="#/projects/2">Project 2</a></li>
-                        <li><a href="#/projects/3">Project 3</a></li>
+                        <li><a>Project 1</a></li>
+                        <li><a>Project 2</a></li>
+                        <li><a>Project 3</a></li>
                     </ul>
                 </li>
                 <li ui-sref-active="active" class="dropdown">
@@ -34,13 +34,13 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a ui-sref="/help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
                         <li class="divider"></li>
-                        <li><a><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                        <li><a ng-click="aboutDialog()"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Signed in as <strong>{{ main.user.username }}</strong> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
+                        <li><a><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
                         <li class="divider"></li>
                         <li><a ui-sref="/login"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
                     </ul>

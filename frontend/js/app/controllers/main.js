@@ -16,7 +16,8 @@ controllers.controller(
     [
         "$scope",
         "$sce",
-        function($scope, $sce)
+        "$modal",
+        function($scope, $sce, $modal)
         {
             $scope.main = {
                 loggedin:   false,
@@ -27,6 +28,17 @@ controllers.controller(
             {
                 return $sce.trustAsHtml(text);
             };
+
+            $scope.aboutDialog = function()
+            {
+                $modal.open(
+                    {
+                        templateUrl:    "/frontend/tpl/about.tpl",
+                        backdrop:       "static",
+                        size:           "lg"
+                    }
+                )
+            }
         }
     ]
 );

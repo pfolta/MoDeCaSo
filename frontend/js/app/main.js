@@ -59,20 +59,6 @@ webapp.run([
             "$stateChangeSuccess",
             function(event, toState, toParams, fromState, fromParams)
             {
-            }
-        );
-
-        $rootScope.$on(
-            "$viewContentLoading",
-            function(event, viewConfig)
-            {
-            }
-        );
-
-        $rootScope.$on(
-            "$viewContentLoaded",
-            function(event, viewConfig)
-            {
                 cfpLoadingBar.complete();
             }
         );

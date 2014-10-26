@@ -3,7 +3,7 @@
 </h1>
 <div class="form-group" style="padding-bottom: 50px;">
     <div class="pull-left">
-        <a ui-sref="/administration/user-management/add-user" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add User</a>
+        <a ui-sref="/administration/user-management.adduser" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add User</a>
     </div>
     <div class="pull-right">
         <div class="input-group">

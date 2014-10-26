@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2014-10-25
+ * Last modified:	2014-10-26
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -19,6 +19,10 @@ body {
     background-color: #eeeeee;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+a {
+    cursor: pointer;
 }
 
 div.mainView {

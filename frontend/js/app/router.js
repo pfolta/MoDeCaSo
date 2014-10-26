@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-10-25
+ * Last modified:	2014-10-26
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -81,6 +81,30 @@ webapp.config([
                         templateUrl:    "/frontend/tpl/footer.tpl"
                     }
                 }
+            }
+        )
+        .state(
+            "/administration/user-management.adduser",
+            {
+                url: "/add-user",
+                onEnter: [
+                    "$state",
+                    "$modal",
+                    function($state, $modal)
+                    {
+                        $modal.open(
+                            {
+                                templateUrl:    "/frontend/tpl/about.tpl",
+                                backdrop:       "static"
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/administration/user-management");
+                            }
+                        );
+                    }
+                ]
             }
         );
     }
