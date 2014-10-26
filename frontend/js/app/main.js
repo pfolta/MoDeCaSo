@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2014-10-25
+ * Last modified:	2014-10-26
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -59,9 +59,22 @@ webapp.run([
             "$stateChangeSuccess",
             function(event, toState, toParams, fromState, fromParams)
             {
+            }
+        );
+
+        $rootScope.$on(
+            "$viewContentLoading",
+            function(event, viewConfig)
+            {
+            }
+        );
+
+        $rootScope.$on(
+            "$viewContentLoaded",
+            function(event, viewConfig)
+            {
                 cfpLoadingBar.complete();
             }
         );
     }
 ]);
-

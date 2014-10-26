@@ -95,8 +95,8 @@
             </td>
             <td class="text-center">
                 <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-warning" title="Edit User"><span class="glyphicon glyphicon-edit"></span></button>
-                    <button type="button" class="btn btn-danger" title="Delete User"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button type="button" class="btn btn-warning" tooltip="Edit User"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button type="button" class="btn btn-danger" tooltip="Delete User"><span class="glyphicon glyphicon-trash"></span></button>
                 </div>
             </td>
         </tr>
