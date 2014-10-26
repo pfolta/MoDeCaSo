@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/global-overlays.css
  * Created:			2014-10-18
- * Last modified:	2014-10-18
+ * Last modified:	2014-10-26
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -17,5 +17,5 @@ div.global-overlay {
     padding: 5%;
     position: fixed;
     width: 100%;
-    z-index: 9999;
+    z-index: 99999;
 }
