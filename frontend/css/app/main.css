@@ -26,18 +26,24 @@ a {
 }
 
 div.mainView {
-    background-color: #ffffff;
-    -moz-box-shadow: 0 0 3px #888888;
-    -webkit-box-shadow: 0 0 3px #888888;
-    box-shadow: 0 0 3px #888888;
     left: 50%;
     transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+div.mainView > div.page {
+    background-color: #ffffff;
+    -moz-box-shadow: 0 0 3px #888888;
+    -webkit-box-shadow: 0 0 3px #888888;
+    box-shadow: 0 0 3px #888888;
     margin: 70px auto;
     min-height: calc(100% - 140px);
     padding: 20px;
-    position: absolute;
+    position: relative;
     width: 1200px;
 }
 
