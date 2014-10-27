@@ -1,11 +1,11 @@
 <h1>
     User management
 </h1>
-<div class="form-group" style="padding-bottom: 50px;">
-    <div class="pull-left">
+<div class="form-group" style="padding-bottom: 50px; ">
+    <div class="pull-left" style="width: 80%;">
         <a ui-sref="/administration/user-management.adduser" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add User</a>
     </div>
-    <div class="pull-right">
+    <div class="pull-right" style="width: 20%;">
         <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
             <input type="text" ng-model="filter" placeholder="Filter" class="form-control">

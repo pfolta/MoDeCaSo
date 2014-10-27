@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2014-10-26
+ * Last modified:	2014-10-27
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -32,6 +32,8 @@ div.mainView {
     box-shadow: 0 0 3px #888888;
     left: 50%;
     transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
     margin: 70px auto;
     min-height: calc(100% - 140px);
     padding: 20px;

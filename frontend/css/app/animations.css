@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/animations.css
  * Created:			2014-10-19
- * Last modified:	2014-10-26
+ * Last modified:	2014-10-27
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -17,7 +17,6 @@
 div.mainView.ng-enter {
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
 
@@ -29,19 +28,22 @@ div.mainView.ng-enter {
 div.mainView.ng-enter-active {
     left: 50%;
     transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
     opacity: 1;
 }
 
 div.mainView.ng-leave {
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
 
 div.mainView.ng-leave {
     left: 50%;
     transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
     opacity: 1;
 }
 
