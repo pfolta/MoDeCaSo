@@ -14,7 +14,6 @@
 services.factory(
     "sessionService",
     [
-        "",
         function()
         {
             return {
