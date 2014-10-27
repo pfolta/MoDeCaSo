@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/services/auth.js
  * Created:			2014-10-20
- * Last modified:	2014-10-20
+ * Last modified:	2014-10-27
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -15,7 +15,8 @@ services.factory(
     "authService",
     [
         "$http",
-        function($http)
+        "sessionService",
+        function($http, sessionService)
         {
             return {
                 login: function(username, password)
@@ -29,13 +30,33 @@ services.factory(
                     {
                         return data.data;
                     });
+                    
+                    if (username == "dev" && password == "dev") {
+                        sessionService.set("loggedin", true);
+                        sessionService.set("username", username);
 
-                    return response;
+                        return true;
+                    }
+
+                    return false;
                 },
 
                 logout: function()
                 {
                     return "authService->logout called";
+                },
+
+                is_authenticated: function(request_permission)
+                {
+                    if (sessionService.get("loggedin")) {
+                        return true;
+                    }
+
+                    if (request_permission == "/login") {
+                        return true;
+                    }
+
+                    return false;
                 }
             }
         }

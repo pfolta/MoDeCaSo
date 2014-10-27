@@ -44,14 +44,22 @@ var webapp = angular.module(
 
 webapp.run([
     "$rootScope",
+    "authService",
+    "$state",
     "cfpLoadingBar",
-    function($rootScope, cfpLoadingBar)
+    function($rootScope, authService, $state, cfpLoadingBar)
     {
         $rootScope.$on(
             "$stateChangeStart",
             function(event, toState, toParams, fromState, fromParams)
             {
-                cfpLoadingBar.start();
+                if (!authService.is_authenticated(toState.url)) {
+                    event.preventDefault();
+
+                    $state.go("/login");
+                } else {
+                    cfpLoadingBar.start();
+                }
             }
         );
 

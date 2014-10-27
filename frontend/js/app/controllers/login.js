@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2014-10-25
+ * Last modified:	2014-10-27
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -33,13 +33,7 @@ controllers.controller(
 
                 var response = authService.login($scope.login.username, $scope.login.password);
 
-                if ($scope.login.username == "dev" && $scope.login.password == "dev") {
-                    $scope.main.loggedin = true;
-
-                    $scope.main.user = {
-                        "username": "dev"
-                    }
-
+                if (response) {
                     $state.go("/dashboard");
                 } else {
                     /*

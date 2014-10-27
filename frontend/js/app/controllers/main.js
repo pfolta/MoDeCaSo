@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/main.js
  * Created:			2014-10-19
- * Last modified:	2014-10-19
+ * Last modified:	2014-10-27
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -15,13 +15,16 @@ controllers.controller(
     "mainCtrl",
     [
         "$scope",
+        "sessionService",
         "$sce",
         "$modal",
-        function($scope, $sce, $modal)
+        function($scope, sessionService, $sce, $modal)
         {
             $scope.main = {
-                loggedin:   false,
-                user:       {}
+                loggedin:   sessionService.get("loggedin"),
+                user:       {
+                    username:   sessionService.get("username")
+                }
             };
 
             $scope.htmlSave = function(text)
