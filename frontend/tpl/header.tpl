@@ -40,7 +40,7 @@
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Signed in as <strong>{{ main.user.username }}</strong> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
+                        <li><a ng-click="changePasswordDialog()"><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
                         <li class="divider"></li>
                         <li><a ui-sref="/login"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
                     </ul>

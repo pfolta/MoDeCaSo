@@ -32,6 +32,16 @@ controllers.controller(
                 return $sce.trustAsHtml(text);
             };
 
+            $scope.changePasswordDialog = function()
+            {
+                $modal.open(
+                    {
+                        templateUrl:    "/frontend/tpl/change-password.tpl",
+                        backdrop:       "static"
+                    }
+                )
+            }
+
             $scope.aboutDialog = function()
             {
                 $modal.open(
