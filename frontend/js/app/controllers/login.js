@@ -47,10 +47,7 @@ controllers.controller(
                     /*
                      * Shake login form
                      */
-                    $("#login_form").children(2).addClass("shake").delay(500).queue(function()
-                    {
-                        $(this).removeClass("shake").dequeue();
-                    });
+                    shake_element($("#login_form").children(2));
 
                     /*
                      * Add error class to panel
