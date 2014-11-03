@@ -15,14 +15,14 @@
                 </h3>
                 <form role="form" name="login_form" ng-submit="login()" novalidate>
                     <div class="form-group" id="login_username_group">
-                        <label for="login_username">Username</label>
+                        <label for="login_username" class="control-label">Username</label>
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                             <input type="text" ng-model="login.username" id="login_username" placeholder="Username" required autofocus tabindex="1" class="form-control">
                         </div>
                     </div>
                     <div class="form-group" id="login_password_group">
-                        <label for="login_password">Password</label>
+                        <label for="login_password" class="control-label">Password</label>
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                             <input type="password" ng-model="login.password" id="login_password" placeholder="Password" required tabindex="2" class="form-control">

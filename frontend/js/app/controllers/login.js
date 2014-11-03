@@ -55,7 +55,7 @@ controllers.controller(
                     $("#login_form").children(2).removeClass("panel-primary").addClass("panel-danger");
 
                     /*
-                     * Add error class to input fields
+                     * Add error class to input groups
                      */
                     $("#login_username_group").toggleClass("has-error", true);
                     $("#login_password_group").toggleClass("has-error", true);

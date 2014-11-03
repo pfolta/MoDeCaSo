@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="submit" ng-disabled="change_password_form.$invalid" class="btn btn-primary" tabindex="4"><span class="glyphicon glyphicon-lock"></span> Change Password</button>
-        <button type="button" class="btn btn-default" ng-click="$close()" tabindex="5">Cancel</button>
+        <button type="submit" id="change_password_submit_button" ng-disabled="change_password_form.$invalid" class="btn btn-primary" tabindex="4"><span class="glyphicon glyphicon-lock"></span> Change Password</button>
+        <button type="button" id="change_password_cancel_button" class="btn btn-default" ng-click="$close()" tabindex="5">Cancel</button>
     </div>
 </form>
