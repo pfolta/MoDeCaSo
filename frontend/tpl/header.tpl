@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" ui-sref="/dashboard">
-                APPLICATION_TITLE
+                MoDeCaSo
             </a>
         </div>
         <div class="navbar-left">
@@ -12,6 +12,8 @@
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-large"></span> Projects <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a>Project Overview</a></li>
+                        <li class="divider"></li>
+                        <li><a>Create New Project</a></li>
                         <li class="divider"></li>
                         <li><a>Project 1</a></li>
                         <li><a>Project 2</a></li>

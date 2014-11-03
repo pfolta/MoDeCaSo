@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2014-10-26
+ * Last modified:	2014-11-02
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -49,12 +49,15 @@ webapp.run([
     "cfpLoadingBar",
     function($rootScope, authService, $state, cfpLoadingBar)
     {
+        $rootScope.redirectTo = "/dashboard";
+
         $rootScope.$on(
             "$stateChangeStart",
             function(event, toState, toParams, fromState, fromParams)
             {
                 if (!authService.is_authenticated(toState.url)) {
                     event.preventDefault();
+                    $rootScope.redirectTo = toState.url;
 
                     $state.go("/login");
                 } else {

@@ -11,7 +11,7 @@
             <div class="panel-body">
                 <img src="/frontend/img/upb-logo.svg">
                 <h3 class="text-center">
-                    APPLICATION_TITLE
+                    MoDeCaSo
                 </h3>
                 <form role="form" name="login_form" ng-submit="login()" novalidate>
                     <div class="form-group" id="login_username_group">
