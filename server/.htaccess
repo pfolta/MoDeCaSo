@@ -1,0 +1,23 @@
+#
+# UPB-BTHESIS
+# Copyright (C) 2004-2014 Peter Folta. All rights reserved.
+#
+# Project:			UPB-BTHESIS
+# Version:			0.0.1
+#
+# File:			    /server/.htaccess
+# Created:			2014-11-03
+# Last modified:	2014-11-03
+# Author:			Peter Folta <mail@peterfolta.net>
+#
+
+#
+# Enable mod_rewrite
+#
+RewriteEngine On
+
+#
+# Configure mod_rewrite
+#
+RewriteRule !^index\.php$ - [C]
+RewriteRule ^(.*)$ ./index.php [QSA,L]

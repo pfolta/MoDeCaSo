@@ -7,22 +7,25 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-10-26
+ * Last modified:	2014-11-03
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 webapp.config([
     "$urlRouterProvider",
     "$stateProvider",
-    function($urlRouterProvider, $stateProvider)
+    "$locationProvider",
+    function($urlRouterProvider, $stateProvider, $locationProvider)
     {
-        $urlRouterProvider.otherwise("/dashboard");
+        $locationProvider.html5Mode(true);
+
+        $urlRouterProvider.otherwise("/frontend/dashboard");
 
         $stateProvider
         .state(
             "/help",
             {
-                url: "/help",
+                url: "/frontend/help",
                 views: {
                     "mainView": {
                         templateUrl:    "/frontend/tpl/help/help.tpl"
@@ -39,7 +42,7 @@ webapp.config([
         .state(
             "/login",
             {
-                url: "/login",
+                url: "/frontend/login",
                 views: {
                     "mainView": {
                         controller:     "loginCtrl",
@@ -51,7 +54,7 @@ webapp.config([
         .state(
             "/dashboard",
             {
-                url: "/dashboard",
+                url: "/frontend/dashboard",
                 views: {
                     "mainView": {
                         templateUrl:    "/frontend/tpl/dashboard.tpl"
@@ -68,7 +71,7 @@ webapp.config([
         .state(
             "/administration/user-management",
             {
-                url: "/administration/user-management",
+                url: "/frontend/administration/user-management",
                 views: {
                     "mainView": {
                         controller:     "userManagementCtrl",

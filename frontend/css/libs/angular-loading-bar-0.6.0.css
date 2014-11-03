@@ -88,22 +88,6 @@
     animation:         loading-bar-spinner 400ms linear infinite;
 }
 
-#loading-bar-spinner-inactive {
-    display: block;
-    position: fixed;
-    z-index: 10000;
-    top: 10px;
-    right: 12px;
-}
-
-#loading-bar-spinner-inactive .spinner-icon-inactive {
-    width: 30px;
-    height: 30px;
-
-    border: 1px #cccccc solid;
-    border-radius: 30px;
-}
-
 @-webkit-keyframes loading-bar-spinner {
     0%   { -webkit-transform: rotate(0deg);   transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
