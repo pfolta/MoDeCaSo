@@ -27,22 +27,34 @@ controllers.controller(
                 }
             };
 
-            $scope.htmlSave = function(text)
+            $scope.change_password = function()
+            {
+                var username = $scope.main.user.username;
+                var old_password = $scope.change_password.old_password;
+                var new_password = $scope.change_password.new_password;
+                var confirm_new_password = $scope.change_password.confirm_new_password;
+
+                alert("Change Password Event Fired:\n\nUsername: " + username + "\nOld Password: " + old_password + "\nNew Password: " + new_password + "\nConfirm New Password: " + confirm_new_password);
+
+                $scope.$close();
+            }
+
+            $scope.html_save = function(text)
             {
                 return $sce.trustAsHtml(text);
             };
 
-            $scope.changePasswordDialog = function()
+            $scope.show_change_password_dialog = function()
             {
                 $modal.open(
                     {
                         templateUrl:    "/frontend/tpl/change-password.tpl",
                         backdrop:       "static"
                     }
-                )
+                );
             }
 
-            $scope.aboutDialog = function()
+            $scope.show_about_dialog = function()
             {
                 $modal.open(
                     {
@@ -50,7 +62,7 @@ controllers.controller(
                         backdrop:       "static",
                         size:           "lg"
                     }
-                )
+                );
             }
         }
     ]

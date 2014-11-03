@@ -20,50 +20,50 @@
                     <th style="width: 7%;">
                         ID
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'id'; orderReverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'id'; orderReverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'id'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'id'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 15%;">
                         Username
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'username'; orderReverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'username'; orderReverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'username'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'username'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 15%;">
                         First Name
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'firstName'; orderReverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'firstName'; orderReverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'first_name'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'first_name'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 15%;">
                         Last Name
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'lastName'; orderReverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'lastName'; orderReverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'last_name'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'last_name'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 20%;">
                         Email
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'email'; orderReverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'email'; orderReverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 10%;">
                         Role
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'role'; orderReverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'role'; orderReverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'role'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'role'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 10%;">
                         Status
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'status'; orderReverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="orderPredicate = 'status'; orderReverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'status'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'status'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 8%;">
@@ -72,7 +72,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="user in users | filter:filter | orderBy:orderPredicate:orderReverse">
+                <tr ng-repeat="user in users | filter:filter | orderBy:order_predicate:order_reverse">
                     <td class="text-right">
                         {{ user.id }}
                     </td>
@@ -80,10 +80,10 @@
                         <strong>{{ user.username }}</strong>
                     </td>
                     <td>
-                        {{ user.firstName }}
+                        {{ user.first_name }}
                     </td>
                     <td>
-                        {{ user.lastName }}
+                        {{ user.last_name }}
                     </td>
                     <td>
                         {{ user.email }}

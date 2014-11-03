@@ -1,4 +1,4 @@
-<form role="form" name="change_password_form" novalidate ng-controller="mainCtrl" class="form-horizontal">
+<form role="form" name="change_password_form" ng-submit="change_password()" novalidate ng-controller="mainCtrl" class="form-horizontal">
     <div class="modal-header">
         <button type="button" class="close" ng-click="$close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h3 class="modal-title">

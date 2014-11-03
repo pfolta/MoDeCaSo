@@ -18,14 +18,14 @@ controllers.controller(
         function($scope)
         {
             $scope.filter = "";
-            $scope.orderPredicate = "id";
-            $scope.orderReverse = false;
+            $scope.order_predicate = "id";
+            $scope.order_reverse = false;
 
             $scope.users = [
-                {"id": 1, "username": "jdoe", "firstName": "Jane", "lastName": "Doe", "email": "jdoe@example.com", "role": "administrator", "status": "active"},
-                {"id": 2, "username": "jappleseed", "firstName": "John", "lastName": "Appleseed", "email": "jappleseed@example.com", "role": "administrator", "status": "active"},
-                {"id": 3, "username": "msmith", "firstName": "Michelle", "lastName": "Smith", "email": "msmith@example.com", "role": "moderator", "status": "inactive"},
-                {"id": 4, "username": "dallison", "firstName": "Daniel", "lastName": "Allison", "email": "dallison@example.com", "role": "moderator", "status": "active"}
+                {"id": 1, "username": "jdoe", "first_name": "Jane", "last_name": "Doe", "email": "jdoe@example.com", "role": "administrator", "status": "active"},
+                {"id": 2, "username": "jappleseed", "first_name": "John", "last_name": "Appleseed", "email": "jappleseed@example.com", "role": "administrator", "status": "active"},
+                {"id": 3, "username": "msmith", "first_name": "Michelle", "last_name": "Smith", "email": "msmith@example.com", "role": "moderator", "status": "inactive"},
+                {"id": 4, "username": "dallison", "first_name": "Daniel", "last_name": "Allison", "email": "dallison@example.com", "role": "moderator", "status": "active"}
             ];
         }
     ]

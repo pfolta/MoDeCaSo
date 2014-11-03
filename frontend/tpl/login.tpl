@@ -1,6 +1,6 @@
 <div id="login_container">
     <div class="login_form" id="login_form">
-        <div class="alert" id="login_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="htmlSave(flash.message)" role="alert">
+        <div class="alert" id="login_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert">
         </div>
         <div class="panel panel-primary">
             <div class="panel-heading">
