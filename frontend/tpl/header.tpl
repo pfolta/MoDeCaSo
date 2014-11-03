@@ -2,6 +2,7 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" ui-sref="/dashboard">
+                <img src="/frontend/img/upb-claw.svg" class="header-icon">
                 MoDeCaSo
             </a>
         </div>
