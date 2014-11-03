@@ -42,7 +42,7 @@ controllers.controller(
                      */
                     $scope.flash.show = true;
                     $scope.flash.type = "alert-danger";
-                    $scope.flash.message = "<strong>Oh snap!</strong> Invalid username or password."
+                    $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Invalid username or password."
 
                     /*
                      * Shake login form

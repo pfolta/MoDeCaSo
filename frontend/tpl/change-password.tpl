@@ -6,6 +6,8 @@
         </h3>
     </div>
     <div class="modal-body">
+        <div class="alert" id="change_password_flash" ng-show="change_password_flash.show" ng-class="change_password_flash.type" ng-bind-html="html_save(change_password_flash.message)" role="alert">
+        </div>
         <p>
             Change password for user <strong>{{ main.user.username }}</strong>.
         </p>

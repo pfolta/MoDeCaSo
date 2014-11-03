@@ -44,6 +44,7 @@
         <script type="text/javascript" src="/frontend/js/app/controllers/login.js"></script>
         <script type="text/javascript" src="/frontend/js/app/controllers/user-management.js"></script>
         <script type="text/javascript" src="/frontend/js/app/tools/animations.js"></script>
+        <script type="text/javascript" src="/frontend/js/app/tools/string.js"></script>
     </head>
 
     <!--[if lt IE 10]>
@@ -85,7 +86,7 @@
         <div class="global-overlay">
             <div class="container">
                 <div class="alert alert-danger">
-                    <span class="glyphicon glyphicon-exclamation-sign"></span> <strong>Oh snap!</strong> Your browser is too old.
+                    <span class="glyphicon glyphicon-exclamation-sign"></span> <strong><script type="text/javascript">document.write(get_error_title());</script></strong> Your browser is too old.
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">

@@ -27,6 +27,12 @@ controllers.controller(
                 }
             };
 
+            $scope.change_password_flash = {
+                "show":     false,
+                "type":     null,
+                "message":  null
+            };
+
             $scope.change_password = function()
             {
                 var username = $scope.main.user.username;
@@ -34,9 +40,20 @@ controllers.controller(
                 var new_password = $scope.change_password.new_password;
                 var confirm_new_password = $scope.change_password.confirm_new_password;
 
-                alert("Change Password Event Fired:\n\nUsername: " + username + "\nOld Password: " + old_password + "\nNew Password: " + new_password + "\nConfirm New Password: " + confirm_new_password);
+                if (new_password == confirm_new_password) {
+                    if (old_password == "dev") {
+                        $scope.change_password_flash.type = "alert-success";
+                        $scope.change_password_flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>Well done!</strong> Your password has been successfully changed.";
+                    } else {
+                        $scope.change_password_flash.type = "alert-danger";
+                        $scope.change_password_flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The password you entered is invalid. Please try again.";
+                    }
+                } else {
+                    $scope.change_password_flash.type = "alert-danger";
+                    $scope.change_password_flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The passwords you entered did not match.";
+                }
 
-                $scope.$close();
+                $scope.change_password_flash.show = true;
             }
 
             $scope.html_save = function(text)
