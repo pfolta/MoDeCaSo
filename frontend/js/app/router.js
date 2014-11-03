@@ -97,7 +97,7 @@ webapp.config([
                     {
                         $modal.open(
                             {
-                                templateUrl:    "/frontend/tpl/about.tpl",
+                                templateUrl:    "/frontend/tpl/administration/user-management/add-user.tpl",
                                 backdrop:       "static"
                             }
                         ).result.then(
