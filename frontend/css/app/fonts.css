@@ -1,0 +1,155 @@
+/*
+ * UPB-BTHESIS
+ * Copyright (C) 2004-2014 Peter Folta. All rights reserved.
+ *
+ * Project:			UPB-BTHESIS
+ * Version:			0.0.1
+ *
+ * File:			/frontend/css/app/fonts.css
+ * Created:			2014-11-03
+ * Last modified:	2014-11-03
+ * Author:			Peter Folta <mail@peterfolta.net>
+ */
+
+@charset "UTF-8";
+
+/*
+ * Liberation Sans
+ */
+@font-face {
+    font-family: "Liberation Sans";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/frontend/fonts/app/liberation-sans/liberation-sans-regular-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-sans/liberation-sans-regular-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-regular-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-regular-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-regular-webfont.svg#liberation_sansregular") format("svg");
+}
+
+@font-face {
+    font-family: "Liberation Sans";
+    font-style: normal;
+    font-weight: bold;
+    src: url("/frontend/fonts/app/liberation-sans/liberation-sans-bold-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-sans/liberation-sans-bold-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-bold-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-bold-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-bold-webfont.svg#liberation_sansbold") format("svg");
+}
+
+@font-face {
+    font-family: "Liberation Sans";
+    font-style: italic;
+    font-weight: normal;
+    src: url("/frontend/fonts/app/liberation-sans/liberation-sans-italic-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-sans/liberation-sans-italic-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-italic-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-italic-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-italic-webfont.svg#liberation_sansitalic") format("svg");
+}
+
+@font-face {
+    font-family: "Liberation Sans";
+    font-style: italic;
+    font-weight: bold;
+    src: url("/frontend/fonts/app/liberation-sans/liberation-sans-bolditalic-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-sans/liberation-sans-bolditalic-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-bolditalic-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-bolditalic-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-sans/liberation-sans-bolditalic-webfont.svg#liberation_sansbold_italic") format("svg");
+}
+
+/*
+ * Liberation Mono
+ */
+@font-face {
+    font-family: "Liberation Mono";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/frontend/fonts/app/liberation-mono/liberation-mono-regular-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-mono/liberation-mono-regular-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-regular-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-regular-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-regular-webfont.svg#liberation_monoregular") format("svg");
+}
+
+@font-face {
+    font-family: "Liberation Mono";
+    font-style: normal;
+    font-weight: bold;
+    src: url("/frontend/fonts/app/liberation-mono/liberation-mono-bold-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-mono/liberation-mono-bold-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-bold-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-bold-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-bold-webfont.svg#liberation_monobold") format("svg");
+}
+
+@font-face {
+    font-family: "Liberation Mono";
+    font-style: italic;
+    font-weight: normal;
+    src: url("/frontend/fonts/app/liberation-mono/liberation-mono-italic-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-mono/liberation-mono-italic-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-italic-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-italic-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-italic-webfont.svg#liberation_monoitalic") format("svg");
+}
+
+@font-face {
+    font-family: "Liberation Mono";
+    font-style: italic;
+    font-weight: bold;
+    src: url("/frontend/fonts/app/liberation-mono/liberation-mono-bolditalic-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-mono/liberation-mono-bolditalic-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-bolditalic-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-bolditalic-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-mono/liberation-mono-bolditalic-webfont.svg#liberation_monobold_italic") format("svg");
+}
+
+/*
+ * Liberation Serif
+ */
+@font-face {
+    font-family: "Liberation Serif";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/frontend/fonts/app/liberation-serif/liberation-serif-regular-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-serif/liberation-serif-regular-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-regular-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-regular-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-regular-webfont.svg#liberation_serifregular") format("svg");
+}
+
+@font-face {
+    font-family: "Liberation Serif";
+    font-style: normal;
+    font-weight: bold;
+    src: url("/frontend/fonts/app/liberation-serif/liberation-serif-bold-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-serif/liberation-serif-bold-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-bold-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-bold-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-bold-webfont.svg#liberation_serifbold") format("svg");
+}
+
+@font-face {
+    font-family: "Liberation Serif";
+    font-style: italic;
+    font-weight: normal;
+    src: url("/frontend/fonts/app/liberation-serif/liberation-serif-italic-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-serif/liberation-serif-italic-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-italic-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-italic-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-italic-webfont.svg#liberation_serifitalic") format("svg");
+}
+
+@font-face {
+    font-family: "Liberation Serif";
+    font-style: italic;
+    font-weight: bold;
+    src: url("/frontend/fonts/app/liberation-serif/liberation-serif-bolditalic-webfont.eot");
+    src: url("/frontend/fonts/app/liberation-serif/liberation-serif-bolditalic-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-bolditalic-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-bolditalic-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/liberation-serif/liberation-serif-bolditalic-webfont.svg#liberation_serifbold_italic") format("svg");
+}

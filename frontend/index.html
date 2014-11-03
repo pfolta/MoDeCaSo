@@ -20,9 +20,10 @@
         <!-- Bootstrap Theme Support
             <link rel="stylesheet" type="text/css" href="/frontend/css/libs/bootstrap-3.2.0-theme.css">
         -->
+        <link rel="stylesheet" type="text/css" href="/frontend/css/libs/bootstrap-3.2.0-theme.css">
 
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/main.css">
-        <link rel="stylesheet" type="text/css" href="/frontend/css/app/header.css">
+        <link rel="stylesheet" type="text/css" href="/frontend/css/app/fonts.css">
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/animations.css">
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/global-overlays.css">
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/login.css">
@@ -42,15 +43,51 @@
         <script type="text/javascript" src="/frontend/js/app/controllers/login.js"></script>
         <script type="text/javascript" src="/frontend/js/app/controllers/user-management.js"></script>
     </head>
+
+    <!--[if lt IE 10]>
+        <body class="noscroll">
+    <![endif]-->
     <body>
         <noscript>
             <div class="global-overlay">
+                <div class="container">
+                    <div class="alert alert-danger">
+                        <strong>Oh snap!</strong> JavaScript is not enabled.
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">How do I enable JavaScript?</h3>
+                        </div>
+                        <div class="panel-body">
+                            Go to <a href="http://enable-javascript.com">enable-javascript.com</a> to find out how to enable JavaScript in your browser.
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Why do I keep seeing this message?</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                This web application relies heavily on JavaScript to run in your browser.
+                            </p>
+                            <p>
+                                You seem to have JavaScript disabled. This web application will not work until you enable JavaScript.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </noscript>
+
+        <!--[if lt IE 10]>
+        <div class="global-overlay">
+            <div class="container">
                 <div class="alert alert-danger">
-                    <strong>Oh snap!</strong> JavaScript is not enabled.
+                    <strong>Oh snap!</strong> Your browser is too old.
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">How do I enable JavasScript?</h3>
+                        <h3 class="panel-title">How do I fix this?</h3>
                     </div>
                     <div class="panel-body">
                         Go to <a href="http://enable-javascript.com">enable-javascript.com</a> to find out how to enable JavaScript in your browser.
@@ -62,47 +99,17 @@
                     </div>
                     <div class="panel-body">
                         <p>
-                            This web application relies heavily on JavaScript to run in your browser.
-                        </p>
-                        <p>
-                            You seem to have JavaScript disabled. This web application will not work until you enable JavaScript.
+                            You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
                         </p>
                     </div>
-                </div>
-            </div>
-        </noscript>
-
-        <!--[if lt IE 10]>
-        <div class="global-overlay">
-            <div class="alert alert-danger">
-                <strong>Oh snap!</strong> Your browser is too old.
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">How do I fix this?</h3>
-                </div>
-                <div class="panel-body">
-                    Go to <a href="http://enable-javascript.com">enable-javascript.com</a> to find out how to enable JavaScript in your browser.
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Why do I keep seeing this message?</h3>
-                </div>
-                <div class="panel-body">
-                    <p>
-                        You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-                    </p>
                 </div>
             </div>
         </div>
         <![endif]-->
 
-        <div class="container">
-            <div ui-view="headerView"></div>
-            <div id="loading-bar-spinner-inactive"><div class="spinner-icon-inactive"></div></div>
-            <div ui-view="mainView" class="mainView"></div>
-            <div ui-view="footerView"></div>
-        </div>
+        <div ui-view="headerView"></div>
+        <div id="loading-bar-spinner-inactive"><div class="spinner-icon-inactive"></div></div>
+        <div ui-view="mainView" class="mainView container"></div>
+        <div ui-view="footerView"></div>
     </body>
 </html>

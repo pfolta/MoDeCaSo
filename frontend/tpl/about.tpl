@@ -9,6 +9,14 @@
     <p>
         Bla bla bla
     </p>
+    <address>
+        <strong>University of Paderborn</strong><br>
+        Fakultät für Elektrotechnik, Informatik und Mathematik<br>
+        Institut für Informatik<br>
+        Fachgebiet Mensch-Computer-Interaktion<br>
+        Fürstenallee 11<br>
+        D-33102 Paderborn
+    </address>
     <p>
         Copyright &copy; 2014 Peter Folta. All rights reserved.
     </p>

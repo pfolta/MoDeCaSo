@@ -7,12 +7,13 @@
  *
  * File:			/frontend/css/app/login.css
  * Created:			2014-10-18
- * Last modified:	2014-10-21
+ * Last modified:	2014-11-03
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
+@charset "UTF-8";
+
 #login_container {
-    background-color: #eeeeee;
     bottom: 0;
     height: 100%;
     left: 0;

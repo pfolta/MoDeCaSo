@@ -7,18 +7,28 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2014-10-27
+ * Last modified:	2014-11-03
  * Author:			Peter Folta <mail@peterfolta.net>
  */
+
+@charset "UTF-8";
 
 *:focus {
     outline: none !important;
 }
 
+* {
+    font-family: "Liberation Sans";
+}
+
 body {
-    background-color: #eeeeee;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+body.noscroll {
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 a {
@@ -36,26 +46,13 @@ div.mainView {
     -webkit-transform: translateX(-50%);
     height: 100%;
     position: absolute;
-    width: 100%;
 }
 
 div.mainView > div.page {
     background-color: #ffffff;
-    -moz-box-shadow: 0 0 3px #888888;
-    -webkit-box-shadow: 0 0 3px #888888;
-    box-shadow: 0 0 3px #888888;
-    margin: 70px auto;
-    min-height: calc(100% - 140px);
-    padding: 20px;
+    margin: 80px auto;
+    min-height: calc(100% - 160px);
     position: relative;
-    width: 1200px;
-}
-
-#main_navbar {
-    -moz-box-shadow: 0 0 3px #888888;
-    -webkit-box-shadow: 0 0 3px #888888;
-    box-shadow: 0 0 10px #888888;
-    background-color: #ffffff;
 }
 
 .table > tbody > tr > td {
