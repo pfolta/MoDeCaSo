@@ -52,7 +52,7 @@ services.factory(
                         return true;
                     }
 
-                    if (request_permission == "/login") {
+                    if (request_permission == "/frontend/login") {
                         return true;
                     }
 
