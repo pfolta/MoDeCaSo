@@ -25,6 +25,10 @@ a {
     cursor: pointer;
 }
 
+div.container {
+    width: 1200px;
+}
+
 div.mainView {
     left: 50%;
     transform: translateX(-50%);

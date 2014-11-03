@@ -88,11 +88,11 @@
                     <td>
                         {{ user.email }}
                     </td>
-                    <td>
-                        {{ user.role | capitalizeWords }}
+                    <td class="text-capitalize">
+                        {{ user.role }}
                     </td>
                     <td>
-                        <span class="label" ng-class="{ 'label-success': user.status == 'active', 'label-default': user.status == 'inactive' }">{{ user.status | uppercase }}</span>
+                        <span class="label text-uppercase" ng-class="{ 'label-success': user.status == 'active', 'label-default': user.status == 'inactive' }">{{ user.status }}</span>
                     </td>
                     <td class="text-center">
                         <div class="btn-group btn-group-sm">
