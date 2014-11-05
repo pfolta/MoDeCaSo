@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2014-11-02
+ * Last modified:	2014-11-05
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -70,6 +70,8 @@ webapp.run([
             "$stateChangeSuccess",
             function(event, toState, toParams, fromState, fromParams)
             {
+                window.document.title = "MoDeCaSo - " + toState.title;
+
                 cfpLoadingBar.complete();
             }
         );

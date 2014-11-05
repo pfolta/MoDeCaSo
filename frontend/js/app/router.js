@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-11-03
+ * Last modified:	2014-11-05
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -26,6 +26,7 @@ webapp.config([
             "/help",
             {
                 url: "/frontend/help",
+                title: "Help",
                 views: {
                     "mainView": {
                         templateUrl:    "/frontend/tpl/help/help.tpl"
@@ -43,6 +44,7 @@ webapp.config([
             "/login",
             {
                 url: "/frontend/login",
+                title: "Log In",
                 views: {
                     "mainView": {
                         controller:     "loginCtrl",
@@ -55,6 +57,7 @@ webapp.config([
             "/dashboard",
             {
                 url: "/frontend/dashboard",
+                title: "Dashboard",
                 views: {
                     "mainView": {
                         templateUrl:    "/frontend/tpl/dashboard.tpl"
@@ -72,6 +75,7 @@ webapp.config([
             "/administration/user-management",
             {
                 url: "/frontend/administration/user-management",
+                title: "User Management",
                 views: {
                     "mainView": {
                         controller:     "userManagementCtrl",
@@ -90,6 +94,7 @@ webapp.config([
             "/administration/user-management.adduser",
             {
                 url: "/add-user",
+                title: "Add User",
                 onEnter: [
                     "$state",
                     "$modal",
