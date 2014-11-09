@@ -32,34 +32,35 @@ controllers.controller(
             {
                 cfpLoadingBar.start();
 
-                var response = authService.login($scope.login.username, $scope.login.password);
+                authService.login($scope.login.username, $scope.login.password).then(function(result)
+                {
+                    if (result) {
+                        $state.go($rootScope.redirectTo);
+                    } else {
+                        /*
+                         * Set error message
+                         */
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-danger";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Invalid username or password."
 
-                if (response) {
-                    $state.go($rootScope.redirectTo);
-                } else {
-                    /*
-                     * Set error message
-                     */
-                    $scope.flash.show = true;
-                    $scope.flash.type = "alert-danger";
-                    $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Invalid username or password."
+                        /*
+                         * Shake login form
+                         */
+                        shake_element($("#login_form").children(2));
 
-                    /*
-                     * Shake login form
-                     */
-                    shake_element($("#login_form").children(2));
+                        /*
+                         * Add error class to panel
+                         */
+                        $("#login_form").children(2).removeClass("panel-primary").addClass("panel-danger");
 
-                    /*
-                     * Add error class to panel
-                     */
-                    $("#login_form").children(2).removeClass("panel-primary").addClass("panel-danger");
-
-                    /*
-                     * Add error class to input groups
-                     */
-                    $("#login_username_group").toggleClass("has-error", true);
-                    $("#login_password_group").toggleClass("has-error", true);
-                }
+                        /*
+                         * Add error class to input groups
+                         */
+                        $("#login_username_group").toggleClass("has-error", true);
+                        $("#login_password_group").toggleClass("has-error", true);
+                    }
+                });
 
                 cfpLoadingBar.complete();
             }

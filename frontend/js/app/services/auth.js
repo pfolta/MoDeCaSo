@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/services/auth.js
  * Created:			2014-10-20
- * Last modified:	2014-10-27
+ * Last modified:	2014-11-05
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -21,24 +21,28 @@ services.factory(
             return {
                 login: function(username, password)
                 {
-                    console.log("Attempting to log in with username = " + username + " and password = " + password);
+                    return $http({
+                        method: "post",
+                        url:    "/server/auth/login",
+                        data:   {
+                            username:   username,
+                            password:   password
+                        }
+                    }).then(handle_response, handle_response);
 
-                    var response;
-
-                    var $promise = $http.post("/frontend/tpl/footer.tpl", username);
-                    $promise.then(function(data)
+                    function handle_response(response)
                     {
-                        return data.data;
-                    });
-                    
-                    if (username == "dev" && password == "dev") {
-                        sessionService.set("loggedin", true);
-                        sessionService.set("username", username);
+                        var data = response.data;
 
-                        return true;
+                        if (!data.error && data.msg == "login_successful") {
+                            sessionService.set("loggedin", true);
+                            sessionService.set("username", username);
+
+                            return true;
+                        } else {
+                            return false;
+                        }
                     }
-
-                    return false;
                 },
 
                 logout: function()
