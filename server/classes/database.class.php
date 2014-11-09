@@ -7,13 +7,13 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:			/server/main/database.class.php
+ * File:			/server/classes/database.class.php
  * Created:			2014-11-03
- * Last modified:	2014-11-03
+ * Last modified:	2014-11-05
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
-namespace main;
+namespace classes;
 
 use Exception;
 use mysqli;
