@@ -9,19 +9,63 @@
  *
  * File:			/server/index.php
  * Created:			2014-11-03
- * Last modified:	2014-11-03
+ * Last modified:	2014-11-05
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
-require "main/app.class.php";
-require "main/config.class.php";
-require "main/database.class.php";
-require "main/errorhandling.class.php";
+require "vendor/autoload.php";
 
-use main\app;
+require "classes/auth.class.php";
+require "classes/config.class.php";
+require "classes/controller.class.php";
+require "classes/database.class.php";
+require "classes/errorhandling.class.php";
+
+require "controllers/auth_controller.class.php";
+
+use \Slim\Slim;
+
+use classes\auth;
+use classes\config;
+use classes\database;
+use classes\errorhandling;
+
+use controllers\auth_controller;
 
 /*
- * Create a new web application and run it
+ * Create new instance of web application
  */
-$webapp = new app();
-$webapp->run();
+$app = new Slim();
+$app->view(new JsonApiView());
+$app->add(new JsonApiMiddleware());
+
+$config = new config("config.ini");
+
+if ($config->get_config_value("main", "debug")) {
+    errorhandling::set_error_handling(true);
+    $app->config("debug", true);
+    $app->config("mode", "debug");
+} else {
+    errorhandling::set_error_handling(false);
+    $app->config("debug", false);
+    $app->config("mode", "production");
+}
+
+$database = new database(
+    $config->get_config_value("database", "server"),
+    $config->get_config_value("database", "username"),
+    $config->get_config_value("database", "password"),
+    $config->get_config_value("database", "database")
+);
+
+$auth = auth::get_instance();
+
+/*
+ * Instantiate controllers
+ */
+$auth_controller = new auth_controller();
+
+/*
+ * Finally, handle requests
+ */
+$app->run();
