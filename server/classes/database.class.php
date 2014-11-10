@@ -224,13 +224,13 @@ class database
         return $this->query($sql);
     }
 
-    public function delete($table, $key, $value)
+    public function delete($table, $where)
     {
         if ($this->connection == null) {
             throw new Exception("Not connected to a database.");
         }
 
-        $sql = "DELETE FROM ".$table." WHERE ".$key." = '".$value."'";
+        $sql = "DELETE FROM ".$table." WHERE ".$where;
         return $this->query($sql);
     }
 

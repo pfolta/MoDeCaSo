@@ -45,7 +45,7 @@ class auth
         /*
          * Check whether user exists
          */
-        $this->database->select("users", null, "`username` = '".$username."'");
+        $this->database->select("users", null, "username = '".$username."'");
 
         if ($this->database->row_count() == 1) {
             $result = $this->database->result()[0];
@@ -133,6 +133,14 @@ class auth
     public function change_password($username, $new_password)
     {
         return true;
+    }
+
+    public function authenticate()
+    {
+        /*
+         * Clear database of expired API Keys
+         */
+        $this->database->delete("users_token", "expiration < ".time());
     }
 
     private function generate_api_key()
