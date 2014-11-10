@@ -193,7 +193,7 @@ class database
         return $this->query($sql);
     }
 
-    public function update($table, $key, $value, $data)
+    public function update($table, $where, $data)
     {
         if ($this->connection == null) {
             throw new Exception("Not connected to a database.");
@@ -217,7 +217,7 @@ class database
                 $sql .= $data_value;
             }
 
-            $sql .= " WHERE ".$key." = '".$value."'";
+            $sql .= " WHERE ".$where;
             $i++;
         }
 
