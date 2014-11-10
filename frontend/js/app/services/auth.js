@@ -39,6 +39,7 @@ services.factory(
                             sessionService.set("username", data.username);
                             sessionService.set("first_name", data.first_name);
                             sessionService.set("last_name", data.last_name);
+                            sessionService.set("role", data.role);
 
                             sessionService.set("loggedin", true);
 

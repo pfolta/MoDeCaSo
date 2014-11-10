@@ -64,6 +64,18 @@ class auth
                     $api_key = $this->generate_api_key();
 
                     /*
+                     * Store api key in user database
+                     */
+                    $this->database->insert("users_tokens", array(
+                        'api_key'       => $api_key,
+                        'user'          => $result['id'],
+                        'granted'       => time(),
+                        'expiration'    => time() + config::get_instance()->get_config_value("auth", "session_lifetime")
+                    ));
+
+                    print $this->database->error();
+
+                    /*
                      * Set options
                      */
                     $login_result = array(
@@ -72,7 +84,8 @@ class auth
                         'api_key'       => $api_key,
                         'username'      => $result['username'],
                         'first_name'    => $result['first_name'],
-                        'last_name'     => $result['last_name']
+                        'last_name'     => $result['last_name'],
+                        'role'          => $result['role']
                     );
                 } else {
                     /*
