@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/services/auth.js
  * Created:			2014-10-20
- * Last modified:	2014-11-05
+ * Last modified:	2014-11-10
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -56,7 +56,7 @@ services.factory(
                         return true;
                     }
 
-                    if (request_permission == "/frontend/login") {
+                    if (request_permission == "/login") {
                         return true;
                     }
 

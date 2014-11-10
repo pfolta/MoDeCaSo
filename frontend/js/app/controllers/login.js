@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2014-11-02
+ * Last modified:	2014-11-10
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -35,7 +35,7 @@ controllers.controller(
                 authService.login($scope.login.username, $scope.login.password).then(function(result)
                 {
                     if (result) {
-                        $state.go($rootScope.redirectTo);
+                        $state.go("/dashboard");
                     } else {
                         /*
                          * Set error message

@@ -22,7 +22,7 @@
                     </ul>
                 </li>
                 <li ui-sref-active="active" class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Administration <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Administration <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a><span class="glyphicon glyphicon-cog"></span> Global Settings</a></li>
                         <li><a ui-sref="/administration/user-management"><span class="glyphicon glyphicon-user"></span> User management</a></li>
@@ -33,7 +33,7 @@
         <div class="navbar-right" id="top-right">
             <ul class="nav navbar-nav">
                 <li ui-sref-active="active" class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-question-sign"></span> Help <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-question-sign"></span> Help <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a ui-sref="/help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
                         <li class="divider"></li>

@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-11-05
+ * Last modified:	2014-11-10
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -91,9 +91,10 @@ webapp.config([
             }
         )
         .state(
-            "/administration/user-management.adduser",
+            "/administration/user-management/add-user",
             {
                 url: "/add-user",
+                parent: "/administration/user-management",
                 title: "Add User",
                 onEnter: [
                     "$state",
