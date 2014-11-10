@@ -9,7 +9,7 @@
  *
  * File:			/server/classes/auth.class.php
  * Created:			2014-11-05
- * Last modified:	2014-11-05
+ * Last modified:	2014-11-10
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -19,6 +19,8 @@ class auth
 {
 
     private static $instance = null;
+
+    private $database;
 
     public static function get_instance()
     {
@@ -31,6 +33,7 @@ class auth
 
     private function __construct()
     {
+        $this->database = database::get_instance();
     }
 
     private function __clone()
@@ -39,29 +42,61 @@ class auth
 
     public function login($username, $password)
     {
-        if ($username == "dev" && $password == "dev") {
-            /*
-             * Generate API Key
-             */
-            $api_key = $this->generate_api_key();
+        /*
+         * Check whether user exists
+         */
+        $this->database->select("users", null, "`username` = '".$username."'");
+
+        if ($this->database->row_count() == 1) {
+            $result = $this->database->result()[0];
 
             /*
-             * Set options
+             * Verify password
              */
-            $options = array(
-                "api_key"       => $api_key,
-                "username"      => $username,
-                "first_name"    => "First",
-                "last_name"     => "Last"
+            if (password_verify($password, $result['password'])) {
+                /*
+                 * Check whether user account is enabled
+                 */
+                if ($result['status'] == 1) {
+                    /*
+                     * Generate API Key
+                     */
+                    $api_key = $this->generate_api_key();
+
+                    /*
+                     * Set options
+                     */
+                    $login_result = array(
+                        "error"         => false,
+                        "msg"           => "login_successful",
+                        "api_key"       => $api_key,
+                        "username"      => $result['username'],
+                        "first_name"    => $result['first_name'],
+                        "last_name"     => $result['last_name']
+                    );
+                } else {
+                    $login_result = array(
+                        "error"         => true,
+                        "msg"           => "account_disabled"
+                    );
+                }
+            } else {
+                $login_result = array(
+                    "error"         => true,
+                    "msg"           => "invalid_credentials",
+                );
+            }
+        } else {
+            $login_result = array(
+                "error"         => true,
+                "msg"           => "invalid_credentials",
             );
-
-            /*
-             * Return Options array
-             */
-            return $options;
         }
 
-        return false;
+        /*
+         * Return result array
+         */
+        return $login_result;
     }
 
     public function logout()

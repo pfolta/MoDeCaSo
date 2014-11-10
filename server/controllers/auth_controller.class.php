@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/auth.class.php
  * Created:			2014-11-04
- * Last modified:	2014-11-05
+ * Last modified:	2014-11-10
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -40,24 +40,15 @@ class auth_controller extends controller
 
         $login_result = $this->auth->login($username, $password);
 
-        if ($login_result) {
+        if (!$login_result['error']) {
             $this->app->render(
                 200,
-                array_merge(
-                    array(
-                        "error"     => false,
-                        "msg"       => "login_successful"
-                    ),
-                    $login_result
-                )
+                $login_result
             );
         } else {
             $this->app->render(
                 401,
-                array(
-                    "error"     => true,
-                    "msg"       => "login_failed"
-                )
+                $login_result
             );
         }
     }

@@ -9,7 +9,7 @@
  *
  * File:			/server/index.php
  * Created:			2014-11-03
- * Last modified:	2014-11-05
+ * Last modified:	2014-11-10
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -39,8 +39,15 @@ $app = new Slim();
 $app->view(new JsonApiView());
 $app->add(new JsonApiMiddleware());
 
-$config = new config("config.ini");
+/*
+ * Initialize config object, load and parse config file
+ */
+$config = config::get_instance();
+$config->load_config("config.ini");
 
+/*
+ * Set debug options
+ */
 if ($config->get_config_value("main", "debug")) {
     errorhandling::set_error_handling(true);
     $app->config("debug", true);
@@ -51,12 +58,21 @@ if ($config->get_config_value("main", "debug")) {
     $app->config("mode", "production");
 }
 
-$database = new database(
+/*
+ * Initialize database object, connect with credentials provided in config file
+ */
+$database = database::get_instance();
+$database->connect(
     $config->get_config_value("database", "server"),
     $config->get_config_value("database", "username"),
     $config->get_config_value("database", "password"),
     $config->get_config_value("database", "database")
 );
+
+/*
+ * Set database connection character set
+ */
+$database->set_charset("UTF8");
 
 $auth = auth::get_instance();
 

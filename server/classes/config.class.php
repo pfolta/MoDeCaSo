@@ -9,7 +9,7 @@
  *
  * File:			/server/classes/config.class.php
  * Created:			2014-11-03
- * Last modified:	2014-11-05
+ * Last modified:	2014-11-10
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -20,17 +20,36 @@ use Exception;
 class config
 {
 
-    private $configfile;
+    private static $instance = null;
+
+    private $configfile = null;
     private $config;
 
+    public static function get_instance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+
+    private function __construct()
+    {
+    }
+
+    private function __clone()
+    {
+    }
+
     /**
-     * __construct ( )
+     * load_config ( )
      *
-     * Creates new Config object with specified config file
+     * Loads and parses specified config file
      *
      * @param string $configfile
      */
-    public function __construct($configfile)
+    public function load_config($configfile)
     {
         $this->configfile = $configfile;
         $this->parse_config();
@@ -43,6 +62,10 @@ class config
      */
     private function parse_config()
     {
+        if ($this->configfile == null) {
+            throw new Exception("No config file loaded.");
+        }
+
         $this->config = parse_ini_file($this->configfile, true);
     }
 
@@ -61,6 +84,10 @@ class config
      */
     public function get_config_value($category, $key)
     {
+        if ($this->configfile == null) {
+            throw new Exception("No config file loaded.");
+        }
+
         if (array_key_exists($category, $this->config)) {
             if (array_key_exists($key, $this->config[$category])) {
                 $value = $this->config[$category][$key];

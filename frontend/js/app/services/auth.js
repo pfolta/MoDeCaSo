@@ -35,8 +35,12 @@ services.factory(
                         var data = response.data;
 
                         if (!data.error && data.msg == "login_successful") {
+                            sessionService.set("api_key", data.api_key);
+                            sessionService.set("username", data.username);
+                            sessionService.set("first_name", data.first_name);
+                            sessionService.set("last_name", data.last_name);
+
                             sessionService.set("loggedin", true);
-                            sessionService.set("username", username);
 
                             return true;
                         } else {
