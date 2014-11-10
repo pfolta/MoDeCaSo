@@ -75,18 +75,27 @@ class auth
                         'last_name'     => $result['last_name']
                     );
                 } else {
+                    /*
+                     * User account exists but is disabled
+                     */
                     $login_result = array(
                         'error'         => true,
                         'msg'           => "account_disabled"
                     );
                 }
             } else {
+                /*
+                 * Incorrect password provided
+                 */
                 $login_result = array(
                     'error'         => true,
                     'msg'           => "invalid_credentials",
                 );
             }
         } else {
+            /*
+             * Invalid username provided
+             */
             $login_result = array(
                 'error'         => true,
                 'msg'           => "invalid_credentials",
