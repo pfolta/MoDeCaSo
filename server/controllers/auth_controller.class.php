@@ -26,9 +26,9 @@ class auth_controller extends controller
             "/auth",
             function()
             {
-                $this->app->post("/login", array($this, "login"));
-                $this->app->get("/logout", array($this, "logout"));
-                $this->app->post("/change_password", array($this, "change_password"));
+                $this->app->post("/login", array($this, 'login'));
+                $this->app->get("/logout", array($this, 'logout'));
+                $this->app->post("/change_password", array($this, 'change_password'));
             }
         );
     }
@@ -57,7 +57,7 @@ class auth_controller extends controller
     {
         $logout_result = $this->auth->logout();
 
-        $this->app->render(200, array("msg" => "ok"));
+        $this->app->render(200, array('msg' => "ok"));
     }
 
     public function change_password()

@@ -67,29 +67,29 @@ class auth
                      * Set options
                      */
                     $login_result = array(
-                        "error"         => false,
-                        "msg"           => "login_successful",
-                        "api_key"       => $api_key,
-                        "username"      => $result['username'],
-                        "first_name"    => $result['first_name'],
-                        "last_name"     => $result['last_name']
+                        'error'         => false,
+                        'msg'           => "login_successful",
+                        'api_key'       => $api_key,
+                        'username'      => $result['username'],
+                        'first_name'    => $result['first_name'],
+                        'last_name'     => $result['last_name']
                     );
                 } else {
                     $login_result = array(
-                        "error"         => true,
-                        "msg"           => "account_disabled"
+                        'error'         => true,
+                        'msg'           => "account_disabled"
                     );
                 }
             } else {
                 $login_result = array(
-                    "error"         => true,
-                    "msg"           => "invalid_credentials",
+                    'error'         => true,
+                    'msg'           => "invalid_credentials",
                 );
             }
         } else {
             $login_result = array(
-                "error"         => true,
-                "msg"           => "invalid_credentials",
+                'error'         => true,
+                'msg'           => "invalid_credentials",
             );
         }
 
