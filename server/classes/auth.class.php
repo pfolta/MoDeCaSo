@@ -20,6 +20,7 @@ class auth
 
     private static $instance = null;
 
+    private $config;
     private $database;
 
     public static function get_instance()
@@ -33,6 +34,7 @@ class auth
 
     private function __construct()
     {
+        $this->config = config::get_instance();
         $this->database = database::get_instance();
     }
 
@@ -70,7 +72,7 @@ class auth
                         'api_key'       => $api_key,
                         'user'          => $result['id'],
                         'granted'       => time(),
-                        'expiration'    => time() + config::get_instance()->get_config_value("auth", "session_lifetime")
+                        'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
                     ));
 
                     print $this->database->error();
@@ -137,10 +139,19 @@ class auth
 
     public function authenticate()
     {
+        $api_key = "";
+
         /*
          * Clear database of expired API Keys
          */
         $this->database->delete("users_token", "expiration < ".time());
+
+        /*
+         * Update session lifetime
+         */
+        $this->database->update("users_token", "api_key = '".$api_key."'", array(
+            'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
+        ));
     }
 
     private function generate_api_key()
