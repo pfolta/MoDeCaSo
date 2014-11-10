@@ -64,7 +64,7 @@ class auth
                     $api_key = $this->generate_api_key();
 
                     /*
-                     * Store api key in user database
+                     * Store API Key in user database
                      */
                     $this->database->insert("users_tokens", array(
                         'api_key'       => $api_key,
@@ -123,6 +123,10 @@ class auth
 
     public function logout()
     {
+        /*
+         * Delete API Key from database
+         */
+
         return true;
     }
 
