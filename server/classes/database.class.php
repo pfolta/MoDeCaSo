@@ -9,7 +9,7 @@
  *
  * File:			/server/classes/database.class.php
  * Created:			2014-11-03
- * Last modified:	2014-11-10
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -74,7 +74,7 @@ class database
          * Check if connect was successful
          */
         if ($this->connection->connect_errno != 0) {
-            throw new Exception("Database connect failed");
+            throw new Exception("Database connect failed.");
         }
     }
 

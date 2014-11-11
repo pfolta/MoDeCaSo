@@ -9,7 +9,7 @@
  *
  * File:			/server/classes/config.class.php
  * Created:			2014-11-03
- * Last modified:	2014-11-10
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -105,10 +105,10 @@ class config
 
                 return $value;
             } else {
-                throw new Exception("'".$key."' is not a valid key");
+                throw new Exception("'".$key."' is not a valid key.");
             }
         } else {
-            throw new Exception("'".$category."' is not a valid category");
+            throw new Exception("'".$category."' is not a valid category.");
         }
     }
 
