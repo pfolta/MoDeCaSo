@@ -12,7 +12,7 @@
 ;
 
 [main]
-debug               = "true"
+debug               = "false"
 require_ssl         = "true"
 
 [database]
