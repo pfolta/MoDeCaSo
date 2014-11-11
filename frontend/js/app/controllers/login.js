@@ -32,11 +32,25 @@ controllers.controller(
             {
                 cfpLoadingBar.start();
 
+                /*
+                 * Disable form elements to prevent duplicate requests
+                 */
+                $("#login_username_group :input").prop("disabled", true);
+                $("#login_password_group :input").prop("disabled", true);
+                $("#login_submit_button").prop("disabled", true);
+
                 authService.login($scope.login.username, $scope.login.password).then(function(result)
                 {
                     if (result == "login_successful") {
                         $state.go("/dashboard");
                     } else {
+                        /*
+                         * Enable form elements
+                         */
+                        $("#login_username_group :input").prop("disabled", false);
+                        $("#login_password_group :input").prop("disabled", false);
+                        $("#login_submit_button").prop("disabled", false);
+
                         /*
                          * Set error message
                          */

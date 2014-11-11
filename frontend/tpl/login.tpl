@@ -28,7 +28,7 @@
                             <input type="password" ng-model="login.password" id="login_password" placeholder="Password" required tabindex="2" class="form-control">
                         </div>
                     </div>
-                    <button type="submit" ng-disabled="login_form.$invalid" class="btn btn-primary pull-right" tabindex="3"><span class="glyphicon glyphicon-log-in"></span> Log In</button>
+                    <button type="submit" id="login_submit_button" ng-disabled="login_form.$invalid" class="btn btn-primary pull-right" tabindex="3"><span class="glyphicon glyphicon-log-in"></span> Log In</button>
                 </form>
             </div>
         </div>
