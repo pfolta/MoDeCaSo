@@ -98,4 +98,5 @@ try {
     );
 
     print json_encode($error);
+    exit;
 }
