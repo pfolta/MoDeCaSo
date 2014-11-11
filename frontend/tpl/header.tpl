@@ -21,7 +21,7 @@
                         <li><a>Project 3</a></li>
                     </ul>
                 </li>
-                <li ui-sref-active="active" class="dropdown">
+                <li ui-sref-active="active" class="dropdown" ng-show="role() == 'ADMINISTRATOR'">
                     <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Administration <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a><span class="glyphicon glyphicon-cog"></span> Global Settings</a></li>

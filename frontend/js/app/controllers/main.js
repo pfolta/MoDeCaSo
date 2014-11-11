@@ -32,6 +32,11 @@ controllers.controller(
                 return sessionService.get("first_name") + " " + sessionService.get("last_name");
             }
 
+            $scope.role = function()
+            {
+                return sessionService.get("role");
+            }
+
             $scope.change_password_flash = {
                 "show":     false,
                 "type":     null,
