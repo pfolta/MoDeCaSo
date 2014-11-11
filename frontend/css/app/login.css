@@ -13,17 +13,6 @@
 
 @charset "UTF-8";
 
-#login_background {
-    background-image: url("/frontend/img/wallpaper.png");
-    background-attachment: fixed;
-    bottom: 0;
-    left: -10000%;
-    margin: 0;
-    position: absolute;
-    right: -10000%;
-    top: 0;
-}
-
 #login_container {
     bottom: 0;
     height: 100%;

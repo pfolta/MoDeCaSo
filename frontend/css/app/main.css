@@ -31,6 +31,11 @@ body.noscroll {
     overflow-y: hidden;
 }
 
+body.background {
+    background-image: url("/frontend/img/wallpaper.png");
+    background-attachment: fixed;
+}
+
 a {
     cursor: pointer;
 }

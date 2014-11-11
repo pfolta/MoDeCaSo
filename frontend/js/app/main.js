@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2014-11-10
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -68,6 +68,12 @@ webapp.run([
             function(event, toState, toParams, fromState, fromParams)
             {
                 window.document.title = "MoDeCaSo - " + toState.title;
+
+                if (toState.name == "/login") {
+                    $("body").toggleClass("background", true);
+                } else {
+                    $("body").toggleClass("background", false);
+                }
 
                 cfpLoadingBar.complete();
             }

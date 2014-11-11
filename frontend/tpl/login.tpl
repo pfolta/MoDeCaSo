@@ -1,5 +1,3 @@
-<div id="login_background">
-</div>
 <div id="login_container">
     <div class="login_form" id="login_form">
         <div class="alert" id="login_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert">
