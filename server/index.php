@@ -44,6 +44,18 @@ try {
     $app->add(new JsonApiMiddleware());
 
     /*
+     * Register custom modified error handler
+     */
+    $app->error(function (Exception $exception) use ($app) {
+        $app->render(500, array(
+            'error'     => true,
+            'msg'       => "internal_application_error",
+            'reason'    => $exception->getMessage(),
+            'status'    => 500
+        ));
+    });
+
+    /*
      * Initialize config object, load and parse config file
      */
     $config = config::get_instance();
