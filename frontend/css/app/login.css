@@ -7,19 +7,20 @@
  *
  * File:			/frontend/css/app/login.css
  * Created:			2014-10-18
- * Last modified:	2014-11-03
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 @charset "UTF-8";
 
 #login_background {
-    background-color: #eeeeee;
+    background-image: url("/frontend/img/wallpaper.png");
+    background-attachment: fixed;
     bottom: 0;
-    left: -1000%;
+    left: -10000%;
     margin: 0;
     position: absolute;
-    right: -100%;
+    right: -10000%;
     top: 0;
 }
 
