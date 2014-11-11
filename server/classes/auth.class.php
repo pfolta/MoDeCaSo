@@ -68,7 +68,7 @@ class auth
                     /*
                      * Store API Key in user database
                      */
-                    $this->database->insert("users_tokens", array(
+                    $this->database->insert("user_tokens", array(
                         'api_key'       => $api_key,
                         'user'          => $result['id'],
                         'granted'       => time(),
@@ -149,7 +149,7 @@ class auth
         /*
          * Update session lifetime
          */
-        $this->database->update("users_token", "api_key = '".$api_key."'", array(
+        $this->database->update("user_tokens", "api_key = '".$api_key."'", array(
             'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
         ));
     }
@@ -161,7 +161,7 @@ class auth
      */
     public function clear_expired_tokens()
     {
-        $this->database->delete("users_token", "expiration < ".time());
+        $this->database->delete("user_tokens", "expiration < ".time());
     }
 
     private function generate_api_key()
