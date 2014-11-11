@@ -7,7 +7,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Log In
+                    <span class="glyphicon glyphicon-log-in"></span> <strong>Log In</strong>
                 </h3>
             </div>
             <div class="panel-body">
