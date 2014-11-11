@@ -134,6 +134,13 @@ class auth
 
     public function change_password($username, $new_password)
     {
+        /*
+         * Create password hash
+         */
+        $new_password_hashed = password_hash($new_password, PASSWORD_BCRYPT, array(
+            'cost'          => $this->config->get_config_value("auth", "password_cost")
+        ));
+
         return true;
     }
 
