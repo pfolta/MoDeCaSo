@@ -27,7 +27,6 @@ require "tools/url.class.php";
 
 use \Slim\Slim;
 
-use classes\auth;
 use classes\config;
 use classes\database;
 use classes\errorhandling;
@@ -85,8 +84,6 @@ try {
      * Set database connection character set
      */
     $database->set_charset("UTF8");
-
-    $auth = auth::get_instance();
 
     /*
      * Instantiate controllers
