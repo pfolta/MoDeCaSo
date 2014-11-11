@@ -67,10 +67,22 @@ class auth_controller extends controller
 
     public function change_password()
     {
-        $username = $this->request->username;
+        $old_password = $this->request->old_password;
         $new_password = $this->request->new_password;
 
-        $change_password_result = $this->auth->change_password($username, $new_password);
+        $change_password_result = $this->auth->change_password($this->get_api_key(), $old_password, $new_password);
+
+        if (!$change_password_result['error']) {
+            $this->app->render(
+                200,
+                $change_password_result
+            );
+        } else {
+            $this->app->render(
+                400,
+                $change_password_result
+            );
+        }
     }
 
 }

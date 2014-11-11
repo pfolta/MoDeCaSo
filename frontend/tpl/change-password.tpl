@@ -9,7 +9,7 @@
         <div class="alert" id="change_password_flash" ng-show="change_password_flash.show" ng-class="change_password_flash.type" ng-bind-html="html_save(change_password_flash.message)" role="alert">
         </div>
         <p>
-            Change password for user <strong>{{ main.user.username }}</strong>.
+            Change password for user <strong>{{ real_name() }} ({{ username() }})</strong>.
         </p>
         <ul>
             <li>Do not use the same password that you use for other online accounts.</li>

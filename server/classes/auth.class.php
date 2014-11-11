@@ -15,6 +15,8 @@
 
 namespace classes;
 
+use Exception;
+
 class auth
 {
 
@@ -75,8 +77,6 @@ class auth
                         'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
                     ));
 
-                    print $this->database->error();
-
                     /*
                      * Set options
                      */
@@ -131,16 +131,58 @@ class auth
         $this->database->delete("user_tokens", "api_key = '".$api_key."'");
     }
 
-    public function change_password($username, $new_password)
+    public function change_password($api_key, $old_password, $new_password)
     {
         /*
-         * Create password hash
+         * Get user
          */
-        $new_password_hashed = password_hash($new_password, PASSWORD_BCRYPT, array(
-            'cost'          => $this->config->get_config_value("auth", "password_cost")
-        ));
+        $this->database->select("user_tokens", "user", "api_key = '".$api_key."'");
 
-        return true;
+        if ($this->database->row_count() == 1) {
+            $user = $this->database->result()[0]['user'];
+
+            $this->database->select("users", "password", "id = '".$user."'");
+            $stored_old_password = $this->database->result()[0]['password'];
+
+            /*
+             * Verify old password
+             */
+            if (password_verify($old_password, $stored_old_password)) {
+                /*
+                 * Create password hash
+                 */
+                $new_password_hashed = password_hash($new_password, PASSWORD_BCRYPT, array(
+                    'cost'          => $this->config->get_config_value("auth", "password_cost")
+                ));
+
+                /*
+                 * Updated password in database
+                 */
+                $this->database->update("users", "id = '".$user."'", array(
+                    'password'      => $new_password_hashed
+                ));
+
+                $change_password_result = array(
+                    'error'         => false,
+                    'msg'           => "password_change_successful"
+                );
+            } else {
+                /*
+                 * Incorrect old password provided
+                 */
+                $change_password_result = array(
+                    'error'         => true,
+                    'msg'           => 'incorrect_old_password'
+                );
+            }
+        } else {
+            /*
+             * Invalid API key
+             */
+            throw new Exception("Invalid API Key.");
+        }
+
+        return $change_password_result;
     }
 
     public function authenticate()
