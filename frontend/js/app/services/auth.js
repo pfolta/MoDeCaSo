@@ -40,8 +40,6 @@ services.factory(
                             sessionService.set("first_name", data.first_name);
                             sessionService.set("last_name", data.last_name);
                             sessionService.set("role", data.role);
-
-                            sessionService.set("loggedin", true);
                         }
 
                         return data.msg;
@@ -55,7 +53,7 @@ services.factory(
 
                 is_authenticated: function(request_permission)
                 {
-                    if (sessionService.get("loggedin")) {
+                    if (sessionService.get("api_key")) {
                         return true;
                     }
 

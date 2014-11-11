@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/main.js
  * Created:			2014-10-19
- * Last modified:	2014-10-27
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -20,12 +20,15 @@ controllers.controller(
         "$modal",
         function($scope, sessionService, $sce, $modal)
         {
-            $scope.main = {
-                loggedin:   sessionService.get("loggedin"),
-                user:       {
-                    username:   sessionService.get("username")
-                }
-            };
+            $scope.username = function()
+            {
+                return sessionService.get("username");
+            }
+
+            $scope.real_name = function()
+            {
+                return sessionService.get("first_name") + " " + sessionService.get("last_name");
+            }
 
             $scope.change_password_flash = {
                 "show":     false,
