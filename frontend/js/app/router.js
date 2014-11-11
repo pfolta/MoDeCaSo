@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-11-10
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -51,6 +51,26 @@ webapp.config([
                         templateUrl:    "/frontend/tpl/login.tpl"
                     }
                 }
+            }
+        )
+        .state(
+            "/logout",
+            {
+                url: "/frontend/logout",
+                title: "Log Out",
+                onEnter: [
+                    "authService",
+                    "$state",
+                    function(authService, $state)
+                    {
+                        authService.logout().then(function(result)
+                        {
+                            if (result == "logout_successful") {
+                                $state.go("/login");
+                            }
+                        });
+                    }
+                ]
             }
         )
         .state(

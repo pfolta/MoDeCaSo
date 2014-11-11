@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/auth.class.php
  * Created:			2014-11-04
- * Last modified:	2014-11-10
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -55,9 +55,14 @@ class auth_controller extends controller
 
     public function logout()
     {
-        $logout_result = $this->auth->logout();
+        $logout_result = $this->auth->logout($this->get_api_key());
 
-        $this->app->render(200, array('msg' => "ok"));
+        $this->app->render(
+            200,
+            array(
+                'msg'        => "logout_successful"
+            )
+        );
     }
 
     public function change_password()

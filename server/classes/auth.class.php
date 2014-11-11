@@ -123,13 +123,12 @@ class auth
         return $login_result;
     }
 
-    public function logout()
+    public function logout($api_key)
     {
         /*
          * Delete API Key from database
          */
-
-        return true;
+        $this->database->delete("user_tokens", "api_key = '".$api_key."'");
     }
 
     public function change_password($username, $new_password)

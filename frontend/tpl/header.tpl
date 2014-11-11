@@ -45,7 +45,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a ng-click="show_change_password_dialog()"><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
                         <li class="divider"></li>
-                        <li><a ui-sref="/login"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                        <li><a ui-sref="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
                     </ul>
                 </li>
             </ul>

@@ -22,9 +22,9 @@ services.factory(
                 login: function(username, password)
                 {
                     return $http({
-                        method: "post",
-                        url:    "/server/auth/login",
-                        data:   {
+                        method:     "post",
+                        url:        "/server/auth/login",
+                        data:       {
                             username:   username,
                             password:   password
                         }
@@ -48,7 +48,28 @@ services.factory(
 
                 logout: function()
                 {
-                    return "authService->logout called";
+                    return $http({
+                        method:     "get",
+                        url:        "/server/auth/logout",
+                        headers:    {
+                            "X-API-Key": sessionService.get("api_key")
+                        }
+                    }).then(handle_response, handle_response);
+
+                    function handle_response(response)
+                    {
+                        var data = response.data;
+
+                        if (!data.error && data.msg == "logout_successful") {
+                            sessionService.unset("api_key");
+                            sessionService.unset("username");
+                            sessionService.unset("first_name");
+                            sessionService.unset("last_name");
+                            sessionService.unset("role");
+                        }
+
+                        return data.msg;
+                    }
                 },
 
                 is_authenticated: function(request_permission)
