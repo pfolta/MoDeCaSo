@@ -9,7 +9,7 @@
  *
  * File:			/server/classes/auth.class.php
  * Created:			2014-11-05
- * Last modified:	2014-11-10
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -144,7 +144,7 @@ class auth
         /*
          * Clear database of expired API Keys
          */
-        $this->database->delete("users_token", "expiration < ".time());
+        $this->clear_expired_tokens();
 
         /*
          * Update session lifetime
@@ -152,6 +152,16 @@ class auth
         $this->database->update("users_token", "api_key = '".$api_key."'", array(
             'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
         ));
+    }
+
+    /**
+     * clear_expired_tokens ( )
+     *
+     * Clears database of expired API Keys
+     */
+    public function clear_expired_tokens()
+    {
+        $this->database->delete("users_token", "expiration < ".time());
     }
 
     private function generate_api_key()
