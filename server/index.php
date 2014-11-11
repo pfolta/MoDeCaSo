@@ -51,7 +51,7 @@ try {
     $config->load_config("config.ini");
 
     /*
-     * SSL
+     * Check if SSL/TLS requirements are met
      */
     if ($config->get_config_value("main", "require_ssl") && !url::is_https()) {
         throw new Exception("Connection via SSL/TLS required.");
