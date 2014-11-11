@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2014-11-10
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -34,7 +34,7 @@ controllers.controller(
 
                 authService.login($scope.login.username, $scope.login.password).then(function(result)
                 {
-                    if (result) {
+                    if (result == "login_successful") {
                         $state.go("/dashboard");
                     } else {
                         /*
@@ -42,7 +42,13 @@ controllers.controller(
                          */
                         $scope.flash.show = true;
                         $scope.flash.type = "alert-danger";
-                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Invalid username or password."
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> ";
+
+                        if (result == "invalid_credentials") {
+                            $scope.flash.message += " Invalid username or password.<br><span class='glyphicon glyphicon-placeholder'></span> Please try again.";
+                        } else if (result == "account_disabled") {
+                            $scope.flash.message += " Your user account has been disabled.<br><span class='glyphicon glyphicon-placeholder'></span> Please see your system administrator.";
+                        }
 
                         /*
                          * Shake login form

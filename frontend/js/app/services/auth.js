@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/services/auth.js
  * Created:			2014-10-20
- * Last modified:	2014-11-10
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -42,11 +42,9 @@ services.factory(
                             sessionService.set("role", data.role);
 
                             sessionService.set("loggedin", true);
-
-                            return true;
-                        } else {
-                            return false;
                         }
+
+                        return data.msg;
                     }
                 },
 

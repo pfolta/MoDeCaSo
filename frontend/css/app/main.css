@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2014-11-03
+ * Last modified:	2014-11-11
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -57,4 +57,9 @@ div.mainView > div.page {
 
 .table > tbody > tr > td {
     vertical-align: middle !important;
+}
+
+.glyphicon-placeholder:before {
+    content: "\e181";
+    visibility: hidden;
 }
