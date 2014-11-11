@@ -23,6 +23,8 @@ require "classes/errorhandling.class.php";
 
 require "controllers/auth_controller.class.php";
 
+require "tools/url.class.php";
+
 use \Slim\Slim;
 
 use classes\auth;
@@ -31,6 +33,8 @@ use classes\database;
 use classes\errorhandling;
 
 use controllers\auth_controller;
+
+use tools\url;
 
 try {
     /*
@@ -45,6 +49,13 @@ try {
      */
     $config = config::get_instance();
     $config->load_config("config.ini");
+
+    /*
+     * SSL
+     */
+    if ($config->get_config_value("main", "require_ssl") && !url::is_https()) {
+        throw new Exception("Connection via SSL/TLS required.");
+    }
 
     /*
      * Set debug options
