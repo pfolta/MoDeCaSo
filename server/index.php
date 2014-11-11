@@ -49,7 +49,7 @@ try {
     $app->error(function (Exception $exception) use ($app) {
         $app->render(500, array(
             'error'     => true,
-            'msg'       => "internal_application_error",
+            'msg'       => "application_error",
             'reason'    => $exception->getMessage(),
             'status'    => 500
         ));
@@ -112,7 +112,7 @@ try {
 
     $error = array(
         'error'     => true,
-        'msg'       => "internal_application_error",
+        'msg'       => "application_error",
         'reason'    => $exception->getMessage(),
         'status'    => 500
     );
