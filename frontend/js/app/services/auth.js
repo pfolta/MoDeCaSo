@@ -94,15 +94,25 @@ services.factory(
 
                 is_authenticated: function(request_permission)
                 {
-                    if (sessionService.get("api_key")) {
-                        return true;
-                    }
+                    var role = sessionService.get("role");
 
-                    if (request_permission == "/login") {
-                        return true;
-                    }
+                    switch(role) {
+                        case "ADMINISTRATOR":
+                            return true;
+                        case "MODERATOR":
+                            if (request_permission == "ADMINISTRATOR") {
+                                return false;
+                            }
 
-                    return false;
+                            return true;
+                        case "UNAUTHENTICATED":
+                        default:
+                            if (request_permission == "UNAUTHENTICATED") {
+                                return true;
+                            }
+
+                            return false;
+                    }
                 }
             }
         }

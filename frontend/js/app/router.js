@@ -26,6 +26,7 @@ webapp.config([
             "/help",
             {
                 url: "/frontend/help",
+                role: "MODERATOR",
                 title: "Help",
                 views: {
                     "mainView": {
@@ -44,6 +45,7 @@ webapp.config([
             "/login",
             {
                 url: "/frontend/login",
+                role: "UNAUTHENTICATED",
                 title: "Log In",
                 views: {
                     "mainView": {
@@ -57,6 +59,7 @@ webapp.config([
             "/logout",
             {
                 url: "/frontend/logout",
+                role: "MODERATOR",
                 title: "Log Out",
                 onEnter: [
                     "authService",
@@ -77,6 +80,7 @@ webapp.config([
             "/dashboard",
             {
                 url: "/frontend/dashboard",
+                role: "MODERATOR",
                 title: "Dashboard",
                 views: {
                     "mainView": {
@@ -95,6 +99,7 @@ webapp.config([
             "/administration/user-management",
             {
                 url: "/frontend/administration/user-management",
+                role: "ADMINISTRATOR",
                 title: "User Management",
                 views: {
                     "mainView": {
@@ -114,6 +119,7 @@ webapp.config([
             "/administration/user-management/add-user",
             {
                 url: "/add-user",
+                role: "ADMINISTRATOR",
                 parent: "/administration/user-management",
                 title: "Add User",
                 onEnter: [
