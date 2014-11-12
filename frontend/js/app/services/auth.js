@@ -78,7 +78,7 @@ services.factory(
                         method:     "post",
                         url:        "/server/auth/change_password",
                         headers:    {
-                            "X-API-Key":    sessionService.get("api_key")
+                            "X-API-Key":    session_service.get("api_key")
                         },
                         data:       {
                             old_password:   old_password,
