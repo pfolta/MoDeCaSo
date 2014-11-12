@@ -2,7 +2,7 @@
     <h1>
     User management
     </h1>
-    <div class="alert" id="flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert">
+    <div class="alert" id="user_management_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert">
     </div>
     <div class="form-group" style="padding-bottom: 50px; ">
         <div class="pull-left" style="width: 80%;">

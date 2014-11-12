@@ -45,6 +45,8 @@ controllers.controller(
                     $scope.flash.show = true;
                     $scope.flash.type = "alert-danger";
                     $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Error loading users.";
+
+                    shake_element($("#user_management_flash"));
                 }
             );
         }
