@@ -9,29 +9,35 @@
  *
  * File:			/server/index.php
  * Created:			2014-11-03
- * Last modified:	2014-11-11
+ * Last modified:	2014-11-12
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 require "vendor/autoload.php";
 
-require "classes/auth.class.php";
-require "classes/config.class.php";
-require "classes/controller.class.php";
-require "classes/database.class.php";
-require "classes/errorhandling.class.php";
+require "main/config.class.php";
+require "main/controller.class.php";
+require "main/database.class.php";
+require "main/errorhandling.class.php";
 
-require "controllers/auth_controller.class.php";
+require "data/user_roles.class.php";
 
 require "tools/url.class.php";
 
+require "controllers/auth_controller.class.php";
+require "controllers/administration/user_management_controller.class.php";
+
+require "model/administration/user_management.class.php";
+require "model/auth.class.php";
+
 use \Slim\Slim;
 
-use classes\config;
-use classes\database;
-use classes\errorhandling;
+use main\config;
+use main\database;
+use main\errorhandling;
 
 use controllers\auth_controller;
+use controllers\user_management_controller;
 
 use tools\url;
 
@@ -101,6 +107,7 @@ try {
      * Instantiate controllers
      */
     $auth_controller = new auth_controller();
+    $user_management_controller = new user_management_controller();
 
     /*
      * Finally, handle requests

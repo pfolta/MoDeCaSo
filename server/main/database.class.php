@@ -7,13 +7,13 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:			/server/classes/database.class.php
+ * File:			/server/main/database.class.php
  * Created:			2014-11-03
- * Last modified:	2014-11-11
+ * Last modified:	2014-11-12
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
-namespace classes;
+namespace main;
 
 use Exception;
 use mysqli;
@@ -90,7 +90,7 @@ class database
 
     public function set_charset($charset)
     {
-        if ($this->connection == null) {
+        if (is_null($this->connection)) {
             throw new Exception("Not connected to a database.");
         }
 

@@ -7,13 +7,13 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:			/server/classes/config.class.php
+ * File:			/server/main/config.class.php
  * Created:			2014-11-03
- * Last modified:	2014-11-11
+ * Last modified:	2014-11-12
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
-namespace classes;
+namespace main;
 
 use Exception;
 
@@ -62,7 +62,7 @@ class config
      */
     private function parse_config()
     {
-        if ($this->configfile == null) {
+        if (is_null($this->configfile)) {
             throw new Exception("No config file loaded.");
         }
 
@@ -84,7 +84,7 @@ class config
      */
     public function get_config_value($category, $key)
     {
-        if ($this->configfile == null) {
+        if (is_null($this->configfile)) {
             throw new Exception("No config file loaded.");
         }
 

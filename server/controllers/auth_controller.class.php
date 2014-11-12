@@ -9,13 +9,13 @@
  *
  * File:			/server/controllers/auth.class.php
  * Created:			2014-11-04
- * Last modified:	2014-11-11
+ * Last modified:	2014-11-12
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 namespace controllers;
 
-use classes\controller;
+use main\controller;
 
 class auth_controller extends controller
 {
@@ -31,6 +31,11 @@ class auth_controller extends controller
                 $this->app->post("/change_password", array($this, 'change_password'));
             }
         );
+    }
+
+    public function create_model()
+    {
+        $this->model = $this->auth;
     }
 
     public function login()

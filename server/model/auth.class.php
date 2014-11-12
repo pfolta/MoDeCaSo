@@ -7,15 +7,18 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:			/server/classes/auth.class.php
+ * File:			/server/model/auth.class.php
  * Created:			2014-11-05
- * Last modified:	2014-11-11
+ * Last modified:	2014-11-12
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
-namespace classes;
+namespace model;
 
 use Exception;
+
+use main\config;
+use main\database;
 
 class auth
 {
@@ -191,21 +194,38 @@ class auth
         return $change_password_result;
     }
 
-    public function authenticate()
+    public function authenticate($api_key, $required_role)
     {
-        $api_key = "";
-
         /*
          * Clear database of expired API Keys
          */
         $this->clear_expired_tokens();
 
-        /*
-         * Update session lifetime
-         */
-        $this->database->update("user_tokens", "api_key = '".$api_key."'", array(
-            'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
-        ));
+        $this->database->select("user_tokens", "user", "api_key = '".$api_key."'");
+
+        if ($this->database->row_count() == 1) {
+            /*
+             * Update session lifetime
+             */
+            $this->database->update("user_tokens", "api_key = '".$api_key."'", array(
+                'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
+            ));
+
+            /*
+             * Get user role
+             */
+            $user = $this->database->result()[0]['user'];
+            $this->database->select("users", "role", "id = '".$user."'");
+            $role = $this->database->result()[0]['role'];
+
+            if ($role >= $required_role) {
+                return true;
+            }
+
+            return false;
+        }
+
+        return false;
     }
 
     /**

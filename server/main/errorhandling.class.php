@@ -7,13 +7,13 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:			/server/classes/errorhandling.class.php
+ * File:			/server/main/errorhandling.class.php
  * Created:			2014-11-03
- * Last modified:	2014-11-05
+ * Last modified:	2014-11-12
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
-namespace classes;
+namespace main;
 
 use Exception;
 
