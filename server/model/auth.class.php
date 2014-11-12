@@ -171,7 +171,7 @@ class auth
                     'password'      => $new_password_hashed
                 ));
 
-                $change_password_result = array(
+                $result = array(
                     'error'         => false,
                     'msg'           => "password_change_successful"
                 );
@@ -179,7 +179,7 @@ class auth
                 /*
                  * Incorrect old password provided
                  */
-                $change_password_result = array(
+                $result = array(
                     'error'         => true,
                     'msg'           => 'incorrect_old_password'
                 );
@@ -191,7 +191,7 @@ class auth
             throw new Exception("Invalid API Key.");
         }
 
-        return $change_password_result;
+        return $result;
     }
 
     public function authenticate($api_key, $required_role)

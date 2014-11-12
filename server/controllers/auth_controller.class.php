@@ -43,24 +43,24 @@ class auth_controller extends controller
         $username = $this->request->username;
         $password = $this->request->password;
 
-        $login_result = $this->auth->login($username, $password);
+        $result = $this->auth->login($username, $password);
 
-        if (!$login_result['error']) {
+        if (!$result['error']) {
             $this->app->render(
                 200,
-                $login_result
+                $result
             );
         } else {
             $this->app->render(
                 401,
-                $login_result
+                $result
             );
         }
     }
 
     public function logout()
     {
-        $logout_result = $this->auth->logout($this->get_api_key());
+        $this->auth->logout($this->get_api_key());
 
         $this->app->render(
             200,
@@ -75,17 +75,17 @@ class auth_controller extends controller
         $old_password = $this->request->old_password;
         $new_password = $this->request->new_password;
 
-        $change_password_result = $this->auth->change_password($this->get_api_key(), $old_password, $new_password);
+        $result = $this->auth->change_password($this->get_api_key(), $old_password, $new_password);
 
-        if (!$change_password_result['error']) {
+        if (!$result['error']) {
             $this->app->render(
                 200,
-                $change_password_result
+                $result
             );
         } else {
             $this->app->render(
                 400,
-                $change_password_result
+                $result
             );
         }
     }
