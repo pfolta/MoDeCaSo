@@ -81,12 +81,6 @@ class auth
                     ));
 
                     /*
-                     * Retrieve role name
-                     */
-                    $this->database->select("user_roles", "name", "id = '".$result['role']."'");
-                    $role = $this->database->result()[0]['name'];
-
-                    /*
                      * Set options
                      */
                     $login_result = array(
@@ -96,7 +90,7 @@ class auth
                         'username'      => $result['username'],
                         'first_name'    => $result['first_name'],
                         'last_name'     => $result['last_name'],
-                        'role'          => $role
+                        'role'          => $result['role']
                     );
                 } else {
                     /*
