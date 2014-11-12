@@ -1,6 +1,6 @@
-<form role="form" name="add_user_form" novalidate ng-controller="mainCtrl" class="form-horizontal">
+<form role="form" name="add_user_form" novalidate ng-controller="main_controller" class="form-horizontal">
     <div class="modal-header">
-        <button type="button" class="close" ng-click="$close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <button type="button" class="close" ng-click="$close()" tooltip="Close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h3 class="modal-title">
             Add an account
         </h3>

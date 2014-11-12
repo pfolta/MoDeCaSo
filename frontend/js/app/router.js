@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-11-11
+ * Last modified:	2014-11-12
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -26,7 +26,7 @@ webapp.config([
             "/help",
             {
                 url: "/frontend/help",
-                role: "MODERATOR",
+                role: 2,
                 title: "Help",
                 views: {
                     "mainView": {
@@ -45,11 +45,11 @@ webapp.config([
             "/login",
             {
                 url: "/frontend/login",
-                role: "UNAUTHENTICATED",
+                role: 1,
                 title: "Log In",
                 views: {
                     "mainView": {
-                        controller:     "loginCtrl",
+                        controller:     "login_controller",
                         templateUrl:    "/frontend/tpl/login.tpl"
                     }
                 }
@@ -59,14 +59,14 @@ webapp.config([
             "/logout",
             {
                 url: "/frontend/logout",
-                role: "MODERATOR",
+                role: 2,
                 title: "Log Out",
                 onEnter: [
-                    "authService",
+                    "auth_service",
                     "$state",
-                    function(authService, $state)
+                    function(auth_service, $state)
                     {
-                        authService.logout().then(function(result)
+                        auth_service.logout().then(function(result)
                         {
                             if (result == "logout_successful") {
                                 $state.go("/login");
@@ -80,7 +80,7 @@ webapp.config([
             "/dashboard",
             {
                 url: "/frontend/dashboard",
-                role: "MODERATOR",
+                role: 2,
                 title: "Dashboard",
                 views: {
                     "mainView": {
@@ -96,15 +96,15 @@ webapp.config([
             }
         )
         .state(
-            "/administration/user-management",
+            "/administration/user_management",
             {
-                url: "/frontend/administration/user-management",
-                role: "ADMINISTRATOR",
+                url: "/frontend/administration/user_management",
+                role: 3,
                 title: "User Management",
                 views: {
                     "mainView": {
-                        controller:     "userManagementCtrl",
-                        templateUrl:    "/frontend/tpl/administration/user-management.tpl"
+                        controller:     "user_management_controller",
+                        templateUrl:    "/frontend/tpl/administration/user_management/user_management.tpl"
                     },
                     "headerView": {
                         templateUrl:    "/frontend/tpl/header.tpl"
@@ -116,11 +116,11 @@ webapp.config([
             }
         )
         .state(
-            "/administration/user-management/add-user",
+            "/administration/user_management/add_user",
             {
-                url: "/add-user",
-                role: "ADMINISTRATOR",
-                parent: "/administration/user-management",
+                url: "/add_user",
+                role: 3,
+                parent: "/administration/user_management",
                 title: "Add User",
                 onEnter: [
                     "$state",
@@ -129,13 +129,48 @@ webapp.config([
                     {
                         $modal.open(
                             {
-                                templateUrl:    "/frontend/tpl/administration/user-management/add-user.tpl",
+                                templateUrl:    "/frontend/tpl/administration/user_management/add_user.tpl",
                                 backdrop:       "static"
                             }
                         ).result.then(
                             function(result)
                             {
-                                $state.go("/administration/user-management");
+                                $state.go("/administration/user_management");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/administration/user_management/delete_user",
+            {
+                url: "/delete_user/:user_id",
+                role: 3,
+                parent: "/administration/user_management",
+                title: "Delete User",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "delete_user_controller",
+                                resolve:        {
+                                    username:   function()
+                                    {
+                                        return $stateParams.user_id;
+                                    }
+                                },
+                                templateUrl:    "/frontend/tpl/administration/user_management/delete_user.tpl",
+                                backdrop:       "static"
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/administration/user_management");
                             }
                         );
                     }

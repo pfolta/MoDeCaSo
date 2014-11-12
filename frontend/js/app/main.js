@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2014-11-11
+ * Last modified:	2014-11-12
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -44,20 +44,26 @@ var webapp = angular.module(
 
 webapp.run([
     "$rootScope",
-    "authService",
-    "sessionService",
+    "auth_service",
+    "session_service",
     "$state",
     "cfpLoadingBar",
-    function($rootScope, authService, sessionService, $state, cfpLoadingBar)
+    "$sce",
+    function($rootScope, auth_service, session_service, $state, cfpLoadingBar, $sce)
     {
+        $rootScope.html_save = function(text)
+        {
+            return $sce.trustAsHtml(text);
+        };
+
         $rootScope.$on(
             "$stateChangeStart",
             function(event, toState, toParams, fromState, fromParams)
             {
-                if (!authService.is_authenticated(toState.role)) {
+                if (!auth_service.is_authenticated(toState.role)) {
                     event.preventDefault();
 
-                    if (sessionService.get("role") == undefined) {
+                    if (session_service.get("role") == undefined) {
                         $state.go("/login");
                     } else {
                         $state.go("/dashboard");

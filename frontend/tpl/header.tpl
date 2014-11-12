@@ -21,11 +21,11 @@
                         <li><a>Project 3</a></li>
                     </ul>
                 </li>
-                <li ui-sref-active="active" class="dropdown" ng-show="role() == 'ADMINISTRATOR'">
+                <li ui-sref-active="active" class="dropdown" ng-show="role() == 3">
                     <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Administration <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a><span class="glyphicon glyphicon-cog"></span> Global Settings</a></li>
-                        <li><a ui-sref="/administration/user-management"><span class="glyphicon glyphicon-user"></span> User management</a></li>
+                        <li><a ui-sref="/administration/user_management"><span class="glyphicon glyphicon-user"></span> User management</a></li>
                     </ul>
                 </li>
             </ul>

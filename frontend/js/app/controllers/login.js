@@ -7,20 +7,20 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2014-11-11
+ * Last modified:	2014-11-12
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 controllers.controller(
-    "loginCtrl",
+    "login_controller",
     [
         "$rootScope",
         "$scope",
         "$sce",
         "$state",
-        "authService",
+        "auth_service",
         "cfpLoadingBar",
-        function($rootScope, $scope, $sce, $state, authService, cfpLoadingBar)
+        function($rootScope, $scope, $sce, $state, auth_service, cfpLoadingBar)
         {
             $scope.flash = {
                 "show":     false,
@@ -39,7 +39,7 @@ controllers.controller(
                 $("#login_password_group :input").prop("disabled", true);
                 $("#login_submit_button").prop("disabled", true);
 
-                authService.login($scope.login.username, $scope.login.password).then(function(result)
+                auth_service.login($scope.login.username, $scope.login.password).then(function(result)
                 {
                     if (result == "login_successful") {
                         $state.go("/dashboard");

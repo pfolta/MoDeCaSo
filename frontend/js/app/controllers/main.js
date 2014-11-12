@@ -7,34 +7,33 @@
  *
  * File:            /frontend/js/app/controllers/main.js
  * Created:			2014-10-19
- * Last modified:	2014-11-11
+ * Last modified:	2014-11-12
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 controllers.controller(
-    "mainCtrl",
+    "main_controller",
     [
         "$scope",
-        "authService",
-        "sessionService",
-        "$sce",
+        "auth_service",
+        "session_service",
         "$modal",
         "cfpLoadingBar",
-        function($scope, authService, sessionService, $sce, $modal, cfpLoadingBar)
+        function($scope, auth_service, session_service, $modal, cfpLoadingBar)
         {
             $scope.username = function()
             {
-                return sessionService.get("username");
+                return session_service.get("username");
             }
 
             $scope.real_name = function()
             {
-                return sessionService.get("first_name") + " " + sessionService.get("last_name");
+                return session_service.get("first_name") + " " + session_service.get("last_name");
             }
 
             $scope.role = function()
             {
-                return sessionService.get("role");
+                return session_service.get("role");
             }
 
             $scope.change_password_flash = {
@@ -68,7 +67,7 @@ controllers.controller(
                 if (new_password == confirm_new_password) {
                     cfpLoadingBar.start();
 
-                    authService.change_password(old_password, new_password).then(function(result)
+                    auth_service.change_password(old_password, new_password).then(function(result)
                     {
                         /*
                          * Enable form elements
@@ -142,11 +141,6 @@ controllers.controller(
 
                 $scope.change_password_flash.show = true;
             }
-
-            $scope.html_save = function(text)
-            {
-                return $sce.trustAsHtml(text);
-            };
 
             $scope.show_change_password_dialog = function()
             {
