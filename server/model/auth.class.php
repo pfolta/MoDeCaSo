@@ -199,18 +199,18 @@ class auth
 
         if ($this->database->row_count() == 1) {
             /*
-             * Update session lifetime
-             */
-            $this->database->update("user_tokens", "api_key = '".$api_key."'", array(
-                'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
-            ));
-
-            /*
              * Get user role
              */
             $user = $this->database->result()[0]['user'];
             $this->database->select("users", "role", "id = '".$user."'");
             $role = $this->database->result()[0]['role'];
+
+            /*
+             * Update session lifetime
+             */
+            $this->database->update("user_tokens", "api_key = '".$api_key."'", array(
+                'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
+            ));
 
             if ($role >= $required_role) {
                 return true;
