@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/delete_user.js
  * Created:			2014-11-12
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-15
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -15,10 +15,11 @@ controllers.controller(
     "delete_user_controller",
     [
         "$scope",
+        "$rootScope",
         "$http",
         "session_service",
         "username",
-        function($scope, $http, session_service, username)
+        function($scope, $rootScope, $http, session_service, username)
         {
             $scope.username = username;
 
@@ -76,6 +77,14 @@ controllers.controller(
                          */
                         $("#delete_user_submit_button").prop("disabled", true);
                         $("#delete_user_cancel_button").html("Close");
+
+                        $("#delete_user_cancel_button").on(
+                            "click",
+                            function()
+                            {
+                                $rootScope.$broadcast("load_users");
+                            }
+                        );
                     }
                 }
             }
