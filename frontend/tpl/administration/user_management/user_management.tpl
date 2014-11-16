@@ -7,11 +7,15 @@
     <div class="form-group" style="padding-bottom: 50px; ">
         <div class="pull-left" style="width: 80%;">
             <a ui-sref="/administration/user_management/add_user" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add User</a>
+            <a ng-click="load_users();" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Reload</a>
         </div>
         <div class="pull-right" style="width: 20%;">
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
                 <input type="text" ng-model="filter" placeholder="Filter" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="filter=null" ng-disabled="!filter">&times;</button>
+                </span>
             </div>
         </div>
     </div>

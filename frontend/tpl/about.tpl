@@ -6,9 +6,6 @@
 </div>
 <div class="modal-body">
     <img src="/frontend/img/upb-logo.svg" style="height: 100px;">
-    <p>
-        Bla bla bla
-    </p>
     <address>
         <strong>University of Paderborn</strong><br>
         Fakultät für Elektrotechnik, Informatik und Mathematik<br>
