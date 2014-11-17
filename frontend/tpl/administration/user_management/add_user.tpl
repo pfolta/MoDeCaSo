@@ -15,35 +15,35 @@
             <label for="add_user_username" class="col-sm-3 control-label">Username</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" ng-model="add_user.username" id="add_user_username" placeholder="Username" required autofocus tabindex="1" class="form-control">
+                <input type="text" ng-model="user.username" id="add_user_username" placeholder="Username" required autofocus tabindex="1" class="form-control">
             </div>
         </div>
         <div class="form-group" id="add_user_firstName_group">
             <label for="add_user_firstName" class="col-sm-3 control-label">First Name</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" ng-model="add_user.first_name" id="add_user_firstName" placeholder="First Name" required tabindex="2" class="form-control">
+                <input type="text" ng-model="user.first_name" id="add_user_firstName" placeholder="First Name" required tabindex="2" class="form-control">
             </div>
         </div>
         <div class="form-group" id="add_user_lastName_group">
             <label for="add_user_lastName" class="col-sm-3 control-label">Last Name</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" ng-model="add_user.last_name" id="add_user_lastName" placeholder="Last Name" required tabindex="3" class="form-control">
+                <input type="text" ng-model="user.last_name" id="add_user_lastName" placeholder="Last Name" required tabindex="3" class="form-control">
             </div>
         </div>
         <div class="form-group" id="add_user_email_group">
             <label for="add_user_email" class="col-sm-3 control-label">Email address</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                <input type="text" ng-model="add_user.email" id="add_user_email" placeholder="Email address" required tabindex="4" class="form-control">
+                <input type="text" ng-model="user.email" id="add_user_email" placeholder="Email address" required tabindex="4" class="form-control">
             </div>
         </div>
         <div class="form-group" id="add_user_role_group">
             <label for="add_user_role" class="col-sm-3 control-label">Role</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                <select class="form-control" id="add_user_role" ng-model="add_user.role" required>
+                <select class="form-control" id="add_user_role" ng-model="user.role" required tabindex="5">
                     <option value="3">Administrator</option>
                     <option value="2">Moderator</option>
                 </select>
