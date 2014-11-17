@@ -9,7 +9,7 @@
  *
  * File:			/server/index.php
  * Created:			2014-11-03
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-17
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -22,6 +22,7 @@ require "main/errorhandling.class.php";
 
 require "data/user_roles.class.php";
 
+require "tools/mail.class.php";
 require "tools/url.class.php";
 
 require "controllers/auth_controller.class.php";
