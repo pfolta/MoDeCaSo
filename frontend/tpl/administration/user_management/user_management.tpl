@@ -102,7 +102,7 @@
                     </td>
                     <td class="text-center">
                         <div class="btn-group btn-group-sm">
-                            <button type="button" class="btn btn-warning" tooltip="Edit User" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                            <a href="/frontend/administration/user_management/edit_user/{{ user.username }}" class="btn btn-warning" tooltip="Edit User" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                             <a href="/frontend/administration/user_management/delete_user/{{ user.username }}" class="btn btn-danger" tooltip="Delete User" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
                         </div>
                     </td>

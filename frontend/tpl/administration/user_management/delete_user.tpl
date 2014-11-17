@@ -2,7 +2,7 @@
     <div class="modal-header">
         <button id="delete_user_close_button" type="button" class="close" ng-click="$close()" tooltip="Close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h3 class="modal-title text-danger">
-            Delete User
+            Delete an account
         </h3>
     </div>
     <div class="modal-body">

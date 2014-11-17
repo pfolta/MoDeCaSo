@@ -146,7 +146,7 @@ webapp.config([
         .state(
             "/administration/user_management/delete_user",
             {
-                url: "/delete_user/:user_id",
+                url: "/delete_user/:username",
                 role: 3,
                 parent: "/administration/user_management",
                 title: "Delete User",
@@ -162,10 +162,45 @@ webapp.config([
                                 resolve:        {
                                     username:   function()
                                     {
-                                        return $stateParams.user_id;
+                                        return $stateParams.username;
                                     }
                                 },
                                 templateUrl:    "/frontend/tpl/administration/user_management/delete_user.tpl",
+                                backdrop:       "static"
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/administration/user_management");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/administration/user_management/edit_user",
+            {
+                url: "/edit_user/:username",
+                role: 3,
+                parent: "/administration/user_management",
+                title: "Edit User",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "edit_user_controller",
+                                resolve:        {
+                                    username:   function()
+                                    {
+                                        return $stateParams.username;
+                                    }
+                                },
+                                templateUrl:    "/frontend/tpl/administration/user_management/edit_user.tpl",
                                 backdrop:       "static"
                             }
                         ).result.then(
