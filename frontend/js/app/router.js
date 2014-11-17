@@ -131,7 +131,8 @@ webapp.config([
                             {
                                 controller:     "add_user_controller",
                                 templateUrl:    "/frontend/tpl/administration/user_management/add_user.tpl",
-                                backdrop:       "static"
+                                backdrop:       "static",
+                                keyboard:       false
                             }
                         ).result.then(
                             function(result)
@@ -166,7 +167,8 @@ webapp.config([
                                     }
                                 },
                                 templateUrl:    "/frontend/tpl/administration/user_management/delete_user.tpl",
-                                backdrop:       "static"
+                                backdrop:       "static",
+                                keyboard:       false
                             }
                         ).result.then(
                             function(result)
@@ -201,7 +203,8 @@ webapp.config([
                                     }
                                 },
                                 templateUrl:    "/frontend/tpl/administration/user_management/edit_user.tpl",
-                                backdrop:       "static"
+                                backdrop:       "static",
+                                keyboard:       false
                             }
                         ).result.then(
                             function(result)
