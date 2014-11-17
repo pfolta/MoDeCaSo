@@ -9,7 +9,7 @@
  *
  * File:			/server/main/database.class.php
  * Created:			2014-11-03
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-17
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -207,19 +207,20 @@ class database
                 $sql .= ", ";
             }
 
-            $sql .= $data_key." = ";
+            $sql .= $data_key . " = ";
 
             if (is_string(($data_value))) {
-                $sql .= "'".$data_value."'";
+                $sql .= "'" . $data_value . "'";
             } else if (is_null($data_value)) {
                 $sql .= "NULL";
             } else {
                 $sql .= $data_value;
             }
 
-            $sql .= " WHERE ".$where;
             $i++;
         }
+
+        $sql .= " WHERE ".$where;
 
         return $this->query($sql);
     }

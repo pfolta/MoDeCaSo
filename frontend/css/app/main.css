@@ -48,6 +48,23 @@ input::-ms-clear {
     display: none;
 }
 
+::-webkit-input-placeholder {
+    color: #cccccc !important;
+    opacity: 1 !important;
+}
+:-moz-placeholder {
+    color: #cccccc !important;
+    opacity: 1 !important;
+}
+::-moz-placeholder {
+    color: #cccccc !important;
+    opacity: 1 !important;
+}
+:-ms-input-placeholder {
+    color: #cccccc !important;
+    opacity: 1 !important;
+}
+
 div.container {
     width: 1200px;
 }

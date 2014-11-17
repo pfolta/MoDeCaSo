@@ -124,8 +124,51 @@ Please log in to MoDeCaSo and change your password.";
         return $result;
     }
 
-    public function edit_user()
+    public function edit_user($username, $password, $first_name, $last_name, $email, $role, $status)
     {
+        /*
+         * Check if user exists
+         */
+        $this->database->select("users", null, "username = '".$username."'");
+
+        if ($this->database->row_count() == 1) {
+            $data = array(
+                'first_name'    => $first_name,
+                'last_name'     => $last_name,
+                'email'         => $email,
+                'role'          => $role,
+                'status'        => $status,
+                'last_modified' => time()
+            );
+
+            if (!is_null($password)) {
+                /*
+                 * Hash password
+                 */
+                $password_hash = password_hash($password, PASSWORD_BCRYPT, array(
+                    'cost'          => $this->config->get_config_value("auth", "password_cost")
+                ));
+
+                $data['password'] = $password_hash;
+            }
+
+            /*
+             * Update user in database
+             */
+            $this->database->update("users", "username = '".$username."'", $data);
+
+            $result = array(
+                'error'         => false,
+                'msg'           => "user_edited"
+            );
+        } else {
+            $result = array(
+                'error'         => true,
+                'msg'           => "invalid_username"
+            );
+        }
+
+        return $result;
     }
 
     public function get_user($username)

@@ -15,6 +15,8 @@
 
 namespace controllers;
 
+use Exception;
+
 use data\user_roles;
 use main\controller;
 use model\user_management;
@@ -141,6 +143,42 @@ class user_management_controller extends controller
 
     public function edit_user()
     {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::ADMINISTRATOR)) {
+            $username = $this->request->username;
+            $first_name = $this->request->first_name;
+            $last_name = $this->request->last_name;
+            $email = $this->request->email;
+            $role = $this->request->role;
+            $status = $this->request->status;
+
+            try {
+                $password = $this->request->password;
+            } catch (Exception $exception) {
+                $password = null;
+            }
+
+            $result = $this->model->edit_user($username, $password, $first_name, $last_name, $email, $role, $status);
+
+            if (!$result['error']) {
+                $this->app->render(
+                    200,
+                    $result
+                );
+            } else {
+                $this->app->render(
+                    400,
+                    $result
+                );
+            }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
     }
 
     public function get_user($username)

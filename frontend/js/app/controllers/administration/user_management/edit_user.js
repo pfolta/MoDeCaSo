@@ -57,6 +57,80 @@ controllers.controller(
                 );
             };
 
+            $scope.edit_user = function()
+            {
+                /*
+                 * Disable form elements to prevent duplicate requests
+                 */
+                $("#edit_user_submit_button").prop("disabled", true);
+                $("#edit_user_cancel_button").prop("disabled", true);
+
+                $http({
+                    method:     "post",
+                    url:        "/server/administration/user_management/edit_user",
+                    data:       {
+                        username:   $scope.user.username,
+                        password:   $scope.user.password,
+                        first_name: $scope.user.first_name,
+                        last_name:  $scope.user.last_name,
+                        email:      $scope.user.email,
+                        role:       $scope.user.role,
+                        status:     1
+                    },
+                    headers:    {
+                        "X-API-Key":    session_service.get("api_key")
+                    }
+                }).then(
+                    function(response)
+                    {
+                        /*
+                         * Enable form elements
+                         */
+                        $("#edit_user_submit_button").prop("disabled", false);
+                        $("#edit_user_cancel_button").prop("disabled", false);
+
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-success";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>Well done!</strong> The account has been successfully updated.";
+
+                        /*
+                         * Disable submit button and change Cancel button to show "Close" instead
+                         */
+                        $("#edit_user_submit_button").prop("disabled", true);
+                        $("#edit_user_cancel_button").html("Close");
+
+                        $("#edit_user_cancel_button").on(
+                            "click",
+                            function()
+                            {
+                                $rootScope.$broadcast("load_users");
+                            }
+                        );
+                        $("#edit_user_close_button").on(
+                            "click",
+                            function()
+                            {
+                                $rootScope.$broadcast("load_users");
+                            }
+                        );
+                    },
+                    function(response)
+                    {
+                        /*
+                         * Enable form elements
+                         */
+                        $("#edit_user_submit_button").prop("disabled", false);
+                        $("#edit_user_cancel_button").prop("disabled", false);
+
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-danger";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The user account could not be updated.";
+
+                        shake_element($("#edit_user_flash"));
+                    }
+                );
+            };
+
             $scope.load_user($scope.username);
         }
     ]
