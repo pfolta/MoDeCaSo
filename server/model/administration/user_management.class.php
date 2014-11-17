@@ -128,9 +128,33 @@ Please log in to MoDeCaSo and change your password.";
     {
     }
 
+    public function get_user($username)
+    {
+        $this->database->select("users", "id, username, first_name, last_name, email, role, status, created, last_modified", "username = '".$username."'");
+
+        if ($this->database->row_count() == 1) {
+            $user = $this->database->result()[0];
+
+            $result = array(
+                'error'         => false,
+                'user'          => $user
+            );
+        } else {
+            /*
+             * Invalid username provided
+             */
+            $result = array(
+                'error'         => true,
+                'msg'           => "invalid_username"
+            );
+        }
+
+        return $result;
+    }
+
     public function get_user_list()
     {
-        $this->database->select("users", "id, username, first_name, last_name, email, role, status");
+        $this->database->select("users", "id, username, first_name, last_name, email, role, status, created, last_modified");
         $users = $this->database->result();
 
         for ($i = 0; $i < count($users); $i++) {

@@ -53,6 +53,14 @@ class user_management_controller extends controller
                 );
 
                 $this->app->get(
+                    "/get_user/:username",
+                    array(
+                        $this,
+                        'get_user'
+                    )
+                );
+
+                $this->app->get(
                     "/get_user_list",
                     array(
                         $this,
@@ -133,6 +141,33 @@ class user_management_controller extends controller
 
     public function edit_user()
     {
+    }
+
+    public function get_user($username)
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::ADMINISTRATOR)) {
+            $result = $this->model->get_user($username);
+
+            if (!$result['error']) {
+                $this->app->render(
+                    200,
+                    $result
+                );
+            } else {
+                $this->app->render(
+                    400,
+                    $result
+                );
+            }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
     }
 
     public function get_user_list()
