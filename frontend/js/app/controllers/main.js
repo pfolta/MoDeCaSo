@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/main.js
  * Created:			2014-10-19
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-17
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -37,9 +37,9 @@ controllers.controller(
             }
 
             $scope.change_password_flash = {
-                "show":     false,
-                "type":     null,
-                "message":  null
+                show:     false,
+                type:     null,
+                message:  null
             };
 
             $scope.change_password = function()
@@ -81,6 +81,7 @@ controllers.controller(
                         cfpLoadingBar.complete();
 
                         if (result == "incorrect_old_password") {
+                            $scope.change_password_flash.show = true;
                             $scope.change_password_flash.type = "alert-danger";
                             $scope.change_password_flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The password you entered is incorrect.<br><span class='glyphicon glyphicon-placeholder'></span> Please try again.";
 
@@ -95,6 +96,7 @@ controllers.controller(
                              */
                             $("#change_password_old_password_group").toggleClass("has-error", true);
                         } else if(result == "password_change_successful") {
+                            $scope.change_password_flash.show = true;
                             $scope.change_password_flash.type = "alert-success";
                             $scope.change_password_flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>Well done!</strong> Your password has been successfully changed.";
 
@@ -122,6 +124,7 @@ controllers.controller(
                     $("#change_password_submit_button").prop("disabled", false);
                     $("#change_password_cancel_button").prop("disabled", false);
 
+                    $scope.change_password_flash.show = true;
                     $scope.change_password_flash.type = "alert-danger";
                     $scope.change_password_flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The passwords you entered did not match.<br><span class='glyphicon glyphicon-placeholder'></span> Please try again.";
 
@@ -138,8 +141,6 @@ controllers.controller(
                     $("#change_password_new_password_group").toggleClass("has-error", true);
                     $("#change_password_confirm_new_password_group").toggleClass("has-error", true);
                 }
-
-                $scope.change_password_flash.show = true;
             }
 
             $scope.show_change_password_dialog = function()
