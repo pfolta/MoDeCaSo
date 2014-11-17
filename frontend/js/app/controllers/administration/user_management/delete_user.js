@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/delete_user.js
  * Created:			2014-11-12
- * Last modified:	2014-11-15
+ * Last modified:	2014-11-17
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -46,28 +46,15 @@ controllers.controller(
                     headers:    {
                         "X-API-Key":    session_service.get("api_key")
                     }
-                }).then(handle_response, handle_response);
-
-                function handle_response(response)
-                {
-                    /*
-                     * Enable form elements
-                     */
-                    $("#delete_user_submit_button").prop("disabled", false);
-                    $("#delete_user_cancel_button").prop("disabled", false);
-
-                    var msg = response.data.msg;
-
-                    if (msg == "invalid_username") {
+                }).then(
+                    function(response)
+                    {
                         /*
-                         * Set error message
+                         * Enable form elements
                          */
-                        $scope.flash.show = true;
-                        $scope.flash.type = "alert-danger";
-                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The user account could not be deleted.<br><span class='glyphicon glyphicon-placeholder'></span> An account with the username <strong>" + $scope.username + "</strong> does not exist.";
+                        $("#delete_user_submit_button").prop("disabled", false);
+                        $("#delete_user_cancel_button").prop("disabled", false);
 
-                        shake_element($("#delete_user_flash"));
-                    } else if(msg == "user_deleted") {
                         $scope.flash.show = true;
                         $scope.flash.type = "alert-success";
                         $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>Well done!</strong> The account with the username <strong>" + $scope.username + "</strong> has been successfully deleted.";
@@ -85,8 +72,29 @@ controllers.controller(
                                 $rootScope.$broadcast("load_users");
                             }
                         );
+                        $("#delete_user_close_button").on(
+                            "click",
+                            function()
+                            {
+                                $rootScope.$broadcast("load_users");
+                            }
+                        );
+                    },
+                    function(response)
+                    {
+                        /*
+                         * Enable form elements
+                         */
+                        $("#delete_user_submit_button").prop("disabled", false);
+                        $("#delete_user_cancel_button").prop("disabled", false);
+
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-danger";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The user account could not be deleted.";
+
+                        shake_element($("#delete_user_flash"));
                     }
-                }
+                );
             }
         }
     ]

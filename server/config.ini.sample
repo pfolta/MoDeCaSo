@@ -7,7 +7,7 @@
 ;
 ; File:			    /server/config.ini
 ; Created:			2014-11-03
-; Last modified:	2014-11-11
+; Last modified:	2014-11-17
 ; Author:			Peter Folta <mail@peterfolta.net>
 ;
 
@@ -24,3 +24,6 @@ password            = "modecaso"
 [auth]
 password_cost       = 14
 session_lifetime    = 3600
+
+[email]
+sender_address      = "noreply@modecaso.uni-paderborn.de"

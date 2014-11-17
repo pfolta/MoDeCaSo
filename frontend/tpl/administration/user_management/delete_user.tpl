@@ -1,6 +1,6 @@
 <form role="form" name="delete_user_form" ng-submit="delete_user()" novalidate class="form-horizontal">
     <div class="modal-header">
-        <button type="button" class="close" ng-click="$close()" tooltip="Close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <button id="delete_user_close_button" type="button" class="close" ng-click="$close()" tooltip="Close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h3 class="modal-title text-danger">
             Delete User
         </h3>
