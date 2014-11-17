@@ -65,6 +65,21 @@ controllers.controller(
                 $("#edit_user_submit_button").prop("disabled", true);
                 $("#edit_user_cancel_button").prop("disabled", true);
 
+                if ($scope.user.password) {
+                    if ($scope.user.password != $scope.user.confirm_password) {
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-danger";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The passwords you entered did not match.<br><span class='glyphicon glyphicon-placeholder'></span> Please try again.";
+                    }
+
+                    shake_element($("#edit_user_flash"));
+
+                    $("#edit_user_submit_button").prop("disabled", false);
+                    $("#edit_user_cancel_button").prop("disabled", false);
+
+                    return;
+                }
+
                 $http({
                     method:     "post",
                     url:        "/server/administration/user_management/edit_user",
@@ -91,7 +106,7 @@ controllers.controller(
 
                         $scope.flash.show = true;
                         $scope.flash.type = "alert-success";
-                        $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>Well done!</strong> The account has been successfully updated.";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> The account has been successfully updated.";
 
                         /*
                          * Disable submit button and change Cancel button to show "Close" instead

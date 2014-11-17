@@ -98,7 +98,7 @@ controllers.controller(
                         } else if(result == "password_change_successful") {
                             $scope.change_password_flash.show = true;
                             $scope.change_password_flash.type = "alert-success";
-                            $scope.change_password_flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>Well done!</strong> Your password has been successfully changed.";
+                            $scope.change_password_flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> Your password has been successfully changed.";
 
                             /*
                              * Disable input forms

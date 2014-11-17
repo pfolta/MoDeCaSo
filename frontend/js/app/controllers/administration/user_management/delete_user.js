@@ -57,7 +57,7 @@ controllers.controller(
 
                         $scope.flash.show = true;
                         $scope.flash.type = "alert-success";
-                        $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>Well done!</strong> The account with the username <strong>" + $scope.username + "</strong> has been successfully deleted.";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> The account with the username <strong>" + $scope.username + "</strong> has been successfully deleted.";
 
                         /*
                          * Disable submit button and change Cancel button to show "Close" instead

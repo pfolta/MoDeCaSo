@@ -109,5 +109,8 @@
                 </tr>
             </tbody>
         </table>
+        <p class="text-right">
+            {{ users.length }} Users
+        </p>
     </div>
 </div>

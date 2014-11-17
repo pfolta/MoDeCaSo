@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/tools/string.js
  * Created:			2014-11-03
- * Last modified:	2014-11-03
+ * Last modified:	2014-11-17
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -29,4 +29,21 @@ function get_error_title()
     ];
 
     return error_titles[Math.floor(Math.random() * error_titles.length)].toString();
+}
+
+/**
+ * get_success_title ( )
+ *
+ * Returns a random success title
+ *
+ * @returns string
+ */
+function get_success_title()
+{
+    var success_titles = [
+        "Well done!",
+        "Great!"
+    ];
+
+    return success_titles[Math.floor(Math.random() * success_titles.length)].toString();
 }

@@ -10,6 +10,7 @@
         </div>
         <p>
             Change details for user <strong>{{ username }}</strong>.<br>
+            Leave the password fields blank if you do not want to change the user's password.<br>
             Please not that the username cannot be changed.
         </p>
         <div class="form-group" id="edit_user_first_name_group" style="padding-top: 20px;">
@@ -57,7 +58,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group" id="edit_user_status_group">
+        <div class="form-group" id="edit_user_status_group" style="padding-bottom: 20px;">
             <label for="edit_user_status" class="col-sm-4 control-label">Status</label>
             <div class="input-group col-sm-8" style="padding-right: 15px;">
                 <div class="btn-group">
@@ -66,6 +67,10 @@
                 </div>
             </div>
         </div>
+        <ul>
+            <li>User created: <strong>{{ user.created|timestamp }}</strong></li>
+            <li>Last modified: <strong>{{ user.last_modified|timestamp }}</strong></li>
+        </ul>
     </div>
     <div class="modal-footer">
         <button id="edit_user_submit_button" type="submit" ng-disabled="edit_user_form.$invalid" class="btn btn-warning" tabindex="7"><span class="glyphicon glyphicon-edit"></span> Edit User</button>
