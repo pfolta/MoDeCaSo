@@ -16,9 +16,12 @@
 namespace tools;
 
 use Exception;
+use main\config;
 
 class mail
 {
+
+    private $config;
 
     private $recipient;
     private $subject;
@@ -27,6 +30,8 @@ class mail
 
     public function __construct($sender, $recipient, $subject, $body)
     {
+        $this->config = config::get_instance();
+
         $this->recipient = $recipient;
         $this->subject = $subject;
         $this->body = $body;
@@ -37,28 +42,38 @@ class mail
         );
     }
 
-    public function header_set($key, $value)
+    public function get_subject()
+    {
+        return $this->subject;
+    }
+
+    public function set_subject($subject)
+    {
+        $this->subject = $subject;
+    }
+
+    public function set_header($key, $value)
     {
         $this->headers[$key] = $value;
     }
 
-    public function header_get($key)
+    public function get_header($key)
     {
-        if ($this->header_is_set($key)) {
+        if ($this->is_set_header($key)) {
             throw new Exception("Header '".$key."' is not set.");
         }
 
         return $this->headers[$key];
     }
 
-    public function header_is_set($key)
+    public function is_set_header($key)
     {
         return (isset($this->headers[$key]));
     }
 
-    public function header_un_set($key)
+    public function un_set_header($key)
     {
-        if (!$this->header_is_set($key)) {
+        if (!$this->is_set_header($key)) {
             throw new Exception("Header '".$key."' is not set.");
         }
 
@@ -69,7 +84,7 @@ class mail
     {
         $headers = $this->prepare_headers();
 
-        return mail($this->recipient, $this->subject, $this->body, $headers);
+        return mail($this->recipient, $this->config->get_config_value("email", "subject_prefix").$this->subject, $this->body, $headers);
     }
 
     private function prepare_headers()

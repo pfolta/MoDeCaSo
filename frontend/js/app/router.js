@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-17
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -129,6 +129,7 @@ webapp.config([
                     {
                         $modal.open(
                             {
+                                controller:     "add_user_controller",
                                 templateUrl:    "/frontend/tpl/administration/user_management/add_user.tpl",
                                 backdrop:       "static"
                             }

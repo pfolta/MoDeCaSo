@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/administration/user_management.class.php
  * Created:			2014-11-12
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-17
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -28,6 +28,14 @@ class user_management_controller extends controller
             "/administration/user_management",
             function()
             {
+                $this->app->post(
+                    "/add_user",
+                    array(
+                        $this,
+                        'add_user'
+                    )
+                );
+
                 $this->app->post(
                     "/delete_user",
                     array(
@@ -58,6 +66,40 @@ class user_management_controller extends controller
     public function create_model()
     {
         $this->model = new user_management();
+    }
+
+    public function add_user()
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::ADMINISTRATOR)) {
+            $username = $this->request->username;
+            $first_name = $this->request->first_name;
+            $last_name = $this->request->last_name;
+            $email = $this->request->email;
+            $role = $this->request->role;
+            $status = 1;
+
+            $result = $this->model->add_user($username, $first_name, $last_name, $email, $role, $status);
+
+            if (!$result['error']) {
+                $this->app->render(
+                    200,
+                    $result
+                );
+            } else {
+                $this->app->render(
+                    400,
+                    $result
+                );
+            }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
     }
 
     public function delete_user()

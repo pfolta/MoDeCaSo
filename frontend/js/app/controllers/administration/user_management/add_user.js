@@ -1,0 +1,110 @@
+/*
+ * UPB-BTHESIS
+ * Copyright (C) 2004-2014 Peter Folta. All rights reserved.
+ *
+ * Project:			UPB-BTHESIS
+ * Version:			0.0.1
+ *
+ * File:            /frontend/js/app/controllers/administration/user_management/add_user.js
+ * Created:			2014-11-17
+ * Last modified:	2014-11-17
+ * Author:			Peter Folta <mail@peterfolta.net>
+ */
+
+controllers.controller(
+    "add_user_controller",
+    [
+        "$scope",
+        "$rootScope",
+        "$http",
+        "session_service",
+        function($scope, $rootScope, $http, session_service)
+        {
+            $scope.add_user = {
+                username:   null,
+                first_name: null,
+                last_name:  null,
+                email:      null,
+                role:       2
+            };
+
+            $scope.flash = {
+                show:       false,
+                type:       null,
+                message:    null
+            };
+
+            $scope.add_user = function()
+            {
+                /*
+                 * Disable form elements to prevent duplicate requests
+                 */
+                $("#add_user_submit_button").prop("disabled", true);
+                $("#add_user_cancel_button").prop("disabled", true);
+
+                $http({
+                    method:     "post",
+                    url:        "/server/administration/user_management/add_user",
+                    data:       {
+                        username:   $scope.add_user.username,
+                        first_name: $scope.add_user.first_name,
+                        last_name:  $scope.add_user.last_name,
+                        email:      $scope.add_user.email,
+                        role:       $scope.add_user.role
+                    },
+                    headers:    {
+                        "X-API-Key":    session_service.get("api_key")
+                    }
+                }).then(
+                    function(response)
+                    {
+                        /*
+                         * Enable form elements
+                         */
+                        $("#add_user_submit_button").prop("disabled", false);
+                        $("#add_user_cancel_button").prop("disabled", false);
+
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-success";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>Well done!</strong> The account has been successfully added.";
+
+                        /*
+                         * Disable submit button and change Cancel button to show "Close" instead
+                         */
+                        $("#add_user_submit_button").prop("disabled", true);
+                        $("#add_user_cancel_button").html("Close");
+
+                        $("#add_user_cancel_button").on(
+                            "click",
+                            function()
+                            {
+                                $rootScope.$broadcast("load_users");
+                            }
+                        );
+                        $("#add_user_close_button").on(
+                            "click",
+                            function()
+                            {
+                                $rootScope.$broadcast("load_users");
+                            }
+                        );
+                    },
+                    function(response)
+                    {
+                        /*
+                         * Enable form elements
+                         */
+                        $("#add_user_submit_button").prop("disabled", false);
+                        $("#add_user_cancel_button").prop("disabled", false);
+
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-danger";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The user account could not be added.";
+
+                        shake_element($("#add_user_flash"));
+                    }
+                );
+            }
+        }
+    ]
+);

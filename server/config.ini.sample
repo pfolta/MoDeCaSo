@@ -27,3 +27,4 @@ session_lifetime    = 3600
 
 [email]
 sender_address      = "noreply@modecaso.uni-paderborn.de"
+subject_prefix      = "[MoDeCaSo] "

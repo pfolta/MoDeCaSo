@@ -9,7 +9,7 @@
  *
  * File:			/server/model/auth.class.php
  * Created:			2014-11-05
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-17
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -234,7 +234,7 @@ class auth
 
     private function generate_api_key()
     {
-        return sha1(microtime());
+        return sha1(uniqid(rand(), true));
     }
 
 }
