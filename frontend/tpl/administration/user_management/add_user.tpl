@@ -11,25 +11,25 @@
         <p>
             Please fill out this form to create a new user account.
         </p>
-        <div class="form-group" id="add_user_username_group" style="padding-top: 20px;">
-            <label for="add_user_username" class="col-sm-3 control-label">Username</label>
-            <div class="input-group col-sm-9" style="padding-right: 15px;">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" ng-model="user.username" id="add_user_username" placeholder="Username" required autofocus tabindex="1" class="form-control">
-            </div>
-        </div>
-        <div class="form-group" id="add_user_firstName_group">
+        <div class="form-group" id="add_user_firstName_group" style="padding-top: 20px;">
             <label for="add_user_firstName" class="col-sm-3 control-label">First Name</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" ng-model="user.first_name" id="add_user_firstName" placeholder="First Name" required tabindex="2" class="form-control">
+                <input type="text" ng-model="user.first_name" ng-change="generate_username()" id="add_user_firstName" placeholder="First Name" required autofocus tabindex="1" class="form-control">
             </div>
         </div>
         <div class="form-group" id="add_user_lastName_group">
             <label for="add_user_lastName" class="col-sm-3 control-label">Last Name</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" ng-model="user.last_name" id="add_user_lastName" placeholder="Last Name" required tabindex="3" class="form-control">
+                <input type="text" ng-model="user.last_name" ng-change="generate_username()" id="add_user_lastName" placeholder="Last Name" required tabindex="2" class="form-control">
+            </div>
+        </div>
+        <div class="form-group" id="add_user_username_group">
+            <label for="add_user_username" class="col-sm-3 control-label">Username</label>
+            <div class="input-group col-sm-9" style="padding-right: 15px;">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input type="text" ng-model="user.username" ng-change="username_modified = true;" id="add_user_username" placeholder="Username" required tabindex="3" class="form-control">
             </div>
         </div>
         <div class="form-group" id="add_user_email_group">
