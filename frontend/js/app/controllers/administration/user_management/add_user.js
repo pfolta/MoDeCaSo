@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/add_user.js
  * Created:			2014-11-17
- * Last modified:	2014-11-17
+ * Last modified:	2014-11-19
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -39,7 +39,7 @@ controllers.controller(
             $scope.generate_username = function()
             {
                 if (!$scope.username_modified && $scope.user.first_name != undefined && $scope.user.last_name != undefined) {
-                    $scope.user.username = $scope.user.first_name.toLowerCase().substr(0, 1) + $scope.user.last_name.toLowerCase();
+                    $scope.user.username = $scope.user.first_name.toLowerCase().replace(/[^a-z]/g, "").substr(0, 1) + $scope.user.last_name.toLowerCase().replace(/[^a-z]/g, "");
                 }
             };
 
