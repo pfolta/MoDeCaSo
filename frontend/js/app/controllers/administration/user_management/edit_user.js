@@ -88,7 +88,7 @@ controllers.controller(
                         last_name:  $scope.user.last_name,
                         email:      $scope.user.email,
                         role:       $scope.user.role,
-                        status:     1
+                        status:     $scope.user.status
                     },
                     headers:    {
                         "X-API-Key":    session_service.get("api_key")

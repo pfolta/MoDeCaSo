@@ -53,8 +53,8 @@
             <label for="add_user_status" class="col-sm-3 control-label">Status</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <div class="btn-group">
-                    <label class="btn btn-success text-uppercase" ng-model="radioModel" btn-radio="'active'">Active</label>
-                    <label class="btn btn-default text-uppercase" ng-model="radioModel" btn-radio="'inactive'">Inactive</label>
+                    <label class="btn btn-success text-uppercase" ng-model="user.status" btn-radio="'1'"><span class="label">ON</span></label>
+                    <label class="btn btn-default text-uppercase" ng-model="user.status" btn-radio="'0'"><span class="label" style="color: #000000;">OFF</span></label>
                 </div>
             </div>
         </div>

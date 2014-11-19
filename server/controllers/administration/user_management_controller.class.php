@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/administration/user_management.class.php
  * Created:			2014-11-12
- * Last modified:	2014-11-17
+ * Last modified:	2014-11-19
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -86,7 +86,7 @@ class user_management_controller extends controller
             $last_name = $this->request->last_name;
             $email = $this->request->email;
             $role = $this->request->role;
-            $status = 1;
+            $status = $this->request->status;
 
             $result = $this->model->add_user($username, $first_name, $last_name, $email, $role, $status);
 

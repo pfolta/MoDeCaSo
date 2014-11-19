@@ -31,7 +31,8 @@ controllers.controller(
                 first_name: null,
                 last_name:  null,
                 email:      null,
-                role:       2
+                role:       2,
+                status:     '1'
             };
 
             $scope.username_modified = false;
@@ -59,7 +60,8 @@ controllers.controller(
                         first_name: $scope.user.first_name,
                         last_name:  $scope.user.last_name,
                         email:      $scope.user.email,
-                        role:       $scope.user.role
+                        role:       $scope.user.role,
+                        status:     $scope.user.status
                     },
                     headers:    {
                         "X-API-Key":    session_service.get("api_key")
