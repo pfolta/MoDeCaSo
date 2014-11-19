@@ -110,7 +110,7 @@
             </tbody>
         </table>
         <p class="text-right">
-            {{ users.length }} Users
+            {{ users.length }} {{ users.length == 1 ? "User" : "Users" }}
         </p>
     </div>
 </div>

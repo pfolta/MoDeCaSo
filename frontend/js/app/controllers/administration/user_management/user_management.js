@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/user_management.js
  * Created:			2014-10-23
- * Last modified:	2014-11-17
+ * Last modified:	2014-11-19
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -32,7 +32,7 @@ controllers.controller(
 
             $scope.load_users = function()
             {
-                $scope.users = null;
+                $scope.users = [];
 
                 $http({
                     method:     "get",
