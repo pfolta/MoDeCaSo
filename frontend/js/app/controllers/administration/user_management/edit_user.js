@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/edit_user.js
  * Created:			2014-11-17
- * Last modified:	2014-11-17
+ * Last modified:	2014-11-19
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -65,12 +65,10 @@ controllers.controller(
                 $("#edit_user_submit_button").prop("disabled", true);
                 $("#edit_user_cancel_button").prop("disabled", true);
 
-                if ($scope.user.password) {
-                    if ($scope.user.password != $scope.user.confirm_password) {
-                        $scope.flash.show = true;
-                        $scope.flash.type = "alert-danger";
-                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The passwords you entered did not match.<br><span class='glyphicon glyphicon-placeholder'></span> Please try again.";
-                    }
+                if ($scope.user.password && $scope.user.password != $scope.user.confirm_password) {
+                    $scope.flash.show = true;
+                    $scope.flash.type = "alert-danger";
+                    $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The passwords you entered did not match.<br><span class='glyphicon glyphicon-placeholder'></span> Please try again.";
 
                     shake_element($("#edit_user_flash"));
 
