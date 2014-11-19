@@ -14,7 +14,7 @@
                 <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
                 <input type="text" ng-model="filter" placeholder="Filter" class="form-control">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" ng-click="filter=null" ng-disabled="!filter">&times;</button>
+                    <button class="btn btn-default" type="button" ng-click="filter=null" ng-disabled="!filter"><span aria-hidden="true">&times;</span><span class="sr-only">Clear</span></button>
                 </span>
             </div>
         </div>
