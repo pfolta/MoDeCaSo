@@ -32,7 +32,7 @@ controllers.controller(
                 last_name:  null,
                 email:      null,
                 role:       2,
-                status:     '1'
+                status:     1
             };
 
             $scope.username_modified = false;

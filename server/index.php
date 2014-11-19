@@ -9,7 +9,7 @@
  *
  * File:			/server/index.php
  * Created:			2014-11-03
- * Last modified:	2014-11-17
+ * Last modified:	2014-11-19
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -47,7 +47,11 @@ try {
      * Create new instance of web application
      */
     $app = new Slim();
-    $app->view(new JsonApiView());
+
+    $json_api_view = new JsonApiView();
+    $json_api_view->encodingOptions = JSON_NUMERIC_CHECK;
+
+    $app->view($json_api_view);
     $app->add(new JsonApiMiddleware());
 
     /*
@@ -125,6 +129,6 @@ try {
         'status'    => 500
     );
 
-    print json_encode($error);
+    print json_encode($error, JSON_NUMERIC_CHECK);
     exit;
 }

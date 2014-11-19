@@ -78,7 +78,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="user in users | filter:filter | orderBy:['order_predicate']:order_reverse">
+                <tr ng-repeat="user in users | filter:filter | orderBy:order_predicate:order_reverse">
                     <td class="text-right">
                         {{ user.id }}
                     </td>
