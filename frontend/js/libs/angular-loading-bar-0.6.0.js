@@ -205,6 +205,7 @@
 
                     if (includeSpinner) {
                         $animate.enter(spinner, $parent);
+                        show_toast("Loading");
                     }
 
                     _set(startSize);
@@ -293,6 +294,7 @@
                             promise.then(_completeAnimation);
                         }
                         $animate.leave(spinner);
+                        hide_toast();
                     }, 500);
                 }
 
