@@ -9,7 +9,8 @@
         <div class="alert" id="delete_user_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert">
         </div>
         <p>
-            Are you sure you want to delete the user <strong>{{ username }}</strong>?
+            Are you sure you want to delete the user <strong>{{ username }}</strong>?<br>
+            This will revoke all API Keys that have been granted to this user.
         </p>
     </div>
     <div class="modal-footer">
