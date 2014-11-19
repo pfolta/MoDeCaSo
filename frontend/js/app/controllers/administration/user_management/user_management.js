@@ -45,7 +45,6 @@ controllers.controller(
                     {
                         $scope.flash.show = false;
 
-                        console.log(response.data.users);
                         $scope.users = response.data.users;
                     },
                     function(response)

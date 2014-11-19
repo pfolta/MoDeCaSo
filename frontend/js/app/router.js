@@ -215,6 +215,75 @@ webapp.config([
                     }
                 ]
             }
+        )
+        .state(
+            "/projects",
+            {
+                url: "/frontend/projects",
+                role: 2,
+                title: "Project Overview",
+                views: {
+                    "mainView": {
+
+                        templateUrl:    "/frontend/tpl/projects/overview.tpl"
+                    },
+                    "headerView": {
+                        templateUrl:    "/frontend/tpl/header.tpl"
+                    },
+                    "footerView": {
+                        templateUrl:    "/frontend/tpl/footer.tpl"
+                    }
+                }
+            }
+        )
+        .state(
+            "/projects/create_project",
+            {
+                url: "/create_project",
+                role: 2,
+                parent: "/projects",
+                title: "Create Project",
+                onEnter: [
+                    "$state",
+                    "$modal",
+                    function($state, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "create_project_controller",
+                                templateUrl:    "/frontend/tpl/projects/create_project.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/projects/project",
+            {
+                url: "/frontend/projects/:project",
+                role: 2,
+                title: "Project Details",
+                views: {
+                    "mainView": {
+
+                        templateUrl:    "/frontend/tpl/projects/project.tpl"
+                    },
+                    "headerView": {
+                        templateUrl:    "/frontend/tpl/header.tpl"
+                    },
+                    "footerView": {
+                        templateUrl:    "/frontend/tpl/footer.tpl"
+                    }
+                }
+            }
         );
     }
 ]);
