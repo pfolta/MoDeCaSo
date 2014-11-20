@@ -7,64 +7,116 @@
  *
  * File:			/frontend/css/app/toast.css
  * Created:			2014-11-19
- * Last modified:	2014-11-19
+ * Last modified:	2014-11-20
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 @charset "UTF-8";
 
 #toast {
-    background-color: #000000;
-    border: 1px #000000 solid;
-    border-radius: 8px;
-    color: #ffffff;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 25px;
+    background-color: #dddddd;
+    height: 75px;
     position: fixed;
     right: 25px;
     text-align: left;
-    top: 25px;
+    top: 75px;
     width: 300px;
     z-index: 99999;
 }
 
-#toast > div {
-    width: 18px;
-    height: 18px;
-    background-color: #21467b;
+.toast-danger {
+    background-color: #d9534f !important;
+}
+
+.toast-default {
+    background-color: #aaaaaa !important;
+}
+
+.toast-info {
+    background-color: #5bc0de !important;
+}
+
+.toast-primary {
+    background-color: #428bca !important;
+}
+
+.toast-success {
+    background-color: #5cb85c !important;
+}
+
+.toast-warning {
+    background-color: #f0ad4e !important;
+}
+
+#toast .banner {
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.25);
+    height: 100%;
+    float: left;
+    padding: 20px 10px 10px 10px;
+    text-align: center;
+    width: 77px;
+}
+
+#toast .banner .toast-icon {
+    color: #ffffff !important;
+    font-size: 32px !important;
+}
+
+#toast .title {
+    font-size: 24px;
+    font-weight: bold;
+    left: 10px;
+    top: 5px;
+    position: relative;
+}
+
+#toast .text {
+    left: 10px;
+    position: relative;
+}
+
+#toast .banner > div {
+    width: 15px;
+    height: 15px;
+    background-color: #ffffff;
     border-radius: 100%;
     display: inline-block;
-    margin: 8px 2px;
-    float: right;
+    margin: 0 2px;
+    top: 10px;
+    position: relative;
     -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
     animation: bouncedelay 1.4s infinite ease-in-out;
-    /* Prevent first frame from flickering when animation starts */
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
 
-#toast .bounce1 {
+#toast .banner > .bounce1 {
     -webkit-animation-delay: -0.32s;
     animation-delay: -0.32s;
 }
 
-#toast .bounce2 {
+#toast .banner > .bounce2 {
     -webkit-animation-delay: -0.16s;
     animation-delay: -0.16s;
 }
 
 @-webkit-keyframes bouncedelay {
-    0%, 80%, 100% { -webkit-transform: scale(0.0) }
-    40% { -webkit-transform: scale(1.0) }
+    0%, 80%, 100% {
+        -webkit-transform: scale(0.0);
+    }
+    40% {
+        -webkit-transform: scale(1.0);
+    }
 }
 
 @keyframes bouncedelay {
     0%, 80%, 100% {
         transform: scale(0.0);
         -webkit-transform: scale(0.0);
-    } 40% {
-          transform: scale(1.0);
-          -webkit-transform: scale(1.0);
-      }
+    }
+    40% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
 }

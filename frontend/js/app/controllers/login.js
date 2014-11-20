@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-20
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -83,7 +83,7 @@ controllers.controller(
                 });
 
                 cfpLoadingBar.complete();
-            }
+            };
         }
     ]
 );

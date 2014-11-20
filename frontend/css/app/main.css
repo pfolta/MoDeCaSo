@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2014-11-16
+ * Last modified:	2014-11-19
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -32,7 +32,7 @@ body.noscroll {
 }
 
 body.background {
-    background-image: url("/frontend/img/wallpaper.png");
+    background-image: url("/frontend/img/wallpaper.gif");
     background-attachment: fixed;
 }
 

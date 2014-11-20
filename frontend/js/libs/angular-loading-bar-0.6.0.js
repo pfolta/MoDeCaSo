@@ -205,7 +205,7 @@
 
                     if (includeSpinner) {
                         $animate.enter(spinner, $parent);
-                        show_toast("Loading");
+                        toaster.default("Loading", "Please Wait", true);
                     }
 
                     _set(startSize);
@@ -294,7 +294,7 @@
                             promise.then(_completeAnimation);
                         }
                         $animate.leave(spinner);
-                        hide_toast();
+                        hide_toast(0);
                     }, 500);
                 }
 

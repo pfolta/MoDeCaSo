@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/tools/string.js
  * Created:			2014-11-03
- * Last modified:	2014-11-17
+ * Last modified:	2014-11-19
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -42,7 +42,9 @@ function get_success_title()
 {
     var success_titles = [
         "Well done!",
-        "Great!"
+        "Great!",
+        "Nice!",
+        "Awesome!"
     ];
 
     return success_titles[Math.floor(Math.random() * success_titles.length)].toString();
