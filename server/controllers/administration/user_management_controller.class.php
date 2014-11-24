@@ -7,9 +7,9 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:			/server/controllers/administration/user_management.class.php
+ * File:			/server/controllers/administration/user_management_controller.class.php
  * Created:			2014-11-12
- * Last modified:	2014-11-19
+ * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
