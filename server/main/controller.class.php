@@ -9,7 +9,7 @@
  *
  * File:			/server/main/controller.class.php
  * Created:			2014-11-04
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -23,6 +23,7 @@ abstract class controller
 {
 
     protected $app;
+    protected $database;
     protected $auth;
 
     protected $model;
@@ -38,6 +39,8 @@ abstract class controller
         } else {
             $this->app = Slim::getInstance();
         }
+
+        $this->database = database::get_instance();
 
         $this->auth = auth::get_instance();
 
@@ -64,6 +67,14 @@ abstract class controller
         }
 
         return $api_key;
+    }
+
+    protected function get_user_id()
+    {
+        $api_key = $this->get_api_key();
+        $this->database->select("user_tokens", "user", "`api_key` = '".$api_key."'");
+
+        return $this->database->result()[0]['user'];
     }
 
     protected abstract function register_routes();
