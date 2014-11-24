@@ -63,6 +63,36 @@ class projects
         return $result;
     }
 
+    public function delete_project($project_key)
+    {
+        /*
+         * Check if project exists
+         */
+        $this->database->select("projects", null, "`key` = '".$project_key."'");
+
+        if ($this->database->row_count() == 1) {
+            /*
+             * Delete project
+             */
+            $this->database->delete("projects", "`key` = '".$project_key."'");
+
+            $result = array(
+                'error'         => false,
+                'msg'           => "project_deleted"
+            );
+        } else {
+            /*
+             * Invalid username provided
+             */
+            $result = array(
+                'error'         => true,
+                'msg'           => "invalid_project_key",
+            );
+        }
+
+        return $result;
+    }
+
     public function get_project_list($lead = null)
     {
         if (is_null($lead)) {

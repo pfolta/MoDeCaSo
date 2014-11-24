@@ -36,6 +36,14 @@ class projects_controller extends controller
                     )
                 );
 
+                $this->app->post(
+                    "/delete_project",
+                    array(
+                        $this,
+                        'delete_project'
+                    )
+                );
+
                 $this->app->get(
                     "/get_project_list",
                     array(
@@ -60,6 +68,35 @@ class projects_controller extends controller
             $lead = $this->get_user_id();
 
             $result = $this->model->create_project($title, $key, $lead);
+
+            if (!$result['error']) {
+                $this->app->render(
+                    200,
+                    $result
+                );
+            } else {
+                $this->app->render(
+                    400,
+                    $result
+                );
+            }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
+    }
+
+    public function delete_project()
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $project_key = $this->request->key;
+
+            $result = $this->model->delete_project($project_key);
 
             if (!$result['error']) {
                 $this->app->render(

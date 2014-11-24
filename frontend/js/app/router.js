@@ -266,6 +266,42 @@ webapp.config([
             }
         )
         .state(
+            "/projects/delete_project",
+            {
+                url: "/delete_project/:key",
+                role: "MODERATOR",
+                parent: "/projects",
+                title: "Delete Project",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "delete_project_controller",
+                                resolve:        {
+                                    key:   function()
+                                    {
+                                        return $stateParams.key;
+                                    }
+                                },
+                                templateUrl:    "/frontend/tpl/projects/delete_project.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
             "/projects/project",
             {
                 url: "/frontend/projects/:project",
