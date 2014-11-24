@@ -35,6 +35,14 @@ class projects_controller extends controller
                         'create_project'
                     )
                 );
+
+                $this->app->get(
+                    "/get_project_list",
+                    array(
+                        $this,
+                        'get_project_list'
+                    )
+                );
             }
         );
     }
@@ -49,9 +57,9 @@ class projects_controller extends controller
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
             $title = $this->request->title;
             $key = $this->request->key;
-            $moderator = $this->get_user_id();
+            $lead = $this->get_user_id();
 
-            $result = $this->model->create_project($title, $key, $moderator);
+            $result = $this->model->create_project($title, $key, $lead);
 
             if (!$result['error']) {
                 $this->app->render(
@@ -64,6 +72,34 @@ class projects_controller extends controller
                     $result
                 );
             }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
+    }
+
+    public function get_project_list()
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            if ($this->get_user_role() == user_roles::MODERATOR) {
+                $project_list = $this->model->get_project_list($this->get_user_id());
+            } else {
+                $project_list = $this->model->get_project_list();
+            }
+
+            $users = array(
+                'projects'         => $project_list
+            );
+
+            $this->app->render(
+                200,
+                $users
+            );
         } else {
             $this->app->render(
                 403,

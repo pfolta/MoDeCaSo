@@ -15,6 +15,7 @@
 
 namespace model;
 
+use data\project_statuses;
 use main\database;
 
 class projects
@@ -27,7 +28,7 @@ class projects
         $this->database = database::get_instance();
     }
 
-    public function create_project($title, $key, $moderator)
+    public function create_project($title, $key, $lead)
     {
         /*
          * Check if project key already exists
@@ -41,7 +42,7 @@ class projects
             $this->database->insert("projects", array(
                 'title'         => $title,
                 'key'           => $key,
-                'moderator'     => $moderator,
+                'lead'          => $lead,
                 'created'       => time(),
                 'last_modified' => time()
             ));
@@ -60,6 +61,28 @@ class projects
         }
 
         return $result;
+    }
+
+    public function get_project_list($lead = null)
+    {
+        if (is_null($lead)) {
+            $this->database->select("projects", "`id`, `title`, `key`, `lead`, `status`, `created`, `last_modified`, `started`");
+        } else {
+            $this->database->select("projects", "`id`, `title`, `key`, `lead`, `status`, `created`, `last_modified`, `started`", "`lead` = '".$lead."'");
+        }
+
+        $projects = $this->database->result();
+
+        for ($i = 0; $i < count($projects); $i++) {
+            $this->database->select("users", "`username`, `first_name`, `last_name`", "`id` = '".$projects[$i]['lead']."'");
+            $lead = $this->database->result()[0];
+
+            $projects[$i]['lead'] = $lead['first_name']." ".$lead['last_name']." (".$lead['username'].")";
+
+            $projects[$i]['status'] = project_statuses::$values[$projects[$i]['status']];
+        }
+
+        return $projects;
     }
 
 }
