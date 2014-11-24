@@ -18,14 +18,14 @@ namespace data;
 class user_roles
 {
 
-    const UNAUTHENTICATED = 1;
-    const MODERATOR = 2;
-    const ADMINISTRATOR = 3;
+    const UNAUTHENTICATED = 0;
+    const MODERATOR = 1;
+    const ADMINISTRATOR = 2;
 
     public static $values = array(
-        1   => "UNAUTHENTICATED",
-        2   => "MODERATOR",
-        3   => "ADMINISTRATOR"
+        0   => "UNAUTHENTICATED",
+        1   => "MODERATOR",
+        2   => "ADMINISTRATOR"
     );
 
 }
