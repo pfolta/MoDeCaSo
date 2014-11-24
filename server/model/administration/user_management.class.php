@@ -9,13 +9,14 @@
  *
  * File:			/server/model/administration/user_management.class.php
  * Created:			2014-11-12
- * Last modified:	2014-11-17
+ * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 namespace model;
 
 use data\user_roles;
+use data\user_statuses;
 use Exception;
 
 use main\config;
@@ -203,12 +204,7 @@ Please log in to MoDeCaSo and change your password.";
 
         for ($i = 0; $i < count($users); $i++) {
             $users[$i]['role'] = user_roles::$values[$users[$i]['role']];
-
-            if ($users[$i]['status'] == 1) {
-                $users[$i]['status'] = "active";
-            } else {
-                $users[$i]['status'] = "inactive";
-            }
+            $users[$i]['status'] = user_statuses::$values[$users[$i]['status']];
         }
 
         return $users;

@@ -98,7 +98,7 @@
                         {{ user.role | lowercase }}
                     </td>
                     <td>
-                        <span class="label text-uppercase" ng-class="{ 'label-success': user.status == 'active', 'label-default': user.status == 'inactive' }">{{ user.status }}</span>
+                        <span class="label text-uppercase" ng-class="get_label_class(user.status);">{{ user.status }}</span>
                     </td>
                     <td class="text-center">
                         <div class="btn-group btn-group-sm">

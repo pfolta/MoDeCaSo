@@ -7,25 +7,23 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:			/server/data/user_roles.class.php
- * Created:			2014-11-12
+ * File:			/server/data/user_statuses.class.php
+ * Created:			2014-11-24
  * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
 namespace data;
 
-class user_roles
+class user_statuses
 {
 
-    const UNAUTHENTICATED = 0;
-    const MODERATOR = 1;
-    const ADMINISTRATOR = 2;
+    const INACTIVE = 0;
+    const ACTIVE = 1;
 
     public static $values = array(
-        0   => "UNAUTHENTICATED",
-        1   => "MODERATOR",
-        2   => "ADMINISTRATOR"
+        0   => "INACTIVE",
+        1   => "ACTIVE"
     );
 
 }

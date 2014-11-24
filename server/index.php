@@ -20,7 +20,9 @@ require "main/controller.class.php";
 require "main/database.class.php";
 require "main/errorhandling.class.php";
 
+require "data/project_statuses.class.php";
 require "data/user_roles.class.php";
+require "data/user_statuses.class.php";
 
 require "tools/mail.class.php";
 require "tools/url.class.php";

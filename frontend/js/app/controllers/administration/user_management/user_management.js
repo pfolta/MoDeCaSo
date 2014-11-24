@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/user_management.js
  * Created:			2014-10-23
- * Last modified:	2014-11-19
+ * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -28,6 +28,16 @@ controllers.controller(
                 "show":     false,
                 "type":     null,
                 "message":  null
+            };
+
+            $scope.get_label_class = function (status)
+            {
+                switch (status) {
+                    case "INACTIVE":
+                        return "label-default";
+                    case "ACTIVE":
+                        return "label-success";
+                }
             };
 
             $scope.load_users = function()
