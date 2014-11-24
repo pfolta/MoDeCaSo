@@ -78,7 +78,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="user in users | filter:filter | orderBy:order_predicate:order_reverse">
+                <tr ng-repeat="user in filtered = (users | filter:filter | orderBy:order_predicate:order_reverse)">
                     <td class="text-right">
                         {{ user.id }}
                     </td>
@@ -110,7 +110,7 @@
             </tbody>
         </table>
         <p class="text-right">
-            {{ users.length }} {{ users.length == 1 ? "User" : "Users" }}
+            {{ filtered.length }} {{ filtered.length == 1 ? "User" : "Users" }}
         </p>
     </div>
 </div>

@@ -71,7 +71,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="project in projects | filter:filter | orderBy:order_predicate:order_reverse">
+                <tr ng-repeat="project in filtered = (projects | filter:filter | orderBy:order_predicate:order_reverse)">
                     <td class="text-right">
                         {{ project.id }}
                     </td>
@@ -101,7 +101,7 @@
             </tbody>
         </table>
         <p class="text-right">
-            {{ projects.length }} {{ projects.length == 1 ? "Project" : "Projects" }}
+            {{ filtered.length }} {{ filtered.length == 1 ? "Project" : "Projects" }}
         </p>
     </div>
 </div>
