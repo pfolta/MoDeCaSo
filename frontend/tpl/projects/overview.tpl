@@ -33,29 +33,29 @@
                     <th style="width: 22%;">
                         Title
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'username'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'username'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'title'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'title'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 15%;">
                         Key
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'first_name'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'first_name'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'key'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'key'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 20%;">
                         Project Lead
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'last_name'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'last_name'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'lead'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'lead'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 15%;">
                         Created
                         <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'created'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'created'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
                     <th style="width: 10%;">
