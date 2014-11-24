@@ -77,6 +77,14 @@ abstract class controller
         return $this->database->result()[0]['user'];
     }
 
+    protected function get_user_role()
+    {
+        $user_id = $this->get_user_id();
+        $this->database->select("users", "`role`", "`id` = '".$user_id."'");
+
+        return $this->database->result()[0]['role'];
+    }
+
     protected abstract function register_routes();
 
     protected abstract function create_model();
