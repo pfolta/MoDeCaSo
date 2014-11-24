@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-11-17
+ * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -26,7 +26,7 @@ webapp.config([
             "/help",
             {
                 url: "/frontend/help",
-                role: 2,
+                role: "MODERATOR",
                 title: "Help",
                 views: {
                     "mainView": {
@@ -45,7 +45,7 @@ webapp.config([
             "/login",
             {
                 url: "/frontend/login",
-                role: 1,
+                role: "UNAUTHENTICATED",
                 title: "Log In",
                 views: {
                     "mainView": {
@@ -59,7 +59,7 @@ webapp.config([
             "/logout",
             {
                 url: "/frontend/logout",
-                role: 2,
+                role: "MODERATOR",
                 title: "Log Out",
                 onEnter: [
                     "auth_service",
@@ -80,7 +80,7 @@ webapp.config([
             "/dashboard",
             {
                 url: "/frontend/dashboard",
-                role: 2,
+                role: "MODERATOR",
                 title: "Dashboard",
                 views: {
                     "mainView": {
@@ -99,7 +99,7 @@ webapp.config([
             "/administration/user_management",
             {
                 url: "/frontend/administration/user_management",
-                role: 3,
+                role: "ADMINISTRATOR",
                 title: "User Management",
                 views: {
                     "mainView": {
@@ -119,7 +119,7 @@ webapp.config([
             "/administration/user_management/add_user",
             {
                 url: "/add_user",
-                role: 3,
+                role: "ADMINISTRATOR",
                 parent: "/administration/user_management",
                 title: "Add User",
                 onEnter: [
@@ -148,7 +148,7 @@ webapp.config([
             "/administration/user_management/delete_user",
             {
                 url: "/delete_user/:username",
-                role: 3,
+                role: "ADMINISTRATOR",
                 parent: "/administration/user_management",
                 title: "Delete User",
                 onEnter: [
@@ -184,7 +184,7 @@ webapp.config([
             "/administration/user_management/edit_user",
             {
                 url: "/edit_user/:username",
-                role: 3,
+                role: "ADMINISTRATOR",
                 parent: "/administration/user_management",
                 title: "Edit User",
                 onEnter: [
@@ -220,11 +220,11 @@ webapp.config([
             "/projects",
             {
                 url: "/frontend/projects",
-                role: 2,
+                role: "MODERATOR",
                 title: "Project Overview",
                 views: {
                     "mainView": {
-
+                        controller:     "project_overview_controller",
                         templateUrl:    "/frontend/tpl/projects/overview.tpl"
                     },
                     "headerView": {
@@ -240,7 +240,7 @@ webapp.config([
             "/projects/create_project",
             {
                 url: "/create_project",
-                role: 2,
+                role: "MODERATOR",
                 parent: "/projects",
                 title: "Create Project",
                 onEnter: [
@@ -269,7 +269,7 @@ webapp.config([
             "/projects/project",
             {
                 url: "/frontend/projects/:project",
-                role: 2,
+                role: "MODERATOR",
                 title: "Project Details",
                 views: {
                     "mainView": {

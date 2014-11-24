@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/services/auth.js
  * Created:			2014-10-20
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -96,17 +96,39 @@ services.factory(
                 {
                     var role = session_service.get("role");
 
-                    if (role != null) {
-                        if (role >= required_role) {
-                            return true;
-                        }
+                    if (role == null) {
+                        role = "UNAUTHENTICATED";
                     }
 
-                    if (required_role == 1) {
-                        return true;
+                    switch (role) {
+                        case "UNAUTHENTICATED":
+                            switch (required_role) {
+                                case "UNAUTHENTICATED":
+                                    return true;
+                                case "MODERATOR":
+                                    return false;
+                                case "ADMINISTRATOR":
+                                    return false;
+                            }
+                        case "MODERATOR":
+                            switch (required_role) {
+                                case "UNAUTHENTICATED":
+                                    return true;
+                                case "MODERATOR":
+                                    return true;
+                                case "ADMINISTRATOR":
+                                    return false;
+                            }
+                        case "ADMINISTRATOR":
+                            switch (required_role) {
+                                case "UNAUTHENTICATED":
+                                    return true;
+                                case "MODERATOR":
+                                    return true;
+                                case "ADMINISTRATOR":
+                                    return true;
+                            }
                     }
-
-                    return false;
                 }
             }
         }

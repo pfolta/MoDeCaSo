@@ -95,7 +95,7 @@
                         {{ user.email }}
                     </td>
                     <td class="text-capitalize">
-                        {{ user.role }}
+                        {{ user.role | lowercase }}
                     </td>
                     <td>
                         <span class="label text-uppercase" ng-class="{ 'label-success': user.status == 'active', 'label-default': user.status == 'inactive' }">{{ user.status }}</span>

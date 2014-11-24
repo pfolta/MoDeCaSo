@@ -15,6 +15,7 @@
 
 namespace model;
 
+use data\user_roles;
 use Exception;
 
 use main\config;
@@ -201,6 +202,8 @@ Please log in to MoDeCaSo and change your password.";
         $users = $this->database->result();
 
         for ($i = 0; $i < count($users); $i++) {
+            $users[$i]['role'] = user_roles::$values[$users[$i]['role']];
+
             if ($users[$i]['status'] == 1) {
                 $users[$i]['status'] = "active";
             } else {

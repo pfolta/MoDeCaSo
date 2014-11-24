@@ -15,6 +15,7 @@
 
 namespace model;
 
+use data\user_roles;
 use Exception;
 
 use main\config;
@@ -90,7 +91,7 @@ class auth
                         'username'      => $result['username'],
                         'first_name'    => $result['first_name'],
                         'last_name'     => $result['last_name'],
-                        'role'          => $result['role']
+                        'role'          => user_roles::$values[$result['role']]
                     );
                 } else {
                     /*

@@ -22,4 +22,10 @@ class user_roles
     const MODERATOR = 2;
     const ADMINISTRATOR = 3;
 
+    public static $values = array(
+        1   => "UNAUTHENTICATED",
+        2   => "MODERATOR",
+        3   => "ADMINISTRATOR"
+    );
+
 }
