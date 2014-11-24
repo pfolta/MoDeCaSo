@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/create_project.js
  * Created:			2014-11-19
- * Last modified:	2014-11-19
+ * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -43,6 +43,27 @@ controllers.controller(
                     }
                 }
             };
+
+            $scope.create_project = function()
+            {
+                /*
+                 * Disable form elements to prevent duplicate requests
+                 */
+                $("#create_project_submit_button").prop("disabled", true);
+                $("#create_project_cancel_button").prop("disabled", true);
+
+                $http({
+                    method:     "post",
+                    url:        "/server/projects/create_project",
+                    data:       {
+                        title:      $scope.project.title,
+                        key:        $scope.project.key
+                    },
+                    headers:    {
+                        "X-API-Key":    session_service.get("api_key")
+                    }
+                }).then();
+            }
         }
     ]
 );
