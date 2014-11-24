@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/filters/timestamp.js
  * Created:			2014-11-17
- * Last modified:	2014-11-17
+ * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -53,12 +53,12 @@ filters.filter(
 
                 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                 var year = date.getFullYear();
-                var month = months[date.getMonth()];
+                var month = date.getMonth() + 1;
                 var day = date.getDate();
                 var hours = date.getHours();
                 var min = add_zero(date.getMinutes());
 
-                var datetime = month + " " + day + ", " + year + " " + make_12h(hours) + ":" + min + " " + get_am_pm(hours);
+                var datetime = month + "/" + day + "/" + year + ", " + make_12h(hours) + ":" + min + " " + get_am_pm(hours);
 
                 return datetime;
             }
