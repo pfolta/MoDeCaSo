@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/toast.css
  * Created:			2014-11-19
- * Last modified:	2014-11-20
+ * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -29,7 +29,7 @@
 }
 
 .toast-default {
-    background-color: #aaaaaa !important;
+    background-color: #cccccc !important;
 }
 
 .toast-info {
