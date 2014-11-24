@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/tools/toast.js
  * Created:			2014-11-19
  * Last modified:	2014-11-20
- * Author:			Peter Folta <mail@peterfolta.net>
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 var toast;

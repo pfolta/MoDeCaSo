@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/tools/animations.js
  * Created:			2014-11-03
  * Last modified:	2014-11-03
- * Author:			Peter Folta <mail@peterfolta.net>
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 function shake_element(element)

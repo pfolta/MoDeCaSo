@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
  * Last modified:	2014-11-12
- * Author:			Peter Folta <mail@peterfolta.net>
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 var services = angular.module(

@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/tools/url.js
  * Created:			2014-11-24
  * Last modified:	2014-11-24
- * Author:			Peter Folta <mail@peterfolta.net>
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 /**

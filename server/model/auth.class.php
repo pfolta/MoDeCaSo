@@ -10,7 +10,7 @@
  * File:			/server/model/auth.class.php
  * Created:			2014-11-05
  * Last modified:	2014-11-17
- * Author:			Peter Folta <mail@peterfolta.net>
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 namespace model;

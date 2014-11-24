@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/controllers/administration/user_management/add_user.js
  * Created:			2014-11-17
  * Last modified:	2014-11-19
- * Author:			Peter Folta <mail@peterfolta.net>
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 controllers.controller(

@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/services/session.js
  * Created:			2014-10-20
  * Last modified:	2014-11-12
- * Author:			Peter Folta <mail@peterfolta.net>
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 services.factory(
