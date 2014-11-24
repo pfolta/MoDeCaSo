@@ -15,10 +15,9 @@ controllers.controller(
     "create_project_controller",
     [
         "$scope",
-        "$rootScope",
         "$http",
         "session_service",
-        function($scope, $rootScope, $http, session_service)
+        function($scope, $http, session_service)
         {
             $scope.flash = {
                 show:       false,
@@ -62,7 +61,55 @@ controllers.controller(
                     headers:    {
                         "X-API-Key":    session_service.get("api_key")
                     }
-                }).then();
+                }).then(
+                    function(response)
+                    {
+                        /*
+                         * Enable form elements
+                         */
+                        $("#create_project_submit_button").prop("disabled", false);
+                        $("#create_project_cancel_button").prop("disabled", false);
+
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-success";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> The project has been successfully created.";
+
+                        /*
+                         * Disable submit button and change Cancel button to show "Close" instead
+                         */
+                        $("#create_project_submit_button").prop("disabled", true);
+                        $("#create_project_cancel_button").html("Close");
+
+                        $("#create_project_cancel_button").on(
+                            "click",
+                            function()
+                            {
+                                go_to_url("/projects/" + $scope.project.key);
+                            }
+                        );
+                        $("#create_project_close_button").on(
+                            "click",
+                            function()
+                            {
+                                go_to_url("/projects/" + $scope.project.key);
+                            }
+                        );
+                    },
+                    function(response)
+                    {
+                        /*
+                         * Enable form elements
+                         */
+                        $("#create_project_submit_button").prop("disabled", false);
+                        $("#create_project_cancel_button").prop("disabled", false);
+
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-danger";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The project could not be created.";
+
+                        shake_element($("#create_project_flash"));
+                    }
+                );
             }
         }
     ]
