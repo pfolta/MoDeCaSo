@@ -9,7 +9,7 @@
  *
  * File:			/server/main/database.class.php
  * Created:			2014-11-03
- * Last modified:	2014-11-17
+ * Last modified:	2014-11-24
  * Author:			Peter Folta <mail@peterfolta.net>
  */
 
@@ -175,7 +175,7 @@ class database
                 $values .= ", ";
             }
 
-            $cols .= $data_key;
+            $cols .= "`".$data_key."`";
 
             if (is_string(($data_value))) {
                 $values .= "'".$data_value."'";
@@ -207,7 +207,7 @@ class database
                 $sql .= ", ";
             }
 
-            $sql .= $data_key . " = ";
+            $sql .= "`".$data_key."` = ";
 
             if (is_string(($data_value))) {
                 $sql .= "'" . $data_value . "'";
