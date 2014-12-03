@@ -7,34 +7,36 @@
  *
  * File:            /frontend/js/app/controllers/main.js
  * Created:			2014-10-19
- * Last modified:	2014-11-17
+ * Last modified:	2014-12-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 controllers.controller(
     "main_controller",
     [
+        "$rootScope",
         "$scope",
+        "$http",
+        "$modal",
         "auth_service",
         "session_service",
-        "$modal",
         "cfpLoadingBar",
-        function($scope, auth_service, session_service, $modal, cfpLoadingBar)
+        function($rootScope, $scope, $http, $modal, auth_service, session_service, cfpLoadingBar)
         {
             $scope.username = function()
             {
                 return session_service.get("username");
-            }
+            };
 
             $scope.real_name = function()
             {
                 return session_service.get("first_name") + " " + session_service.get("last_name");
-            }
+            };
 
             $scope.role = function()
             {
                 return session_service.get("role");
-            }
+            };
 
             $scope.change_password_flash = {
                 show:     false,
@@ -141,7 +143,7 @@ controllers.controller(
                     $("#change_password_new_password_group").toggleClass("has-error", true);
                     $("#change_password_confirm_new_password_group").toggleClass("has-error", true);
                 }
-            }
+            };
 
             $scope.show_change_password_dialog = function()
             {
@@ -151,7 +153,7 @@ controllers.controller(
                         backdrop:       "static"
                     }
                 );
-            }
+            };
 
             $scope.show_about_dialog = function()
             {
@@ -162,7 +164,35 @@ controllers.controller(
                         size:           "lg"
                     }
                 );
-            }
+            };
+
+            $scope.load_projects = function()
+            {
+                $scope.projects = [];
+
+                $http({
+                    method:     "get",
+                    url:        "/server/projects/get_project_list",
+                    headers:    {
+                        "X-API-Key":    session_service.get("api_key")
+                    }
+                }).then(
+                    function(response)
+                    {
+                        $scope.projects = response.data.projects;
+                    }
+                );
+            };
+
+            $scope.$on(
+                "load_projects",
+                function(event, args)
+                {
+                    $scope.load_projects();
+                }
+            );
+
+            $rootScope.$broadcast("load_projects");
         }
     ]
 );

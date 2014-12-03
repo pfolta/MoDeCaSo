@@ -309,6 +309,7 @@ webapp.config([
                 title: "Project Details",
                 views: {
                     "mainView": {
+                        controller:     "project_controller",
                         resolve:        {
                             key: [
                                 "$stateParams",

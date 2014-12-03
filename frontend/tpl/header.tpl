@@ -16,9 +16,7 @@
                         <li class="divider"></li>
                         <li><a ui-sref="/projects/create_project"><span class="glyphicon glyphicon-plus-sign"></span> Create Project</a></li>
                         <li class="divider"></li>
-                        <li><a>Project 1</a></li>
-                        <li><a>Project 2</a></li>
-                        <li><a>Project 3</a></li>
+                        <li ng-repeat="project in projects"><a href="/frontend/projects/{{ project.key }}">{{ project.title }}</a></li>
                     </ul>
                 </li>
                 <li ui-sref-active="active" class="dropdown" ng-show="role() == 'ADMINISTRATOR'">

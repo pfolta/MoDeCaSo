@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2014-11-20
+ * Last modified:	2014-12-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -42,6 +42,7 @@ controllers.controller(
                 auth_service.login($scope.login.username, $scope.login.password).then(function(result)
                 {
                     if (result == "login_successful") {
+                        $rootScope.$broadcast("load_projects");
                         $state.go("/dashboard");
                     } else {
                         /*
