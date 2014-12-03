@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-11-24
+ * Last modified:	2014-12-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -304,12 +304,20 @@ webapp.config([
         .state(
             "/projects/project",
             {
-                url: "/frontend/projects/:project",
+                url: "/frontend/projects/:key",
                 role: "MODERATOR",
                 title: "Project Details",
                 views: {
                     "mainView": {
-
+                        resolve:        {
+                            key: [
+                                "$stateParams",
+                                function($stateParams)
+                                {
+                                    return $stateParams.key;
+                                }
+                            ]
+                        },
                         templateUrl:    "/frontend/tpl/projects/project.tpl"
                     },
                     "headerView": {
