@@ -5,7 +5,20 @@
     </h3>
 </div>
 <div class="modal-body">
-    <img src="/frontend/img/upb-logo.svg" style="height: 100px;">
+    <div class="clearfix">
+        <div class="pull-left">
+            <p>
+                <strong>MoDeCaSo</strong><br>
+                Version 1.0
+            </p>
+            <p>
+                Copyright &copy; 2014 Peter Folta. All rights reserved.
+            </p>
+        </div>
+        <div class="pull-right">
+            <img src="/frontend/img/upb-logo.svg" style="height: 100px;">
+        </div>
+    </div>
     <address>
         <strong>University of Paderborn</strong><br>
         Fakultät für Elektrotechnik, Informatik und Mathematik<br>
@@ -14,9 +27,6 @@
         Fürstenallee 11<br>
         D-33102 Paderborn
     </address>
-    <p>
-        Copyright &copy; 2014 Peter Folta. All rights reserved.
-    </p>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="$close()">Close</button>
