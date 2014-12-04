@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/projects/projects_controller.class.php
  * Created:			2014-11-24
- * Last modified:	2014-11-24
+ * Last modified:	2014-12-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -49,6 +49,14 @@ class projects_controller extends controller
                     array(
                         $this,
                         'get_project_list'
+                    )
+                );
+
+                $this->app->get(
+                    "/get_project/:key",
+                    array(
+                        $this,
+                        'get_project'
                     )
                 );
             }
@@ -137,6 +145,33 @@ class projects_controller extends controller
                 200,
                 $users
             );
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
+    }
+
+    public function get_project($key)
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $result = $this->model->get_project($key);
+
+            if (!$result['error']) {
+                $this->app->render(
+                    200,
+                    $result
+                );
+            } else {
+                $this->app->render(
+                    400,
+                    $result
+                );
+            }
         } else {
             $this->app->render(
                 403,

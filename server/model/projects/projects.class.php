@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2014-11-24
+ * Last modified:	2014-12-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -113,6 +113,46 @@ class projects
         }
 
         return $projects;
+    }
+
+    public function get_project($key)
+    {
+        $this->database->select("projects", null, "`key` = '".$key."'");
+
+        if ($this->database->row_count() == 1) {
+            $project = $this->database->result()[0];
+
+            $project_id = $project['id'];
+
+            /*
+             * Retrieve list of participants
+             */
+            $this->database->select("project_participants", "`id`, `first_name`, `last_name`, `email`", "`project` = '".$project_id."'");
+            $project_participants = $this->database->result();
+
+            /*
+             * Retrieve list of cards
+             */
+            $this->database->select("project_cards", "`id`, `value`", "`project` = '".$project_id."'");
+            $project_cards = $this->database->result();
+
+            $result = array(
+                'error'         => false,
+                'project'       => $project,
+                'participants'  => $project_participants,
+                'cards'         => $project_cards
+            );
+        } else {
+            /*
+             * Invalid project key provided
+             */
+            $result = array(
+                'error'         => true,
+                'msg'           => "invalid_username"
+            );
+        }
+
+        return $result;
     }
 
 }
