@@ -329,6 +329,46 @@ webapp.config([
                     }
                 }
             }
+        )
+        .state(
+            "/projects/project/add_card",
+            {
+                url: "/add_card",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Add Card",
+                onEnter: [
+                    "$state",
+                    "$modal",
+                    function($state, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "add_card_controller",
+                                resolve:        {
+                                    key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+
+                                            return url_parts[url_parts.length-2];
+                                        }
+                                    ]
+                                },
+                                templateUrl:    "/frontend/tpl/projects/add_card.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
         );
     }
 ]);
