@@ -9,8 +9,8 @@
         <div class="navbar-left">
             <ul class="nav navbar-nav">
                 <li ui-sref-active="active"><a ui-sref="/dashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
-                <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-large"></span> Projects <span class="caret"></span></a>
+                <li ui-sref-active="active" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-large"></span> Projects <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a ui-sref="/projects"><span class="glyphicon glyphicon-list"></span> View All Projects</a></li>
                         <li class="divider"></li>
