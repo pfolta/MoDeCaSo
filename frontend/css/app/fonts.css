@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/fonts.css
  * Created:			2014-11-03
- * Last modified:	2014-11-03
+ * Last modified:	2014-12-10
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -152,4 +152,18 @@
          url("/frontend/fonts/app/liberation-serif/liberation-serif-bolditalic-webfont.woff") format("woff"),
          url("/frontend/fonts/app/liberation-serif/liberation-serif-bolditalic-webfont.ttf") format("truetype"),
          url("/frontend/fonts/app/liberation-serif/liberation-serif-bolditalic-webfont.svg#liberation_serifbold_italic") format("svg");
+}
+
+/*
+ * Halogen
+ */
+@font-face {
+    font-family: "Halogen";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/frontend/fonts/app/halogen/halogen-webfont.eot");
+    src: url("/frontend/fonts/app/halogen/halogen-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/frontend/fonts/app/halogen/halogen-webfont.woff") format("woff"),
+         url("/frontend/fonts/app/halogen/halogen-webfont.ttf") format("truetype"),
+         url("/frontend/fonts/app/halogen/halogen-webfont.svg#liberation_serifregular") format("svg");
 }
