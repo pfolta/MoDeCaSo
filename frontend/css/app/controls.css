@@ -56,4 +56,6 @@ div.card-text {
     position: relative;
     text-align: center;
     top: 15px;
+
+    word-wrap: break-word;
 }
