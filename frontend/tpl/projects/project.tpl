@@ -108,7 +108,7 @@
                     <a href="/frontend/projects/{{ project.key }}" class="btn btn-warning" tooltip="Edit Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                     <a href="/frontend/projects/{{ project.key }}/delete_card/{{ card.id }}" class="btn btn-danger" tooltip="Delete Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
                 </div>
-                <div class="card-text">
+                <div class="card-text controls">
                     {{ card.value }}
                 </div>
             </div>

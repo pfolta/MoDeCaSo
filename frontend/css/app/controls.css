@@ -21,29 +21,22 @@ div.card {
     -webkit-box-shadow: 0 0 10px #888888;
     box-shadow: 3px 3px 5px #cccccc;
 
-    /*display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;*/
-
     float: left;
 
     height: 150px;
     width: 200px;
 
-    margin: 10px;
+    margin: 13px;
     padding: 10px;
+}
+
+div.card:hover > div.card-controls {
+    visibility: visible;
 }
 
 div.card-controls {
     float: right;
+    visibility: hidden;
 }
 
 div.card-text {
@@ -56,7 +49,11 @@ div.card-text {
     clear: both;
     position: relative;
     text-align: center;
-    top: 21px;
+    top: 51px;
 
     word-wrap: break-word;
+}
+
+div.controls {
+    top: 21px !important;
 }
