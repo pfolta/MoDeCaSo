@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-12-03
+ * Last modified:	2014-12-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -357,6 +357,42 @@ webapp.config([
                                     ]
                                 },
                                 templateUrl:    "/frontend/tpl/projects/add_card.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/projects/project/delete_card",
+            {
+                url: "/delete_card/:card_id",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Delete Card",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "delete_card_controller",
+                                resolve:        {
+                                    card_id:   function()
+                                    {
+                                        return $stateParams.card_id;
+                                    }
+                                },
+                                templateUrl:    "/frontend/tpl/projects/delete_card.tpl",
                                 backdrop:       "static",
                                 keyboard:       false
                             }
