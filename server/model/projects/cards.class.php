@@ -63,4 +63,34 @@ class cards
         return $result;
     }
 
+    public function delete_card($card_id)
+    {
+        /*
+         * Check if card exists
+         */
+        $this->database->select("project_cards", null, "`id` = '".$card_id."'");
+
+        if ($this->database->row_count() == 1) {
+            /*
+             * Delete card
+             */
+            $this->database->delete("project_cards", "`id` = '".$card_id."'");
+
+            $result = array(
+                'error'         => false,
+                'msg'           => "card_deleted"
+            );
+        } else {
+            /*
+             * Invalid card id provided
+             */
+            $result = array(
+                'error'         => true,
+                'msg'           => "invalid_card_id",
+            );
+        }
+
+        return $result;
+    }
+
 }

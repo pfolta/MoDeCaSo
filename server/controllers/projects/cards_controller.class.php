@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/projects/cards_controller.class.php
  * Created:			2014-12-10
- * Last modified:	2014-12-10
+ * Last modified:	2014-12-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -35,6 +35,14 @@ class cards_controller extends controller
                         'add_card'
                     )
                 );
+
+                $this->app->post(
+                    "/delete_card",
+                    array(
+                        $this,
+                        'delete_card'
+                    )
+                );
             }
         );
     }
@@ -51,6 +59,35 @@ class cards_controller extends controller
             $card = $this->request->card;
 
             $result = $this->model->add_card($key, $card);
+
+            if (!$result['error']) {
+                $this->app->render(
+                    200,
+                    $result
+                );
+            } else {
+                $this->app->render(
+                    400,
+                    $result
+                );
+            }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
+    }
+
+    public function delete_card()
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $card_id = $this->request->card_id;
+
+            $result = $this->model->delete_card($card_id);
 
             if (!$result['error']) {
                 $this->app->render(

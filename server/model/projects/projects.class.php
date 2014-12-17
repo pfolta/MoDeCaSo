@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2014-12-10
+ * Last modified:	2014-12-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -80,7 +80,7 @@ class projects
             );
         } else {
             /*
-             * Invalid username provided
+             * Invalid project key provided
              */
             $result = array(
                 'error'         => true,

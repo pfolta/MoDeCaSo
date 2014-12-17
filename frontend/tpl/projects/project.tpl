@@ -111,6 +111,9 @@
                     {{ card.value }}
                 </div>
             </div>
+            <p class="text-right" style="clear: both;">
+                {{ cards.length }} {{ cards.length == 1 ? "Card" : "Cards" }}
+            </p>
         </div>
     </div>
 </div>
