@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/add_card.js
  * Created:			2014-12-10
- * Last modified:	2014-12-10
+ * Last modified:	2014-12-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -42,7 +42,7 @@ controllers.controller(
                     url:        "/server/projects/cards/add_card",
                     data:       {
                         key:        $scope.key,
-                        card:       $scope.card
+                        value:      $scope.value
                     },
                     headers:    {
                         "X-API-Key":    session_service.get("api_key")

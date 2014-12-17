@@ -405,6 +405,42 @@ webapp.config([
                     }
                 ]
             }
+        )
+        .state(
+            "/projects/project/edit_card",
+            {
+                url: "/edit_card/:card_id",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Edit Card",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "edit_card_controller",
+                                resolve:        {
+                                    card_id:   function()
+                                    {
+                                        return $stateParams.card_id;
+                                    }
+                                },
+                                templateUrl:    "/frontend/tpl/projects/edit_card.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
         );
     }
 ]);

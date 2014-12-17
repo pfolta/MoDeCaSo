@@ -28,10 +28,10 @@ class cards
         $this->database = database::get_instance();
     }
 
-    public function add_card($key, $card)
+    public function add_card($key, $value)
     {
         /*
-         * Check if project key already exists
+         * Check if project key exists
          */
         $this->database->select("projects", null, "`key` = '".$key."'");
 
@@ -46,17 +46,19 @@ class cards
              */
             $this->database->insert("project_cards", array(
                 'project'       => $project_id,
-                'value'         => $card
+                'value'         => $value,
+                'created'       => time(),
+                'last_modified' => time()
             ));
 
             $result = array(
                 'error'         => false,
-                'msg'           => "project_created"
+                'msg'           => "card_created"
             );
         } else {
             $result = array(
                 'error'         => true,
-                'msg'           => "project_key_does_not_exists"
+                'msg'           => "invalid_project_key"
             );
         }
 
@@ -82,11 +84,67 @@ class cards
             );
         } else {
             /*
-             * Invalid card id provided
+             * Invalid Card ID provided
              */
             $result = array(
                 'error'         => true,
                 'msg'           => "invalid_card_id",
+            );
+        }
+
+        return $result;
+    }
+
+    public function edit_card($card_id, $value)
+    {
+        /*
+         * Check if card exists
+         */
+        $this->database->select("project_cards", null, "`id` = '".$card_id."'");
+
+        if ($this->database->row_count() == 1) {
+            $data = array(
+                'value'         => $value,
+                'last_modified' => time()
+            );
+
+            /*
+             * Update card in database
+             */
+            $this->database->update("project_cards", "`id` = '".$card_id."'", $data);
+
+            $result = array(
+                'error'         => false,
+                'msg'           => "card_edited"
+            );
+        } else {
+            $result = array(
+                'error'         => true,
+                'msg'           => "invalid_card_id"
+            );
+        }
+
+        return $result;
+    }
+
+    public function get_card($card_id)
+    {
+        $this->database->select("project_cards", "id, project, value", "`id` = '".$card_id."'");
+
+        if ($this->database->row_count() == 1) {
+            $card = $this->database->result()[0];
+
+            $result = array(
+                'error'         => false,
+                'card'          => $card
+            );
+        } else {
+            /*
+             * Invalid Card ID provided
+             */
+            $result = array(
+                'error'         => true,
+                'msg'           => "invalid_card_id"
             );
         }
 

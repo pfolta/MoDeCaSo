@@ -43,6 +43,22 @@ class cards_controller extends controller
                         'delete_card'
                     )
                 );
+
+                $this->app->post(
+                    "/edit_card",
+                    array(
+                        $this,
+                        'edit_card'
+                    )
+                );
+
+                $this->app->get(
+                    "/get_card/:card_id",
+                    array(
+                        $this,
+                        'get_card'
+                    )
+                );
             }
         );
     }
@@ -56,9 +72,9 @@ class cards_controller extends controller
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
             $key = $this->request->key;
-            $card = $this->request->card;
+            $value = $this->request->value;
 
-            $result = $this->model->add_card($key, $card);
+            $result = $this->model->add_card($key, $value);
 
             if (!$result['error']) {
                 $this->app->render(
@@ -88,6 +104,63 @@ class cards_controller extends controller
             $card_id = $this->request->card_id;
 
             $result = $this->model->delete_card($card_id);
+
+            if (!$result['error']) {
+                $this->app->render(
+                    200,
+                    $result
+                );
+            } else {
+                $this->app->render(
+                    400,
+                    $result
+                );
+            }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
+    }
+
+    public function edit_card()
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $card_id = $this->request->card_id;
+            $value = $this->request->value;
+
+            $result = $this->model->edit_card($card_id, $value);
+
+            if (!$result['error']) {
+                $this->app->render(
+                    200,
+                    $result
+                );
+            } else {
+                $this->app->render(
+                    400,
+                    $result
+                );
+            }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
+    }
+
+    public function get_card($card_id)
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $result = $this->model->get_card($card_id);
 
             if (!$result['error']) {
                 $this->app->render(

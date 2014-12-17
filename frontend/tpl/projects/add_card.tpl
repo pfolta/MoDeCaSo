@@ -15,7 +15,7 @@
             <label for="add_card_card" class="col-sm-3 control-label">Card</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-th-large"></span></span>
-                <input type="text" ng-model="card" id="add_card_card" placeholder="Card" required autofocus tabindex="1" class="form-control">
+                <input type="text" ng-model="value" id="add_card_card" placeholder="Card" required autofocus tabindex="1" class="form-control">
             </div>
         </div>
     </div>

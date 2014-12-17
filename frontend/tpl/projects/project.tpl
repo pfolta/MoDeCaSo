@@ -105,7 +105,7 @@
             </div>
             <div class="card" ng-repeat="card in cards">
                 <div class="btn-group btn-group-sm card-controls">
-                    <a href="/frontend/projects/{{ project.key }}" class="btn btn-warning" tooltip="Edit Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a href="/frontend/projects/{{ project.key }}/edit_card/{{ card.id }}" class="btn btn-warning" tooltip="Edit Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                     <a href="/frontend/projects/{{ project.key }}/delete_card/{{ card.id }}" class="btn btn-danger" tooltip="Delete Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
                 </div>
                 <div class="card-text controls">
