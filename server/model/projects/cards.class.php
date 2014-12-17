@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/cards.class.php
  * Created:			2014-12-10
- * Last modified:	2014-12-10
+ * Last modified:	2014-12-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
