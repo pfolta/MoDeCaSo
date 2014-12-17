@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/overview.js
  * Created:			2014-11-24
- * Last modified:	2014-11-24
+ * Last modified:	2014-12-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -46,8 +46,6 @@ controllers.controller(
 
             $scope.load_projects = function()
             {
-                $scope.projects = [];
-
                 $http({
                     method:     "get",
                     url:        "/server/projects/get_project_list",

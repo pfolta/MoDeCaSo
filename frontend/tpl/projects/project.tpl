@@ -6,6 +6,7 @@
     <div class="form-group" style="padding-bottom: 50px; ">
         <div class="pull-left" style="width: 80%;">
             <a class="btn btn-success" disabled><span class="glyphicon glyphicon-play"></span> Run Project</a>
+            <a ng-click="load_project();" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Reload</a>
         </div>
         <div class="pull-right">
             <a ui-sref="/projects" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> View All Projects</a>

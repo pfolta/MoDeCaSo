@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2014-12-03
+ * Last modified:	2014-12-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -31,8 +31,6 @@ controllers.controller(
 
             $scope.load_project = function()
             {
-                $scope.project = [];
-
                 $http({
                     method:     "get",
                     url:        "/server/projects/get_project/" + $scope.key,
