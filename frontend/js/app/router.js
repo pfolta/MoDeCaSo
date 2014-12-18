@@ -270,7 +270,7 @@ webapp.config([
             {
                 url: "/delete_project/:key",
                 role: "MODERATOR",
-                parent: "/projects",
+                parent: "/projects/overview",
                 title: "Delete Project",
                 onEnter: [
                     "$state",
@@ -294,7 +294,7 @@ webapp.config([
                         ).result.then(
                             function(result)
                             {
-                                $state.go("/projects");
+                                $state.go("/projects/overview");
                             }
                         );
                     }
