@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/controls.css
  * Created:			2014-12-10
- * Last modified:	2014-12-17
+ * Last modified:	2014-12-18
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -32,6 +32,10 @@ div.card {
 
 div.card:hover > div.card-controls {
     visibility: visible;
+}
+
+div.card-draggable {
+    cursor: move !important;
 }
 
 div.card-controls {
