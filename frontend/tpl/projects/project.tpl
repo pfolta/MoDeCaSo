@@ -9,7 +9,7 @@
             <a ng-click="load_project();" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Reload</a>
         </div>
         <div class="pull-right">
-            <a ui-sref="/projects" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> View All Projects</a>
+            <a ui-sref="/projects/overview" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> View All Projects</a>
         </div>
     </div>
     <div class="panel panel-default">

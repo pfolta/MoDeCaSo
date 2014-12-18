@@ -9,10 +9,10 @@
         <div class="navbar-left">
             <ul class="nav navbar-nav">
                 <li ui-sref-active="active"><a ui-sref="/dashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
-                <li ui-sref-active="active" class="dropdown">
+                <li ui-sref-active="active" class="dropdown" ng-show="role() == 'MODERATOR' || role() == 'ADMINISTRATOR'">
                     <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-large"></span> Projects <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a ui-sref="/projects"><span class="glyphicon glyphicon-list"></span> View All Projects</a></li>
+                        <li><a ui-sref="/projects/overview"><span class="glyphicon glyphicon-list"></span> View All Projects</a></li>
                         <li class="divider"></li>
                         <li><a ui-sref="/projects/create_project"><span class="glyphicon glyphicon-plus-sign"></span> Create Project</a></li>
                         <li class="divider"></li>

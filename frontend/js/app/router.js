@@ -217,7 +217,7 @@ webapp.config([
             }
         )
         .state(
-            "/projects",
+            "/projects/overview",
             {
                 url: "/frontend/projects",
                 role: "MODERATOR",
@@ -241,7 +241,7 @@ webapp.config([
             {
                 url: "/create_project",
                 role: "MODERATOR",
-                parent: "/projects",
+                parent: "/projects/overview",
                 title: "Create Project",
                 onEnter: [
                     "$state",
@@ -258,7 +258,7 @@ webapp.config([
                         ).result.then(
                             function(result)
                             {
-                                $state.go("/projects");
+                                $state.go("/projects/overview");
                             }
                         );
                     }
