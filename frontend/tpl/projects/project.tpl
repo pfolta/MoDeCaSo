@@ -137,11 +137,12 @@
             </div>
             <div class="card" ng-repeat="card in cards_filtered = (cards | filter:cards_filter)">
                 <div class="btn-group btn-group-sm card-controls">
+                    <button ng-disabled="!card.tooltip" class="btn btn-info" tooltip="More information" tooltip-append-to-body="true" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="right" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
                     <a href="/frontend/projects/{{ project.key }}/edit_card/{{ card.id }}" class="btn btn-warning" tooltip="Edit Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                     <a href="/frontend/projects/{{ project.key }}/delete_card/{{ card.id }}" class="btn btn-danger" tooltip="Delete Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
                 </div>
                 <div class="card-text controls">
-                    {{ card.value }}
+                    {{ card.text }}
                 </div>
             </div>
             <p class="text-right" style="clear: both;">

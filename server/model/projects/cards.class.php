@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/cards.class.php
  * Created:			2014-12-10
- * Last modified:	2014-12-17
+ * Last modified:	2014-12-18
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -28,12 +28,12 @@ class cards
         $this->database = database::get_instance();
     }
 
-    public function add_card($key, $value)
+    public function add_card($project_key, $text, $tooltip)
     {
         /*
          * Check if project key exists
          */
-        $this->database->select("projects", null, "`key` = '".$key."'");
+        $this->database->select("projects", null, "`key` = '".$project_key."'");
 
         if ($this->database->row_count() == 1) {
             /*
@@ -46,7 +46,8 @@ class cards
              */
             $this->database->insert("project_cards", array(
                 'project'       => $project_id,
-                'value'         => $value,
+                'text'          => $text,
+                'tooltip'       => $tooltip,
                 'created'       => time(),
                 'last_modified' => time()
             ));
@@ -95,7 +96,39 @@ class cards
         return $result;
     }
 
-    public function edit_card($card_id, $value)
+    public function delete_all_cards($project_key)
+    {
+        /*
+         * Check if project key exists
+         */
+        $this->database->select("projects", null, "`key` = '".$project_key."'");
+
+        if ($this->database->row_count() == 1) {
+            /*
+             * Get project ID
+             */
+            $project_id = $this->database->result()[0]['id'];
+
+            /*
+             * Delete all cards linked to this project from database
+             */
+            $this->database->delete("project_cards", "`project` = '".$project_id."'");
+
+            $result = array(
+                'error'         => false,
+                'msg'           => "all_cards_deleted"
+            );
+        } else {
+            $result = array(
+                'error'         => true,
+                'msg'           => "invalid_project_key"
+            );
+        }
+
+        return $result;
+    }
+
+    public function edit_card($card_id, $text, $tooltip)
     {
         /*
          * Check if card exists
@@ -104,7 +137,8 @@ class cards
 
         if ($this->database->row_count() == 1) {
             $data = array(
-                'value'         => $value,
+                'text'          => $text,
+                'tooltip'       => $tooltip,
                 'last_modified' => time()
             );
 
@@ -129,7 +163,7 @@ class cards
 
     public function get_card($card_id)
     {
-        $this->database->select("project_cards", "id, project, value", "`id` = '".$card_id."'");
+        $this->database->select("project_cards", null, "`id` = '".$card_id."'");
 
         if ($this->database->row_count() == 1) {
             $card = $this->database->result()[0];

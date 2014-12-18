@@ -24,7 +24,7 @@
                 <span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
                 <input type="text" ng-model="project.key" ng-change="key_modified = true;" id="create_project_key" placeholder="Project Key" maxlength="10" ng-maxlength="10" required tabindex="2" class="form-control">
                 <span class="input-group-btn">
-                    <button class="btn btn-info" type="button" popover="A project key identifies each project and must be unique. The project key cannot be changed." popover-title="What's a project key?" popover-placement="right" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
+                    <button class="btn btn-info" type="button" tooltip="Help" tooltip-append-to-body="true" popover="A project key identifies each project and must be unique. The project key cannot be changed." popover-title="What's a project key?" popover-placement="right" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
                 </span>
             </div>
         </div>
