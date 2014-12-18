@@ -53,8 +53,8 @@
             <div class="input-group col-sm-8" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                 <select class="form-control" id="edit_user_role" ng-model="user.role" required tabindex="6">
-                    <option value="3">Administrator</option>
-                    <option value="2">Moderator</option>
+                    <option value="2">Administrator</option>
+                    <option value="1">Moderator</option>
                 </select>
             </div>
         </div>
