@@ -21,6 +21,11 @@
                 <div class="pull-left" style="width: 80%;">
                     <a class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Participant</a>
                     <a class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Seed Participant</a>
+                    <div class="btn-group">
+                        <a class="btn btn-default"><span class="glyphicon glyphicon-import"></span> Import Participants</a>
+                        <a class="btn btn-default"><span class="glyphicon glyphicon-export"></span> Export Participants</a>
+                    </div>
+                    <a class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Participants</a>
                 </div>
                 <div class="pull-right" style="width: 20%;">
                     <div class="input-group">
@@ -114,6 +119,11 @@
             <div class="form-group" style="padding-bottom: 50px; ">
                 <div class="pull-left" style="width: 80%;">
                     <a href="/frontend/projects/{{ project.key }}/add_card" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</a>
+                    <div class="btn-group">
+                        <a href="/frontend/projects/{{ project.key }}/import_cards" class="btn btn-default"><span class="glyphicon glyphicon-import"></span> Import Cards</a>
+                        <a href="/frontend/projects/{{ project.key }}/export_cards" class="btn btn-default"><span class="glyphicon glyphicon-export"></span> Export Cards</a>
+                    </div>
+                    <a href="/frontend/projects/{{ project.key }}/delete_all_cards" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Cards</a>
                 </div>
                 <div class="pull-right" style="width: 20%;">
                     <div class="input-group">
