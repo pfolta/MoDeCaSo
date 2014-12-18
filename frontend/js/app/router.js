@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-12-17
+ * Last modified:	2014-12-18
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
