@@ -20,6 +20,16 @@
             <div class="form-group" style="padding-bottom: 50px; ">
                 <div class="pull-left" style="width: 80%;">
                     <a class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Participant</a>
+                    <a class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Seed Participant</a>
+                </div>
+                <div class="pull-right" style="width: 20%;">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                        <input type="text" ng-model="participants_filter" placeholder="Filter" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="participants_filter=null" ng-disabled="!participants_filter"><span aria-hidden="true">&times;</span><span class="sr-only">Clear</span></button>
+                        </span>
+                    </div>
                 </div>
             </div>
             <table class="table table-striped table-bordered">
@@ -35,22 +45,22 @@
                         <th style="width: 22%;">
                             First Name
                             <div class="btn-group btn-group-xs pull-right">
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'title'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'title'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'first_name'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'first_name'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                             </div>
                         </th>
                         <th style="width: 15%;">
                             Last Name
                             <div class="btn-group btn-group-xs pull-right">
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'key'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'key'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'last_name'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'last_name'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                             </div>
                         </th>
                         <th style="width: 20%;">
                             E-Mail
                             <div class="btn-group btn-group-xs pull-right">
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'lead'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'lead'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                             </div>
                         </th>
                         <th style="width: 10%;">
@@ -66,7 +76,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="participant in filtered = (participants | filter:filter | orderBy:order_predicate:order_reverse)">
+                    <tr ng-repeat="participant in participants_filtered = (participants | filter:participants_filter | orderBy:order_predicate:order_reverse)">
                         <td class="text-right">
                             {{ participant.id }}
                         </td>
@@ -91,6 +101,9 @@
                     </tr>
                 </tbody>
             </table>
+            <p class="text-right">
+                {{ participants_filtered.length }} {{ participants_filtered.length == 1 ? "Participant" : "Participants" }}
+            </p>
         </div>
     </div>
     <div class="panel panel-default">
@@ -102,8 +115,17 @@
                 <div class="pull-left" style="width: 80%;">
                     <a href="/frontend/projects/{{ project.key }}/add_card" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</a>
                 </div>
+                <div class="pull-right" style="width: 20%;">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                        <input type="text" ng-model="cards_filter" placeholder="Filter" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="cards_filter=null" ng-disabled="!cards_filter"><span aria-hidden="true">&times;</span><span class="sr-only">Clear</span></button>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="card" ng-repeat="card in cards">
+            <div class="card" ng-repeat="card in cards_filtered = (cards | filter:cards_filter)">
                 <div class="btn-group btn-group-sm card-controls">
                     <a href="/frontend/projects/{{ project.key }}/edit_card/{{ card.id }}" class="btn btn-warning" tooltip="Edit Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                     <a href="/frontend/projects/{{ project.key }}/delete_card/{{ card.id }}" class="btn btn-danger" tooltip="Delete Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
@@ -113,7 +135,7 @@
                 </div>
             </div>
             <p class="text-right" style="clear: both;">
-                {{ cards.length }} {{ cards.length == 1 ? "Card" : "Cards" }}
+                {{ cards_filtered.length }} {{ cards_filtered.length == 1 ? "Card" : "Cards" }}
             </p>
         </div>
     </div>
