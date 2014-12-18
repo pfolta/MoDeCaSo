@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2014-12-17
+ * Last modified:	2014-12-18
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -52,7 +52,7 @@ controllers.controller(
                         $scope.flash.type = "alert-danger";
                         $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Error loading project.";
 
-                        shake_element($("#project_overview_flash"));
+                        shake_element($("#project_flash"));
                     }
                 );
             };
