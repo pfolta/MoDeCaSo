@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/projects/cards_controller.class.php
  * Created:			2014-12-10
- * Last modified:	2014-12-17
+ * Last modified:	2014-12-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -57,6 +57,14 @@ class cards_controller extends controller
                     array(
                         $this,
                         'get_card'
+                    )
+                );
+
+                $this->app->get(
+                    "/export_cards/:project_key",
+                    array(
+                        $this,
+                        'export_cards'
                     )
                 );
             }
@@ -173,6 +181,30 @@ class cards_controller extends controller
                     $result
                 );
             }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
+    }
+
+    public function export_cards($project_key)
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $export = $this->model->export_cards($project_key);
+
+            $this->app->response()->status(200);
+            $this->app->response()->header("Content-Type", "text/plain");
+            $this->app->response()->header("Content-Disposition", "attachment; filename=\"export.txt\"");
+            $this->app->response()->header("Last-Modified", date("r"));
+            $this->app->response()->header("Cache-Control", "cache, must-revalidate");
+            $this->app->response()->body($export);
+
+            $this->app->stop();
         } else {
             $this->app->render(
                 403,

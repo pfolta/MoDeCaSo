@@ -26,7 +26,7 @@ webapp.config([
             "/help",
             {
                 url: "/frontend/help",
-                role: "MODERATOR",
+                role: "UNAUTHENTICATED",
                 title: "Help",
                 views: {
                     "mainView": {

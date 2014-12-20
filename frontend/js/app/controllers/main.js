@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/main.js
  * Created:			2014-10-19
- * Last modified:	2014-12-17
+ * Last modified:	2014-12-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -33,9 +33,9 @@ controllers.controller(
                 return session_service.get("first_name") + " " + session_service.get("last_name");
             };
 
-            $scope.role = function()
+            $scope.is_authenticated = function(required_role)
             {
-                return session_service.get("role");
+                return auth_service.is_authenticated(required_role);
             };
 
             $scope.change_password_flash = {
@@ -168,18 +168,20 @@ controllers.controller(
 
             $scope.load_projects = function()
             {
-                $http({
-                    method:     "get",
-                    url:        "/server/projects/get_project_list",
-                    headers:    {
-                        "X-API-Key":    session_service.get("api_key")
-                    }
-                }).then(
-                    function(response)
-                    {
-                        $scope.projects = response.data.projects;
-                    }
-                );
+                if (auth_service.is_authenticated("MODERATOR")) {
+                    $http({
+                        method:     "get",
+                        url:        "/server/projects/get_project_list",
+                        headers:    {
+                            "X-API-Key":    session_service.get("api_key")
+                        }
+                    }).then(
+                        function(response)
+                        {
+                            $scope.projects = response.data.projects;
+                        }
+                    );
+                }
             };
 
             $scope.$on(

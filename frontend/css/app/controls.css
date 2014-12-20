@@ -7,14 +7,15 @@
  *
  * File:			/frontend/css/app/controls.css
  * Created:			2014-12-10
- * Last modified:	2014-12-18
+ * Last modified:	2014-12-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 @charset "UTF-8";
 
 div.card {
-    background: #ffff99 url("/frontend/img/card_background.png") no-repeat;
+    background: #ffff99 url("/frontend/img/card_background.svg") no-repeat;
+    background-size: contain;
 
     border: 1px #aaaaaa solid;
     -moz-box-shadow: 0 0 10px #888888;

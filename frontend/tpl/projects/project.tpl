@@ -121,7 +121,7 @@
                     <a href="/frontend/projects/{{ project.key }}/add_card" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</a>
                     <div class="btn-group">
                         <a href="/frontend/projects/{{ project.key }}/import_cards" class="btn btn-default"><span class="glyphicon glyphicon-import"></span> Import Cards</a>
-                        <a href="/frontend/projects/{{ project.key }}/export_cards" class="btn btn-default"><span class="glyphicon glyphicon-export"></span> Export Cards</a>
+                        <a ng-click="export_cards()" class="btn btn-default"><span class="glyphicon glyphicon-export"></span> Export Cards</a>
                     </div>
                     <a href="/frontend/projects/{{ project.key }}/delete_all_cards" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Cards</a>
                 </div>
@@ -137,7 +137,7 @@
             </div>
             <div class="card" ng-repeat="card in cards_filtered = (cards | filter:cards_filter)">
                 <div class="btn-group btn-group-sm card-controls">
-                    <button ng-disabled="!card.tooltip" class="btn btn-info" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="top" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
+                    <button ng-show="card.tooltip" class="btn btn-info" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="top" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
                     <a href="/frontend/projects/{{ project.key }}/edit_card/{{ card.id }}" class="btn btn-warning" tooltip="Edit Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                     <a href="/frontend/projects/{{ project.key }}/delete_card/{{ card.id }}" class="btn btn-danger" tooltip="Delete Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
                 </div>

@@ -9,13 +9,13 @@
  *
  * File:			/server/model/projects/cards.class.php
  * Created:			2014-12-10
- * Last modified:	2014-12-18
+ * Last modified:	2014-12-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 namespace model;
 
-use data\project_statuses;
+use Exception;
 use main\database;
 
 class cards
@@ -183,6 +183,40 @@ class cards
         }
 
         return $result;
+    }
+
+    public function export_cards($project_key)
+    {
+        /*
+         * Check if project key exists
+         */
+        $this->database->select("projects", null, "`key` = '".$project_key."'");
+
+        if ($this->database->row_count() == 1) {
+            /*
+             * Get project ID
+             */
+            $project_id = $this->database->result()[0]['id'];
+
+            $this->database->select("project_cards", null, "`project` = '".$project_id."'");
+            $cards = $this->database->result();
+
+            $export_data = "";
+
+            foreach ($cards as $card) {
+                $export_data .= $card['text'];
+
+                if (!empty($card['tooltip'])) {
+                    $export_data .= "|".$card['tooltip'];
+                }
+
+                $export_data .= "\n";
+            }
+        } else {
+            throw new Exception("Project with key '".$project_key."' does not exist.");
+        }
+
+        return $export_data;
     }
 
 }

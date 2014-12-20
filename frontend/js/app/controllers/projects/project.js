@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2014-12-18
+ * Last modified:	2014-12-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -51,6 +51,34 @@ controllers.controller(
                         $scope.flash.show = true;
                         $scope.flash.type = "alert-danger";
                         $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Error loading project.";
+
+                        shake_element($("#project_flash"));
+                    }
+                );
+            };
+
+            $scope.export_cards = function()
+            {
+                $http({
+                    method:     "get",
+                    url:        "/server/projects/cards/export_cards/" + $scope.key,
+                    headers:    {
+                        "X-API-Key":    session_service.get("api_key")
+                    }
+                }).then(
+                    function(response)
+                    {
+                        var data = response.data;
+
+                        var blob = new Blob([data], {type: "text/plain"});
+                        var objectUrl = URL.createObjectURL(blob);
+                        window.location = (objectUrl);
+                    },
+                    function(response)
+                    {
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-danger";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Error exporting cards.";
 
                         shake_element($("#project_flash"));
                     }

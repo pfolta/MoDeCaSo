@@ -6,6 +6,16 @@
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <span class="glyphicon glyphicon-log-in"></span> <strong>Log In</strong>
+                    <span class="pull-right">
+                        <span class="dropdown" dropdown>
+                            <a class="dropdown-toggle" dropdown-toggle tooltip="Help" tooltip-append-to-body="true"><span class="glyphicon glyphicon-question-sign" style="color: #ffffff;"></span></a>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a ui-sref="/help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-click="show_about_dialog()"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                            </ul>
+                        </span>
+                    </span>
                 </h3>
             </div>
             <div class="panel-body">
