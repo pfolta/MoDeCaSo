@@ -117,13 +117,16 @@
         </div>
         <div class="panel-body">
             <div class="form-group" style="padding-bottom: 50px; ">
-                <div class="pull-left" style="width: 80%;">
+                <div class="pull-left" style="width: 69%;">
                     <a href="/frontend/projects/{{ project.key }}/add_card" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</a>
                     <div class="btn-group">
                         <a href="/frontend/projects/{{ project.key }}/import_cards" class="btn btn-default"><span class="glyphicon glyphicon-import"></span> Import Cards</a>
                         <a ng-click="export_cards()" class="btn btn-default"><span class="glyphicon glyphicon-export"></span> Export Cards</a>
                     </div>
                     <a href="/frontend/projects/{{ project.key }}/delete_all_cards" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Cards</a>
+                </div>
+                <div class="pull-left" style="height: 33px; width: 10%; padding-top: 7px;">
+                    <input type="range" id="card_zoom" ng-model="card_zoom" min="0.5" max="2.5" step="0.1">
                 </div>
                 <div class="pull-right" style="width: 20%;">
                     <div class="input-group">
@@ -135,14 +138,16 @@
                     </div>
                 </div>
             </div>
-            <div class="card" ng-repeat="card in cards_filtered = (cards | filter:cards_filter)">
-                <div class="btn-group btn-group-sm card-controls">
-                    <button ng-show="card.tooltip" class="btn btn-info" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="top" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
-                    <a href="/frontend/projects/{{ project.key }}/edit_card/{{ card.id }}" class="btn btn-warning" tooltip="Edit Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
-                    <a href="/frontend/projects/{{ project.key }}/delete_card/{{ card.id }}" class="btn btn-danger" tooltip="Delete Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
-                </div>
-                <div class="card-text controls">
-                    {{ card.text }}
+            <div class="card-container" ng-repeat="card in cards_filtered = (cards | filter:cards_filter)">
+                <div class="card">
+                    <div class="btn-group btn-group-sm card-controls">
+                        <button ng-show="card.tooltip" class="btn btn-info" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="top" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
+                        <a href="/frontend/projects/{{ project.key }}/edit_card/{{ card.id }}" class="btn btn-warning" tooltip="Edit Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="/frontend/projects/{{ project.key }}/delete_card/{{ card.id }}" class="btn btn-danger" tooltip="Delete Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
+                    </div>
+                    <div class="card-text">
+                        {{ card.text }}
+                    </div>
                 </div>
             </div>
             <p class="text-right" style="clear: both;">

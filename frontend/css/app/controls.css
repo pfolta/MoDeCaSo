@@ -7,11 +7,15 @@
  *
  * File:			/frontend/css/app/controls.css
  * Created:			2014-12-10
- * Last modified:	2014-12-20
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 @charset "UTF-8";
+
+div.card-container {
+    float: left;
+}
 
 div.card {
     background: #ffff99 url("/frontend/img/card_background.svg") no-repeat;
@@ -22,7 +26,10 @@ div.card {
     -webkit-box-shadow: 0 0 10px #888888;
     box-shadow: 3px 3px 5px #cccccc;
 
-    float: left;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
 
     height: 150px;
     width: 200px;
@@ -54,11 +61,7 @@ div.card-text {
     clear: both;
     position: relative;
     text-align: center;
-    top: 51px;
+    top: 21px;
 
     word-wrap: break-word;
-}
-
-div.controls {
-    top: 21px !important;
 }

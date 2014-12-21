@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2014-12-20
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -28,6 +28,24 @@ controllers.controller(
                 "type":     null,
                 "message":  null
             };
+
+            $scope.card_zoom = 1.0;
+
+            $scope.$watch(
+                function()
+                {
+                    return $scope.card_zoom;
+                },
+                function(value)
+                {
+                    $(".card").css("-moz-transform", "scale(" + value + ")");
+                    $(".card").css("-o-transform", "scale(" + value + ")");
+                    $(".card").css("-webkit-transform", "scale(" + value + ")");
+                    $(".card").css("transform", "scale(" + value + ")");
+                    $(".card-container").css("height", (value * 176) + "px");
+                    $(".card-container").css("width", (value * 226) + "px");
+                }
+            );
 
             $scope.load_project = function()
             {
