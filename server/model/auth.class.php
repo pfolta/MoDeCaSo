@@ -9,7 +9,7 @@
  *
  * File:			/server/model/auth.class.php
  * Created:			2014-11-05
- * Last modified:	2014-11-17
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -189,6 +189,16 @@ class auth
         return $result;
     }
 
+    /**
+     * authenticate ( )
+     *
+     * Verifies if user is authorized to access protected resources
+     *
+     * @param $api_key          string  API key of the user to verify
+     * @param $required_role    int     Role rights required to verify against
+     * @return bool                     true if user is authorized, false if user is not authorized
+     * @throws Exception                Invalid API Key provided
+     */
     public function authenticate($api_key, $required_role)
     {
         /*
@@ -220,7 +230,7 @@ class auth
             return false;
         }
 
-        return false;
+        throw new Exception("Invalid API Key");
     }
 
     /**
