@@ -9,14 +9,14 @@
  *
  * File:			/server/main/controller.class.php
  * Created:			2014-11-04
- * Last modified:	2014-11-24
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 namespace main;
 
+use \Exception;
 use model\auth;
-
 use \Slim\Slim;
 
 abstract class controller
@@ -52,18 +52,36 @@ abstract class controller
         $this->create_model();
     }
 
+    /**
+     * get_api_key ( )
+     *
+     * Returns API Key that accompanies the currently active request
+     * Accepts API Key via
+     *   - Header           "X-API-Key"
+     *   - GET parameter    "api_key"
+     *
+     * @return $api_key     The API Key
+     * @throws Exception    No API Key present
+     */
     protected function get_api_key()
     {
+        /*
+         * Assume X-API-Key header is present
+         */
         $api_key = $this->request_headers->get("X-API-Key");
 
         if (is_null($api_key) || empty($api_key)) {
-            $this->app->render(
-                401,
-                array(
-                    'error'         => true,
-                    'msg'           => "missing_api_key"
-                )
-            );
+            /*
+             * Header not present or empty, check GET parameters
+             */
+            $api_key = @$_GET['api_key'];
+
+            if (is_null($api_key) || empty($api_key)) {
+                /*
+                 * No API Key present
+                 */
+                throw new Exception("Missing API Key");
+            }
         }
 
         return $api_key;
