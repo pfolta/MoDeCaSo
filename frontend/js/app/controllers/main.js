@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/main.js
  * Created:			2014-10-19
- * Last modified:	2014-12-20
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -31,6 +31,11 @@ controllers.controller(
             $scope.real_name = function()
             {
                 return session_service.get("first_name") + " " + session_service.get("last_name");
+            };
+
+            $scope.api_key = function()
+            {
+                return session_service.get("api_key");
             };
 
             $scope.is_authenticated = function(required_role)

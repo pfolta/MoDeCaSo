@@ -121,7 +121,7 @@
                     <a href="/frontend/projects/{{ project.key }}/add_card" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</a>
                     <div class="btn-group">
                         <a href="/frontend/projects/{{ project.key }}/import_cards" class="btn btn-default"><span class="glyphicon glyphicon-import"></span> Import Cards</a>
-                        <a ng-click="export_cards()" class="btn btn-default"><span class="glyphicon glyphicon-export"></span> Export Cards</a>
+                        <a href="/server/projects/cards/export_cards/{{ project.key }}?api_key={{ api_key() }}" class="btn btn-default" target="download_iframe"><span class="glyphicon glyphicon-export"></span> Export Cards</a>
                     </div>
                     <a href="/frontend/projects/{{ project.key }}/delete_all_cards" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Cards</a>
                 </div>

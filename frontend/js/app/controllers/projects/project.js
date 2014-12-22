@@ -75,34 +75,6 @@ controllers.controller(
                 );
             };
 
-            $scope.export_cards = function()
-            {
-                $http({
-                    method:     "get",
-                    url:        "/server/projects/cards/export_cards/" + $scope.key,
-                    headers:    {
-                        "X-API-Key":    session_service.get("api_key")
-                    }
-                }).then(
-                    function(response)
-                    {
-                        var data = response.data;
-
-                        var blob = new Blob([data], {type: "text/plain"});
-                        var objectUrl = URL.createObjectURL(blob);
-                        window.location = (objectUrl);
-                    },
-                    function(response)
-                    {
-                        $scope.flash.show = true;
-                        $scope.flash.type = "alert-danger";
-                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Error exporting cards.";
-
-                        shake_element($("#project_flash"));
-                    }
-                );
-            };
-
             $scope.$on(
                 "load_project",
                 function(event, args)

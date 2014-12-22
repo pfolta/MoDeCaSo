@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/projects/cards_controller.class.php
  * Created:			2014-12-10
- * Last modified:	2014-12-20
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -18,6 +18,7 @@ namespace controllers;
 use data\user_roles;
 use main\controller;
 use model\cards;
+use tools\file;
 
 class cards_controller extends controller
 {
@@ -197,14 +198,11 @@ class cards_controller extends controller
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
             $export = $this->model->export_cards($project_key);
 
-            $this->app->response()->status(200);
-            $this->app->response()->header("Content-Type", "text/plain");
-            $this->app->response()->header("Content-Disposition", "attachment; filename=\"export.txt\"");
-            $this->app->response()->header("Last-Modified", date("r"));
-            $this->app->response()->header("Cache-Control", "cache, must-revalidate");
-            $this->app->response()->body($export);
-
-            $this->app->stop();
+            $file = new file($this->app);
+            $file->set_filename($project_key."_card_export_".date("Ymdhis").".txt");
+            $file->set_mimetype("text/plain");
+            $file->set_file_contents($export);
+            $file->serve();
         } else {
             $this->app->render(
                 403,
