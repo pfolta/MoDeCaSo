@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2014-12-03
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -19,8 +19,9 @@ controllers.controller(
         "$sce",
         "$state",
         "auth_service",
+        "session_service",
         "cfpLoadingBar",
-        function($rootScope, $scope, $sce, $state, auth_service, cfpLoadingBar)
+        function($rootScope, $scope, $sce, $state, auth_service, session_service, cfpLoadingBar)
         {
             $scope.flash = {
                 "show":     false,
@@ -43,7 +44,12 @@ controllers.controller(
                 {
                     if (result == "login_successful") {
                         $rootScope.$broadcast("load_projects");
-                        $state.go("/dashboard");
+
+                        if (session_service.get("goto")) {
+                            window.location.href = session_service.get("goto");
+                        } else {
+                            $state.go("/dashboard");
+                        }
                     } else {
                         /*
                          * Enable form elements

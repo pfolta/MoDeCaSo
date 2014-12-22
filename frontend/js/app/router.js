@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-12-18
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -63,12 +63,14 @@ webapp.config([
                 title: "Log Out",
                 onEnter: [
                     "auth_service",
+                    "session_service",
                     "$state",
-                    function(auth_service, $state)
+                    function(auth_service, session_service, $state)
                     {
                         auth_service.logout().then(function(result)
                         {
                             if (result == "logout_successful") {
+                                session_service.unset("goto");
                                 $state.go("/login");
                             }
                         });
