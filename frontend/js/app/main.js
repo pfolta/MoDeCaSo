@@ -37,6 +37,7 @@ var webapp = angular.module(
         "filters",
         "ui.router",
         "ui.bootstrap",
+        "angularFileUpload",
         "ngAnimate",
         "angular-loading-bar"
     ]

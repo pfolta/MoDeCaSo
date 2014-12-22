@@ -5,9 +5,9 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:            /frontend/js/app/controllers/projects/delete_card.js
+ * File:            /frontend/js/app/controllers/projects/cards/delete_card.js
  * Created:			2014-12-17
- * Last modified:	2014-12-17
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -18,9 +18,11 @@ controllers.controller(
         "$rootScope",
         "$http",
         "session_service",
+        "project_key",
         "card_id",
-        function($scope, $rootScope, $http, session_service, card_id)
+        function($scope, $rootScope, $http, session_service, project_key, card_id)
         {
+            $scope.project_key = project_key;
             $scope.card_id = card_id;
 
             $scope.flash = {
@@ -39,7 +41,7 @@ controllers.controller(
 
                 $http({
                     method:     "post",
-                    url:        "/server/projects/cards/delete_card",
+                    url:        "/server/projects/" + $scope.project_key + "/cards/delete_card",
                     data:       {
                         card_id:            $scope.card_id
                     },

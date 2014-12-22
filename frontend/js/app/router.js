@@ -348,7 +348,7 @@ webapp.config([
                             {
                                 controller:     "add_card_controller",
                                 resolve:        {
-                                    key: [
+                                    project_key: [
                                         "$stateParams",
                                         function($stateParams)
                                         {
@@ -358,7 +358,7 @@ webapp.config([
                                         }
                                     ]
                                 },
-                                templateUrl:    "/frontend/tpl/projects/add_card.tpl",
+                                templateUrl:    "/frontend/tpl/projects/cards/add_card.tpl",
                                 backdrop:       "static",
                                 keyboard:       false
                             }
@@ -389,12 +389,22 @@ webapp.config([
                             {
                                 controller:     "delete_card_controller",
                                 resolve:        {
+                                    project_key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+                                            var project_key = url_parts[url_parts.length-3];
+
+                                            return project_key;
+                                        }
+                                    ],
                                     card_id:   function()
                                     {
                                         return $stateParams.card_id;
                                     }
                                 },
-                                templateUrl:    "/frontend/tpl/projects/delete_card.tpl",
+                                templateUrl:    "/frontend/tpl/projects/cards/delete_card.tpl",
                                 backdrop:       "static",
                                 keyboard:       false
                             }
@@ -425,12 +435,104 @@ webapp.config([
                             {
                                 controller:     "edit_card_controller",
                                 resolve:        {
+                                    project_key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+                                            var project_key = url_parts[url_parts.length-3];
+
+                                            return project_key;
+                                        }
+                                    ],
                                     card_id:   function()
                                     {
                                         return $stateParams.card_id;
                                     }
                                 },
-                                templateUrl:    "/frontend/tpl/projects/edit_card.tpl",
+                                templateUrl:    "/frontend/tpl/projects/cards/edit_card.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/projects/project/delete_all_cards",
+            {
+                url: "/delete_all_cards",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Delete All Cards",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "delete_all_cards_controller",
+                                resolve:        {
+                                    project_key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+                                            var project_key = url_parts[url_parts.length-2];
+
+                                            return project_key;
+                                        }
+                                    ]
+                                },
+                                templateUrl:    "/frontend/tpl/projects/cards/delete_all_cards.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/projects/project/import_cards",
+            {
+                url: "/import_cards",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Import Cards",
+                onEnter: [
+                    "$state",
+                    "$modal",
+                    function($state, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "import_cards_controller",
+                                resolve:        {
+                                    project_key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+
+                                            return url_parts[url_parts.length-2];
+                                        }
+                                    ]
+                                },
+                                templateUrl:    "/frontend/tpl/projects/cards/import_cards.tpl",
                                 backdrop:       "static",
                                 keyboard:       false
                             }

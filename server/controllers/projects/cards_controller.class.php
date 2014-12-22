@@ -16,6 +16,7 @@
 namespace controllers;
 
 use data\user_roles;
+use Exception;
 use main\controller;
 use model\cards;
 use tools\file;
@@ -26,7 +27,7 @@ class cards_controller extends controller
     public function register_routes()
     {
         $this->app->group(
-            "/projects/cards",
+            "/projects/:project_key/cards",
             function()
             {
                 $this->app->post(
@@ -42,6 +43,14 @@ class cards_controller extends controller
                     array(
                         $this,
                         'delete_card'
+                    )
+                );
+
+                $this->app->get(
+                    "/delete_all_cards",
+                    array(
+                        $this,
+                        'delete_all_cards'
                     )
                 );
 
@@ -62,10 +71,18 @@ class cards_controller extends controller
                 );
 
                 $this->app->get(
-                    "/export_cards/:project_key",
+                    "/export_cards",
                     array(
                         $this,
                         'export_cards'
+                    )
+                );
+
+                $this->app->post(
+                    "/import_cards",
+                    array(
+                        $this,
+                        'import_cards'
                     )
                 );
             }
@@ -77,119 +94,82 @@ class cards_controller extends controller
         $this->model = new cards();
     }
 
-    public function add_card()
+    public function add_card($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $key = $this->request->key;
-            $value = $this->request->value;
+            $text       = $this->request->text;
+            $tooltip    = $this->request->tooltip;
 
-            $result = $this->model->add_card($key, $value);
+            $result = $this->model->add_card($project_key, $text, $tooltip);
 
-            if (!$result['error']) {
-                $this->app->render(
-                    200,
-                    $result
-                );
-            } else {
-                $this->app->render(
-                    400,
-                    $result
-                );
-            }
-        } else {
             $this->app->render(
-                403,
-                array(
-                    'error'         => true,
-                    'msg'           => "insufficient_rights"
-                )
+                200,
+                $result
             );
+        } else {
+            throw new Exception("Insufficient rights");
         }
     }
 
-    public function delete_card()
+    public function delete_card($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
             $card_id = $this->request->card_id;
 
-            $result = $this->model->delete_card($card_id);
+            $result = $this->model->delete_card($project_key, $card_id);
 
-            if (!$result['error']) {
-                $this->app->render(
-                    200,
-                    $result
-                );
-            } else {
-                $this->app->render(
-                    400,
-                    $result
-                );
-            }
-        } else {
             $this->app->render(
-                403,
-                array(
-                    'error'         => true,
-                    'msg'           => "insufficient_rights"
-                )
+                200,
+                $result
             );
+        } else {
+            throw new Exception("Insufficient rights");
         }
     }
 
-    public function edit_card()
+    public function delete_all_cards($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $card_id = $this->request->card_id;
-            $value = $this->request->value;
+            $result = $this->model->delete_all_cards($project_key);
 
-            $result = $this->model->edit_card($card_id, $value);
-
-            if (!$result['error']) {
-                $this->app->render(
-                    200,
-                    $result
-                );
-            } else {
-                $this->app->render(
-                    400,
-                    $result
-                );
-            }
-        } else {
             $this->app->render(
-                403,
-                array(
-                    'error'         => true,
-                    'msg'           => "insufficient_rights"
-                )
+                200,
+                $result
             );
+        } else {
+            throw new Exception("Insufficient rights");
         }
     }
 
-    public function get_card($card_id)
+    public function edit_card($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $result = $this->model->get_card($card_id);
+            $card_id    = $this->request->card_id;
+            $text       = $this->request->text;
+            $tooltip    = $this->request->tooltip;
 
-            if (!$result['error']) {
-                $this->app->render(
-                    200,
-                    $result
-                );
-            } else {
-                $this->app->render(
-                    400,
-                    $result
-                );
-            }
-        } else {
+            $result = $this->model->edit_card($project_key, $card_id, $text, $tooltip);
+
             $this->app->render(
-                403,
-                array(
-                    'error'         => true,
-                    'msg'           => "insufficient_rights"
-                )
+                200,
+                $result
             );
+        } else {
+            throw new Exception("Insufficient rights");
+        }
+    }
+
+    public function get_card($project_key, $card_id)
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $result = $this->model->get_card($project_key, $card_id);
+
+            $this->app->render(
+                200,
+                $result
+            );
+        } else {
+            throw new Exception("Insufficient rights");
         }
     }
 
@@ -204,13 +184,21 @@ class cards_controller extends controller
             $file->set_file_contents($export);
             $file->serve();
         } else {
+            throw new Exception("Insufficient rights");
+        }
+    }
+
+    public function import_cards($project_key)
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $result = $this->model->import_cards($project_key, $_FILES['import_file']);
+
             $this->app->render(
-                403,
-                array(
-                    'error'         => true,
-                    'msg'           => "insufficient_rights"
-                )
+                200,
+                $result
             );
+        } else {
+            throw new Exception("Insufficient rights");
         }
     }
 

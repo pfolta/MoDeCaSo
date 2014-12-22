@@ -120,10 +120,10 @@
                 <div class="pull-left" style="width: 69%;">
                     <a href="/frontend/projects/{{ project.key }}/add_card" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</a>
                     <div class="btn-group">
-                        <a href="/frontend/projects/{{ project.key }}/import_cards" class="btn btn-default"><span class="glyphicon glyphicon-import"></span> Import Cards</a>
-                        <a href="/server/projects/cards/export_cards/{{ project.key }}?api_key={{ api_key() }}" class="btn btn-default" target="download_iframe"><span class="glyphicon glyphicon-export"></span> Export Cards</a>
+                        <a href="/frontend/projects/{{ project.key }}/import_cards" class="btn btn-default"><span class="glyphicon glyphicon-floppy-open"></span> Import Cards</a>
+                        <a href="/server/projects/{{ project.key }}/cards/export_cards?api_key={{ api_key() }}" ng-disabled="cards.length == 0" class="btn btn-default" target="download_iframe"><span class="glyphicon glyphicon-floppy-save"></span> Export Cards</a>
                     </div>
-                    <a href="/frontend/projects/{{ project.key }}/delete_all_cards" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Cards</a>
+                    <a href="/frontend/projects/{{ project.key }}/delete_all_cards" ng-disabled="cards.length == 0" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Cards</a>
                 </div>
                 <div class="pull-left" style="height: 33px; width: 10%; padding-top: 7px;">
                     <input type="range" id="card_zoom" ng-model="card_zoom" min="0.5" max="2.5" step="0.1">

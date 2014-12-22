@@ -5,9 +5,9 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:            /frontend/js/app/controllers/projects/edit_card.js
+ * File:            /frontend/js/app/controllers/projects/cards/edit_card.js
  * Created:			2014-12-17
- * Last modified:	2014-12-17
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -18,10 +18,12 @@ controllers.controller(
         "$rootScope",
         "$http",
         "session_service",
+        "project_key",
         "card_id",
-        function($scope, $rootScope, $http, session_service, card_id)
+        function($scope, $rootScope, $http, session_service, project_key, card_id)
         {
-            $scope.card_id = card_id;
+            $scope.project_key  = project_key;
+            $scope.card_id      = card_id;
 
             $scope.flash = {
                 "show":     false,
@@ -35,7 +37,7 @@ controllers.controller(
 
                 $http({
                     method:     "get",
-                    url:        "/server/projects/cards/get_card/" + card_id,
+                    url:        "/server/projects/" + $scope.project_key + "/cards/get_card/" + card_id,
                     headers:    {
                         "X-API-Key":    session_service.get("api_key")
                     }
@@ -67,10 +69,11 @@ controllers.controller(
 
                 $http({
                     method:     "post",
-                    url:        "/server/projects/cards/edit_card",
+                    url:        "/server/projects/" + $scope.project_key + "/cards/edit_card",
                     data:       {
                         card_id:    $scope.card.id,
-                        value:      $scope.card.value
+                        text:       $scope.card.text,
+                        tooltip:    $scope.card.tooltip
                     },
                     headers:    {
                         "X-API-Key":    session_service.get("api_key")

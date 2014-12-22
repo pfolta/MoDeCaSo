@@ -9,12 +9,13 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2014-12-18
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 namespace model;
 
+use \Exception;
 use data\project_statuses;
 use main\database;
 
@@ -151,6 +152,30 @@ class projects
         }
 
         return $result;
+    }
+
+    /**
+     * get_project_id ( )
+     *
+     * Returns the ID of a project represented by a key
+     *
+     * @param   string  $project_key    The project key
+     * @return  int                     The ID of the associated project
+     * @throws  Exception               Invalid project key
+     */
+    public static function get_project_id($project_key)
+    {
+        $database = database::get_instance();
+
+        $database->select("projects", "`id`", "`key` = '".$project_key."'");
+
+        if ($database->row_count() == 1) {
+            $project_id = $database->result()[0]['id'];
+
+            return $project_id;
+        }
+
+        throw new Exception("Invalid project key '".$project_key."'");
     }
 
 }
