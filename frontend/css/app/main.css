@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2014-12-17
+ * Last modified:	2014-12-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -95,4 +95,8 @@ div.mainView > div.page {
 .glyphicon-placeholder:before {
     content: "\e181";
     visibility: hidden;
+}
+
+iframe[name=download_iframe] {
+    display: none;
 }
