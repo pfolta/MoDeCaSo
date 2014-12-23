@@ -9,7 +9,7 @@
  *
  * File:			/server/model/auth.class.php
  * Created:			2014-11-05
- * Last modified:	2014-12-22
+ * Last modified:	2014-12-23
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -71,27 +71,32 @@ class auth
                      */
                     $api_key = $this->generate_api_key();
 
+                    $granted    = time();
+                    $expiration = $granted + $this->config->get_config_value("auth", "session_lifetime");
+
                     /*
                      * Store API Key in user database
                      */
                     $this->database->insert("user_tokens", array(
                         'api_key'       => $api_key,
                         'user'          => $result['id'],
-                        'granted'       => time(),
-                        'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
+                        'granted'       => $granted,
+                        'expiration'    => $expiration
                     ));
 
                     /*
                      * Set options
                      */
                     $login_result = array(
-                        'error'         => false,
-                        'msg'           => "login_successful",
-                        'api_key'       => $api_key,
-                        'username'      => $result['username'],
-                        'first_name'    => $result['first_name'],
-                        'last_name'     => $result['last_name'],
-                        'role'          => user_roles::$values[$result['role']]
+                        'error'                 => false,
+                        'msg'                   => "login_successful",
+                        'api_key'               => $api_key,
+                        'api_key_granted'       => $granted,
+                        'api_key_expiration'    => $expiration,
+                        'username'              => $result['username'],
+                        'first_name'            => $result['first_name'],
+                        'last_name'             => $result['last_name'],
+                        'role'                  => user_roles::$values[$result['role']]
                     );
                 } else {
                     /*
