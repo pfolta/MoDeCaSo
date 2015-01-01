@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/tools/string.js
  * Created:			2014-11-03
- * Last modified:	2014-11-19
+ * Last modified:	2015-01-01
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -25,7 +25,8 @@ function get_error_title()
         "Oh oh!",
         "Oh no!",
         "D’oh!",
-        "Uh oh!"
+        "Uh oh!",
+        "Whoops!"
     ];
 
     return error_titles[Math.floor(Math.random() * error_titles.length)].toString();
