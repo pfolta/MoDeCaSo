@@ -126,7 +126,7 @@
                     <a href="/frontend/projects/{{ project.key }}/delete_all_cards" ng-disabled="cards.length == 0" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Cards</a>
                 </div>
                 <div class="pull-left" style="height: 33px; width: 10%; padding-top: 7px;">
-                    <input type="range" id="card_zoom" ng-model="card_zoom" min="0.5" max="2.5" step="0.1">
+                    <input type="range" id="card_zoom" ng-model="card_zoom" min="0.5" max="2.5" step="0.1" tooltip="Zoom ({{ card_zoom_percent }} %)" tooltip-append-to-body="true">
                 </div>
                 <div class="pull-right" style="width: 20%;">
                     <div class="input-group">
