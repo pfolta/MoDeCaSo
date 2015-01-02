@@ -13,10 +13,34 @@
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Participants</h3>
+        <div class="panel-heading pointer" ng-click="messages_collapse = !messages_collapse">
+            <h3 class="panel-title">
+                <span class="glyphicon glyphicon-comment"></span> Messages
+                <span class="pull-right">
+                    <button class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-chevron-up" ng-show="!messages_collapse"></span>
+                        <span class="glyphicon glyphicon-chevron-down" ng-show="messages_collapse"></span>
+                    </button>
+                </span>
+            </h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" collapse="messages_collapse">
+
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading pointer" ng-click="participants_collapse = !participants_collapse">
+            <h3 class="panel-title">
+                <span class="glyphicon glyphicon-user"></span> Participants
+                <span class="pull-right">
+                    <button class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-chevron-up" ng-show="!participants_collapse"></span>
+                        <span class="glyphicon glyphicon-chevron-down" ng-show="participants_collapse"></span>
+                    </button>
+                </span>
+            </h3>
+        </div>
+        <div class="panel-body" collapse="participants_collapse">
             <div class="form-group" style="padding-bottom: 50px; ">
                 <div class="pull-left" style="width: 80%;">
                     <a class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Participant</a>
@@ -112,10 +136,18 @@
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Cards</h3>
+        <div class="panel-heading pointer" ng-click="cards_collapse = !cards_collapse">
+            <h3 class="panel-title">
+                <span class="glyphicon glyphicon-credit-card"></span> Cards
+                <span class="pull-right">
+                    <button class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-chevron-up" ng-show="!cards_collapse"></span>
+                        <span class="glyphicon glyphicon-chevron-down" ng-show="cards_collapse"></span>
+                    </button>
+                </span>
+            </h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" collapse="cards_collapse">
             <div class="form-group" style="padding-bottom: 50px; ">
                 <div class="pull-left" style="width: 69%;">
                     <a href="/frontend/projects/{{ project.key }}/add_card" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</a>

@@ -1,0 +1,16 @@
+/*
+ * UPB-BTHESIS
+ * Copyright (C) 2004-2014 Peter Folta. All rights reserved.
+ *
+ * Project:			UPB-BTHESIS
+ * Version:			0.0.1
+ *
+ * File:			/frontend/css/app/controls/cursor.css
+ * Created:			2015-01-02
+ * Last modified:	2015-01-02
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ */
+
+.pointer {
+    cursor: pointer !important;
+}
