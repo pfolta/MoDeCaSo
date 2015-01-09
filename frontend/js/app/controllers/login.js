@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2014-12-23
+ * Last modified:	2015-01-09
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -69,9 +69,11 @@ controllers.controller(
                         $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> ";
 
                         if (result == "invalid_credentials") {
-                            $scope.flash.message += " Invalid username or password.<br><span class='glyphicon glyphicon-placeholder'></span> Please try again.";
+                            $scope.flash.message += "Invalid username or password.<br><span class='glyphicon glyphicon-placeholder'></span> Please try again.";
                         } else if (result == "account_disabled") {
-                            $scope.flash.message += " Your user account has been disabled.<br><span class='glyphicon glyphicon-placeholder'></span> Please see your system administrator.";
+                            $scope.flash.message += "Your user account has been disabled.<br><span class='glyphicon glyphicon-placeholder'></span> Please see your system administrator.";
+                        } else {
+                            $scope.flash.message += "Server Error while trying to log in.<br><span class='glyphicon glyphicon-placeholder'></span> The request could not be completed.";
                         }
 
                         /*
