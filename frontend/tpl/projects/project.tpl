@@ -15,7 +15,7 @@
     <div class="panel panel-default">
         <div class="panel-heading pointer" ng-click="messages_collapse = !messages_collapse">
             <h3 class="panel-title">
-                <span class="glyphicon glyphicon-comment"></span> Messages
+                <span class="glyphicon glyphicon-comment upb-blue"></span> Messages
                 <span class="pull-right">
                     <button class="btn btn-default btn-xs">
                         <span class="glyphicon glyphicon-chevron-up" ng-show="!messages_collapse"></span>
@@ -31,7 +31,7 @@
     <div class="panel panel-default">
         <div class="panel-heading pointer" ng-click="participants_collapse = !participants_collapse">
             <h3 class="panel-title">
-                <span class="glyphicon glyphicon-user"></span> Participants
+                <span class="glyphicon glyphicon-user upb-blue"></span> Participants
                 <span class="pull-right">
                     <button class="btn btn-default btn-xs">
                         <span class="glyphicon glyphicon-chevron-up" ng-show="!participants_collapse"></span>
@@ -138,7 +138,7 @@
     <div class="panel panel-default">
         <div class="panel-heading pointer" ng-click="cards_collapse = !cards_collapse">
             <h3 class="panel-title">
-                <span class="glyphicon glyphicon-credit-card"></span> Cards
+                <span class="glyphicon glyphicon-credit-card upb-blue"></span> Cards
                 <span class="pull-right">
                     <button class="btn btn-default btn-xs">
                         <span class="glyphicon glyphicon-chevron-up" ng-show="!cards_collapse"></span>
