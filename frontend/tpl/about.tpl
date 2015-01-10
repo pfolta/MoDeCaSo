@@ -12,7 +12,7 @@
                 Version 1.0.0
             </p>
             <p>
-                Copyright &copy; 2014 Peter Folta. All rights reserved.
+                Copyright &copy; 2014–2015 Peter Folta. All rights reserved.
             </p>
         </div>
         <div class="pull-right">
