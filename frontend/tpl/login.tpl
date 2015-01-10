@@ -19,10 +19,11 @@
                 </h3>
             </div>
             <div class="panel-body">
-                <img src="/frontend/img/upb-logo.svg">
-                <h3 class="text-center">
-                    MoDeCaSo
-                </h3>
+                <img src="/frontend/img/modecaso-logo.svg">
+                <h4 class="text-center upb-blue" style="margin-bottom: 25px;">
+                    A Web Application for<br>
+                    Modified Delphi Card Sorting Experiments
+                </h4>
                 <form role="form" name="login_form" ng-submit="login()" novalidate>
                     <div class="form-group" id="login_username_group">
                         <label for="login_username" class="control-label">Username</label>

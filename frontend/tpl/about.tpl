@@ -9,6 +9,7 @@
         <div class="pull-left">
             <p>
                 <strong>MoDeCaSo</strong><br>
+                <em>A Web Application for Modified Delphi Card Sorting Experiments</em><br>
                 Version 0.0.1
             </p>
             <p>
@@ -19,6 +20,7 @@
             </p>
         </div>
         <div class="pull-right">
+            <img src="/frontend/img/modecaso-logo.svg" style="width: 375px; height: 81px;">
         </div>
     </div>
     <p style="margin-bottom: 5px;">
