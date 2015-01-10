@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2015-01-09
+ * Last modified:	2015-01-10
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -48,7 +48,7 @@ controllers.controller(
                         var goto = session_service.get("goto");
                         session_service.unset("goto");
 
-                        if (session_service.get("goto")) {
+                        if (goto) {
                             window.location.href = goto;
                         } else {
                             $state.go("/dashboard");
