@@ -71,13 +71,13 @@ class user_management
              */
             $message = "Dear ".$first_name." ".$last_name.",
 
-a new user account has been created for you.
+a new MoDeCaSo user account has been created for you.
 
-You can find your credentials below.
+You can find your credentials below:
 Username: ".$username."
 Password: ".$password."
 
-Please log in to MoDeCaSo and change your password.";
+Please go to MoDeCaSo by visiting ".$this->config->get_config_value("main", "application_url")." and log in to MoDeCaSo to change your password.";
 
             $mail = new mail("MoDeCaSo <".$this->config->get_config_value("email", "sender_address").">", $first_name." ".$last_name." <".$email.">", "Account Registration", $message);
             $mail->send();

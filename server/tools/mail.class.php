@@ -84,7 +84,9 @@ class mail
     {
         $headers = $this->prepare_headers();
 
-        return mail($this->recipient, $this->config->get_config_value("email", "subject_prefix")." ".$this->subject, $this->body, $headers);
+        $body = $this->body."\n\n---\nPlease note: This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.";
+
+        return mail($this->recipient, $this->config->get_config_value("email", "subject_prefix")." ".$this->subject, $body, $headers);
     }
 
     private function prepare_headers()
