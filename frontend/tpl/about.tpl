@@ -9,7 +9,7 @@
         <div class="pull-left">
             <p>
                 <strong>MoDeCaSo</strong><br>
-                Version 1.0.0
+                Version 0.0.1
             </p>
             <p>
                 Copyright &copy; 2014–2015 Peter Folta. All rights reserved.
