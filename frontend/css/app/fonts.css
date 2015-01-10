@@ -1,6 +1,6 @@
 /*
  * UPB-BTHESIS
- * Copyright (C) 2004-2014 Peter Folta. All rights reserved.
+ * Copyright (C) 2014-2015 Peter Folta. All rights reserved.
  *
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
