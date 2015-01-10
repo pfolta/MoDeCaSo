@@ -24,9 +24,9 @@ controllers.controller(
         function($rootScope, $scope, $sce, $state, auth_service, session_service, cfpLoadingBar)
         {
             $scope.flash = {
-                "show":     false,
-                "type":     null,
-                "message":  null
+                "show":     true,
+                "type":     "alert-info",
+                "message":  "<span class='glyphicon glyphicon-info-sign'></span> <strong>Welcome to MoDeCaSo!</strong><br><span class='glyphicon glyphicon-placeholder'></span> You need to log in to use this system."
             };
 
             $scope.login = function()
