@@ -9,7 +9,7 @@
  *
  * File:			/server/tools/mail.class.php
  * Created:			2014-11-17
- * Last modified:	2014-11-17
+ * Last modified:	2015-01-10
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -84,7 +84,7 @@ class mail
     {
         $headers = $this->prepare_headers();
 
-        return mail($this->recipient, $this->config->get_config_value("email", "subject_prefix").$this->subject, $this->body, $headers);
+        return mail($this->recipient, $this->config->get_config_value("email", "subject_prefix")." ".$this->subject, $this->body, $headers);
     }
 
     private function prepare_headers()

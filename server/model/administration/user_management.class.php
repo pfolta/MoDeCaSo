@@ -9,7 +9,7 @@
  *
  * File:			/server/model/administration/user_management.class.php
  * Created:			2014-11-12
- * Last modified:	2014-11-24
+ * Last modified:	2015-01-10
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -79,7 +79,7 @@ Password: ".$password."
 
 Please log in to MoDeCaSo and change your password.";
 
-            $mail = new mail($this->config->get_config_value("email", "sender_address"), $first_name." ".$last_name." <".$email.">", "Account Registration", $message);
+            $mail = new mail("MoDeCaSo <".$this->config->get_config_value("email", "sender_address").">", $first_name." ".$last_name." <".$email.">", "Account Registration", $message);
             $mail->send();
 
             $result = array(
