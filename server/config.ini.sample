@@ -27,5 +27,5 @@ password_cost       = 14
 session_lifetime    = 3600
 
 [email]
-sender_address      = "noreply@modecaso.uni-paderborn.de"
-subject_prefix      = "[MoDeCaSo] "
+sender_address      = "noreply@modecaso.cs.uni-paderborn.de"
+subject_prefix      = "[MoDeCaSo]"
