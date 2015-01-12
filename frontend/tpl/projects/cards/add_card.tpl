@@ -9,7 +9,8 @@
         <div class="alert" id="add_card_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert">
         </div>
         <p>
-            Please fill out this form to add a new card to this project.
+            Please fill out this form to add a new card to this project.<br>
+            You can add multiple cards at once in a batch fashion as this input dialog will stay open after you added a card. When you are finished adding cards, simply click on <strong>Cancel</strong> to close the dialog.
         </p>
         <div class="form-group" id="add_card_text_group" style="padding-top: 20px;">
             <label for="add_card_text" class="col-sm-3 control-label">Text</label>

@@ -64,25 +64,17 @@ controllers.controller(
                         $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> The card has been successfully added.";
 
                         /*
-                         * Disable submit button and change Cancel button to show "Close" instead
+                         * Clear input fields
                          */
-                        $("#add_card_submit_button").prop("disabled", true);
-                        $("#add_card_cancel_button").html("Close");
+                        $scope.text = "";
+                        $scope.tooltip = "";
 
-                        $("#add_card_cancel_button").on(
-                            "click",
-                            function()
-                            {
-                                $rootScope.$broadcast("load_project");
-                            }
-                        );
-                        $("#add_card_close_button").on(
-                            "click",
-                            function()
-                            {
-                                $rootScope.$broadcast("load_project");
-                            }
-                        );
+                        /*
+                         * Set focus on first text field
+                         */
+                        $("#add_card_text").focus();
+
+                        $rootScope.$broadcast("load_project");
                     },
                     function(response)
                     {
