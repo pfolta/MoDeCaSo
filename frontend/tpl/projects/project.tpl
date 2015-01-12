@@ -41,7 +41,76 @@
             </h3>
         </div>
         <div class="panel-body" collapse="messages_collapse">
-
+            <div class="row">
+                <div class="col-md-4 message">
+                    <h4>
+                        Email invitation
+                        <span class="pull-right">
+                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                        </span>
+                    </h4>
+                    <p>
+                        {{ project.email_invitation }}
+                    </p>
+                </div>
+                <div class="col-md-4 message">
+                    <h4>
+                        Email invitation for Seed Participant
+                        <span class="pull-right">
+                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                        </span>
+                    </h4>
+                    <p>
+                        {{ project.sp_email_invitation }}
+                    </p>
+                </div>
+                <div class="col-md-4 message">
+                    <h4>
+                        Welcome Message
+                        <span class="pull-right">
+                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                        </span>
+                    </h4>
+                    <p>
+                        {{ project.welcome_message }}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 message">
+                    <h4>
+                        Welcome Message for Seed Participant
+                        <span class="pull-right">
+                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                        </span>
+                    </h4>
+                    <p>
+                        {{ project.sp_welcome_message }}
+                    </p>
+                </div>
+                <div class="col-md-4 message">
+                    <h4>
+                        Email Reminder
+                        <span class="pull-right">
+                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                        </span>
+                    </h4>
+                    <p>
+                        {{ project.email_reminder }}
+                    </p>
+                </div>
+                <div class="col-md-4 message">
+                    <h4>
+                        Email Timeout Notification
+                        <span class="pull-right">
+                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                        </span>
+                    </h4>
+                    <p>
+                        {{ project.email_timeout }}
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="panel panel-default">

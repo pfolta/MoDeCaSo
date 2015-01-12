@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2014-12-22
+ * Last modified:	2015-01-12
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -17,15 +17,18 @@ namespace model;
 
 use \Exception;
 use data\project_statuses;
+use main\config;
 use main\database;
 
 class projects
 {
 
+    private $config;
     private $database;
 
     public function __construct()
     {
+        $this->config = config::get_instance();
         $this->database = database::get_instance();
     }
 
@@ -41,11 +44,17 @@ class projects
              * Insert new project into database
              */
             $this->database->insert("projects", array(
-                'title'         => $title,
-                'key'           => $key,
-                'lead'          => $lead,
-                'created'       => time(),
-                'last_modified' => time()
+                'title'                 => $title,
+                'key'                   => $key,
+                'lead'                  => $lead,
+                'email_invitation'      => $this->config->get_config_value("project_messages", "email_invitation"),
+                'sp_email_invitation'   => $this->config->get_config_value("project_messages", "sp_email_invitation"),
+                'welcome_message'       => $this->config->get_config_value("project_messages", "welcome_message"),
+                'sp_welcome_message'    => $this->config->get_config_value("project_messages", "sp_welcome_message"),
+                'email_reminder'        => $this->config->get_config_value("project_messages", "email_reminder"),
+                'email_timeout'         => $this->config->get_config_value("project_messages", "email_timeout"),
+                'created'               => time(),
+                'last_modified'         => time()
             ));
 
             $result = array(

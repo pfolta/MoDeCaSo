@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/controls.css
  * Created:			2014-12-10
- * Last modified:	2014-12-22
+ * Last modified:	2015-01-12
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -64,4 +64,16 @@ div.card-text {
     top: 21px;
 
     word-wrap: break-word;
+}
+
+div.message button {
+    visibility: hidden;
+}
+
+div.message:hover button {
+    visibility: visible;
+}
+
+div.message p {
+    white-space: pre-line;
 }
