@@ -1,6 +1,6 @@
 <div class="page">
     <h1>
-        Project Details
+        Project Details for {{ project.key }}
     </h1>
     <div class="alert" id="project_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert"></div>
     <div class="form-group" style="padding-bottom: 50px; ">
