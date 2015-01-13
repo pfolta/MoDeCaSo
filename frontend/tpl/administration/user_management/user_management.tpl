@@ -52,7 +52,7 @@
                         </div>
                     </th>
                     <th style="width: 20%;">
-                        Email
+                        Email Address
                         <div class="btn-group btn-group-xs pull-right">
                             <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
                             <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>

@@ -9,7 +9,7 @@
  *
  * File:			/server/index.php
  * Created:			2014-11-03
- * Last modified:	2014-12-22
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -32,10 +32,12 @@ require "controllers/auth_controller.class.php";
 require "controllers/administration/user_management_controller.class.php";
 require "controllers/projects/projects_controller.class.php";
 require "controllers/projects/cards_controller.class.php";
+require "controllers/projects/participants_controller.class.php";
 
 require "model/administration/user_management.class.php";
 require "model/projects/projects.class.php";
 require "model/projects/cards.class.php";
+require "model/projects/participants.class.php";
 require "model/auth.class.php";
 
 use \Slim\Slim;
@@ -48,6 +50,7 @@ use controllers\auth_controller;
 use controllers\user_management_controller;
 use controllers\projects_controller;
 use controllers\cards_controller;
+use controllers\participants_controller;
 
 use tools\url;
 
@@ -124,6 +127,7 @@ try {
     $user_management_controller = new user_management_controller();
     $projects_controller = new projects_controller();
     $cards_controller = new cards_controller();
+    $participants_controller = new participants_controller();
 
     /*
      * Finally, handle requests

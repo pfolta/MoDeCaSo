@@ -42,10 +42,10 @@
             </div>
         </div>
         <div class="form-group" id="edit_user_email_group">
-            <label for="edit_user_email" class="col-sm-4 control-label">Email address</label>
+            <label for="edit_user_email" class="col-sm-4 control-label">Email Address</label>
             <div class="input-group col-sm-8" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                <input type="email" ng-model="user.email" id="edit_user_email" placeholder="Email address" required tabindex="5" class="form-control">
+                <input type="email" ng-model="user.email" id="edit_user_email" placeholder="Email Address" required tabindex="5" class="form-control">
             </div>
         </div>
         <div class="form-group" id="edit_user_role_group">

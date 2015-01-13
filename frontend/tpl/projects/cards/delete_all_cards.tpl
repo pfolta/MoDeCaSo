@@ -2,7 +2,7 @@
     <div class="modal-header">
         <button id="delete_all_cards_close_button" type="button" class="close" ng-click="$close()" tooltip="Close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h3 class="modal-title text-danger">
-            Delete all cards
+            Delete All Cards
         </h3>
     </div>
     <div class="modal-body">

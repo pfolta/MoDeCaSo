@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2014-12-23
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -531,6 +531,220 @@ webapp.config([
                                     ]
                                 },
                                 templateUrl:    "/frontend/tpl/projects/cards/import_cards.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/projects/project/add_participant",
+            {
+                url: "/add_participant",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Add Participant",
+                onEnter: [
+                    "$state",
+                    "$modal",
+                    function($state, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "add_participant_controller",
+                                resolve:        {
+                                    project_key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+
+                                            return url_parts[url_parts.length-2];
+                                        }
+                                    ]
+                                },
+                                templateUrl:    "/frontend/tpl/projects/participants/add_participant.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/projects/project/delete_participant",
+            {
+                url: "/delete_participant/:participant_id",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Delete Participant",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "delete_participant_controller",
+                                resolve:        {
+                                    project_key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+                                            var project_key = url_parts[url_parts.length-3];
+
+                                            return project_key;
+                                        }
+                                    ],
+                                    participant_id: function()
+                                    {
+                                        return $stateParams.participant_id;
+                                    }
+                                },
+                                templateUrl:    "/frontend/tpl/projects/participants/delete_participant.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/projects/project/edit_participant",
+            {
+                url: "/edit_participant/:participant_id",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Edit Participant",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "edit_participant_controller",
+                                resolve:        {
+                                    project_key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+                                            var project_key = url_parts[url_parts.length-3];
+
+                                            return project_key;
+                                        }
+                                    ],
+                                    participant_id: function()
+                                    {
+                                        return $stateParams.participant_id;
+                                    }
+                                },
+                                templateUrl:    "/frontend/tpl/projects/participants/edit_participant.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/projects/project/delete_all_participants",
+            {
+                url: "/delete_all_participants",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Delete All Participants",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "delete_all_participants_controller",
+                                resolve:        {
+                                    project_key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+                                            var project_key = url_parts[url_parts.length-2];
+
+                                            return project_key;
+                                        }
+                                    ]
+                                },
+                                templateUrl:    "/frontend/tpl/projects/participants/delete_all_participants.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/projects/project/import_participants",
+            {
+                url: "/import_participants",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Import Participants",
+                onEnter: [
+                    "$state",
+                    "$modal",
+                    function($state, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "import_participants_controller",
+                                resolve:        {
+                                    project_key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+
+                                            return url_parts[url_parts.length-2];
+                                        }
+                                    ]
+                                },
+                                templateUrl:    "/frontend/tpl/projects/participants/import_participants.tpl",
                                 backdrop:       "static",
                                 keyboard:       false
                             }

@@ -5,14 +5,14 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:            /frontend/js/app/controllers/projects/cards/delete_all_cards.js
- * Created:			2014-12-22
+ * File:            /frontend/js/app/controllers/projects/participants/delete_all_participants.js
+ * Created:			2015-01-13
  * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 controllers.controller(
-    "delete_all_cards_controller",
+    "delete_all_participants_controller",
     [
         "$scope",
         "$rootScope",
@@ -29,35 +29,35 @@ controllers.controller(
                 "message":  null
             };
 
-            $scope.delete_all_cards = function()
+            $scope.delete_all_participants = function()
             {
                 /*
                  * Disable form elements to prevent duplicate requests
                  */
-                $("#delete_all_cards_submit_button").prop("disabled", true);
-                $("#delete_all_cards_cancel_button").prop("disabled", true);
+                $("#delete_all_participants_submit_button").prop("disabled", true);
+                $("#delete_all_participants_cancel_button").prop("disabled", true);
 
                 $http({
                     method:     "get",
-                    url:        "/server/projects/" + $scope.project_key + "/cards/delete_all_cards"
+                    url:        "/server/projects/" + $scope.project_key + "/participants/delete_all_participants"
                 }).then(
                     function(response)
                     {
                         /*
                          * Enable form elements
                          */
-                        $("#delete_all_cards_submit_button").prop("disabled", false);
-                        $("#delete_all_cards_cancel_button").prop("disabled", false);
+                        $("#delete_all_participants_submit_button").prop("disabled", false);
+                        $("#delete_all_participants_cancel_button").prop("disabled", false);
 
                         $scope.flash.show = true;
                         $scope.flash.type = "alert-success";
-                        $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> All cards have been successfully deleted.";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> All participants have been successfully deleted.";
 
                         /*
                          * Disable submit button and change Cancel button to show "Close" instead
                          */
-                        $("#delete_all_cards_submit_button").prop("disabled", true);
-                        $("#delete_all_cards_cancel_button").html("Close");
+                        $("#delete_all_participants_submit_button").prop("disabled", true);
+                        $("#delete_all_participants_cancel_button").html("Close");
 
                         $rootScope.$broadcast("load_project");
                     },
@@ -66,14 +66,14 @@ controllers.controller(
                         /*
                          * Enable form elements
                          */
-                        $("#delete_all_cards_submit_button").prop("disabled", false);
-                        $("#delete_all_cards_cancel_button").prop("disabled", false);
+                        $("#delete_all_participants_submit_button").prop("disabled", false);
+                        $("#delete_all_participants_cancel_button").prop("disabled", false);
 
                         $scope.flash.show = true;
                         $scope.flash.type = "alert-danger";
-                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The cards could not be deleted.";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> The participants could not be deleted.";
 
-                        shake_element($("#delete_all_cards_flash"));
+                        shake_element($("#delete_all_participants_flash"));
                     }
                 );
             }

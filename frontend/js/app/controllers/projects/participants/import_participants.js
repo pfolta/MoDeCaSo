@@ -5,14 +5,14 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:            /frontend/js/app/controllers/projects/cards/import_cards.js
- * Created:			2014-12-22
- * Last modified:	2014-12-22
+ * File:            /frontend/js/app/controllers/projects/participants/import_participants.js
+ * Created:			2015-01-13
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 controllers.controller(
-    "import_cards_controller",
+    "import_participants_controller",
     [
         "$rootScope",
         "$scope",
@@ -35,20 +35,20 @@ controllers.controller(
                 type:       null
             };
 
-            $scope.import_cards = function()
+            $scope.import_participants = function()
             {
                 /*
                  * Disable form elements to prevent duplicate requests
                  */
-                $("#import_cards_submit_button").prop("disabled", true);
-                $("#import_cards_cancel_button").prop("disabled", true);
+                $("#import_participants_submit_button").prop("disabled", true);
+                $("#import_participants_cancel_button").prop("disabled", true);
 
                 $scope.progressbar.progress = 0;
                 $scope.progressbar.type     = null;
 
                 $upload.upload({
                     method:             "post",
-                    url:                "/server/projects/" + $scope.project_key + "/cards/import_cards",
+                    url:                "/server/projects/" + $scope.project_key + "/participants/import_participants",
                     headers:            {
                         "X-API-Key":    session_service.get("api_key")
                     },
@@ -65,10 +65,10 @@ controllers.controller(
                         /*
                          * Enable form elements
                          */
-                        $("#import_cards_submit_button").prop("disabled", false);
-                        $("#import_cards_cancel_button").prop("disabled", false);
+                        $("#import_participants_submit_button").prop("disabled", false);
+                        $("#import_participants_cancel_button").prop("disabled", false);
 
-                        if (response.msg == "cards_imported") {
+                        if (response.msg == "participants_imported") {
                             $scope.flash.show = true;
                             $scope.flash.type = "alert-success";
                             $scope.flash.message = "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> The file has been successfully imported.";
@@ -81,8 +81,8 @@ controllers.controller(
                             /*
                              * Disable submit button and change Cancel button to show "Close" instead
                              */
-                            $("#import_cards_submit_button").prop("disabled", true);
-                            $("#import_cards_cancel_button").html("Close");
+                            $("#import_participants_submit_button").prop("disabled", true);
+                            $("#import_participants_cancel_button").html("Close");
 
                             $rootScope.$broadcast("load_project");
                         } else {
@@ -95,7 +95,7 @@ controllers.controller(
                              */
                             $scope.progressbar.type = "danger";
 
-                            shake_element($("#import_cards_flash"));
+                            shake_element($("#import_participants_flash"));
                         }
                     }
                 ).error(
@@ -104,8 +104,8 @@ controllers.controller(
                         /*
                          * Enable form elements
                          */
-                        $("#import_cards_submit_button").prop("disabled", false);
-                        $("#import_cards_cancel_button").prop("disabled", false);
+                        $("#import_participants_submit_button").prop("disabled", false);
+                        $("#import_participants_cancel_button").prop("disabled", false);
 
                         $scope.flash.show = true;
                         $scope.flash.type = "alert-danger";
@@ -116,7 +116,7 @@ controllers.controller(
                          */
                         $scope.progressbar.type = "danger";
 
-                        shake_element($("#import_cards_flash"));
+                        shake_element($("#import_participants_flash"));
                     }
                 );
             }

@@ -128,13 +128,12 @@
         <div class="panel-body" collapse="participants_collapse">
             <div class="form-group" style="padding-bottom: 50px; ">
                 <div class="pull-left" style="width: 80%;">
-                    <a class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Participant</a>
-                    <a class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Seed Participant</a>
+                    <a href="/frontend/projects/{{ project.key }}/add_participant" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Participant</a>
                     <div class="btn-group">
-                        <a class="btn btn-default"><span class="glyphicon glyphicon-import"></span> Import Participants</a>
-                        <a class="btn btn-default"><span class="glyphicon glyphicon-export"></span> Export Participants</a>
+                        <a href="/frontend/projects/{{ project.key }}/import_participants" class="btn btn-default"><span class="glyphicon glyphicon-import"></span> Import Participants</a>
+                        <a href="/server/projects/{{ project.key }}/participants/export_participants?api_key={{ api_key() }}" class="btn btn-default" ng-disabled="participants.length == 0" target="download_iframe"><span class="glyphicon glyphicon-export"></span> Export Participants</a>
                     </div>
-                    <a class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Participants</a>
+                    <a href="/frontend/projects/{{ project.key }}/delete_all_participants" class="btn btn-danger" ng-disabled="participants.length == 0"><span class="glyphicon glyphicon-trash"></span> Delete All Participants</a>
                 </div>
                 <div class="pull-right" style="width: 20%;">
                     <div class="input-group">
@@ -149,29 +148,29 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th style="width: 7%;">
+                        <th style="width: 10%;">
                             ID
                             <div class="btn-group btn-group-xs pull-right">
                                 <button type="button" class="btn btn-default" ng-click="order_predicate = 'id'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
                                 <button type="button" class="btn btn-default" ng-click="order_predicate = 'id'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                             </div>
                         </th>
-                        <th style="width: 22%;">
+                        <th style="width: 20%;">
                             First Name
                             <div class="btn-group btn-group-xs pull-right">
                                 <button type="button" class="btn btn-default" ng-click="order_predicate = 'first_name'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
                                 <button type="button" class="btn btn-default" ng-click="order_predicate = 'first_name'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                             </div>
                         </th>
-                        <th style="width: 15%;">
+                        <th style="width: 20%;">
                             Last Name
                             <div class="btn-group btn-group-xs pull-right">
                                 <button type="button" class="btn btn-default" ng-click="order_predicate = 'last_name'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
                                 <button type="button" class="btn btn-default" ng-click="order_predicate = 'last_name'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                             </div>
                         </th>
-                        <th style="width: 20%;">
-                            E-Mail
+                        <th style="width: 30%;">
+                            Email Address
                             <div class="btn-group btn-group-xs pull-right">
                                 <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
                                 <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
@@ -184,7 +183,7 @@
                                 <button type="button" class="btn btn-default" ng-click="order_predicate = 'status'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                             </div>
                         </th>
-                        <th style="width: 11%;">
+                        <th style="width: 10%;">
                             Actions
                         </th>
                     </tr>
@@ -198,7 +197,7 @@
                             <strong>{{ participant.first_name }}</strong>
                         </td>
                         <td>
-                            {{ participant.last_name }}
+                            <strong>{{ participant.last_name }}</strong>
                         </td>
                         <td>
                             {{ participant.email }}
@@ -208,8 +207,8 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group btn-group-sm">
-                                <a href="/frontend/projects/edit_project/{{ project.key }}" class="btn btn-warning" tooltip="Edit Project" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
-                                <a href="/frontend/projects/delete_project/{{ project.key }}" class="btn btn-danger" tooltip="Delete Project" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="/frontend/projects/{{ project.key }}/edit_participant/{{ participant.id }}" class="btn btn-warning" tooltip="Edit Participant" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
+                                <a href="/frontend/projects/{{ project.key }}/delete_participant/{{ participant.id }}" class="btn btn-danger" tooltip="Delete Participant" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
                             </div>
                         </td>
                     </tr>

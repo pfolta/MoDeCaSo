@@ -33,10 +33,10 @@
             </div>
         </div>
         <div class="form-group" id="add_user_email_group">
-            <label for="add_user_email" class="col-sm-3 control-label">Email address</label>
+            <label for="add_user_email" class="col-sm-3 control-label">Email Address</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                <input type="email" ng-model="user.email" id="add_user_email" placeholder="Email address" required tabindex="4" class="form-control">
+                <input type="email" ng-model="user.email" id="add_user_email" placeholder="Email Address" required tabindex="4" class="form-control">
             </div>
         </div>
         <div class="form-group" id="add_user_role_group">

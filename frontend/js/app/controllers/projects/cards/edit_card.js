@@ -91,20 +91,7 @@ controllers.controller(
                         $("#edit_card_submit_button").prop("disabled", true);
                         $("#edit_card_cancel_button").html("Close");
 
-                        $("#edit_card_cancel_button").on(
-                            "click",
-                            function()
-                            {
-                                $rootScope.$broadcast("load_project");
-                            }
-                        );
-                        $("#edit_card_close_button").on(
-                            "click",
-                            function()
-                            {
-                                $rootScope.$broadcast("load_project");
-                            }
-                        );
+                        $rootScope.$broadcast("load_project");
                     },
                     function(response)
                     {

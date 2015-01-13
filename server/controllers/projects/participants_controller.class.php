@@ -7,8 +7,8 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:			/server/controllers/projects/cards_controller.class.php
- * Created:			2014-12-10
+ * File:			/server/controllers/projects/participants_controller.class.php
+ * Created:			2015-01-13
  * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
@@ -18,71 +18,71 @@ namespace controllers;
 use data\user_roles;
 use Exception;
 use main\controller;
-use model\cards;
+use model\participants;
 use tools\file;
 
-class cards_controller extends controller
+class participants_controller extends controller
 {
 
     public function register_routes()
     {
         $this->app->group(
-            "/projects/:project_key/cards",
+            "/projects/:project_key/participants",
             function()
             {
                 $this->app->post(
-                    "/add_card",
+                    "/add_participant",
                     array(
                         $this,
-                        'add_card'
+                        'add_participant'
                     )
                 );
 
                 $this->app->post(
-                    "/delete_card",
+                    "/delete_participant",
                     array(
                         $this,
-                        'delete_card'
+                        'delete_participant'
                     )
                 );
 
                 $this->app->get(
-                    "/delete_all_cards",
+                    "/delete_all_participants",
                     array(
                         $this,
-                        'delete_all_cards'
+                        'delete_all_participants'
                     )
                 );
 
                 $this->app->post(
-                    "/edit_card",
+                    "/edit_participant",
                     array(
                         $this,
-                        'edit_card'
+                        'edit_participant'
                     )
                 );
 
                 $this->app->get(
-                    "/get_card/:card_id",
+                    "/get_participant/:participant_id",
                     array(
                         $this,
-                        'get_card'
+                        'get_participant'
                     )
                 );
 
                 $this->app->get(
-                    "/export_cards",
+                    "/export_participants",
                     array(
                         $this,
-                        'export_cards'
+                        'export_participants'
                     )
                 );
 
                 $this->app->post(
-                    "/import_cards",
+                    "/import_participants",
                     array(
                         $this,
-                        'import_cards'
+                        'import_participants'
                     )
                 );
             }
@@ -91,16 +91,17 @@ class cards_controller extends controller
 
     public function create_model()
     {
-        $this->model = new cards();
+        $this->model = new participants();
     }
 
-    public function add_card($project_key)
+    public function add_participant($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $text       = $this->request->text;
-            $tooltip    = $this->request->tooltip;
+            $first_name     = $this->request->first_name;
+            $last_name      = $this->request->last_name;
+            $email          = $this->request->email;
 
-            $result = $this->model->add_card($project_key, $text, $tooltip);
+            $result = $this->model->add_participant($project_key, $first_name, $last_name, $email);
 
             $this->app->render(
                 200,
@@ -111,12 +112,12 @@ class cards_controller extends controller
         }
     }
 
-    public function delete_card($project_key)
+    public function delete_participant($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $card_id = $this->request->card_id;
+            $participant_id = $this->request->participant_id;
 
-            $result = $this->model->delete_card($project_key, $card_id);
+            $result = $this->model->delete_participant($project_key, $participant_id);
 
             $this->app->render(
                 200,
@@ -127,10 +128,10 @@ class cards_controller extends controller
         }
     }
 
-    public function delete_all_cards($project_key)
+    public function delete_all_participants($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $result = $this->model->delete_all_cards($project_key);
+            $result = $this->model->delete_all_participants($project_key);
 
             $this->app->render(
                 200,
@@ -141,14 +142,15 @@ class cards_controller extends controller
         }
     }
 
-    public function edit_card($project_key)
+    public function edit_participant($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $card_id    = $this->request->card_id;
-            $text       = $this->request->text;
-            $tooltip    = $this->request->tooltip;
+            $participant_id = $this->request->participant_id;
+            $first_name     = $this->request->first_name;
+            $last_name      = $this->request->last_name;
+            $email          = $this->request->email;
 
-            $result = $this->model->edit_card($project_key, $card_id, $text, $tooltip);
+            $result = $this->model->edit_participant($project_key, $participant_id, $first_name, $last_name, $email);
 
             $this->app->render(
                 200,
@@ -159,10 +161,10 @@ class cards_controller extends controller
         }
     }
 
-    public function get_card($project_key, $card_id)
+    public function get_participant($project_key, $participant_id)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $result = $this->model->get_card($project_key, $card_id);
+            $result = $this->model->get_participant($project_key, $participant_id);
 
             $this->app->render(
                 200,
@@ -173,13 +175,13 @@ class cards_controller extends controller
         }
     }
 
-    public function export_cards($project_key)
+    public function export_participants($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $export = $this->model->export_cards($project_key);
+            $export = $this->model->export_participants($project_key);
 
             $file = new file($this->app);
-            $file->set_filename($project_key."_cards_export_".date("Ymdhis").".txt");
+            $file->set_filename($project_key."_participants_export_".date("Ymdhis").".txt");
             $file->set_mimetype("text/plain");
             $file->set_file_contents($export);
             $file->serve();
@@ -188,10 +190,10 @@ class cards_controller extends controller
         }
     }
 
-    public function import_cards($project_key)
+    public function import_participants($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $result = $this->model->import_cards($project_key, $_FILES['import_file']);
+            $result = $this->model->import_participants($project_key, $_FILES['import_file']);
 
             $this->app->render(
                 200,
