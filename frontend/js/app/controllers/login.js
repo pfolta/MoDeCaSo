@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/login.js
  * Created:			2014-10-19
- * Last modified:	2015-01-10
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -83,8 +83,9 @@ controllers.controller(
 
                         /*
                          * Add error class to panel
+                         *
+                         * $("#login_form").children(2).removeClass("panel-primary").addClass("panel-danger");
                          */
-                        $("#login_form").children(2).removeClass("panel-primary").addClass("panel-danger");
 
                         /*
                          * Add error class to input groups
