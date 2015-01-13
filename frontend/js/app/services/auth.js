@@ -52,10 +52,7 @@ services.factory(
                 {
                     return $http({
                         method:     "get",
-                        url:        "/server/auth/logout",
-                        headers:    {
-                            "X-API-Key":    session_service.get("api_key")
-                        }
+                        url:        "/server/auth/logout"
                     }).then(handle_response, handle_response);
 
                     function handle_response(response)
@@ -75,9 +72,6 @@ services.factory(
                     return $http({
                         method:     "post",
                         url:        "/server/auth/change_password",
-                        headers:    {
-                            "X-API-Key":    session_service.get("api_key")
-                        },
                         data:       {
                             old_password:   old_password,
                             new_password:   new_password

@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/cards/delete_card.js
  * Created:			2014-12-17
- * Last modified:	2014-12-22
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -44,9 +44,6 @@ controllers.controller(
                     url:        "/server/projects/" + $scope.project_key + "/cards/delete_card",
                     data:       {
                         card_id:            $scope.card_id
-                    },
-                    headers:    {
-                        "X-API-Key":    session_service.get("api_key")
                     }
                 }).then(
                     function(response)

@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/edit_user.js
  * Created:			2014-11-17
- * Last modified:	2014-11-19
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -35,10 +35,7 @@ controllers.controller(
 
                 $http({
                     method:     "get",
-                    url:        "/server/administration/user_management/get_user/" + username,
-                    headers:    {
-                        "X-API-Key":    session_service.get("api_key")
-                    }
+                    url:        "/server/administration/user_management/get_user/" + username
                 }).then(
                     function(response)
                     {
@@ -89,9 +86,6 @@ controllers.controller(
                         email:      $scope.user.email,
                         role:       $scope.user.role,
                         status:     $scope.user.status
-                    },
-                    headers:    {
-                        "X-API-Key":    session_service.get("api_key")
                     }
                 }).then(
                     function(response)

@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2015-01-02
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -55,10 +55,7 @@ controllers.controller(
             {
                 $http({
                     method:     "get",
-                    url:        "/server/projects/get_project/" + $scope.key,
-                    headers:    {
-                        "X-API-Key":    session_service.get("api_key")
-                    }
+                    url:        "/server/projects/get_project/" + $scope.key
                 }).then(
                     function(response)
                     {

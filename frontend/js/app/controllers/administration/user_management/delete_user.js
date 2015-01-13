@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/delete_user.js
  * Created:			2014-11-12
- * Last modified:	2014-11-17
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -42,9 +42,6 @@ controllers.controller(
                     url:        "/server/administration/user_management/delete_user",
                     data:       {
                         username:   $scope.username
-                    },
-                    headers:    {
-                        "X-API-Key":    session_service.get("api_key")
                     }
                 }).then(
                     function(response)

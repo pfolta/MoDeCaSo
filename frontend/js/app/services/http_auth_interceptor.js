@@ -18,6 +18,15 @@ services.factory(
         function(session_service)
         {
             return {
+                request: function(config)
+                {
+                    if (session_service.get("api_key")) {
+                        config.headers['X-API-Key'] = session_service.get("api_key");
+                    }
+
+                    return config;
+                },
+
                 responseError: function(response)
                 {
                     if (response.status == 401) {

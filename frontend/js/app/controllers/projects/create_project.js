@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/create_project.js
  * Created:			2014-11-19
- * Last modified:	2014-11-24
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -57,9 +57,6 @@ controllers.controller(
                     data:       {
                         title:      $scope.project.title,
                         key:        $scope.project.key
-                    },
-                    headers:    {
-                        "X-API-Key":    session_service.get("api_key")
                     }
                 }).then(
                     function(response)

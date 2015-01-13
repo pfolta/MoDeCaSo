@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/cards/edit_card.js
  * Created:			2014-12-17
- * Last modified:	2014-12-22
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -37,10 +37,7 @@ controllers.controller(
 
                 $http({
                     method:     "get",
-                    url:        "/server/projects/" + $scope.project_key + "/cards/get_card/" + card_id,
-                    headers:    {
-                        "X-API-Key":    session_service.get("api_key")
-                    }
+                    url:        "/server/projects/" + $scope.project_key + "/cards/get_card/" + card_id
                 }).then(
                     function(response)
                     {
@@ -74,9 +71,6 @@ controllers.controller(
                         card_id:    $scope.card.id,
                         text:       $scope.card.text,
                         tooltip:    $scope.card.tooltip
-                    },
-                    headers:    {
-                        "X-API-Key":    session_service.get("api_key")
                     }
                 }).then(
                     function(response)

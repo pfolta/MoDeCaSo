@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/main.js
  * Created:			2014-10-19
- * Last modified:	2014-12-22
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -176,10 +176,7 @@ controllers.controller(
                 if (auth_service.is_authenticated("MODERATOR")) {
                     $http({
                         method:     "get",
-                        url:        "/server/projects/get_project_list",
-                        headers:    {
-                            "X-API-Key":    session_service.get("api_key")
-                        }
+                        url:        "/server/projects/get_project_list"
                     }).then(
                         function(response)
                         {
