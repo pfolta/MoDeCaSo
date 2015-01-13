@@ -61,6 +61,8 @@ services.factory(
 
                         if (!data.error && data.msg == "logout_successful") {
                             session_service.clear();
+
+                            session_service.set("login_message", "logged_out");
                         }
 
                         return data.msg;

@@ -33,6 +33,14 @@ controllers.controller(
                         };
 
                         break;
+                    case "logged_out":
+                        $scope.flash = {
+                            "show":     true,
+                            "type":     "alert-info",
+                            "message":  "<span class='glyphicon glyphicon-info-sign'></span> <strong>You have successfully logged out!</strong><br><span class='glyphicon glyphicon-placeholder'></span> Thank you for using MoDeCaSo."
+                        };
+
+                        break;
                 }
 
                 session_service.unset("login_message");
