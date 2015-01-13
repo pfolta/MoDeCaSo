@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2014-12-22
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -42,6 +42,14 @@ var webapp = angular.module(
         "angular-loading-bar"
     ]
 );
+
+webapp.config([
+    "$httpProvider",
+    function($httpProvider)
+    {
+        $httpProvider.interceptors.push("http_auth_interceptor_service");
+    }
+]);
 
 webapp.run([
     "$rootScope",

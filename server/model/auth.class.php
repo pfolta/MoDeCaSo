@@ -9,7 +9,7 @@
  *
  * File:			/server/model/auth.class.php
  * Created:			2014-11-05
- * Last modified:	2014-12-23
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -20,11 +20,14 @@ use Exception;
 
 use main\config;
 use main\database;
+use Slim\Slim;
 
 class auth
 {
 
     private static $instance = null;
+
+    private $app;
 
     private $config;
     private $database;
@@ -40,6 +43,8 @@ class auth
 
     private function __construct()
     {
+        $this->app = Slim::getInstance();
+
         $this->config = config::get_instance();
         $this->database = database::get_instance();
     }
@@ -202,7 +207,6 @@ class auth
      * @param $api_key          string  API key of the user to verify
      * @param $required_role    int     Role rights required to verify against
      * @return bool                     true if user is authorized, false if user is not authorized
-     * @throws Exception                Invalid API Key provided
      */
     public function authenticate($api_key, $required_role)
     {
@@ -235,7 +239,15 @@ class auth
             return false;
         }
 
-        throw new Exception("Invalid API Key");
+        $this->app->render(
+            401,
+            array(
+                'error'         => true,
+                'msg'           => "invalid_api_key"
+            )
+        );
+
+        return false;
     }
 
     /**

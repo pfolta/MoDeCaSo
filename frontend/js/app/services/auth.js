@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/services/auth.js
  * Created:			2014-10-20
- * Last modified:	2014-12-23
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -63,13 +63,7 @@ services.factory(
                         var data = response.data;
 
                         if (!data.error && data.msg == "logout_successful") {
-                            session_service.unset("api_key");
-                            session_service.unset("api_key_granted");
-                            session_service.unset("api_key_expiration");
-                            session_service.unset("username");
-                            session_service.unset("first_name");
-                            session_service.unset("last_name");
-                            session_service.unset("role");
+                            session_service.clear();
                         }
 
                         return data.msg;

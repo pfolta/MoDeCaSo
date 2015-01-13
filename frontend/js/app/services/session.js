@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/services/session.js
  * Created:			2014-10-20
- * Last modified:	2014-11-12
+ * Last modified:	2015-01-13
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -55,6 +55,18 @@ services.factory(
                 unset: function(key)
                 {
                     return sessionStorage.removeItem(key);
+                },
+
+                /**
+                 * clear ( )
+                 *
+                 * Removes all (key, value) pairs from the local session storage
+                 *
+                 * @returns {*}
+                 */
+                clear: function()
+                {
+                    return sessionStorage.clear();
                 }
             }
         }

@@ -23,11 +23,26 @@ controllers.controller(
         "cfpLoadingBar",
         function($rootScope, $scope, $sce, $state, auth_service, session_service, cfpLoadingBar)
         {
-            $scope.flash = {
-                "show":     true,
-                "type":     "alert-info",
-                "message":  "<span class='glyphicon glyphicon-info-sign'></span> <strong>Welcome to MoDeCaSo!</strong><br><span class='glyphicon glyphicon-placeholder'></span> You need to log in to use this system."
-            };
+            if (session_service.get("login_message")) {
+                switch (session_service.get("login_message")) {
+                    case "session_timeout":
+                        $scope.flash = {
+                            "show":     true,
+                            "type":     "alert-warning",
+                            "message":  "<span class='glyphicon glyphicon-warning-sign'></span> <strong>Your session has expired!</strong><br><span class='glyphicon glyphicon-placeholder'></span> Your session has expired due to inactivity. Please log in again."
+                        };
+
+                        break;
+                }
+
+                session_service.unset("login_message");
+            } else {
+                $scope.flash = {
+                    "show":     true,
+                    "type":     "alert-info",
+                    "message":  "<span class='glyphicon glyphicon-info-sign'></span> <strong>Welcome to MoDeCaSo!</strong><br><span class='glyphicon glyphicon-placeholder'></span> You need to log in to use this system."
+                };
+            }
 
             $scope.login = function()
             {
