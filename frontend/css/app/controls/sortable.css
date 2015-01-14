@@ -1,0 +1,21 @@
+/*
+ * UPB-BTHESIS
+ * Copyright (C) 2014-2015 Peter Folta. All rights reserved.
+ *
+ * Project:			UPB-BTHESIS
+ * Version:			0.0.1
+ *
+ * File:			/frontend/css/app/controls/sortable.css
+ * Created:			2015-01-14
+ * Last modified:	2015-01-14
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ */
+
+.table-sortable-highlight {
+    background-color: #aaaaaa !important;
+    border: 2px #888888 dashed !important;
+}
+
+.table-sortable-highlight td {
+    background-color: #dddddd !important;
+}

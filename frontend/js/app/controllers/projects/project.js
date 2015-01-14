@@ -30,14 +30,16 @@ controllers.controller(
             };
 
             $scope.sortable_options = {
-                "appendTo":         "div.page",
-                "axis":             "y",
-                "cursorAt":         {
-                    "left":             0,
-                    "top":              0
+                "appendTo":                 "div.page",
+                "axis":                     "y",
+                "cursorAt":                 {
+                    "left":                     0,
+                    "top":                      0
                 },
-                "scroll":           false,
-                "stop":             function(e, ui)
+                "placeholder":              "table-sortable-highlight",
+                "forcePlaceholderSize":     true,
+                "scroll":                   false,
+                "stop":                     function(e, ui)
                 {
                     $scope.participants_order_changed = true;
                 }
