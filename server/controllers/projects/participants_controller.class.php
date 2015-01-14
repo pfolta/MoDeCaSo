@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/projects/participants_controller.class.php
  * Created:			2015-01-13
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-14
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -101,6 +101,33 @@ class participants_controller extends controller
             $last_name      = $this->request->last_name;
             $email          = $this->request->email;
 
+            if (preg_match("/\|/i", $first_name)) {
+                $error = new error($this->app);
+                $error->set_status(400);
+                $error->set_type("Bad Request");
+                $error->set_message("Participant First Name contains invalid character \"|\".");
+
+                $error->send();
+            }
+
+            if (preg_match("/\|/i", $last_name)) {
+                $error = new error($this->app);
+                $error->set_status(400);
+                $error->set_type("Bad Request");
+                $error->set_message("Participant Last Name contains invalid character \"|\".");
+
+                $error->send();
+            }
+
+            if (preg_match("/\|/i", $email)) {
+                $error = new error($this->app);
+                $error->set_status(400);
+                $error->set_type("Bad Request");
+                $error->set_message("Participant Email Address contains invalid character \"|\".");
+
+                $error->send();
+            }
+
             $result = $this->model->add_participant($project_key, $first_name, $last_name, $email);
 
             $this->app->render(
@@ -149,6 +176,33 @@ class participants_controller extends controller
             $first_name     = $this->request->first_name;
             $last_name      = $this->request->last_name;
             $email          = $this->request->email;
+
+            if (preg_match("/\|/i", $first_name)) {
+                $error = new error($this->app);
+                $error->set_status(400);
+                $error->set_type("Bad Request");
+                $error->set_message("Participant First Name contains invalid character \"|\".");
+
+                $error->send();
+            }
+
+            if (preg_match("/\|/i", $last_name)) {
+                $error = new error($this->app);
+                $error->set_status(400);
+                $error->set_type("Bad Request");
+                $error->set_message("Participant Last Name contains invalid character \"|\".");
+
+                $error->send();
+            }
+
+            if (preg_match("/\|/i", $email)) {
+                $error = new error($this->app);
+                $error->set_status(400);
+                $error->set_type("Bad Request");
+                $error->set_message("Participant Email Address contains invalid character \"|\".");
+
+                $error->send();
+            }
 
             $result = $this->model->edit_participant($project_key, $participant_id, $first_name, $last_name, $email);
 

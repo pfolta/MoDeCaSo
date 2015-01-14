@@ -9,7 +9,7 @@
  *
  * File:			/server/index.php
  * Created:			2014-11-03
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-14
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -24,6 +24,7 @@ require "data/project_statuses.class.php";
 require "data/user_roles.class.php";
 require "data/user_statuses.class.php";
 
+require "tools/error.class.php";
 require "tools/file.class.php";
 require "tools/mail.class.php";
 require "tools/url.class.php";

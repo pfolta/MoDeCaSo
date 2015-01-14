@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/projects/cards_controller.class.php
  * Created:			2014-12-10
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-14
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -19,6 +19,7 @@ use data\user_roles;
 use Exception;
 use main\controller;
 use model\cards;
+use tools\error;
 use tools\file;
 
 class cards_controller extends controller
@@ -100,6 +101,24 @@ class cards_controller extends controller
             $text       = $this->request->text;
             $tooltip    = $this->request->tooltip;
 
+            if (preg_match("/\|/i", $text)) {
+                $error = new error($this->app);
+                $error->set_status(400);
+                $error->set_type("Bad Request");
+                $error->set_message("Card Text contains invalid character \"|\".");
+
+                $error->send();
+            }
+
+            if (preg_match("/\|/i", $tooltip)) {
+                $error = new error($this->app);
+                $error->set_status(400);
+                $error->set_type("Bad Request");
+                $error->set_message("Card Tooltip contains invalid character \"|\".");
+
+                $error->send();
+            }
+
             $result = $this->model->add_card($project_key, $text, $tooltip);
 
             $this->app->render(
@@ -147,6 +166,24 @@ class cards_controller extends controller
             $card_id    = $this->request->card_id;
             $text       = $this->request->text;
             $tooltip    = $this->request->tooltip;
+
+            if (preg_match("/\|/i", $text)) {
+                $error = new error($this->app);
+                $error->set_status(400);
+                $error->set_type("Bad Request");
+                $error->set_message("Card Text contains invalid character \"|\".");
+
+                $error->send();
+            }
+
+            if (preg_match("/\|/i", $tooltip)) {
+                $error = new error($this->app);
+                $error->set_status(400);
+                $error->set_type("Bad Request");
+                $error->set_message("Card Tooltip contains invalid character \"|\".");
+
+                $error->send();
+            }
 
             $result = $this->model->edit_card($project_key, $card_id, $text, $tooltip);
 
