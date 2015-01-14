@@ -22,14 +22,14 @@
             <label for="edit_participant_last_name" class="col-sm-3 control-label">Last Name</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" ng-model="participant.last_name" id="edit_participant_last_name" placeholder="Last Name" required autofocus tabindex="2" class="form-control">
+                <input type="text" ng-model="participant.last_name" id="edit_participant_last_name" placeholder="Last Name" required tabindex="2" class="form-control">
             </div>
         </div>
         <div class="form-group" id="edit_participant_email_group">
             <label for="edit_participant_email" class="col-sm-3 control-label">Email Address</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                <input type="email" ng-model="participant.email" id="edit_participant_email" placeholder="Email Address" required autofocus tabindex="3" class="form-control">
+                <input type="email" ng-model="participant.email" id="edit_participant_email" placeholder="Email Address" required tabindex="3" class="form-control">
             </div>
         </div>
     </div>
