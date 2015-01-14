@@ -29,18 +29,34 @@ controllers.controller(
                 "message":  null
             };
 
+            var fix_helper = function(e, ui) {
+                ui.children().each(function() {
+                    $(this).width($(this).width());
+                });
+
+                ui.css("-moz-box-shadow", "3px 3px 5px #cccccc");
+                ui.css("-webkit-box-shadow", "3px 3px 5px #cccccc");
+                ui.css("box-shadow", "3px 3px 5px #cccccc");
+
+                return ui;
+            };
+
             $scope.sortable_options = {
-                "appendTo":                 "div.page",
-                "axis":                     "y",
-                "cursorAt":                 {
-                    "left":                     0,
-                    "top":                      0
-                },
+                "cursor":                   "move",
+                "helper":                   fix_helper,
                 "placeholder":              "table-sortable-highlight",
                 "forcePlaceholderSize":     true,
                 "scroll":                   false,
                 "stop":                     function(e, ui)
                 {
+                    ui.item.css("-moz-box-shadow", "0px 0px 0px #cccccc");
+                    ui.item.css("-webkit-box-shadow", "0px 0px 0px #cccccc");
+                    ui.item.css("box-shadow", "0px 0px 0px #cccccc");
+
+                    for (var i = 0; i < $scope.participants.length; i++) {
+                        $scope.participants[i].order = i+1;
+                    }
+
                     $scope.participants_order_changed = true;
                 }
             };

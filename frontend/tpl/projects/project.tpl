@@ -129,12 +129,12 @@
             <div class="form-group" style="padding-bottom: 50px; ">
                 <div class="pull-left" style="width: 80%;">
                     <a href="/frontend/projects/{{ project.key }}/add_participant" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Participant</a>
+                    <button class="btn btn-success" ng-disabled="!participants_order_changed" ng-click="save_order()"><span class="glyphicon glyphicon-sort"></span> Save Order</button>
                     <div class="btn-group">
                         <a href="/frontend/projects/{{ project.key }}/import_participants" class="btn btn-default"><span class="glyphicon glyphicon-floppy-open"></span> Import Participants</a>
                         <a href="/server/projects/{{ project.key }}/participants/export_participants?api_key={{ api_key() }}" class="btn btn-default" ng-disabled="participants.length == 0" target="download_iframe"><span class="glyphicon glyphicon-floppy-save"></span> Export Participants</a>
                     </div>
                     <a href="/frontend/projects/{{ project.key }}/delete_all_participants" class="btn btn-danger" ng-disabled="participants.length == 0"><span class="glyphicon glyphicon-trash"></span> Delete All Participants</a>
-                    <button class="btn btn-info" ng-disabled="!participants_order_changed" ng-click="save_order()"><span class="glyphicon glyphicon-sort"></span> Save Order</button>
                 </div>
                 <div class="pull-right" style="width: 20%;">
                     <div class="input-group">
@@ -154,8 +154,8 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th style="width: 10%;">
-                            ID
+                        <th style="width: 5%;">
+                            Order
                         </th>
                         <th style="width: 20%;">
                             First Name
@@ -166,7 +166,7 @@
                         <th style="width: 30%;">
                             Email Address
                         </th>
-                        <th style="width: 10%;">
+                        <th style="width: 15%;">
                             Status
                         </th>
                         <th style="width: 10%;">
@@ -176,22 +176,22 @@
                 </thead>
                 <tbody ui-sortable="sortable_options" ng-model="participants">
                     <tr ng-repeat="participant in participants" class="move">
-                        <td class="text-right" style="width: 10%;">
-                            {{ participant.order }}
+                        <td class="text-center text-primary">
+                            <strong>{{ participant.order }}</strong>
                         </td>
-                        <td style="width: 20%;">
+                        <td>
                             <strong>{{ participant.first_name }}</strong>
                         </td>
-                        <td style="width: 20%;">
+                        <td>
                             <strong>{{ participant.last_name }}</strong>
                         </td>
-                        <td style="width: 30%;">
+                        <td>
                             {{ participant.email }}
                         </td>
-                        <td style="width: 10%;">
+                        <td>
                             <span class="label text-uppercase" ng-class="get_label_class(project.status);">{{ project.status }}</span>
                         </td>
-                        <td class="text-center" style="width: 10%;">
+                        <td class="text-center">
                             <div class="btn-group btn-group-sm">
                                 <a href="/frontend/projects/{{ project.key }}/edit_participant/{{ participant.id }}" class="btn btn-warning" tooltip="Edit Participant" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                                 <a href="/frontend/projects/{{ project.key }}/delete_participant/{{ participant.id }}" class="btn btn-danger" tooltip="Delete Participant" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>

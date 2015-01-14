@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/controls.css
  * Created:			2014-12-10
- * Last modified:	2015-01-12
+ * Last modified:	2015-01-14
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -22,8 +22,8 @@ div.card {
     background-size: contain;
 
     border: 1px #aaaaaa solid;
-    -moz-box-shadow: 0 0 10px #888888;
-    -webkit-box-shadow: 0 0 10px #888888;
+    -moz-box-shadow: 3px 3px 5px #cccccc;
+    -webkit-box-shadow: 3px 3px 5px #cccccc;
     box-shadow: 3px 3px 5px #cccccc;
 
     -moz-transform-origin: 0 0;
