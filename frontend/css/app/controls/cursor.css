@@ -7,10 +7,14 @@
  *
  * File:			/frontend/css/app/controls/cursor.css
  * Created:			2015-01-02
- * Last modified:	2015-01-02
+ * Last modified:	2015-01-14
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 .pointer {
     cursor: pointer !important;
+}
+
+.move {
+    cursor: move !important;
 }

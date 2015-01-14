@@ -101,3 +101,7 @@ div.mainView > div.page {
 iframe[name=download_iframe] {
     display: none;
 }
+
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+    background-color: white;
+}

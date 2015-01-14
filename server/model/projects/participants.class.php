@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/participants.class.php
  * Created:			2015-01-13
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-14
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -221,6 +221,27 @@ class participants
         return array(
             'error'         => false,
             'msg'           => "participants_imported"
+        );
+    }
+
+    public function set_order($project_key, $order)
+    {
+        /*
+         * Get Project ID
+         */
+        $project_id = projects::get_project_id($project_key);
+
+        for ($i = 0; $i < count($order); $i++) {
+            $data = array(
+                'order'         => $i+1
+            );
+
+            $this->database->update("project_participants", "`project` = '".$project_id."' AND `id` = '".$order[$i]."'", $data);
+        }
+
+        return array(
+            'error'         => false,
+            'msg'           => "participants_order_updated"
         );
     }
 

@@ -130,10 +130,11 @@
                 <div class="pull-left" style="width: 80%;">
                     <a href="/frontend/projects/{{ project.key }}/add_participant" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Participant</a>
                     <div class="btn-group">
-                        <a href="/frontend/projects/{{ project.key }}/import_participants" class="btn btn-default"><span class="glyphicon glyphicon-import"></span> Import Participants</a>
-                        <a href="/server/projects/{{ project.key }}/participants/export_participants?api_key={{ api_key() }}" class="btn btn-default" ng-disabled="participants.length == 0" target="download_iframe"><span class="glyphicon glyphicon-export"></span> Export Participants</a>
+                        <a href="/frontend/projects/{{ project.key }}/import_participants" class="btn btn-default"><span class="glyphicon glyphicon-floppy-open"></span> Import Participants</a>
+                        <a href="/server/projects/{{ project.key }}/participants/export_participants?api_key={{ api_key() }}" class="btn btn-default" ng-disabled="participants.length == 0" target="download_iframe"><span class="glyphicon glyphicon-floppy-save"></span> Export Participants</a>
                     </div>
                     <a href="/frontend/projects/{{ project.key }}/delete_all_participants" class="btn btn-danger" ng-disabled="participants.length == 0"><span class="glyphicon glyphicon-trash"></span> Delete All Participants</a>
+                    <button class="btn btn-info" ng-disabled="!participants_order_changed" ng-click="save_order()"><span class="glyphicon glyphicon-sort"></span> Save Order</button>
                 </div>
                 <div class="pull-right" style="width: 20%;">
                     <div class="input-group">
@@ -145,67 +146,52 @@
                     </div>
                 </div>
             </div>
+            <div style="padding-bottom: 25px;">
+                <h4>
+                    Seed Participant: <span class="text-info"><span class="glyphicon glyphicon-user"></span> {{ participants[0].first_name }} {{ participants[0].last_name }}</span>
+                </h4>
+            </div>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th style="width: 10%;">
                             ID
-                            <div class="btn-group btn-group-xs pull-right">
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'id'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'id'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
-                            </div>
                         </th>
                         <th style="width: 20%;">
                             First Name
-                            <div class="btn-group btn-group-xs pull-right">
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'first_name'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'first_name'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
-                            </div>
                         </th>
                         <th style="width: 20%;">
                             Last Name
-                            <div class="btn-group btn-group-xs pull-right">
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'last_name'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'last_name'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
-                            </div>
                         </th>
                         <th style="width: 30%;">
                             Email Address
-                            <div class="btn-group btn-group-xs pull-right">
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'email'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
-                            </div>
                         </th>
                         <th style="width: 10%;">
                             Status
-                            <div class="btn-group btn-group-xs pull-right">
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'status'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                                <button type="button" class="btn btn-default" ng-click="order_predicate = 'status'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
-                            </div>
                         </th>
                         <th style="width: 10%;">
                             Actions
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr ng-repeat="participant in participants_filtered = (participants | filter:participants_filter | orderBy:order_predicate:order_reverse)">
-                        <td class="text-right">
-                            {{ participant.id }}
+                <tbody ui-sortable="sortable_options" ng-model="participants">
+                    <tr ng-repeat="participant in participants" class="move">
+                        <td class="text-right" style="width: 10%;">
+                            {{ participant.order }}
                         </td>
-                        <td>
+                        <td style="width: 20%;">
                             <strong>{{ participant.first_name }}</strong>
                         </td>
-                        <td>
+                        <td style="width: 20%;">
                             <strong>{{ participant.last_name }}</strong>
                         </td>
-                        <td>
+                        <td style="width: 30%;">
                             {{ participant.email }}
                         </td>
-                        <td>
+                        <td style="width: 10%;">
                             <span class="label text-uppercase" ng-class="get_label_class(project.status);">{{ project.status }}</span>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center" style="width: 10%;">
                             <div class="btn-group btn-group-sm">
                                 <a href="/frontend/projects/{{ project.key }}/edit_participant/{{ participant.id }}" class="btn btn-warning" tooltip="Edit Participant" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                                 <a href="/frontend/projects/{{ project.key }}/delete_participant/{{ participant.id }}" class="btn btn-danger" tooltip="Delete Participant" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
@@ -215,7 +201,7 @@
                 </tbody>
             </table>
             <p class="text-right">
-                {{ participants_filtered.length }} {{ participants_filtered.length == 1 ? "Participant" : "Participants" }}
+                {{ participants.length }} {{ participants.length == 1 ? "Participant" : "Participants" }}
             </p>
         </div>
     </div>
@@ -233,7 +219,7 @@
         </div>
         <div class="panel-body" collapse="cards_collapse">
             <div class="form-group" style="padding-bottom: 50px; ">
-                <div class="pull-left" style="width: 69%;">
+                <div class="pull-left" style="width: 65%;">
                     <a href="/frontend/projects/{{ project.key }}/add_card" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</a>
                     <div class="btn-group">
                         <a href="/frontend/projects/{{ project.key }}/import_cards" class="btn btn-default"><span class="glyphicon glyphicon-floppy-open"></span> Import Cards</a>
@@ -241,8 +227,14 @@
                     </div>
                     <a href="/frontend/projects/{{ project.key }}/delete_all_cards" ng-disabled="cards.length == 0" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Cards</a>
                 </div>
+                <div class="pull-left text-center" style="width: 2%; padding-top: 7px;">
+                    <span class="glyphicon glyphicon-zoom-out"></span>
+                </div>
                 <div class="pull-left" style="height: 33px; width: 10%; padding-top: 7px;">
                     <input type="range" id="card_zoom" ng-model="card_zoom" min="0.1" max="2.5" step="0.1" tooltip="Zoom ({{ card_zoom_percent }}%)" tooltip-append-to-body="true">
+                </div>
+                <div class="pull-left text-center" style="width: 2%; padding-top: 7px;">
+                    <span class="glyphicon glyphicon-zoom-in"></span>
                 </div>
                 <div class="pull-right" style="width: 20%;">
                     <div class="input-group">

@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-14
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -37,6 +37,7 @@ var webapp = angular.module(
         "filters",
         "ui.router",
         "ui.bootstrap",
+        "ui.sortable",
         "angularFileUpload",
         "ngAnimate",
         "angular-loading-bar"

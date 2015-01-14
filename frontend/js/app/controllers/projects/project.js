@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-14
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -29,6 +29,29 @@ controllers.controller(
                 "message":  null
             };
 
+            $scope.sortable_options = {
+                "appendTo":         "div.page",
+                "axis":             "y",
+                "cursorAt":         {
+                    "left":             0,
+                    "top":              0
+                },
+                "scroll":           false,
+                "stop":             function(e, ui)
+                {
+                    $scope.participants_order_changed = true;
+
+                    var log = $scope.participants.map(function(i) {
+                        return i.id;
+                    }).join(", ");
+                    console.log(log);
+
+                    console.log($scope.participants);
+                }
+            };
+
+            $scope.participants_order_changed = false;
+
             $scope.card_zoom = 1.0;
 
             $scope.card_zoom_percent = $scope.card_zoom * 100;
@@ -38,6 +61,7 @@ controllers.controller(
                 {
                     return $scope.card_zoom;
                 },
+
                 function(value)
                 {
                     $scope.card_zoom_percent = Math.round(value * 100);
@@ -50,6 +74,38 @@ controllers.controller(
                     $(".card-container").css("width", (value * 226) + "px");
                 }
             );
+
+            $scope.save_order = function()
+            {
+                var order = new Array($scope.participants.length);
+
+                for (var i = 0; i < $scope.participants.length; i++) {
+                    order[i] = $scope.participants[i].id;
+                }
+
+                $http({
+                    method:     "post",
+                    url:        "/server/projects/" + $scope.key + "/participants/set_order",
+                    data:       {
+                        order:      order
+                    }
+                }).then(
+                    function(response)
+                    {
+                        $scope.participants_order_changed = false;
+
+                        $rootScope.$broadcast("load_project");
+                    },
+                    function(response)
+                    {
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-danger";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Error saving new order of participants.";
+
+                        shake_element($("#project_flash"));
+                    }
+                );
+            };
 
             $scope.load_project = function()
             {

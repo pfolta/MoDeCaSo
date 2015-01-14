@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2015-01-12
+ * Last modified:	2015-01-14
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -135,7 +135,7 @@ class projects
             /*
              * Retrieve list of participants
              */
-            $this->database->select("project_participants", null, "`project` = '".$project_id."'");
+            $this->database->select("project_participants", null, "`project` = '".$project_id."'", null, null, "`order` ASC");
             $project_participants = $this->database->result();
 
             /*

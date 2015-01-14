@@ -85,6 +85,14 @@ class participants_controller extends controller
                         'import_participants'
                     )
                 );
+
+                $this->app->post(
+                    "/set_order",
+                    array(
+                        $this,
+                        'set_order'
+                    )
+                );
             }
         );
     }
@@ -248,6 +256,22 @@ class participants_controller extends controller
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
             $result = $this->model->import_participants($project_key, $_FILES['import_file']);
+
+            $this->app->render(
+                200,
+                $result
+            );
+        } else {
+            throw new Exception("Insufficient rights");
+        }
+    }
+
+    public function set_order($project_key)
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $new_order = $this->request->order;
+
+            $result = $this->model->set_order($project_key, $new_order);
 
             $this->app->render(
                 200,
