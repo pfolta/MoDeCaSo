@@ -40,13 +40,6 @@ controllers.controller(
                 "stop":             function(e, ui)
                 {
                     $scope.participants_order_changed = true;
-
-                    var log = $scope.participants.map(function(i) {
-                        return i.id;
-                    }).join(", ");
-                    console.log(log);
-
-                    console.log($scope.participants);
                 }
             };
 
