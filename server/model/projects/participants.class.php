@@ -95,7 +95,7 @@ class participants
 
             foreach ($participants as $participant) {
                 $data = array(
-                    'order'         => $participant['order']-1
+                    'order'         => $participant['order'] - 1
                 );
 
                 $this->database->update("project_participants", "`id` = '".$participant['id']."'", $data);
@@ -273,7 +273,7 @@ class participants
 
         for ($i = 0; $i < count($order); $i++) {
             $data = array(
-                'order'         => $i+1
+                'order'         => $i + 1
             );
 
             $this->database->update("project_participants", "`project` = '".$project_id."' AND `id` = '".$order[$i]."'", $data);
