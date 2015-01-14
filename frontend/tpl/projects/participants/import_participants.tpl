@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button id="import_participants_submit_button" type="submit" ng-disabled="import_participants_form.$invalid" class="btn btn-primary" tabindex="2"><span class="glyphicon glyphicon-floppy-open"></span> Import participants</button>
+        <button id="import_participants_submit_button" type="submit" ng-disabled="import_participants_form.$invalid" class="btn btn-primary" tabindex="2"><span class="glyphicon glyphicon-floppy-open"></span> Import Participants</button>
         <button id="import_participants_cancel_button" type="button" class="btn btn-default" ng-click="$close()" tabindex="3">Cancel</button>
     </div>
 </form>

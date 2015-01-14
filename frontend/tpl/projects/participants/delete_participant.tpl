@@ -14,7 +14,7 @@
         </p>
     </div>
     <div class="modal-footer">
-        <button id="delete_participant_submit_button" type="submit" class="btn btn-danger" tabindex="1"><span class="glyphicon glyphicon-trash"></span> Delete participant</button>
+        <button id="delete_participant_submit_button" type="submit" class="btn btn-danger" tabindex="1"><span class="glyphicon glyphicon-trash"></span> Delete Participant</button>
         <button id="delete_participant_cancel_button" type="button" class="btn btn-default" ng-click="$close()" tabindex="2">Cancel</button>
     </div>
 </form>

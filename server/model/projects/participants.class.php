@@ -36,10 +36,17 @@ class participants
         $project_id = projects::get_project_id($project_key);
 
         /*
+         * Get number of existing participants
+         */
+        $this->database->select("project_participants", null, "`project` = '".$project_id."'");
+        $participant_count = $this->database->row_count();
+
+        /*
          * Insert new participant into database
          */
         $this->database->insert("project_participants", array(
             'project'       => $project_id,
+            'order'         => $participant_count + 1,
             'first_name'    => $first_name,
             'last_name'     => $last_name,
             'email'         => $email,
@@ -69,9 +76,28 @@ class participants
 
         if ($this->database->row_count() == 1) {
             /*
+             * Get participant's order
+             */
+            $participant_order = $this->database->result()[0]['order'];
+
+            /*
              * Delete participant
              */
             $this->database->delete("project_participants", "`id` = '".$participant_id."'");
+
+            /*
+             * Get all participants with a higher order
+             */
+            $this->database->select("project_participants", null, "`order` > '".$participant_order."' AND `project` = '".$project_id."'");
+            $participants = $this->database->result();
+
+            foreach ($participants as $participant) {
+                $data = array(
+                    'order'         => $participant['order']-1
+                );
+
+                $this->database->update("project_participants", "`id` = '".$participant['id']."'", $data);
+            }
 
             $result = array(
                 'error'         => false,
@@ -170,7 +196,7 @@ class participants
          */
         $project_id = projects::get_project_id($project_key);
 
-        $this->database->select("project_participants", null, "`project` = '".$project_id."'");
+        $this->database->select("project_participants", null, "`project` = '".$project_id."'", null, null, "`order` ASC");
         $participants = $this->database->result();
 
         $export_data = "";
@@ -193,11 +219,19 @@ class participants
          */
         $project_id = projects::get_project_id($project_key);
 
+        /*
+         * Get number of existing participants
+         */
+        $this->database->select("project_participants", null, "`project` = '".$project_id."'");
+        $participant_count = $this->database->row_count();
+
         if ($import_file['type'] != "text/plain") {
             throw new Exception("'".$import_file['name']."' is not a plain text file");
         }
 
         $file_handle = fopen($import_file['tmp_name'], "rb");
+
+        $i = 1;
 
         while (($line = fgets($file_handle)) !== false) {
             $card = explode("|", $line);
@@ -209,6 +243,7 @@ class participants
             if (!empty($first_name) && !empty($last_name) && !empty($email)) {
                 $this->database->insert("project_participants", array(
                     'project'       => $project_id,
+                    'order'         => $participant_count + $i,
                     'first_name'    => $first_name,
                     'last_name'     => $last_name,
                     'email'         => $email,
@@ -216,6 +251,8 @@ class participants
                     'last_modified' => time()
                 ));
             }
+
+            $i++;
         }
 
         return array(
