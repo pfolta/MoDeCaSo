@@ -15,6 +15,7 @@
 
 namespace model;
 
+use data\participant_statuses;
 use Exception;
 use main\database;
 
@@ -247,6 +248,7 @@ class participants
                     'first_name'    => $first_name,
                     'last_name'     => $last_name,
                     'email'         => $email,
+                    'status'        => participant_statuses::ADDED,
                     'created'       => time(),
                     'last_modified' => time()
                 ));

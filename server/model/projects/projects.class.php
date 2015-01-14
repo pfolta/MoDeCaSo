@@ -15,6 +15,7 @@
 
 namespace model;
 
+use data\participant_statuses;
 use \Exception;
 use data\project_statuses;
 use main\config;
@@ -137,6 +138,10 @@ class projects
              */
             $this->database->select("project_participants", null, "`project` = '".$project_id."'", null, null, "`order` ASC");
             $project_participants = $this->database->result();
+
+            for ($i = 0; $i < count($project_participants); $i++) {
+                $project_participants[$i]['status'] = participant_statuses::$values[$project_participants[$i]['status']];
+            }
 
             /*
              * Retrieve list of cards

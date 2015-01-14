@@ -189,7 +189,7 @@
                             {{ participant.email }}
                         </td>
                         <td>
-                            <span class="label text-uppercase" ng-class="get_label_class(project.status);">{{ project.status }}</span>
+                            <span class="label text-uppercase" ng-class="get_participant_status_label_class(participant.status);">{{ participant.status }}</span>
                         </td>
                         <td class="text-center">
                             <div class="btn-group btn-group-sm">

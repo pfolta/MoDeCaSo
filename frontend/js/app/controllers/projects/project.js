@@ -29,6 +29,23 @@ controllers.controller(
                 "message":  null
             };
 
+            $scope.get_participant_status_label_class = function (status)
+            {
+                switch (status) {
+                    case "ADDED":
+                        return "label-default";
+                    case "NOTIFIED":
+                        return "label-primary";
+                    case "COMPLETED":
+                        return "label-success";
+                    case "REMINDED":
+                        return "label-warning";
+                    case "TIMEOUT":
+                    case "CANCELED":
+                        return "label-danger";
+                }
+            };
+
             var fix_helper = function(e, ui) {
                 ui.children().each(function() {
                     $(this).width($(this).width());
