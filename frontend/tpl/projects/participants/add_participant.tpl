@@ -9,28 +9,33 @@
         <div class="alert" id="add_participant_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert">
         </div>
         <p>
-            Please fill out this form to add a new participant to this project.<br>
+            Please fill out this form to add a new participant to this project.
+        </p>
+        <p>
             You can add multiple participants at once in a batch fashion as this input dialog will stay open after you added a participant. When you are finished adding participants, simply click on <strong>Cancel</strong> to close the dialog.
+        </p>
+        <p>
+            The character <strong>|</strong> (pipe) is not allowed.
         </p>
         <div class="form-group" id="add_participant_first_name_group" style="padding-top: 20px;">
             <label for="add_participant_first_name" class="col-sm-3 control-label">First Name</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" ng-model="first_name" id="add_participant_first_name" placeholder="First Name" required autofocus tabindex="1" class="form-control">
+                <input type="text" ng-model="first_name" id="add_participant_first_name" placeholder="First Name" ng-pattern="/^[^|]*$/" required autofocus tabindex="1" class="form-control">
             </div>
         </div>
         <div class="form-group" id="add_participant_last_name_group">
             <label for="add_participant_last_name" class="col-sm-3 control-label">Last Name</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" ng-model="last_name" id="add_participant_last_name" placeholder="Last Name" required autofocus tabindex="2" class="form-control">
+                <input type="text" ng-model="last_name" id="add_participant_last_name" placeholder="Last Name" ng-pattern="/^[^|]*$/" required autofocus tabindex="2" class="form-control">
             </div>
         </div>
         <div class="form-group" id="add_participant_email_group">
             <label for="add_participant_email" class="col-sm-3 control-label">Email Address</label>
             <div class="input-group col-sm-9" style="padding-right: 15px;">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                <input type="email" ng-model="email" id="add_participant_email" placeholder="Email Address" required autofocus tabindex="3" class="form-control">
+                <input type="email" ng-model="email" id="add_participant_email" placeholder="Email Address" ng-pattern="/^[^|]*$/" required autofocus tabindex="3" class="form-control">
             </div>
         </div>
     </div>
