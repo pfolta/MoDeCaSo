@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2014-12-22
+ * Last modified:	2015-01-14
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -69,7 +69,8 @@ input::-ms-clear {
 }
 
 div.container {
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
 }
 
 div.mainView {
