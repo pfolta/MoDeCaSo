@@ -151,6 +151,9 @@
                     Seed Participant: <span class="text-info"><span class="glyphicon glyphicon-user"></span> {{ participants[0].first_name }} {{ participants[0].last_name }}</span>
                 </h4>
             </div>
+            <p class="text-danger" ng-show="participants_order_changed">
+                <span class="glyphicon glyphicon-exclamation-sign"></span> Please click on <strong>Save Order</strong> to save any changed you made to the order of the participants.
+            </p>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
