@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/add_user.js
  * Created:			2014-11-17
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-15
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -82,20 +82,7 @@ controllers.controller(
                         $("#add_user_submit_button").prop("disabled", true);
                         $("#add_user_cancel_button").html("Close");
 
-                        $("#add_user_cancel_button").on(
-                            "click",
-                            function()
-                            {
-                                $rootScope.$broadcast("load_users");
-                            }
-                        );
-                        $("#add_user_close_button").on(
-                            "click",
-                            function()
-                            {
-                                $rootScope.$broadcast("load_users");
-                            }
-                        );
+                        $rootScope.$broadcast("load_users");
                     },
                     function(response)
                     {

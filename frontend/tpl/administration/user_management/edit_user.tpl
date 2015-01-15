@@ -5,7 +5,7 @@
             Edit an account
         </h3>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" style="padding-bottom: 0;">
         <div class="alert" id="edit_user_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert">
         </div>
         <p>
@@ -67,11 +67,60 @@
                 </div>
             </div>
         </div>
-        <ul>
-            <li>User created: <strong>{{ user.created | timestamp }}</strong></li>
-            <li>Last modified: <strong>{{ user.last_modified | timestamp }}</strong></li>
-            <li>Last login: <strong>{{ user.last_login_at | timestamp }}</strong></li>
-        </ul>
+    </div>
+    <div>
+        <table class="table" style="margin: 0;">
+            <tbody>
+            <tr>
+                <th scope="row">
+                    Created
+                </th>
+                <td>
+                    {{ user.created | timestamp }}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Last modified
+                </th>
+                <td>
+                    {{ user.last_modified | timestamp }}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Last login at
+                </th>
+                <td>
+                    {{ user.last_login_at | timestamp }}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Last login from IP
+                </th>
+                <td>
+                    {{ user.last_login_from_ip }}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Last login from Hostname
+                </th>
+                <td>
+                    {{ user.last_login_from_hostname }}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Last login from Application
+                </th>
+                <td>
+                    {{ user.last_login_from_application }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
     <div class="modal-footer">
         <button id="edit_user_submit_button" type="submit" ng-disabled="edit_user_form.$invalid" class="btn btn-warning" tabindex="7"><span class="glyphicon glyphicon-edit"></span> Edit User</button>

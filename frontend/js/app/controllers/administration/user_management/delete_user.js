@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/delete_user.js
  * Created:			2014-11-12
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-15
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -62,20 +62,7 @@ controllers.controller(
                         $("#delete_user_submit_button").prop("disabled", true);
                         $("#delete_user_cancel_button").html("Close");
 
-                        $("#delete_user_cancel_button").on(
-                            "click",
-                            function()
-                            {
-                                $rootScope.$broadcast("load_users");
-                            }
-                        );
-                        $("#delete_user_close_button").on(
-                            "click",
-                            function()
-                            {
-                                $rootScope.$broadcast("load_users");
-                            }
-                        );
+                        $rootScope.$broadcast("load_users");
                     },
                     function(response)
                     {
