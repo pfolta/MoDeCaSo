@@ -42,7 +42,7 @@
             </p>
         </div>
         <div collapse="session_information_collapse">
-            <table class="table">
+            <table class="table" style="margin: 0;">
                 <tbody>
                 <tr>
                     <th scope="row" style="width: 20%;">
