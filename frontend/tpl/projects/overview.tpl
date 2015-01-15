@@ -72,7 +72,7 @@
                         {{ project.key }}
                     </td>
                     <td>
-                        {{ project.lead }}
+                        <span class="upb-blue"><span class="glyphicon glyphicon-user"></span> <strong>{{ project.lead }}</strong></span>
                     </td>
                     <td>
                         {{ project.created | timestamp }}
