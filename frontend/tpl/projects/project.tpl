@@ -213,7 +213,7 @@
         </div>
         <div class="panel-body" collapse="cards_collapse">
             <div class="form-group" style="padding-bottom: 50px; ">
-                <div class="pull-left" style="width: 65%;">
+                <div class="pull-left" style="width: 55%;">
                     <a href="/frontend/projects/{{ project.key }}/add_card" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</a>
                     <div class="btn-group">
                         <a href="/frontend/projects/{{ project.key }}/import_cards" class="btn btn-default"><span class="glyphicon glyphicon-floppy-open"></span> Import Cards</a>
@@ -221,11 +221,17 @@
                     </div>
                     <a href="/frontend/projects/{{ project.key }}/delete_all_cards" ng-disabled="cards.length == 0" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete All Cards</a>
                 </div>
+                <div class="pull-left text-center" style="width: 10%;">
+                    <div class="btn-group">
+                        <button class="btn btn-default" ng-model="card_view" btn-radio="1" tooltip="Card View" tooltip-append-to-body="true"><span class="glyphicon glyphicon-th-large"></span></button>
+                        <button class="btn btn-default" ng-model="card_view" btn-radio="0" tooltip="List View" tooltip-append-to-body="true"><span class="glyphicon glyphicon-list"></span></button>
+                    </div>
+                </div>
                 <div class="pull-left text-center" style="width: 2%; padding-top: 7px;">
                     <span class="glyphicon glyphicon-zoom-out"></span>
                 </div>
                 <div class="pull-left" style="height: 33px; width: 10%; padding-top: 7px;">
-                    <input type="range" id="card_zoom" ng-model="card_zoom" min="0.1" max="2.5" step="0.1" tooltip="Zoom ({{ card_zoom_percent }}%)" tooltip-append-to-body="true">
+                    <input type="range" id="card_zoom" ng-disabled="!card_view" ng-model="card_zoom" min="0.1" max="2.5" step="0.1" tooltip="Zoom ({{ card_zoom_percent }}%)" tooltip-append-to-body="true">
                 </div>
                 <div class="pull-left text-center" style="width: 2%; padding-top: 7px;">
                     <span class="glyphicon glyphicon-zoom-in"></span>
@@ -240,7 +246,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-container" ng-repeat="card in cards_filtered = (cards | filter:cards_filter)">
+            <div class="card-container" ng-repeat="card in cards_filtered = (cards | filter:cards_filter)" ng-show="card_view">
                 <div class="card">
                     <div class="btn-group btn-group-sm card-controls">
                         <button ng-disabled="!card.tooltip" class="btn btn-info" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="top" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
@@ -252,6 +258,55 @@
                     </div>
                 </div>
             </div>
+            <table class="table table-striped table-bordered" ng-show="!card_view">
+                <thead>
+                <tr>
+                    <th style="width: 30%;">
+                        Card Text
+                        <div class="btn-group btn-group-xs pull-right">
+                            <button type="button" class="btn btn-default" ng-click="cards_order_predicate = 'text'; cards_order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="cards_order_predicate = 'text'; cards_order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                        </div>
+                    </th>
+                    <th style="width: 40%;">
+                        Card Tooltip
+                        <div class="btn-group btn-group-xs pull-right">
+                            <button type="button" class="btn btn-default" ng-click="cards_order_predicate = 'tooltip'; cards_order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="cards_order_predicate = 'tooltip'; cards_order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                        </div>
+                    </th>
+                    <th style="width: 20%;">
+                        Created
+                        <div class="btn-group btn-group-xs pull-right">
+                            <button type="button" class="btn btn-default" ng-click="cards_order_predicate = 'created'; cards_order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="cards_order_predicate = 'created'; cards_order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                        </div>
+                    </th>
+                    <th style="width: 10%;">
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="card in cards_filteres = (cards | filter:cards_filter | orderBy:cards_order_predicate:cards_order_reverse)">
+                    <td>
+                        <strong>{{ card.text }}</strong>
+                    </td>
+                    <td>
+                        {{ card.tooltip }}
+                    </td>
+                    <td>
+                        {{ card.created | timestamp }}
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group btn-group-sm">
+                            <a href="/frontend/projects/{{ project.key }}/edit_card/{{ card.id }}" class="btn btn-warning" tooltip="Edit Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="/frontend/projects/{{ project.key }}/delete_card/{{ card.id }}" class="btn btn-danger" tooltip="Delete Card" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
             <p class="text-right" style="clear: both;">
                 {{ cards_filtered.length }} {{ cards_filtered.length == 1 ? "Card" : "Cards" }}
             </p>

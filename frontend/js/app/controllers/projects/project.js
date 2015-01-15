@@ -84,8 +84,8 @@ controllers.controller(
 
             $scope.participants_order_changed = false;
 
+            $scope.card_view = 1;
             $scope.card_zoom = 1.0;
-
             $scope.card_zoom_percent = $scope.card_zoom * 100;
 
             $scope.$watch(
