@@ -9,7 +9,7 @@
         <div class="alert" id="edit_user_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert">
         </div>
         <p>
-            Change details for user <strong>{{ username }}</strong>.<br>
+            Change details for user <span class="upb-blue"><span class="glyphicon glyphicon-user"></span> <strong>{{ user.first_name }} {{ user.last_name }} ({{ user.username }})</strong></span>.<br>
             Leave the password fields blank if you do not want to change the user's password.<br>
             Please not that the username cannot be changed.
         </p>

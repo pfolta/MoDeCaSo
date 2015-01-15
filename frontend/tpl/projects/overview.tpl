@@ -23,21 +23,14 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th style="width: 7%;">
-                        ID
-                        <div class="btn-group btn-group-xs pull-right">
-                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'id'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                            <button type="button" class="btn btn-default" ng-click="order_predicate = 'id'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
-                        </div>
-                    </th>
-                    <th style="width: 22%;">
+                    <th style="width: 20%;">
                         Title
                         <div class="btn-group btn-group-xs pull-right">
                             <button type="button" class="btn btn-default" ng-click="order_predicate = 'title'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
                             <button type="button" class="btn btn-default" ng-click="order_predicate = 'title'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
-                    <th style="width: 15%;">
+                    <th style="width: 19%;">
                         Key
                         <div class="btn-group btn-group-xs pull-right">
                             <button type="button" class="btn btn-default" ng-click="order_predicate = 'key'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
@@ -51,7 +44,7 @@
                             <button type="button" class="btn btn-default" ng-click="order_predicate = 'lead'; order_reverse = false;"><span class="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                     </th>
-                    <th style="width: 15%;">
+                    <th style="width: 20%;">
                         Created
                         <div class="btn-group btn-group-xs pull-right">
                             <button type="button" class="btn btn-default" ng-click="order_predicate = 'created'; order_reverse = true;"><span class="glyphicon glyphicon-chevron-up"></span></button>
@@ -72,9 +65,6 @@
             </thead>
             <tbody>
                 <tr ng-repeat="project in filtered = (projects | filter:filter | orderBy:order_predicate:order_reverse)">
-                    <td class="text-right">
-                        {{ project.id }}
-                    </td>
                     <td>
                         <strong>{{ project.title }}</strong>
                     </td>

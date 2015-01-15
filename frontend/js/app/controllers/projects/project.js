@@ -23,6 +23,10 @@ controllers.controller(
         {
             $scope.key = key;
 
+            $scope.messages_collapse        = true;
+            $scope.participants_collapse    = true;
+            $scope.cards_collapse           = true;
+
             $scope.flash = {
                 "show":     false,
                 "type":     null,
