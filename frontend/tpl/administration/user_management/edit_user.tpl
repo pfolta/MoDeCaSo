@@ -72,10 +72,10 @@
         <table class="table" style="margin: 0;">
             <tbody>
             <tr>
-                <th scope="row">
+                <th scope="row" style="width: 40%;">
                     Created
                 </th>
-                <td>
+                <td style="width: 60%;">
                     {{ user.created | timestamp }}
                 </td>
             </tr>
