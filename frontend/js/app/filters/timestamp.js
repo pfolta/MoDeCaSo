@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/filters/timestamp.js
  * Created:			2014-11-17
- * Last modified:	2014-11-24
+ * Last modified:	2015-01-15
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -57,8 +57,9 @@ filters.filter(
                 var day = date.getDate();
                 var hours = date.getHours();
                 var min = add_zero(date.getMinutes());
+                var secs = add_zero(date.getSeconds());
 
-                var datetime = month + "/" + day + "/" + year + ", " + make_12h(hours) + ":" + min + " " + get_am_pm(hours);
+                var datetime = day + " " + months[month] + " " + year + ", " + make_12h(hours) + ":" + min + ":" + secs + " " + get_am_pm(hours);
 
                 return datetime;
             }
