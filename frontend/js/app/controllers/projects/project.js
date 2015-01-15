@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2015-01-14
+ * Last modified:	2015-01-15
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -148,6 +148,8 @@ controllers.controller(
                         $scope.project = response.data.project;
                         $scope.participants = response.data.participants;
                         $scope.cards = response.data.cards;
+
+                        $scope.participants_order_changed = false;
                     },
                     function(response)
                     {

@@ -136,15 +136,6 @@
                     </div>
                     <a href="/frontend/projects/{{ project.key }}/delete_all_participants" class="btn btn-danger" ng-disabled="participants.length == 0"><span class="glyphicon glyphicon-trash"></span> Delete All Participants</a>
                 </div>
-                <div class="pull-right" style="width: 20%;">
-                    <div class="input-group">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                        <input type="text" ng-model="participants_filter" placeholder="Filter" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" ng-click="participants_filter=null" ng-disabled="!participants_filter"><span aria-hidden="true">&times;</span><span class="sr-only">Clear</span></button>
-                        </span>
-                    </div>
-                </div>
             </div>
             <div style="padding-bottom: 25px;">
                 <h4>
