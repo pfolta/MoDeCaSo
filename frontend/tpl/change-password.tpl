@@ -37,6 +37,20 @@
             </div>
         </div>
     </div>
+    <div>
+        <table class="table" style="margin: 0;">
+            <tbody>
+                <tr>
+                    <th scope="row" style="width: 40%;">
+                        Password last changed
+                    </th>
+                    <td style="width: 60%;">
+                        {{ password_last_changed() | timestamp }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="modal-footer">
         <button type="submit" id="change_password_submit_button" ng-disabled="change_password_form.$invalid" class="btn btn-primary" tabindex="4"><span class="glyphicon glyphicon-lock"></span> Change Password</button>
         <button type="button" id="change_password_cancel_button" class="btn btn-default" ng-click="$close()" tabindex="5">Cancel</button>

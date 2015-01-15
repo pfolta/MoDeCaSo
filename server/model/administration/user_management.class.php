@@ -177,7 +177,7 @@ Hint: To change your password, open the \"Signed in as\" menu and click on \"Cha
 
     public function get_user($username)
     {
-        $this->database->select("users", "id, username, first_name, last_name, email, role, status, created, last_modified, last_login_at, last_login_from_ip, last_login_from_hostname, last_login_from_application", "username = '".$username."'");
+        $this->database->select("users", "id, username, first_name, last_name, email, role, status, created, last_modified, password_last_changed, last_login, last_login_from_ip, last_login_from_hostname, last_login_from_application", "username = '".$username."'");
 
         if ($this->database->row_count() == 1) {
             $user = $this->database->result()[0];

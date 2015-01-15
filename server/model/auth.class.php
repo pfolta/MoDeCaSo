@@ -93,7 +93,7 @@ class auth
                      * Update user data with current login information
                      */
                     $this->database->update("users", "`id` = '".$result['id']."'", array(
-                        'last_login_at'                 => time(),
+                        'last_login'                    => time(),
                         'last_login_from_ip'            => $_SERVER['REMOTE_ADDR'],
                         'last_login_from_hostname'      => gethostbyaddr($_SERVER['REMOTE_ADDR']),
                         'last_login_from_application'   => $client_application
@@ -112,7 +112,8 @@ class auth
                         'first_name'                    => $result['first_name'],
                         'last_name'                     => $result['last_name'],
                         'role'                          => user_roles::$values[$result['role']],
-                        'last_login_at'                 => $result['last_login_at'],
+                        'password_last_changed'         => $result['password_last_changed'],
+                        'last_login'                    => $result['last_login'],
                         'last_login_from_ip'            => $result['last_login_from_ip'],
                         'last_login_from_hostname'      => $result['last_login_from_hostname'],
                         'last_login_from_application'   => $result['last_login_from_application']
@@ -186,8 +187,9 @@ class auth
                 /*
                  * Updated password in database
                  */
-                $this->database->update("users", "id = '".$user."'", array(
-                    'password'      => $new_password_hashed
+                $this->database->update("users", "`id` = '".$user."'", array(
+                    'password'                  => $new_password_hashed,
+                    'password_last_changed'     => time()
                 ));
 
                 $result = array(

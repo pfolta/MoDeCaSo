@@ -22,7 +22,7 @@ controllers.controller(
             $scope.session_information_collapse = true;
 
             $scope.logged_in_since              = session_service.get("api_key_granted");
-            $scope.last_login_at                = session_service.get("last_login_at");
+            $scope.last_login                   = session_service.get("last_login");
             $scope.last_login_from_ip           = session_service.get("last_login_from_ip");
             $scope.last_login_from_hostname     = session_service.get("last_login_from_hostname");
             $scope.last_login_from_application  = session_service.get("last_login_from_application");

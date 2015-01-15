@@ -42,7 +42,8 @@ services.factory(
                             session_service.set("first_name", data.first_name);
                             session_service.set("last_name", data.last_name);
                             session_service.set("role", data.role);
-                            session_service.set("last_login_at", data.last_login_at);
+                            session_service.set("password_last_changed", data.password_last_changed);
+                            session_service.set("last_login", data.last_login);
                             session_service.set("last_login_from_ip", data.last_login_from_ip);
                             session_service.set("last_login_from_hostname", data.last_login_from_hostname);
                             session_service.set("last_login_from_application", data.last_login_from_application);

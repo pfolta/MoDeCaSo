@@ -33,6 +33,11 @@ controllers.controller(
                 return session_service.get("first_name") + " " + session_service.get("last_name");
             };
 
+            $scope.password_last_changed = function()
+            {
+                return session_service.get("password_last_changed");
+            };
+
             $scope.api_key = function()
             {
                 return session_service.get("api_key");
@@ -119,6 +124,11 @@ controllers.controller(
                              */
                             $("#change_password_submit_button").prop("disabled", true);
                             $("#change_password_cancel_button").html("Close");
+
+                            /*
+                             * Set last password changed timestamp locally
+                             */
+                            session_service.set("password_last_changed", Math.floor(Date.now() / 1000));
                         }
                     });
                 } else {

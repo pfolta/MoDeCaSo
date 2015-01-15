@@ -54,10 +54,10 @@
                 </tr>
                 <tr>
                     <th scope="row">
-                        Last login at
+                        Last login
                     </th>
                     <td>
-                        {{ last_login_at | timestamp }}
+                        {{ last_login | timestamp }}
                     </td>
                 </tr>
                 <tr>

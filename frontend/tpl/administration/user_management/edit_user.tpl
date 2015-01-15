@@ -71,54 +71,62 @@
     <div>
         <table class="table" style="margin: 0;">
             <tbody>
-            <tr>
-                <th scope="row" style="width: 40%;">
-                    Created
-                </th>
-                <td style="width: 60%;">
-                    {{ user.created | timestamp }}
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    Last modified
-                </th>
-                <td>
-                    {{ user.last_modified | timestamp }}
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    Last login at
-                </th>
-                <td>
-                    {{ user.last_login_at | timestamp }}
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    Last login from IP
-                </th>
-                <td>
-                    {{ user.last_login_from_ip }}
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    Last login from Hostname
-                </th>
-                <td>
-                    {{ user.last_login_from_hostname }}
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    Last login from Application
-                </th>
-                <td>
-                    {{ user.last_login_from_application }}
-                </td>
-            </tr>
+                <tr>
+                    <th scope="row" style="width: 40%;">
+                        Created
+                    </th>
+                    <td style="width: 60%;">
+                        {{ user.created | timestamp }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Last modified
+                    </th>
+                    <td>
+                        {{ user.last_modified | timestamp }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Password last changed
+                    </th>
+                    <td>
+                        {{ user.password_last_changed | timestamp }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Last login
+                    </th>
+                    <td>
+                        {{ user.last_login | timestamp }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Last login from IP
+                    </th>
+                    <td>
+                        {{ user.last_login_from_ip }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Last login from Hostname
+                    </th>
+                    <td>
+                        {{ user.last_login_from_hostname }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Last login from Application
+                    </th>
+                    <td>
+                        {{ user.last_login_from_application }}
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
