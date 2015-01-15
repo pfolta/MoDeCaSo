@@ -6,7 +6,7 @@
     </p>
 
     <div class="panel panel-default">
-        <div class="panel-heading pointer" ng-click="active_projects_collapse = !active_projects_collapse">
+        <div class="panel-heading pointer collapsible" ng-click="active_projects_collapse = !active_projects_collapse">
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-th-large upb-blue"></span> Active Projects
                 <span class="pull-right">
@@ -25,7 +25,7 @@
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading pointer" ng-click="session_information_collapse = !session_information_collapse">
+        <div class="panel-heading pointer collapsible" ng-click="session_information_collapse = !session_information_collapse">
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-info-sign upb-blue"></span> Session Information
                 <span class="pull-right">

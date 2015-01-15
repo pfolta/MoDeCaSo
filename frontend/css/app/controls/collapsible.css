@@ -1,0 +1,33 @@
+/*
+ * UPB-BTHESIS
+ * Copyright (C) 2014-2015 Peter Folta. All rights reserved.
+ *
+ * Project:			UPB-BTHESIS
+ * Version:			0.0.1
+ *
+ * File:			/frontend/css/app/controls/collapsible.css
+ * Created:			2015-01-15
+ * Last modified:	2015-01-15
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ */
+
+.collapsible:hover {
+    background-image: -webkit-linear-gradient(top, #d9edf7 0%, #c4e3f3 100%) !important;
+    background-image: -o-linear-gradient(top, #d9edf7 0%, #c4e3f3 100%) !important;
+    background-image: linear-gradient(to bottom, #d9edf7 0%, #c4e3f3 100%) !important;
+    background-repeat: repeat-x !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9edf7', endColorstr='#ffc4e3f3', GradientType=0) !important;
+}
+
+.collapsible:active {
+    background-image: -webkit-linear-gradient(top, #428bca 0%, #357ebd 100%) !important;
+    background-image: -o-linear-gradient(top, #428bca 0%, #357ebd 100%) !important;
+    background-image: linear-gradient(to bottom, #428bca 0%, #357ebd 100%) !important;
+    background-repeat: repeat-x !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff357ebd', GradientType=0) !important;
+    color: #ffffff !important;
+}
+
+.collapsible:active .upb-blue {
+    color: #ffffff !important;
+}
