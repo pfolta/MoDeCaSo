@@ -57,7 +57,7 @@ filters.filter(
 
                 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                 var year = date.getFullYear();
-                var month = date.getMonth() + 1;
+                var month = date.getMonth();
                 var day = date.getDate();
                 var hours = date.getHours();
                 var min = add_zero(date.getMinutes());
