@@ -70,6 +70,7 @@
         <ul>
             <li>User created: <strong>{{ user.created | timestamp }}</strong></li>
             <li>Last modified: <strong>{{ user.last_modified | timestamp }}</strong></li>
+            <li>Last login: <strong>{{ user.last_login_at | timestamp }}</strong></li>
         </ul>
     </div>
     <div class="modal-footer">

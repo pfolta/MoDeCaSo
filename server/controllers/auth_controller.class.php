@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/auth.class.php
  * Created:			2014-11-04
- * Last modified:	2014-11-12
+ * Last modified:	2014-11-15
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -40,10 +40,11 @@ class auth_controller extends controller
 
     public function login()
     {
-        $username = $this->request->username;
-        $password = $this->request->password;
+        $username           = $this->request->username;
+        $password           = $this->request->password;
+        $client_application = $this->request_headers->get("X-Client-Application");
 
-        $result = $this->auth->login($username, $password);
+        $result = $this->auth->login($username, $password, $client_application);
 
         if (!$result['error']) {
             $this->app->render(

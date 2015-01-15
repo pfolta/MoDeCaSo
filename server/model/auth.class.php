@@ -9,7 +9,7 @@
  *
  * File:			/server/model/auth.class.php
  * Created:			2014-11-05
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-15
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -53,7 +53,7 @@ class auth
     {
     }
 
-    public function login($username, $password)
+    public function login($username, $password, $client_application)
     {
         /*
          * Check whether user exists
@@ -77,31 +77,45 @@ class auth
                     $api_key = $this->generate_api_key();
 
                     $granted    = time();
-                    $expiration = $granted + $this->config->get_config_value("auth", "session_lifetime");
+                    $expiry     = $granted + $this->config->get_config_value("auth", "session_lifetime");
 
                     /*
                      * Store API Key in user database
                      */
                     $this->database->insert("user_tokens", array(
-                        'api_key'       => $api_key,
-                        'user'          => $result['id'],
-                        'granted'       => $granted,
-                        'expiration'    => $expiration
+                        'api_key'                       => $api_key,
+                        'user'                          => $result['id'],
+                        'granted'                       => $granted,
+                        'expiry'                        => $expiry
+                    ));
+
+                    /*
+                     * Update user data with current login information
+                     */
+                    $this->database->update("users", "`id` = '".$result['id']."'", array(
+                        'last_login_at'                 => time(),
+                        'last_login_from_ip'            => $_SERVER['REMOTE_ADDR'],
+                        'last_login_from_hostname'      => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                        'last_login_from_application'   => $client_application
                     ));
 
                     /*
                      * Set options
                      */
                     $login_result = array(
-                        'error'                 => false,
-                        'msg'                   => "login_successful",
-                        'api_key'               => $api_key,
-                        'api_key_granted'       => $granted,
-                        'api_key_expiration'    => $expiration,
-                        'username'              => $result['username'],
-                        'first_name'            => $result['first_name'],
-                        'last_name'             => $result['last_name'],
-                        'role'                  => user_roles::$values[$result['role']]
+                        'error'                         => false,
+                        'msg'                           => "login_successful",
+                        'api_key'                       => $api_key,
+                        'api_key_granted'               => $granted,
+                        'api_key_expiry'                => $expiry,
+                        'username'                      => $result['username'],
+                        'first_name'                    => $result['first_name'],
+                        'last_name'                     => $result['last_name'],
+                        'role'                          => user_roles::$values[$result['role']],
+                        'last_login_at'                 => $result['last_login_at'],
+                        'last_login_from_ip'            => $result['last_login_from_ip'],
+                        'last_login_from_hostname'      => $result['last_login_from_hostname'],
+                        'last_login_from_application'   => $result['last_login_from_application']
                     );
                 } else {
                     /*

@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-15
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -84,6 +84,7 @@ webapp.config([
                 title: "Dashboard",
                 views: {
                     "mainView": {
+                        controller:     "dashboard_controller",
                         templateUrl:    "/frontend/tpl/dashboard.tpl"
                     },
                     "headerView": {

@@ -9,7 +9,7 @@
  *
  * File:			/server/model/administration/user_management.class.php
  * Created:			2014-11-12
- * Last modified:	2015-01-10
+ * Last modified:	2015-01-15
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -77,7 +77,9 @@ You can find your credentials below:
 Username: ".$username."
 Password: ".$password."
 
-Please go to MoDeCaSo by visiting ".$this->config->get_config_value("main", "application_url")." and log in to MoDeCaSo to change your password.";
+Please go to MoDeCaSo by visiting ".$this->config->get_config_value("main", "application_url")." and log in to MoDeCaSo to change your password.
+
+Hint: To change your password, open the \"Signed in as\" menu and click on \"Change Password\". Please keep your password secret and do not share it with others.";
 
             $mail = new mail("MoDeCaSo <".$this->config->get_config_value("email", "sender_address").">", $first_name." ".$last_name." <".$email.">", "Account Registration", $message);
             $mail->send();
@@ -175,7 +177,7 @@ Please go to MoDeCaSo by visiting ".$this->config->get_config_value("main", "app
 
     public function get_user($username)
     {
-        $this->database->select("users", "id, username, first_name, last_name, email, role, status, created, last_modified", "username = '".$username."'");
+        $this->database->select("users", "id, username, first_name, last_name, email, role, status, created, last_modified, last_login_at, last_login_from_ip, last_login_from_hostname, last_login_from_application", "username = '".$username."'");
 
         if ($this->database->row_count() == 1) {
             $user = $this->database->result()[0];

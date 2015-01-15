@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/services/auth.js
  * Created:			2014-10-20
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-15
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -37,11 +37,15 @@ services.factory(
                         if (!data.error && data.msg == "login_successful") {
                             session_service.set("api_key", data.api_key);
                             session_service.set("api_key_granted", data.api_key_granted);
-                            session_service.set("api_key_expiration", data.api_key_expiration);
+                            session_service.set("api_key_expiry", data.api_key_expiry);
                             session_service.set("username", data.username);
                             session_service.set("first_name", data.first_name);
                             session_service.set("last_name", data.last_name);
                             session_service.set("role", data.role);
+                            session_service.set("last_login_at", data.last_login_at);
+                            session_service.set("last_login_from_ip", data.last_login_from_ip);
+                            session_service.set("last_login_from_hostname", data.last_login_from_hostname);
+                            session_service.set("last_login_from_application", data.last_login_from_application);
                         }
 
                         return data.msg;

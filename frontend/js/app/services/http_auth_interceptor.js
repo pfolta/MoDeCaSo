@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/services/http_auth_interceptor.js
  * Created:			2015-01-13
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-15
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -23,6 +23,8 @@ services.factory(
                     if (session_service.get("api_key")) {
                         config.headers['X-API-Key'] = session_service.get("api_key");
                     }
+
+                    config.headers['X-Client-Application'] = "MoDeCaSo Web Frontend";
 
                     return config;
                 },
