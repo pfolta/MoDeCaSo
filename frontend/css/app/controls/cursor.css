@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/controls/cursor.css
  * Created:			2015-01-02
- * Last modified:	2015-01-14
+ * Last modified:	2015-01-16
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -17,4 +17,12 @@
 
 .move {
     cursor: move !important;
+}
+
+.grab {
+    cursor: url("/frontend/cur/openhand.cur"), move !important;
+}
+
+.grabbing {
+    cursor: url("/frontend/cur/closedhand.cur"), move !important;
 }

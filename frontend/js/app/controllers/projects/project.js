@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2015-01-15
+ * Last modified:	2015-01-16
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -63,10 +63,11 @@ controllers.controller(
             };
 
             $scope.sortable_options = {
-                "cursor":                   "move",
-                "helper":                   fix_helper,
-                "placeholder":              "table-sortable-highlight",
+                "cursor":                   "url('/frontend/cur/closedhand.cur'), move",
                 "forcePlaceholderSize":     true,
+                "helper":                   fix_helper,
+                "opacity":                  0.8,
+                "placeholder":              "table-sortable-highlight",
                 "scroll":                   false,
                 "stop":                     function(e, ui)
                 {

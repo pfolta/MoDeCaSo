@@ -127,14 +127,19 @@
         </div>
         <div class="panel-body" collapse="participants_collapse">
             <div class="form-group" style="padding-bottom: 50px; ">
-                <div class="pull-left" style="width: 80%;">
+                <div class="pull-left" style="width: 75%;">
                     <a href="/frontend/projects/{{ project.key }}/add_participant" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Participant</a>
-                    <button class="btn btn-success" ng-disabled="!participants_order_changed" ng-click="save_order()"><span class="glyphicon glyphicon-sort"></span> Save Order</button>
                     <div class="btn-group">
                         <a href="/frontend/projects/{{ project.key }}/import_participants" class="btn btn-default"><span class="glyphicon glyphicon-floppy-open"></span> Import Participants</a>
                         <a href="/server/projects/{{ project.key }}/participants/export_participants?api_key={{ api_key() }}" class="btn btn-default" ng-disabled="participants.length == 0" target="download_iframe"><span class="glyphicon glyphicon-floppy-save"></span> Export Participants</a>
                     </div>
                     <a href="/frontend/projects/{{ project.key }}/delete_all_participants" class="btn btn-danger" ng-disabled="participants.length == 0"><span class="glyphicon glyphicon-trash"></span> Delete All Participants</a>
+                </div>
+                <div class="pull-right text-right" style="width: 25%;">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" ng-disabled="!participants_order_changed" ng-click="save_order()"><span class="glyphicon glyphicon-sort"></span> Save Order</button>
+                        <button class="btn btn-default" ng-disabled="!participants_order_changed" ng-click="load_project()"><span class="glyphicon glyphicon-arrow-left"></span> Revert Order</button>
+                    </div>
                 </div>
             </div>
             <div style="padding-bottom: 25px;">
@@ -169,7 +174,7 @@
                     </tr>
                 </thead>
                 <tbody ui-sortable="sortable_options" ng-model="participants">
-                    <tr ng-repeat="participant in participants" class="move">
+                    <tr ng-repeat="participant in participants" class="grab">
                         <td class="text-center text-primary">
                             <strong>{{ participant.order }}</strong>
                         </td>
