@@ -108,7 +108,7 @@ controllers.controller(
                 }
             );
 
-            $scope.save_order = function()
+            $scope.participants_save_order = function()
             {
                 var order = new Array($scope.participants.length);
 
@@ -150,9 +150,9 @@ controllers.controller(
                     {
                         $scope.flash.show = false;
 
-                        $scope.project = response.data.project;
-                        $scope.participants = response.data.participants;
-                        $scope.cards = response.data.cards;
+                        $scope.project          = response.data.project;
+                        $scope.participants     = response.data.participants;
+                        $scope.cards            = response.data.cards;
 
                         $scope.participants_order_changed = false;
                     },

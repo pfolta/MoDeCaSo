@@ -137,8 +137,8 @@
                 </div>
                 <div class="pull-right text-right" style="width: 25%;">
                     <div class="btn-group">
-                        <button class="btn btn-primary" ng-disabled="!participants_order_changed" ng-click="save_order()"><span class="glyphicon glyphicon-sort"></span> Save Order</button>
-                        <button class="btn btn-default" ng-disabled="!participants_order_changed" ng-click="load_project()"><span class="glyphicon glyphicon-arrow-left"></span> Revert Order</button>
+                        <button class="btn btn-primary" ng-disabled="!participants_order_changed" ng-click="participants_save_order()"><span class="glyphicon glyphicon-floppy-disk"></span> Save Order</button>
+                        <button class="btn btn-default" ng-disabled="!participants_order_changed" ng-click="load_project()"><span class="glyphicon glyphicon-share-alt rotate"></span> Revert Order</button>
                     </div>
                 </div>
             </div>
@@ -147,9 +147,9 @@
                     Seed Participant: <span class="text-info"><span class="glyphicon glyphicon-user"></span> {{ participants[0].first_name }} {{ participants[0].last_name }}</span>
                 </h4>
             </div>
-            <p class="text-danger" ng-show="participants_order_changed">
-                <span class="glyphicon glyphicon-exclamation-sign"></span> Please click on <strong>Save Order</strong> to save any changed you made to the order of the participants.
-            </p>
+            <div class="alert alert-info" ng-show="participants_order_changed">
+                <span class="glyphicon glyphicon-info-sign"></span> Please click on <strong>Save Order</strong> to save any changes you made to the order of the participants.
+            </div>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>

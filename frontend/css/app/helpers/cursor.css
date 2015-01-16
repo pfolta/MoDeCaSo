@@ -11,6 +11,8 @@
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
+@charset "UTF-8";
+
 .pointer {
     cursor: pointer !important;
 }

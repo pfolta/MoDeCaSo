@@ -1,0 +1,22 @@
+/*
+ * UPB-BTHESIS
+ * Copyright (C) 2014-2015 Peter Folta. All rights reserved.
+ *
+ * Project:			UPB-BTHESIS
+ * Version:			0.0.1
+ *
+ * File:			/frontend/css/app/helpers/transformation.css
+ * Created:			2015-01-16
+ * Last modified:	2015-01-16
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ */
+
+@charset "UTF-8";
+
+.rotate {
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
