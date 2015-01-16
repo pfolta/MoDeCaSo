@@ -2,7 +2,9 @@
     <h1>
         Project Details for {{ project.key }}
     </h1>
+
     <div class="alert" id="project_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert"></div>
+
     <div class="form-group" style="padding-bottom: 50px; ">
         <div class="pull-left" style="width: 80%;">
             <a class="btn btn-success" disabled><span class="glyphicon glyphicon-play"></span> Run Project</a>
@@ -12,6 +14,11 @@
             <a ui-sref="/projects/overview" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> View All Projects</a>
         </div>
     </div>
+
+    <h4 style="margin-bottom: 35px;">
+        Project Lead: <span class="text-info"><span class="glyphicon glyphicon-user"></span> {{ project.lead }}</span>
+    </h4>
+
     <div class="panel panel-default">
         <div class="panel-heading pointer collapsible" ng-click="settings_collapse = !settings_collapse">
             <h3 class="panel-title">

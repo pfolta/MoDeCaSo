@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2015-01-14
+ * Last modified:	2015-01-16
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -132,6 +132,14 @@ class projects
             $project = $this->database->result()[0];
 
             $project_id = $project['id'];
+
+            /*
+             * Set Project Lead information
+             */
+            $this->database->select("users", "`username`, `first_name`, `last_name`", "`id` = '".$project['lead']."'");
+            $lead = $this->database->result()[0];
+
+            $project['lead'] = $lead['first_name']." ".$lead['last_name']." (".$lead['username'].")";
 
             /*
              * Retrieve list of participants
