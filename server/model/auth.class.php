@@ -245,7 +245,7 @@ class auth
              * Update session lifetime
              */
             $this->database->update("user_tokens", "`api_key` = '".$api_key."'", array(
-                'expiration'    => $GLOBALS['timestamp'] + $this->config->get_config_value("auth", "session_lifetime")
+                'expiry'    => $GLOBALS['timestamp'] + $this->config->get_config_value("auth", "session_lifetime")
             ));
 
             if ($role >= $required_role) {
