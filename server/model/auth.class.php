@@ -244,7 +244,7 @@ class auth
             /*
              * Update session lifetime
              */
-            $this->database->update("user_tokens", "api_key = '".$api_key."'", array(
+            $this->database->update("user_tokens", "`api_key` = '".$api_key."'", array(
                 'expiration'    => $GLOBALS['timestamp'] + $this->config->get_config_value("auth", "session_lifetime")
             ));
 
@@ -273,7 +273,7 @@ class auth
      */
     public function clear_expired_tokens()
     {
-        $this->database->delete("user_tokens", "expiration < ".$GLOBALS['timestamp']);
+        $this->database->delete("user_tokens", "`expiry` < ".$GLOBALS['timestamp']);
     }
 
     private function generate_api_key()
