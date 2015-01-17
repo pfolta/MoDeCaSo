@@ -53,33 +53,33 @@
                     <h4>
                         Email invitation
                         <span class="pull-right">
-                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                            <a href="/frontend/projects/{{ project.key }}/edit_message/email_invitation" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
                     <p>
-                        {{ project.email_invitation }}
+                        {{ messages['email_invitation']['message'] }}
                     </p>
                 </div>
                 <div class="col-md-4 message">
                     <h4>
                         Email invitation for Seed Participant
                         <span class="pull-right">
-                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                            <a href="/frontend/projects/{{ project.key }}/edit_message/sp_email_invitation" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
                     <p>
-                        {{ project.sp_email_invitation }}
+                        {{ messages['sp_email_invitation']['message'] }}
                     </p>
                 </div>
                 <div class="col-md-4 message">
                     <h4>
                         Welcome Message
                         <span class="pull-right">
-                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                            <a href="/frontend/projects/{{ project.key }}/edit_message/welcome_message" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
                     <p>
-                        {{ project.welcome_message }}
+                        {{ messages['welcome_message']['message'] }}
                     </p>
                 </div>
             </div>
@@ -88,33 +88,33 @@
                     <h4>
                         Welcome Message for Seed Participant
                         <span class="pull-right">
-                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                            <a href="/frontend/projects/{{ project.key }}/edit_message/sp_welcome_message" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
                     <p>
-                        {{ project.sp_welcome_message }}
+                        {{ messages['sp_welcome_message']['message'] }}
                     </p>
                 </div>
                 <div class="col-md-4 message">
                     <h4>
                         Email Reminder
                         <span class="pull-right">
-                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                            <a href="/frontend/projects/{{ project.key }}/edit_message/email_reminder" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
                     <p>
-                        {{ project.email_reminder }}
+                        {{ messages['email_reminder']['message'] }}
                     </p>
                 </div>
                 <div class="col-md-4 message">
                     <h4>
                         Email Timeout Notification
                         <span class="pull-right">
-                            <button class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                            <a href="/frontend/projects/{{ project.key }}/edit_message/email_timeout" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
                     <p>
-                        {{ project.email_timeout }}
+                        {{ messages['email_timeout']['message'] }}
                     </p>
                 </div>
             </div>

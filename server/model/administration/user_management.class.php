@@ -9,7 +9,7 @@
  *
  * File:			/server/model/administration/user_management.class.php
  * Created:			2014-11-12
- * Last modified:	2015-01-15
+ * Last modified:	2015-01-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -62,8 +62,8 @@ class user_management
                 'email'         => $email,
                 'role'          => $role,
                 'status'        => $status,
-                'created'       => time(),
-                'last_modified' => time()
+                'created'       => $GLOBALS['timestamp'],
+                'last_modified' => $GLOBALS['timestamp']
             ));
 
             /*
@@ -142,7 +142,7 @@ Hint: To change your password, open the \"Signed in as\" menu and click on \"Cha
                 'email'         => $email,
                 'role'          => $role,
                 'status'        => $status,
-                'last_modified' => time()
+                'last_modified' => $GLOBALS['timestamp']
             );
 
             if (!is_null($password)) {

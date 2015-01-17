@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/cards.class.php
  * Created:			2014-12-10
- * Last modified:	2014-12-22
+ * Last modified:	2015-01-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -42,8 +42,8 @@ class cards
             'project'       => $project_id,
             'text'          => $text,
             'tooltip'       => $tooltip,
-            'created'       => time(),
-            'last_modified' => time()
+            'created'       => $GLOBALS['timestamp'],
+            'last_modified' => 0
         ));
 
         $result = array(
@@ -119,7 +119,7 @@ class cards
             $data = array(
                 'text'          => $text,
                 'tooltip'       => $tooltip,
-                'last_modified' => time()
+                'last_modified' => $GLOBALS['timestamp']
             );
 
             /*
@@ -216,8 +216,8 @@ class cards
                     'project'       => $project_id,
                     'text'          => $text,
                     'tooltip'       => $tooltip,
-                    'created'       => time(),
-                    'last_modified' => time()
+                    'created'       => $GLOBALS['timestamp'],
+                    'last_modified' => 0
                 ));
             }
         }

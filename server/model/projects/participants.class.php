@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/participants.class.php
  * Created:			2015-01-13
- * Last modified:	2015-01-14
+ * Last modified:	2015-01-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -52,8 +52,8 @@ class participants
             'last_name'     => $last_name,
             'email'         => $email,
             'status'        => participant_statuses::ADDED,
-            'created'       => time(),
-            'last_modified' => time()
+            'created'       => $GLOBALS['timestamp'],
+            'last_modified' => 0
         ));
 
         $result = array(
@@ -149,7 +149,7 @@ class participants
                 'first_name'    => $first_name,
                 'last_name'     => $last_name,
                 'email'         => $email,
-                'last_modified' => time()
+                'last_modified' => $GLOBALS['timestamp']
             );
 
             /*
@@ -250,8 +250,8 @@ class participants
                     'last_name'     => $last_name,
                     'email'         => $email,
                     'status'        => participant_statuses::ADDED,
-                    'created'       => time(),
-                    'last_modified' => time()
+                    'created'       => $GLOBALS['timestamp'],
+                    'last_modified' => 0
                 ));
             }
 

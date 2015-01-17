@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2015-01-16
+ * Last modified:	2015-01-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -41,6 +41,7 @@ class projects
         $this->database->select("projects", null, "`key` = '".$key."'");
 
         if ($this->database->row_count() == 0) {
+
             /*
              * Insert new project into database
              */
@@ -48,14 +49,64 @@ class projects
                 'title'                 => $title,
                 'key'                   => $key,
                 'lead'                  => $lead,
-                'email_invitation'      => $this->config->get_config_value("project_messages", "email_invitation"),
-                'sp_email_invitation'   => $this->config->get_config_value("project_messages", "sp_email_invitation"),
-                'welcome_message'       => $this->config->get_config_value("project_messages", "welcome_message"),
-                'sp_welcome_message'    => $this->config->get_config_value("project_messages", "sp_welcome_message"),
-                'email_reminder'        => $this->config->get_config_value("project_messages", "email_reminder"),
-                'email_timeout'         => $this->config->get_config_value("project_messages", "email_timeout"),
-                'created'               => time(),
-                'last_modified'         => time()
+                'created'               => $GLOBALS['timestamp'],
+                'last_modified'         => 0
+            ));
+
+            /*
+             * Project ID
+             */
+            $project_id = $this->database->get_insert_id();
+
+            /*
+             * Insert default messages into database
+             */
+            $this->database->insert("project_messages", array(
+                'project'               => $project_id,
+                'type'                  => "email_invitation",
+                'message'               => $this->config->get_config_value("project_messages", "email_invitation"),
+                'created'               => $GLOBALS['timestamp'],
+                'last_modified'         => 0
+            ));
+
+            $this->database->insert("project_messages", array(
+                'project'               => $project_id,
+                'type'                  => "sp_email_invitation",
+                'message'               => $this->config->get_config_value("project_messages", "sp_email_invitation"),
+                'created'               => $GLOBALS['timestamp'],
+                'last_modified'         => 0
+            ));
+
+            $this->database->insert("project_messages", array(
+                'project'               => $project_id,
+                'type'                  => "welcome_message",
+                'message'               => $this->config->get_config_value("project_messages", "welcome_message"),
+                'created'               => $GLOBALS['timestamp'],
+                'last_modified'         => 0
+            ));
+
+            $this->database->insert("project_messages", array(
+                'project'               => $project_id,
+                'type'                  => "sp_welcome_message",
+                'message'               => $this->config->get_config_value("project_messages", "sp_welcome_message"),
+                'created'               => $GLOBALS['timestamp'],
+                'last_modified'         => 0
+            ));
+
+            $this->database->insert("project_messages", array(
+                'project'               => $project_id,
+                'type'                  => "email_reminder",
+                'message'               => $this->config->get_config_value("project_messages", "email_reminder"),
+                'created'               => $GLOBALS['timestamp'],
+                'last_modified'         => 0
+            ));
+
+            $this->database->insert("project_messages", array(
+                'project'               => $project_id,
+                'type'                  => "email_timeout",
+                'message'               => $this->config->get_config_value("project_messages", "email_timeout"),
+                'created'               => $GLOBALS['timestamp'],
+                'last_modified'         => 0
             ));
 
             $result = array(
@@ -142,6 +193,18 @@ class projects
             $project['lead'] = $lead['first_name']." ".$lead['last_name']." (".$lead['username'].")";
 
             /*
+             * Retrieve messages
+             */
+            $this->database->select("project_messages", null, "`project` = '".$project_id."'");
+            $messages = $this->database->result();
+
+            $project_messages = array();
+
+            foreach ($messages as $message) {
+                $project_messages[$message['type']] = $message;
+            }
+
+            /*
              * Retrieve list of participants
              */
             $this->database->select("project_participants", null, "`project` = '".$project_id."'", null, null, "`order` ASC");
@@ -160,6 +223,7 @@ class projects
             $result = array(
                 'error'         => false,
                 'project'       => $project,
+                'messages'      => $project_messages,
                 'participants'  => $project_participants,
                 'cards'         => $project_cards
             );

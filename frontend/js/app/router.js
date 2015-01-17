@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2015-01-15
+ * Last modified:	2015-01-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -746,6 +746,52 @@ webapp.config([
                                     ]
                                 },
                                 templateUrl:    "/frontend/tpl/projects/participants/import_participants.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/projects/project");
+                            }
+                        );
+                    }
+                ]
+            }
+        )
+        .state(
+            "/projects/project/edit_message",
+            {
+                url: "/edit_message/:type",
+                role: "MODERATOR",
+                parent: "/projects/project",
+                title: "Edit Message",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "edit_message_controller",
+                                resolve:        {
+                                    project_key: [
+                                        "$stateParams",
+                                        function($stateParams)
+                                        {
+                                            var url_parts = document.URL.split("/");
+                                            var project_key = url_parts[url_parts.length-3];
+
+                                            return project_key;
+                                        }
+                                    ],
+                                    type:   function()
+                                    {
+                                        return $stateParams.type;
+                                    }
+                                },
+                                templateUrl:    "/frontend/tpl/projects/edit_message.tpl",
                                 backdrop:       "static",
                                 keyboard:       false
                             }

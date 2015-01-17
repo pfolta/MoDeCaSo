@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/create_project.js
  * Created:			2014-11-19
- * Last modified:	2015-01-13
+ * Last modified:	2015-01-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -91,6 +91,8 @@ controllers.controller(
                                 go_to_url("/projects/" + $scope.project.key);
                             }
                         );
+
+                        $rootScope.$broadcast("load_projects");
                     },
                     function(response)
                     {

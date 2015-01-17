@@ -151,6 +151,7 @@ controllers.controller(
                         $scope.flash.show = false;
 
                         $scope.project          = response.data.project;
+                        $scope.messages         = response.data.messages;
                         $scope.participants     = response.data.participants;
                         $scope.cards            = response.data.cards;
 

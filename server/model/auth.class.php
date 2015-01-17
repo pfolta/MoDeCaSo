@@ -9,7 +9,7 @@
  *
  * File:			/server/model/auth.class.php
  * Created:			2014-11-05
- * Last modified:	2015-01-15
+ * Last modified:	2015-01-17
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -76,7 +76,7 @@ class auth
                      */
                     $api_key = $this->generate_api_key();
 
-                    $granted    = time();
+                    $granted    = $GLOBALS['timestamp'];
                     $expiry     = $granted + $this->config->get_config_value("auth", "session_lifetime");
 
                     /*
@@ -93,7 +93,7 @@ class auth
                      * Update user data with current login information
                      */
                     $this->database->update("users", "`id` = '".$result['id']."'", array(
-                        'last_login'                    => time(),
+                        'last_login'                    => $GLOBALS['timestamp'],
                         'last_login_from_ip'            => $_SERVER['REMOTE_ADDR'],
                         'last_login_from_hostname'      => gethostbyaddr($_SERVER['REMOTE_ADDR']),
                         'last_login_from_application'   => $client_application
@@ -189,7 +189,7 @@ class auth
                  */
                 $this->database->update("users", "`id` = '".$user."'", array(
                     'password'                  => $new_password_hashed,
-                    'password_last_changed'     => time()
+                    'password_last_changed'     => $GLOBALS['timestamp']
                 ));
 
                 $result = array(
@@ -245,7 +245,7 @@ class auth
              * Update session lifetime
              */
             $this->database->update("user_tokens", "api_key = '".$api_key."'", array(
-                'expiration'    => time() + $this->config->get_config_value("auth", "session_lifetime")
+                'expiration'    => $GLOBALS['timestamp'] + $this->config->get_config_value("auth", "session_lifetime")
             ));
 
             if ($role >= $required_role) {
@@ -273,7 +273,7 @@ class auth
      */
     public function clear_expired_tokens()
     {
-        $this->database->delete("user_tokens", "expiration < ".time());
+        $this->database->delete("user_tokens", "expiration < ".$GLOBALS['timestamp']);
     }
 
     private function generate_api_key()
