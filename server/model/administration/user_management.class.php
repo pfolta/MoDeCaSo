@@ -40,7 +40,7 @@ class user_management
         /*
          * Check if username already exists
          */
-        $this->database->select("users", null, "username = '".$username."'");
+        $this->database->select("users", null, "`username` = '".$username."'");
 
         if ($this->database->row_count() == 0) {
             /*
@@ -103,13 +103,13 @@ Hint: To change your password, open the \"Signed in as\" menu and click on \"Cha
         /*
          * Check if user exists
          */
-        $this->database->select("users", null, "username = '".$username."'");
+        $this->database->select("users", null, "`username` = '".$username."'");
 
         if ($this->database->row_count() == 1) {
             /*
              * Delete user
              */
-            $this->database->delete("users", "username = '".$username."'");
+            $this->database->delete("users", "`username` = '".$username."'");
 
             $result = array(
                 'error'         => false,
@@ -133,7 +133,7 @@ Hint: To change your password, open the \"Signed in as\" menu and click on \"Cha
         /*
          * Check if user exists
          */
-        $this->database->select("users", null, "username = '".$username."'");
+        $this->database->select("users", null, "`username` = '".$username."'");
 
         if ($this->database->row_count() == 1) {
             $data = array(
@@ -159,7 +159,7 @@ Hint: To change your password, open the \"Signed in as\" menu and click on \"Cha
             /*
              * Update user in database
              */
-            $this->database->update("users", "username = '".$username."'", $data);
+            $this->database->update("users", "`username` = '".$username."'", $data);
 
             $result = array(
                 'error'         => false,
