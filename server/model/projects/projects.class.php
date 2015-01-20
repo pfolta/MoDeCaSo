@@ -192,6 +192,8 @@ class projects
 
             $project['lead'] = $lead['first_name']." ".$lead['last_name']." (".$lead['username'].")";
 
+            $project['status'] = project_statuses::$values[$project['status']];
+
             /*
              * Retrieve messages
              */

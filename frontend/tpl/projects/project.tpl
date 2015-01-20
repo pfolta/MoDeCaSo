@@ -7,13 +7,17 @@
 
     <div class="form-group" style="padding-bottom: 50px; ">
         <div class="pull-left" style="width: 80%;">
-            <a class="btn btn-success" disabled><span class="glyphicon glyphicon-play"></span> Run Project</a>
+            <a class="btn btn-success" ng-disabled="project.status != 'READY'"><span class="glyphicon glyphicon-play"></span> Run Project</a>
+            <a class="btn btn-danger" ng-disabled="project.status != 'RUNNING'"><span class="glyphicon glyphicon-ban-circle"></span> Cancel Project</a>
+            <a class="btn btn-info" ng-disabled="project.status != 'FINISHED'"><span class="glyphicon glyphicon-info-sign"></span> View Results</a>
             <a ng-click="load_project();" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Reload</a>
         </div>
         <div class="pull-right">
             <a ui-sref="/projects/overview" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> View All Projects</a>
         </div>
     </div>
+
+    <div class="alert alert-dismissable" ng-show="status_flash.show" ng-class="status_flash.type" ng-bind-html="html_save(status_flash.message)" role="alert"></div>
 
     <h4 style="margin-bottom: 35px;">
         Project Lead: <span class="text-info"><span class="glyphicon glyphicon-user"></span> {{ project.lead }}</span>

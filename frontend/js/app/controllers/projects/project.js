@@ -33,6 +33,12 @@ controllers.controller(
                 "message":  null
             };
 
+            $scope.status_flash = {
+                "show":     false,
+                "type":     null,
+                "message":  null
+            };
+
             $scope.get_participant_status_label_class = function (status)
             {
                 switch (status) {
@@ -150,10 +156,10 @@ controllers.controller(
                     {
                         $scope.flash.show = false;
 
-                        $scope.project          = response.data.project;
-                        $scope.messages         = response.data.messages;
-                        $scope.participants     = response.data.participants;
-                        $scope.cards            = response.data.cards;
+                        $scope.project                  = response.data.project;
+                        $scope.messages                 = response.data.messages;
+                        $scope.participants             = response.data.participants;
+                        $scope.cards                    = response.data.cards;
 
                         $scope.settings_completion_days = Math.floor($scope.project.completion / 86400);
                         $scope.settings_completion_hrs  = Math.floor(($scope.project.completion - $scope.settings_completion_days * 86400) / 3600);
@@ -164,6 +170,37 @@ controllers.controller(
                         $scope.settings_reminder_hrs    = Math.floor(($scope.project.reminder - $scope.settings_reminder_days * 86400) / 3600);
                         $scope.settings_reminder_mins   = Math.floor(($scope.project.reminder - $scope.settings_reminder_days * 86400 - $scope.settings_reminder_hrs * 3600) / 60);
                         $scope.settings_reminder_secs   = $scope.project.reminder - $scope.settings_reminder_days * 86400 - $scope.settings_reminder_hrs * 3600 - $scope.settings_reminder_mins * 60;
+
+                        switch ($scope.project.status) {
+                            case "CREATED":
+                                $scope.status_flash = {
+                                    "show":     true,
+                                    "type":     "alert-info",
+                                    "message":  "<span class='glyphicon glyphicon-info-sign'></span> <strong>" + get_success_title() + "</strong> The project has been successfully created but needs several more steps before it is ready to run.<br><span class='glyphicon glyphicon-placeholder'></span> Complete this assisstent and make sure you add at least <strong>1 participant</strong> and <strong>1 card</strong> to complete this project's setup."
+                                };
+                                break;
+                            case "READY":
+                                $scope.status_flash = {
+                                    "show":     true,
+                                    "type":     "alert-success",
+                                    "message":  "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> The project's configuration is completed and this project is ready to run.<br><span class='glyphicon glyphicon-placeholder'></span> To start the project, click on <strong>Run Project</strong>."
+                                };
+                                break;
+                            case "RUNNING":
+                                $scope.status_flash = {
+                                    "show":     true,
+                                    "type":     "alert-warning",
+                                    "message":  "<span class='glyphicon glyphicon-warning-sign'></span> <strong>Warning!</strong> This project is currently running.<br><span class='glyphicon glyphicon-placeholder'></span> You cannot make any changes to the project's configuration while it is running."
+                                };
+                                break;
+                            case "FINISHED":
+                                $scope.status_flash = {
+                                    "show":     true,
+                                    "type":     "alert-info",
+                                    "message":  "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>Warning!</strong> This project is finished.<br><span class='glyphicon glyphicon-placeholder'></span> You can no longer change this project's configuration as this project is already finished, i.e. the experiment is completed. You can view the project's results on the <strong>Result Page</strong>."
+                                };
+                                break;
+                        }
 
                         $scope.participants_order_changed = false;
                     },
