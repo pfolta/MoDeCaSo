@@ -9,7 +9,7 @@
  *
  * File:			/server/model/administration/user_management.class.php
  * Created:			2014-11-12
- * Last modified:	2015-01-17
+ * Last modified:	2015-01-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -63,7 +63,7 @@ class user_management
                 'role'          => $role,
                 'status'        => $status,
                 'created'       => $GLOBALS['timestamp'],
-                'last_modified' => $GLOBALS['timestamp']
+                'last_modified' => 0
             ));
 
             /*
