@@ -61,50 +61,50 @@ class projects
             /*
              * Insert default messages into database
              */
-            $this->database->insert("project", array(
+            $this->database->insert("project_messages", array(
                 'project'               => $project_id,
                 'type'                  => "email_invitation",
-                'message'               => $this->config->get_config_value("project_messages", "email_invitation"),
+                'message'               => $this->config->get_config_value("project", "email_invitation"),
                 'created'               => $GLOBALS['timestamp'],
                 'last_modified'         => 0
             ));
 
-            $this->database->insert("project", array(
+            $this->database->insert("project_messages", array(
                 'project'               => $project_id,
                 'type'                  => "sp_email_invitation",
-                'message'               => $this->config->get_config_value("project_messages", "sp_email_invitation"),
+                'message'               => $this->config->get_config_value("project", "sp_email_invitation"),
                 'created'               => $GLOBALS['timestamp'],
                 'last_modified'         => 0
             ));
 
-            $this->database->insert("project", array(
+            $this->database->insert("project_messages", array(
                 'project'               => $project_id,
                 'type'                  => "welcome_message",
-                'message'               => $this->config->get_config_value("project_messages", "welcome_message"),
+                'message'               => $this->config->get_config_value("project", "welcome_message"),
                 'created'               => $GLOBALS['timestamp'],
                 'last_modified'         => 0
             ));
 
-            $this->database->insert("project", array(
+            $this->database->insert("project_messages", array(
                 'project'               => $project_id,
                 'type'                  => "sp_welcome_message",
-                'message'               => $this->config->get_config_value("project_messages", "sp_welcome_message"),
+                'message'               => $this->config->get_config_value("project", "sp_welcome_message"),
                 'created'               => $GLOBALS['timestamp'],
                 'last_modified'         => 0
             ));
 
-            $this->database->insert("project", array(
+            $this->database->insert("project_messages", array(
                 'project'               => $project_id,
                 'type'                  => "email_reminder",
-                'message'               => $this->config->get_config_value("project_messages", "email_reminder"),
+                'message'               => $this->config->get_config_value("project", "email_reminder"),
                 'created'               => $GLOBALS['timestamp'],
                 'last_modified'         => 0
             ));
 
-            $this->database->insert("project", array(
+            $this->database->insert("project_messages", array(
                 'project'               => $project_id,
                 'type'                  => "email_timeout",
-                'message'               => $this->config->get_config_value("project_messages", "email_timeout"),
+                'message'               => $this->config->get_config_value("project", "email_timeout"),
                 'created'               => $GLOBALS['timestamp'],
                 'last_modified'         => 0
             ));
@@ -259,6 +259,56 @@ class projects
             $project_id = $database->result()[0]['id'];
 
             return $project_id;
+        }
+
+        throw new Exception("Invalid project key '".$project_key."'");
+    }
+
+    public static function compute_project_status($project_key)
+    {
+        $database = database::get_instance();
+
+        $database->select("projects", null, "`key` = '".$project_key."'");
+
+        if ($database->row_count() == 1) {
+            $project = $database->result()[0];
+            $status  = $project['status'];
+
+            /*
+             * Retrieve list of participants
+             */
+            $database->select("project_participants", null, "`project` = '".$project['id']."'");
+            $participant_count = $database->row_count();
+
+            /*
+             * Retrieve list of cards
+             */
+            $database->select("project_cards", null, "`project` = '".$project['id']."'");
+            $card_count = $database->row_count();
+
+            switch ($status) {
+                case project_statuses::CREATED:
+                    if ($participant_count > 0 && $card_count > 0) {
+                        $status = project_statuses::READY;
+                    }
+
+                    break;
+                case project_statuses::READY:
+                    if ($participant_count < 1 || $card_count < 1) {
+                        $status = project_statuses::CREATED;
+                    }
+
+                    break;
+            }
+
+            /*
+             * Update project status
+             */
+            $database->update("projects", "`key` = '".$project_key."'", array(
+                'status'        => $status
+            ));
+
+            return true;
         }
 
         throw new Exception("Invalid project key '".$project_key."'");

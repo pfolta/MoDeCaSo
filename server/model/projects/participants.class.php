@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/participants.class.php
  * Created:			2015-01-13
- * Last modified:	2015-01-17
+ * Last modified:	2015-01-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -56,6 +56,11 @@ class participants
             'last_modified' => 0
         ));
 
+        /*
+         * Compute project status
+         */
+        projects::compute_project_status($project_key);
+
         $result = array(
             'error'         => false,
             'msg'           => "participant_created"
@@ -101,6 +106,11 @@ class participants
                 $this->database->update("project_participants", "`id` = '".$participant['id']."'", $data);
             }
 
+            /*
+             * Compute project status
+             */
+            projects::compute_project_status($project_key);
+
             $result = array(
                 'error'         => false,
                 'msg'           => "participant_deleted"
@@ -123,6 +133,11 @@ class participants
          * Delete all participants linked to this project from database
          */
         $this->database->delete("project_participants", "`project` = '".$project_id."'");
+
+        /*
+         * Compute project status
+         */
+        projects::compute_project_status($project_key);
 
         $result = array(
             'error'         => false,
@@ -257,6 +272,11 @@ class participants
 
             $i++;
         }
+
+        /*
+         * Compute project status
+         */
+        projects::compute_project_status($project_key);
 
         return array(
             'error'         => false,
