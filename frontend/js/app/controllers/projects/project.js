@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2015-01-16
+ * Last modified:	2015-01-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -154,6 +154,16 @@ controllers.controller(
                         $scope.messages         = response.data.messages;
                         $scope.participants     = response.data.participants;
                         $scope.cards            = response.data.cards;
+
+                        $scope.settings_completion_days = Math.floor($scope.project.completion / 86400);
+                        $scope.settings_completion_hrs  = Math.floor(($scope.project.completion - $scope.settings_completion_days * 86400) / 3600);
+                        $scope.settings_completion_mins = Math.floor(($scope.project.completion - $scope.settings_completion_days * 86400 - $scope.settings_completion_hrs * 3600) / 60);
+                        $scope.settings_completion_secs = $scope.project.completion - $scope.settings_completion_days * 86400 - $scope.settings_completion_hrs * 3600 - $scope.settings_completion_mins * 60;
+
+                        $scope.settings_reminder_days   = Math.floor($scope.project.reminder / 86400);
+                        $scope.settings_reminder_hrs    = Math.floor(($scope.project.reminder - $scope.settings_reminder_days * 86400) / 3600);
+                        $scope.settings_reminder_mins   = Math.floor(($scope.project.reminder - $scope.settings_reminder_days * 86400 - $scope.settings_reminder_hrs * 3600) / 60);
+                        $scope.settings_reminder_secs   = $scope.project.reminder - $scope.settings_reminder_days * 86400 - $scope.settings_reminder_hrs * 3600 - $scope.settings_reminder_mins * 60;
 
                         $scope.participants_order_changed = false;
                     },
