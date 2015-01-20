@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2015-01-17
+ * Last modified:	2015-01-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -61,7 +61,7 @@ class projects
             /*
              * Insert default messages into database
              */
-            $this->database->insert("project_messages", array(
+            $this->database->insert("project", array(
                 'project'               => $project_id,
                 'type'                  => "email_invitation",
                 'message'               => $this->config->get_config_value("project_messages", "email_invitation"),
@@ -69,7 +69,7 @@ class projects
                 'last_modified'         => 0
             ));
 
-            $this->database->insert("project_messages", array(
+            $this->database->insert("project", array(
                 'project'               => $project_id,
                 'type'                  => "sp_email_invitation",
                 'message'               => $this->config->get_config_value("project_messages", "sp_email_invitation"),
@@ -77,7 +77,7 @@ class projects
                 'last_modified'         => 0
             ));
 
-            $this->database->insert("project_messages", array(
+            $this->database->insert("project", array(
                 'project'               => $project_id,
                 'type'                  => "welcome_message",
                 'message'               => $this->config->get_config_value("project_messages", "welcome_message"),
@@ -85,7 +85,7 @@ class projects
                 'last_modified'         => 0
             ));
 
-            $this->database->insert("project_messages", array(
+            $this->database->insert("project", array(
                 'project'               => $project_id,
                 'type'                  => "sp_welcome_message",
                 'message'               => $this->config->get_config_value("project_messages", "sp_welcome_message"),
@@ -93,7 +93,7 @@ class projects
                 'last_modified'         => 0
             ));
 
-            $this->database->insert("project_messages", array(
+            $this->database->insert("project", array(
                 'project'               => $project_id,
                 'type'                  => "email_reminder",
                 'message'               => $this->config->get_config_value("project_messages", "email_reminder"),
@@ -101,7 +101,7 @@ class projects
                 'last_modified'         => 0
             ));
 
-            $this->database->insert("project_messages", array(
+            $this->database->insert("project", array(
                 'project'               => $project_id,
                 'type'                  => "email_timeout",
                 'message'               => $this->config->get_config_value("project_messages", "email_timeout"),
