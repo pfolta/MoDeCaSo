@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/filters/timestamp.js
  * Created:			2014-11-17
- * Last modified:	2015-01-15
+ * Last modified:	2015-01-21
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -49,7 +49,7 @@ filters.filter(
                     }
                 }
 
-                if (timestamp == "0") {
+                if (timestamp == "0" || timestamp == undefined) {
                     return "Never";
                 }
 
