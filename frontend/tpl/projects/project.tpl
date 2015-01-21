@@ -605,7 +605,7 @@
             </div>
             <div style="padding-bottom: 25px;">
                 <h4>
-                    Seed Participant: <span class="text-info"><span class="glyphicon glyphicon-user"></span> {{ participants[0].first_name }} {{ participants[0].last_name }}</span>
+                    Seed Participant: <span class="upb-blue"><span class="glyphicon glyphicon-user"></span> {{ participants[0].first_name }} {{ participants[0].last_name }}</span>
                 </h4>
             </div>
             <div class="alert alert-info" ng-show="participants_order_changed">

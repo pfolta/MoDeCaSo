@@ -7,17 +7,18 @@
  *
  * File:            /frontend/js/app/controllers/projects/create_project.js
  * Created:			2014-11-19
- * Last modified:	2015-01-17
+ * Last modified:	2015-01-21
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 controllers.controller(
     "create_project_controller",
     [
+        "$rootScope",
         "$scope",
         "$http",
         "session_service",
-        function($scope, $http, session_service)
+        function($rootScope, $scope, $http, session_service)
         {
             $scope.flash = {
                 show:       false,
