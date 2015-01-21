@@ -173,7 +173,7 @@
                         </select>
                         <span class="input-group-addon">mins</span>
                     </div>
-                    <div class="input-group col-sm-2" style="padding-right: 15px;">
+                    <div class="input-group col-sm-2" style="float: left; padding-right: 10px;">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                         <select class="form-control" id="settings_completion_secs" ng-model="settings_completion_secs" required>
                             <option value="0">00</option>
@@ -376,7 +376,7 @@
                         </select>
                         <span class="input-group-addon">mins</span>
                     </div>
-                    <div class="input-group col-sm-2" style="padding-right: 15px;">
+                    <div class="input-group col-sm-2" style="padding-right: 10px;">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                         <select class="form-control" id="settings_reminder_secs" ng-model="settings_reminder_secs" required>
                             <option value="0">00</option>
