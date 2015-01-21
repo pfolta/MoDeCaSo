@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/cards.class.php
  * Created:			2014-12-10
- * Last modified:	2015-01-20
+ * Last modified:	2015-01-21
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -47,6 +47,11 @@ class cards
         ));
 
         /*
+         * Update project last modified timestamp
+         */
+        projects::update_last_modified($project_key);
+
+        /*
          * Compute project status
          */
         projects::compute_project_status($project_key);
@@ -78,6 +83,11 @@ class cards
             $this->database->delete("project_cards", "`id` = '".$card_id."'");
 
             /*
+             * Update project last modified timestamp
+             */
+            projects::update_last_modified($project_key);
+
+            /*
              * Compute project status
              */
             projects::compute_project_status($project_key);
@@ -104,6 +114,11 @@ class cards
          * Delete all cards linked to this project from database
          */
         $this->database->delete("project_cards", "`project` = '".$project_id."'");
+
+        /*
+         * Update project last modified timestamp
+         */
+        projects::update_last_modified($project_key);
 
         /*
          * Compute project status
@@ -141,6 +156,11 @@ class cards
              * Update card in database
              */
             $this->database->update("project_cards", "`id` = '".$card_id."'", $data);
+
+            /*
+             * Update project last modified timestamp
+             */
+            projects::update_last_modified($project_key);
 
             $result = array(
                 'error'         => false,
@@ -236,6 +256,11 @@ class cards
                 ));
             }
         }
+
+        /*
+         * Update project last modified timestamp
+         */
+        projects::update_last_modified($project_key);
 
         /*
          * Compute project status

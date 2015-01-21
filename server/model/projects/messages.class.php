@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/messages.class.php
  * Created:			2015-01-17
- * Last modified:	2015-01-17
+ * Last modified:	2015-01-21
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -67,6 +67,11 @@ class messages
          * Update message in database
          */
         $this->database->update("project_messages", "`type` = '".$type."' AND `project` = '".$project_id."'", $data);
+
+        /*
+         * Update project last modified timestamp
+         */
+        projects::update_last_modified($project_key);
 
         $result = array(
             'error'         => false,

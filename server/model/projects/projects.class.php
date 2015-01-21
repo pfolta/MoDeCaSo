@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2015-01-20
+ * Last modified:	2015-01-21
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -266,6 +266,21 @@ class projects
         throw new Exception("Invalid project key '".$project_key."'");
     }
 
+    public static function update_last_modified($project_key)
+    {
+        $database = database::get_instance();
+
+        $database->select("projects", null, "`key` = '".$project_key."'");
+
+        if ($database->row_count() == 1) {
+            $database->update("projects", "`key` = '".$project_key."'", array(
+                'last_modified' => $GLOBALS['timestamp']
+            ));
+        } else {
+            throw new Exception("Invalid project key '".$project_key."'");
+        }
+    }
+
     public static function compute_project_status($project_key)
     {
         $database = database::get_instance();
@@ -309,11 +324,9 @@ class projects
             $database->update("projects", "`key` = '".$project_key."'", array(
                 'status'        => $status
             ));
-
-            return true;
+        } else {
+            throw new Exception("Invalid project key '".$project_key."'");
         }
-
-        throw new Exception("Invalid project key '".$project_key."'");
     }
 
 }

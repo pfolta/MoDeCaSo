@@ -19,10 +19,6 @@
 
     <div class="alert alert-dismissable" ng-show="status_flash.show" ng-class="status_flash.type" ng-bind-html="html_save(status_flash.message)" role="alert"></div>
 
-    <h4 style="margin-bottom: 35px;">
-        Project Lead: <span class="text-info"><span class="glyphicon glyphicon-user"></span> {{ project.lead }}</span>
-    </h4>
-
     <div class="panel panel-default">
         <div class="panel-heading pointer collapsible" ng-click="settings_collapse = !settings_collapse">
             <h3 class="panel-title">
@@ -444,6 +440,52 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <div collapse="settings_collapse">
+            <table class="table" style="margin: 0;">
+                <tbody>
+                <tr>
+                    <th scope="row" style="width: 20%;">
+                        Project Lead
+                    </th>
+                    <td style="width: 70%;">
+                        <span class="upb-blue"><strong><span class="glyphicon glyphicon-user"></span> {{ project.lead }}</strong></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Project Created
+                    </th>
+                    <td>
+                        {{ project.created | timestamp }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Project Last modified
+                    </th>
+                    <td>
+                        {{ project.last_modified | timestamp }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Project Started
+                    </th>
+                    <td>
+                        {{ project.started | timestamp }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Project Completed
+                    </th>
+                    <td>
+                        {{ project.completed | timestamp }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

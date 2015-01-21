@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/participants.class.php
  * Created:			2015-01-13
- * Last modified:	2015-01-20
+ * Last modified:	2015-01-21
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -55,6 +55,11 @@ class participants
             'created'       => $GLOBALS['timestamp'],
             'last_modified' => 0
         ));
+
+        /*
+         * Update project last modified timestamp
+         */
+        projects::update_last_modified($project_key);
 
         /*
          * Compute project status
@@ -107,6 +112,11 @@ class participants
             }
 
             /*
+             * Update project last modified timestamp
+             */
+            projects::update_last_modified($project_key);
+
+            /*
              * Compute project status
              */
             projects::compute_project_status($project_key);
@@ -133,6 +143,11 @@ class participants
          * Delete all participants linked to this project from database
          */
         $this->database->delete("project_participants", "`project` = '".$project_id."'");
+
+        /*
+         * Update project last modified timestamp
+         */
+        projects::update_last_modified($project_key);
 
         /*
          * Compute project status
@@ -171,6 +186,11 @@ class participants
              * Update participant in database
              */
             $this->database->update("project_participants", "`id` = '".$participant_id."'", $data);
+
+            /*
+             * Update project last modified timestamp
+             */
+            projects::update_last_modified($project_key);
 
             $result = array(
                 'error'         => false,
@@ -274,6 +294,11 @@ class participants
         }
 
         /*
+         * Update project last modified timestamp
+         */
+        projects::update_last_modified($project_key);
+
+        /*
          * Compute project status
          */
         projects::compute_project_status($project_key);
@@ -298,6 +323,11 @@ class participants
 
             $this->database->update("project_participants", "`project` = '".$project_id."' AND `id` = '".$order[$i]."'", $data);
         }
+
+        /*
+         * Update project last modified timestamp
+         */
+        projects::update_last_modified($project_key);
 
         return array(
             'error'         => false,
