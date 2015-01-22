@@ -19,7 +19,7 @@
                 </h3>
             </div>
             <div class="panel-body">
-                <img src="/frontend/img/modecaso-logo.svg">
+                <img src="/frontend/img/modecaso-logo.svg" style="width: 468px; height: 102px;">
                 <h4 class="text-center upb-blue" style="margin-bottom: 25px;">
                     A Web Application for<br>
                     Modified Delphi Card Sorting Experiments
