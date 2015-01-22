@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2015-01-20
+ * Last modified:	2015-01-22
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -94,6 +94,16 @@ controllers.controller(
             $scope.card_view = 1;
             $scope.card_zoom = 1.0;
             $scope.card_zoom_percent = $scope.card_zoom * 100;
+
+            $scope.adjust_card_zoom = function(delta)
+            {
+                var zoom = parseFloat($scope.card_zoom) + delta;
+
+                zoom = Math.min(zoom, $("#card_zoom").prop("max"));
+                zoom = Math.max(zoom, $("#card_zoom").prop("min"));
+
+                $scope.card_zoom = zoom;
+            };
 
             $scope.$watch(
                 function()

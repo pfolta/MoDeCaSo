@@ -10,7 +10,7 @@
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-th-large upb-blue"></span> Active Projects
                 <span class="pull-right">
-                    <button class="btn btn-default btn-xs">
+                    <button class="btn btn-default btn-circle-xs">
                         <span class="glyphicon glyphicon-chevron-up" ng-show="!active_projects_collapse"></span>
                         <span class="glyphicon glyphicon-chevron-down" ng-show="active_projects_collapse"></span>
                     </button>
@@ -29,7 +29,7 @@
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-info-sign upb-blue"></span> Session Information
                 <span class="pull-right">
-                    <button class="btn btn-default btn-xs">
+                    <button class="btn btn-default btn-circle-xs">
                         <span class="glyphicon glyphicon-chevron-up" ng-show="!session_information_collapse"></span>
                         <span class="glyphicon glyphicon-chevron-down" ng-show="session_information_collapse"></span>
                     </button>

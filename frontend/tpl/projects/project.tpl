@@ -24,7 +24,7 @@
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-cog upb-blue"></span> Project Settings
                 <span class="pull-right">
-                    <button class="btn btn-default btn-xs">
+                    <button class="btn btn-default btn-circle-xs">
                         <span class="glyphicon glyphicon-chevron-up" ng-show="!settings_collapse"></span>
                         <span class="glyphicon glyphicon-chevron-down" ng-show="settings_collapse"></span>
                     </button>
@@ -494,7 +494,7 @@
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-comment upb-blue"></span> Messages
                 <span class="pull-right">
-                    <button class="btn btn-default btn-xs">
+                    <button class="btn btn-default btn-circle-xs">
                         <span class="glyphicon glyphicon-chevron-up" ng-show="!messages_collapse"></span>
                         <span class="glyphicon glyphicon-chevron-down" ng-show="messages_collapse"></span>
                     </button>
@@ -579,7 +579,7 @@
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-user upb-blue"></span> Participants
                 <span class="pull-right">
-                    <button class="btn btn-default btn-xs">
+                    <button class="btn btn-default btn-circle-xs">
                         <span class="glyphicon glyphicon-chevron-up" ng-show="!participants_collapse"></span>
                         <span class="glyphicon glyphicon-chevron-down" ng-show="participants_collapse"></span>
                     </button>
@@ -670,7 +670,7 @@
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-credit-card upb-blue"></span> Cards
                 <span class="pull-right">
-                    <button class="btn btn-default btn-xs">
+                    <button class="btn btn-default btn-circle-xs">
                         <span class="glyphicon glyphicon-chevron-up" ng-show="!cards_collapse"></span>
                         <span class="glyphicon glyphicon-chevron-down" ng-show="cards_collapse"></span>
                     </button>
@@ -679,7 +679,7 @@
         </div>
         <div class="panel-body" collapse="cards_collapse">
             <div class="form-group" style="padding-bottom: 50px; ">
-                <div class="pull-left" style="width: 55%;">
+                <div class="pull-left" style="width: 51%;">
                     <a href="/frontend/projects/{{ project.key }}/add_card" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</a>
                     <div class="btn-group">
                         <a href="/frontend/projects/{{ project.key }}/import_cards" class="btn btn-default"><span class="glyphicon glyphicon-floppy-open"></span> Import Cards</a>
@@ -693,14 +693,17 @@
                         <button class="btn btn-default" ng-model="card_view" btn-radio="0" tooltip="List View" tooltip-append-to-body="true"><span class="glyphicon glyphicon-list"></span></button>
                     </div>
                 </div>
+                <div class="pull-left text-center" style="width: 4%; padding-top: 7px;">
+                    {{ card_zoom_percent }}%
+                </div>
                 <div class="pull-left text-center" style="width: 2%; padding-top: 7px;">
-                    <span class="glyphicon glyphicon-zoom-out"></span>
+                    <a class="btn btn-default btn-circle-xs" ng-click="adjust_card_zoom(-0.1)" ng-disabled="!card_view" tooltip="Zoom out" tooltip-append-to-body="true"><span class="glyphicon glyphicon-minus"></span></a>
                 </div>
                 <div class="pull-left" style="height: 33px; width: 10%; padding-top: 7px;">
                     <input type="range" id="card_zoom" ng-disabled="!card_view" ng-model="card_zoom" min="0.1" max="2.5" step="0.1" tooltip="Zoom ({{ card_zoom_percent }}%)" tooltip-append-to-body="true">
                 </div>
                 <div class="pull-left text-center" style="width: 2%; padding-top: 7px;">
-                    <span class="glyphicon glyphicon-zoom-in"></span>
+                    <a class="btn btn-default btn-circle-xs" ng-click="adjust_card_zoom(0.1)" ng-disabled="!card_view" tooltip="Zoom in" tooltip-append-to-body="true"><span class="glyphicon glyphicon-plus"></span></a>
                 </div>
                 <div class="pull-right" style="width: 20%;">
                     <div class="input-group">
