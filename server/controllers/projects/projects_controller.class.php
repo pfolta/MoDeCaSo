@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/projects/projects_controller.class.php
  * Created:			2014-11-24
- * Last modified:	2014-12-03
+ * Last modified:	2015-03-02
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -57,6 +57,14 @@ class projects_controller extends controller
                     array(
                         $this,
                         'get_project'
+                    )
+                );
+
+                $this->app->post(
+                    "/edit_project/:key",
+                    array(
+                        $this,
+                        'edit_project'
                     )
                 );
             }
@@ -170,6 +178,46 @@ class projects_controller extends controller
                 $this->app->render(
                     400,
                     $result
+                );
+            }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
+    }
+
+    public function edit_project($key)
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $completion = $this->request->completion;
+            $reminder   = $this->request->reminder;
+
+            if (is_int($completion) && is_int($reminder)) {
+                $result = $this->model->edit_project($key, $completion, $reminder);
+
+                if (!$result['error']) {
+                    $this->app->render(
+                        200,
+                        $result
+                    );
+                } else {
+                    $this->app->render(
+                        400,
+                        $result
+                    );
+                }
+            } else {
+                $this->app->render(
+                    400,
+                    array(
+                        'error'         => true,
+                        'msg'           => "Completion timestamp and reminder timestamp need to be integer values."
+                    )
                 );
             }
         } else {

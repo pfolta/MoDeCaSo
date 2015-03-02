@@ -32,12 +32,20 @@
             </h3>
         </div>
         <div class="panel-body" collapse="settings_collapse">
+            <div class="form-group" style="padding-bottom: 50px; ">
+                <div class="pull-left" style="width: 75%;">
+                    <button class="btn btn-primary" ng-click="save_settings()" ng-disabled="!settings_dirty"><span class="glyphicon glyphicon-floppy-disk"></span> Save Changes</button>
+                </div>
+            </div>
+            <div class="alert alert-info" ng-show="settings_dirty">
+                <span class="glyphicon glyphicon-info-sign"></span> Please click on <strong>Save Changes</strong> to save any changes you made to the project's settings.
+            </div>
             <form class="form-horizontal">
                 <div class="form-group" id="add_card_text_group">
                     <label for="add_card_text" class="col-sm-4 control-label">Time to complete participation</label>
                     <div class="input-group col-sm-2" style="float: left; padding-right: 10px;">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                        <select class="form-control" id="settings_completion_days" ng-model="settings_completion_days" required>
+                        <select class="form-control" id="settings_completion_days" ng-model="settings_completion_days" ng-change="settings_dirty = true;" required>
                             <option value="0">00</option>
                             <option value="1">01</option>
                             <option value="2">02</option>
@@ -75,7 +83,7 @@
                     </div>
                     <div class="input-group col-sm-2" style="float: left; padding-right: 10px;">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                        <select class="form-control" id="settings_completion_hrs" ng-model="settings_completion_hrs" required>
+                        <select class="form-control" id="settings_completion_hrs" ng-model="settings_completion_hrs" ng-change="settings_dirty = true;" required>
                             <option value="0">00</option>
                             <option value="1">01</option>
                             <option value="2">02</option>
@@ -105,7 +113,7 @@
                     </div>
                     <div class="input-group col-sm-2" style="float: left; padding-right: 10px;">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                        <select class="form-control" id="settings_completion_mins" ng-model="settings_completion_mins" required>
+                        <select class="form-control" id="settings_completion_mins" ng-model="settings_completion_mins" ng-change="settings_dirty = true;" required>
                             <option value="0">00</option>
                             <option value="1">01</option>
                             <option value="2">02</option>
@@ -174,7 +182,7 @@
                     <label for="add_card_text" class="col-sm-4 control-label">Time passed before reminding email</label>
                     <div class="input-group col-sm-2" style="float: left; padding-right: 10px;">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                        <select class="form-control" id="settings_reminder_days" ng-model="settings_reminder_days" required>
+                        <select class="form-control" id="settings_reminder_days" ng-model="settings_reminder_days" ng-change="settings_dirty = true;" required>
                             <option value="0">00</option>
                             <option value="1">01</option>
                             <option value="2">02</option>
@@ -212,7 +220,7 @@
                     </div>
                     <div class="input-group col-sm-2" style="float: left; padding-right: 10px;">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                        <select class="form-control" id="settings_reminder_hrs" ng-model="settings_reminder_hrs" required>
+                        <select class="form-control" id="settings_reminder_hrs" ng-model="settings_reminder_hrs" ng-change="settings_dirty = true;" required>
                             <option value="0">00</option>
                             <option value="1">01</option>
                             <option value="2">02</option>
@@ -242,7 +250,7 @@
                     </div>
                     <div class="input-group col-sm-2" style="float: left; padding-right: 10px;">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                        <select class="form-control" id="settings_reminder_mins" ng-model="settings_reminder_mins" required>
+                        <select class="form-control" id="settings_reminder_mins" ng-model="settings_reminder_mins" ng-change="settings_dirty = true;" required>
                             <option value="0">00</option>
                             <option value="1">01</option>
                             <option value="2">02</option>

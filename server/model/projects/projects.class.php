@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2015-01-21
+ * Last modified:	2015-03-02
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -49,6 +49,8 @@ class projects
                 'title'                 => $title,
                 'key'                   => $key,
                 'lead'                  => $lead,
+                'completion'            => $this->config->get_config_value("project", "completion_timestamp"),
+                'reminder'              => $this->config->get_config_value("project", "reminder_timestamp"),
                 'created'               => $GLOBALS['timestamp'],
                 'last_modified'         => 0
             ));
@@ -240,6 +242,24 @@ class projects
         }
 
         return $result;
+    }
+
+    public function edit_project($project_key, $completion, $reminder)
+    {
+        $project_id = self::get_project_id($project_key);
+
+        $this->database->update("projects", "`id` = '".$project_id."'", array(
+            'completion'        => $completion,
+            'reminder'          => $reminder
+        ));
+
+        self::compute_project_status($project_key);
+        self::update_last_modified($project_key);
+
+        return array(
+            'error'         => false,
+            'msg'           => "project_edited"
+        );
     }
 
     /**
