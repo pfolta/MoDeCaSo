@@ -26,6 +26,7 @@
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/main.css">
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/fonts.css">
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/animations.css">
+        <link rel="stylesheet" type="text/css" href="/frontend/css/app/responsive.css">
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/toast.css">
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/global-overlays.css">
         <link rel="stylesheet" type="text/css" href="/frontend/css/app/header.css">
@@ -88,16 +89,21 @@
     <!--[if lt IE 10]>
         <body class="noscroll">
     <![endif]-->
+    <noscript>
+        <body class="noscroll">
+    </noscript>
     <body>
         <noscript>
             <div class="global-overlay">
                 <div class="container">
+                    <img src="/frontend/img/modecaso-logo.png" class="logo-static">
+                    <hr>
                     <div class="alert alert-danger">
                         <span class="glyphicon glyphicon-exclamation-sign"></span> <strong>Oh snap!</strong> JavaScript is not enabled.
                     </div>
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">How do I enable JavaScript?</h3>
+                            <h3 class="panel-title"><span class="glyphicon glyphicon-question-sign"></span> How do I enable JavaScript?</h3>
                         </div>
                         <div class="panel-body">
                             Go to <a href="http://enable-javascript.com">enable-javascript.com</a> to find out how to enable JavaScript in your browser.
@@ -105,14 +111,14 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Why do I keep seeing this message?</h3>
+                            <h3 class="panel-title"><span class="glyphicon glyphicon-info-sign"></span> Why do I keep seeing this message?</h3>
                         </div>
                         <div class="panel-body">
                             <p>
-                                This web application relies heavily on JavaScript to run in your browser.
+                                MoDeCaSo relies heavily on JavaScript to run in your browser.
                             </p>
                             <p>
-                                You seem to have JavaScript disabled. This web application will not work until you enable JavaScript.
+                                You seem to have JavaScript disabled. MoDeCaSo will not work until you enable JavaScript.
                             </p>
                         </div>
                     </div>
@@ -123,24 +129,42 @@
         <!--[if lt IE 10]>
         <div class="global-overlay">
             <div class="container">
+                <img src="/frontend/img/modecaso-logo.png" class="logo-static">
+                <hr>
                 <div class="alert alert-danger">
-                    <span class="glyphicon glyphicon-exclamation-sign"></span> <strong><script type="text/javascript">document.write(get_error_title());</script></strong> Your browser is too old.
+                    <span class="glyphicon glyphicon-exclamation-sign"></span> <strong>Oh snap!</strong> Your browser is too old.
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">How do I fix this?</h3>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-question-sign"></span> How do I fix this?</h3>
                     </div>
                     <div class="panel-body">
-                        Go to <a href="http://enable-javascript.com">enable-javascript.com</a> to find out how to enable JavaScript in your browser.
+                        Go to <a href="http://browsehappy.com/">browsehappy.com</a> to upgrade your browser to the latest version.
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Why do I keep seeing this message?</h3>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-info-sign"></span> Why do I keep seeing this message?</h3>
                     </div>
                     <div class="panel-body">
                         <p>
-                            You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+                            You are using an <strong>outdated</strong> browser. MoDeCaSo uses advanced and modern web frameworks which require a more modern browser in order to run properly.
+                        </p>
+                        <h5>
+                            Which browser versions support MoDeCaSo?
+                        </h5>
+                        <p>
+                            The following web browsers and versions have been tested to work with MoDeCaSo:
+                        </p>
+                        <ul>
+                            <li>Windows Internet Explorer, Version 10 and above</li>
+                            <li>Mozilla Firefox, Version 29 and above</li>
+                            <li>Google Chrome, Version 38 and above</li>
+                            <li>Opera, Version 27.0 and above</li>
+                            <li>Apple Safari, Version 5.1.7 and above</li>
+                        </ul>
+                        <p>
+                            Please make sure you update to the newest version of your web browser for the best user experience.
                         </p>
                     </div>
                 </div>

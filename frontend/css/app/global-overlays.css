@@ -7,20 +7,34 @@
  *
  * File:			/frontend/css/app/global-overlays.css
  * Created:			2014-10-18
- * Last modified:	2014-11-03
+ * Last modified:	2015-03-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 @charset "UTF-8";
 
 div.global-overlay {
-    background-color: #ffffff;
+    background: url("/frontend/img/wallpaper.png") fixed;
     height: 100%;
+    overflow-y: scroll;
     position: fixed;
     width: 100%;
     z-index: 99999;
 }
 
 div.global-overlay > div.container {
-    padding-top: 100px;
+    background-color: #ffffff;
+    border: 1px #aaaaaa solid;
+    border-radius: 5px;
+    margin: 50px auto;
+    position: relative;
+}
+
+div.global-overlay > div.container > hr {
+    padding-bottom: 25px;
+}
+
+img.logo-static {
+    display: block;
+    margin: 0 auto -20px auto;
 }

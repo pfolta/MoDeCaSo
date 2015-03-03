@@ -1,0 +1,20 @@
+/*
+ * UPB-BTHESIS
+ * Copyright (C) 2014-2015 Peter Folta. All rights reserved.
+ *
+ * Project:			UPB-BTHESIS
+ * Version:			0.0.1
+ *
+ * File:			/frontend/css/app/responsive.css
+ * Created:			2015-03-02
+ * Last modified:	2015-03-03
+ * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ */
+
+@charset "UTF-8";
+
+@media screen and (max-width: 1200px) {
+    img {
+        max-width: 100% !important;
+    }
+}

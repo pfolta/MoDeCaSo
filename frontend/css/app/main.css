@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2015-01-14
+ * Last modified:	2015-03-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -33,6 +33,10 @@ body.noscroll {
 
 body.background {
     background: url("/frontend/img/wallpaper.gif") fixed;
+}
+
+body.background-static {
+    background: url("/frontend/img/wallpaper.png") fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
