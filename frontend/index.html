@@ -3,7 +3,7 @@
 <!--[if lt IE 10]>
     <html lang="en">
 <![endif]-->
-<html lang="en" ng-app="webapp" ng-controller="main_controller">
+<html lang="en" ng-controller="main_controller">
     <head>
         <title>MoDeCaSo</title>
 
@@ -52,6 +52,8 @@
         <script type="text/javascript" src="/frontend/js/libs/angular-ui-bootstrap-tpls-0.12.0.js"></script>
 
         <script type="text/javascript" src="/frontend/js/app/main.js"></script>
+        <script type="text/javascript" src="/frontend/js/app/init.js"></script>
+        <script type="text/javascript" src="/frontend/js/app/platform.js"></script>
         <script type="text/javascript" src="/frontend/js/app/router.js"></script>
         <script type="text/javascript" src="/frontend/js/app/data/user_roles.js"></script>
         <script type="text/javascript" src="/frontend/js/app/filters/timestamp.js"></script>
@@ -86,13 +88,7 @@
         <script type="text/javascript" src="/frontend/js/app/tools/url.js"></script>
     </head>
 
-    <!--[if lt IE 10]>
-        <body class="noscroll">
-    <![endif]-->
-    <noscript>
-        <body class="noscroll">
-    </noscript>
-    <body>
+    <body class="noscroll">
         <noscript>
             <div class="global-overlay">
                 <div class="container">
@@ -126,13 +122,12 @@
             </div>
         </noscript>
 
-        <!--[if lt IE 10]>
-        <div class="global-overlay">
+        <div class="global-overlay" id="unsupported_browser">
             <div class="container">
                 <img src="/frontend/img/modecaso-logo.png" class="logo-static">
                 <hr>
                 <div class="alert alert-danger">
-                    <span class="glyphicon glyphicon-exclamation-sign"></span> <strong>Oh snap!</strong> Your browser is too old.
+                    <span class="glyphicon glyphicon-exclamation-sign"></span> <strong>Oh snap!</strong> Your browser is not supported.
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -148,7 +143,7 @@
                     </div>
                     <div class="panel-body">
                         <p>
-                            You are using an <strong>outdated</strong> browser. MoDeCaSo uses advanced and modern web frameworks which require a more modern browser in order to run properly.
+                            You are using an <strong>unsupported</strong> browser. This means your web browser is either too old or the device you are using to access MoDeCaSo is not supported. MoDeCaSo uses advanced and modern web frameworks which require a more modern browser in order to run properly.
                         </p>
                         <h5>
                             Which browser versions support MoDeCaSo?
@@ -166,11 +161,13 @@
                         <p>
                             Please make sure you update to the newest version of your web browser for the best user experience.
                         </p>
+                        <p>
+                            <em><strong>Note:</strong> This MoDeCaSo Web Frontend does not run on mobile devices, such as smartphones or tablets.</em>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <![endif]-->
 
         <div ui-view="headerView"></div>
         <div ui-view="mainView" class="mainView container"></div>

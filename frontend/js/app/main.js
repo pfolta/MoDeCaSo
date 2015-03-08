@@ -7,9 +7,24 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2015-01-14
+ * Last modified:	2015-03-08
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
+
+function main()
+{
+    if (is_mobile()) {
+        $("#unsupported_browser").css("display", "block");
+
+        return;
+    }
+
+    $("body").removeClass("noscroll");
+
+    angular.element(document).ready(function() {
+        angular.bootstrap(document, ["webapp"]);
+    });
+}
 
 var services = angular.module(
     "services",

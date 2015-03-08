@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/global-overlays.css
  * Created:			2014-10-18
- * Last modified:	2015-03-03
+ * Last modified:	2015-03-08
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -37,4 +37,8 @@ div.global-overlay > div.container > hr {
 img.logo-static {
     display: block;
     margin: 0 auto -20px auto;
+}
+
+#unsupported_browser {
+    display: none;
 }
