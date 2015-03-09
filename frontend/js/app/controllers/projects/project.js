@@ -212,14 +212,14 @@ controllers.controller(
                                 $scope.status_flash = {
                                     "show":     true,
                                     "type":     "alert-info",
-                                    "message":  "<span class='glyphicon glyphicon-info-sign'></span> <strong>" + get_success_title() + "</strong> The project has been successfully created but needs several more steps before it is ready to run.<br><span class='glyphicon glyphicon-placeholder'></span> Complete this assisstent and make sure you add at least <strong>1 participant</strong> and <strong>1 card</strong> to complete this project's setup."
+                                    "message":  "<span class='glyphicon glyphicon-info-sign'></span> <strong>" + get_success_title() + "</strong> The project has been successfully created but needs several more steps before it is ready to be started.<br><span class='glyphicon glyphicon-placeholder'></span> Complete this assisstent and make sure you add at least <strong>1 participant</strong> and <strong>1 card</strong> to complete this project's setup."
                                 };
                                 break;
                             case "READY":
                                 $scope.status_flash = {
                                     "show":     true,
                                     "type":     "alert-success",
-                                    "message":  "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> The project's configuration is completed and this project is ready to run.<br><span class='glyphicon glyphicon-placeholder'></span> To start the project, click on <strong>Run Project</strong>."
+                                    "message":  "<span class='glyphicon glyphicon-ok-sign'></span> <strong>" + get_success_title() + "</strong> The project's configuration is completed and this project is ready to be started.<br><span class='glyphicon glyphicon-placeholder'></span> To start the project, click on <strong>Start Project</strong>."
                                 };
                                 break;
                             case "RUNNING":
