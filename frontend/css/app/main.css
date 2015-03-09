@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2015-03-03
+ * Last modified:	2015-03-09
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -88,8 +88,8 @@ div.mainView {
 
 div.mainView > div.page {
     background-color: #ffffff;
-    margin: 80px auto;
     min-height: calc(100% - 160px);
+    padding: 80px 0;
     position: relative;
 }
 
