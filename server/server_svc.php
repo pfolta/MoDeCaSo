@@ -59,7 +59,7 @@ try {
     /*
      * Print start timestamp
      */
-    print("Process Started: " . date("n/j/Y g:i:s A") . "\n\n\n");
+    print("Process Started: ".date("n/j/Y g:i:s A")."\n\n\n");
 
     /*
      * Initialize global timestamp variable
@@ -157,7 +157,7 @@ try {
     /*
      * Print end timestamp
      */
-    print("\n\nProcess Finished: " . date("n/j/Y g:i:s A") . "\n");
+    print("\n\nProcess Finished: ".date("n/j/Y g:i:s A")."\n");
 } catch (Exception $exception) {
     print("\n\nA fatal error has occured: ".$exception->getMessage()."\n");
 }
