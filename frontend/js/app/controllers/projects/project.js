@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
- * Last modified:	2015-03-02
+ * Last modified:	2015-03-09
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -56,8 +56,6 @@ controllers.controller(
                 }).then(
                     function(response)
                     {
-                        $scope.settings_dirty = false;
-
                         $rootScope.$broadcast("load_project");
                     },
                     function(response)
@@ -173,8 +171,6 @@ controllers.controller(
                 }).then(
                     function(response)
                     {
-                        $scope.participants_order_changed = false;
-
                         $rootScope.$broadcast("load_project");
                     },
                     function(response)
@@ -242,6 +238,7 @@ controllers.controller(
                                 break;
                         }
 
+                        $scope.settings_dirty = false;
                         $scope.participants_order_changed = false;
                     },
                     function(response)
