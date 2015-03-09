@@ -46,7 +46,8 @@ use main\errorhandling;
  * Print welcome message
  */
 print(
-"MoDeCaSo - A Web Application for Modified Delphi Card Sorting Experiments
+"
+MoDeCaSo - A Web Application for Modified Delphi Card Sorting Experiments
 Server Maintenance Service
 
 ");
@@ -129,5 +130,7 @@ print("
  * Print end timestamp
  */
 print(
-    "Process Finished: ".date("n/j/Y g:i:s A")
+    "Process Finished: ".date("n/j/Y g:i:s A")."
+
+"
 );
