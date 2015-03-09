@@ -48,7 +48,7 @@ controllers.controller(
 
                 $http({
                     method:     "post",
-                    url:        "/server/projects/edit_project/" + $scope.key,
+                    url:        "/server/projects/" + $scope.key + "/edit_project",
                     data:       {
                         completion:     completion,
                         reminder:       reminder
@@ -246,6 +246,27 @@ controllers.controller(
                         $scope.flash.show = true;
                         $scope.flash.type = "alert-danger";
                         $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Error loading project.";
+
+                        shake_element($("#project_flash"));
+                    }
+                );
+            };
+
+            $scope.start_project = function()
+            {
+                $http({
+                    method:     "post",
+                    url:        "/server/projects/" + $scope.key + "/start_project"
+                }).then(
+                    function(response)
+                    {
+                        $rootScope.$broadcast("load_project");
+                    },
+                    function(response)
+                    {
+                        $scope.flash.show = true;
+                        $scope.flash.type = "alert-danger";
+                        $scope.flash.message = "<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>" + get_error_title() + "</strong> Could not start project.";
 
                         shake_element($("#project_flash"));
                     }

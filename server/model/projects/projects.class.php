@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2015-03-02
+ * Last modified:	2015-03-09
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -346,6 +346,33 @@ class projects
             ));
         } else {
             throw new Exception("Invalid project key '".$project_key."'");
+        }
+    }
+
+    public function start_project($project_key)
+    {
+        $project_id = self::get_project_id($project_key);
+
+        /*
+         * Check if project ready
+         */
+        $this->database->select("projects", "status", "`id` = '".$project_id."'");
+        $project_status = $this->database->result()[0]['status'];
+
+        if ($project_status == project_statuses::READY) {
+            $this->database->update("projects", "`id` = '".$project_id."'", array(
+                'status'            => project_statuses::RUNNING,
+                'started'           => $GLOBALS['timestamp']
+            ));
+
+            self::update_last_modified($project_key);
+
+            return array(
+                'error'         => false,
+                'msg'           => "project_started"
+            );
+        } else {
+            throw new Exception("Project '".$project_key."' not ready to be started.");
         }
     }
 

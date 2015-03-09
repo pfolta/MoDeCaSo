@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/projects/projects_controller.class.php
  * Created:			2014-11-24
- * Last modified:	2015-03-02
+ * Last modified:	2015-03-09
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -59,12 +59,26 @@ class projects_controller extends controller
                         'get_project'
                     )
                 );
+            }
+        );
 
+        $this->app->group(
+            "/projects/:project_key",
+            function()
+            {
                 $this->app->post(
-                    "/edit_project/:key",
+                    "/edit_project",
                     array(
                         $this,
                         'edit_project'
+                    )
+                );
+
+                $this->app->post(
+                    "/start_project",
+                    array(
+                        $this,
+                        'start_project'
                     )
                 );
             }
@@ -164,10 +178,10 @@ class projects_controller extends controller
         }
     }
 
-    public function get_project($key)
+    public function get_project($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
-            $result = $this->model->get_project($key);
+            $result = $this->model->get_project($project_key);
 
             if (!$result['error']) {
                 $this->app->render(
@@ -191,14 +205,14 @@ class projects_controller extends controller
         }
     }
 
-    public function edit_project($key)
+    public function edit_project($project_key)
     {
         if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
             $completion = $this->request->completion;
             $reminder   = $this->request->reminder;
 
             if (is_int($completion) && is_int($reminder)) {
-                $result = $this->model->edit_project($key, $completion, $reminder);
+                $result = $this->model->edit_project($project_key, $completion, $reminder);
 
                 if (!$result['error']) {
                     $this->app->render(
@@ -218,6 +232,33 @@ class projects_controller extends controller
                         'error'         => true,
                         'msg'           => "Completion timestamp and reminder timestamp need to be integer values."
                     )
+                );
+            }
+        } else {
+            $this->app->render(
+                403,
+                array(
+                    'error'         => true,
+                    'msg'           => "insufficient_rights"
+                )
+            );
+        }
+    }
+
+    public function start_project($project_key)
+    {
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::MODERATOR)) {
+            $result = $this->model->start_project($project_key);
+
+            if (!$result['error']) {
+                $this->app->render(
+                    200,
+                    $result
+                );
+            } else {
+                $this->app->render(
+                    400,
+                    $result
                 );
             }
         } else {

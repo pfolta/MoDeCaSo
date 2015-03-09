@@ -7,8 +7,7 @@
 
     <div class="form-group" style="padding-bottom: 50px; ">
         <div class="pull-left" style="width: 80%;">
-            <a class="btn btn-success" ng-disabled="project.status != 'READY'"><span class="glyphicon glyphicon-play"></span> Start Project</a>
-            <a class="btn btn-danger" ng-disabled="project.status != 'RUNNING'"><span class="glyphicon glyphicon-ban-circle"></span> Cancel Project</a>
+            <a class="btn btn-success" ng-click="start_project()" ng-disabled="project.status != 'READY'"><span class="glyphicon glyphicon-play"></span> Start Project</a>
             <a class="btn btn-info" ng-disabled="project.status != 'FINISHED'"><span class="glyphicon glyphicon-info-sign"></span> View Results</a>
             <a ng-click="load_project();" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Reload</a>
         </div>
