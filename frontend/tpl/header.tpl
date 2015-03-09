@@ -21,7 +21,9 @@
                 <li ui-sref-active="active" dropdown ng-show="is_authenticated('ADMINISTRATOR');">
                     <a dropdown-toggle><span class="glyphicon glyphicon-wrench"></span> Administration <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a><span class="glyphicon glyphicon-cog"></span> Server Configuration</a></li>
+                        <li><a><span class="glyphicon glyphicon-wrench"></span> Server Configuration</a></li>
+                        <li><a ui-sref="/administration/server_maintenance_service"><span class="glyphicon glyphicon-cog"></span> Server Maintenance Service</a></li>
+                        <li class="divider"></li>
                         <li><a ui-sref="/administration/user_management"><span class="glyphicon glyphicon-user"></span> User management</a></li>
                     </ul>
                 </li>

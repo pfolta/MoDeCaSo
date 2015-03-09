@@ -1,6 +1,6 @@
 <div class="page">
     <h1>
-    User management
+        User management
     </h1>
     <div class="alert" id="user_management_flash" ng-show="flash.show" ng-class="flash.type" ng-bind-html="html_save(flash.message)" role="alert">
     </div>

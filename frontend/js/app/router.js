@@ -97,6 +97,26 @@ webapp.config([
             }
         )
         .state(
+            "/administration/server_maintenance_service",
+            {
+                url: "/frontend/administration/server_maintenance_service",
+                role: "ADMINISTRATOR",
+                title: "Server Maintenance Service",
+                views: {
+                    "mainView": {
+                        controller:     "server_maintenance_service_controller",
+                        templateUrl:    "/frontend/tpl/administration/server_maintenance_service.tpl"
+                    },
+                    "headerView": {
+                        templateUrl:    "/frontend/tpl/header.tpl"
+                    },
+                    "footerView": {
+                        templateUrl:    "/frontend/tpl/footer.tpl"
+                    }
+                }
+            }
+        )
+        .state(
             "/administration/user_management",
             {
                 url: "/frontend/administration/user_management",

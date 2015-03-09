@@ -30,6 +30,7 @@ require "tools/file.class.php";
 require "tools/mail.class.php";
 require "tools/url.class.php";
 
+require "controllers/administration/server_maintenance_service_controller.class.php";
 require "controllers/administration/user_management_controller.class.php";
 require "controllers/projects/cards_controller.class.php";
 require "controllers/projects/messages_controller.class.php";
@@ -37,6 +38,7 @@ require "controllers/projects/participants_controller.class.php";
 require "controllers/projects/projects_controller.class.php";
 require "controllers/auth_controller.class.php";
 
+require "model/administration/server_maintenance_service.class.php";
 require "model/administration/user_management.class.php";
 require "model/projects/cards.class.php";
 require "model/projects/messages.class.php";
@@ -51,6 +53,7 @@ use main\database;
 use main\errorhandling;
 
 use controllers\auth_controller;
+use controllers\server_maintenance_service_controller;
 use controllers\user_management_controller;
 use controllers\projects_controller;
 use controllers\cards_controller;
@@ -134,6 +137,7 @@ try {
      * Instantiate controllers
      */
     $auth_controller = new auth_controller();
+    $server_maintenance_service_controller = new server_maintenance_service_controller();
     $user_management_controller = new user_management_controller();
     $projects_controller = new projects_controller();
     $cards_controller = new cards_controller();
