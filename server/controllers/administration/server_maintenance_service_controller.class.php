@@ -28,10 +28,10 @@ class server_maintenance_service_controller extends controller
             function()
             {
                 $this->app->get(
-                    "/execute",
+                    "/run",
                     array(
                         $this,
-                        'execute'
+                        'run'
                     )
                 );
             }
@@ -42,9 +42,9 @@ class server_maintenance_service_controller extends controller
     {
     }
 
-    public function execute()
+    public function run()
     {
-        $output = server_maintenance_service::execute();
+        $output = server_maintenance_service::run();
     }
 
 }

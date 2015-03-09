@@ -21,13 +21,13 @@ class server_maintenance_service
 {
 
     /**
-     * execute ( )
+     * run ( )
      *
-     * Executes the Server Maintenance Service command and returns the output formatted as a string
+     * Runs the Server Maintenance Service command and returns the output formatted as a string
      *
      * @return string
      */
-    public static function execute()
+    public static function run()
     {
         exec("php ".url::get_physical_path().DIRECTORY_SEPARATOR."server_svc.php", $output);
 
