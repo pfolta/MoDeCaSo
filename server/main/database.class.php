@@ -9,7 +9,7 @@
  *
  * File:			/server/main/database.class.php
  * Created:			2014-11-03
- * Last modified:	2014-11-24
+ * Last modified:	2015-03-16
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -51,7 +51,7 @@ class database
 
     public function connect($hostname, $username, $password, $database)
     {
-        if ($this->connection != null) {
+        if ($this->is_connected()) {
             throw new Exception("Already connected to a database. Disconnect first.");
         }
 
@@ -78,6 +78,25 @@ class database
         }
     }
 
+    /**
+     * is_connected ( )
+     *
+     * Returns true if a database connection is open, false otherwise.
+     *
+     * @return bool
+     */
+    public function is_connected()
+    {
+        return !($this->connection == null);
+    }
+
+    /**
+     * disconnect ( )
+     *
+     * Closes an existing database connection.
+     *
+     * @throws Exception if not connected to a database
+     */
     public function disconnect()
     {
         if ($this->connection == null) {
@@ -88,32 +107,72 @@ class database
         $this->connection = null;
     }
 
+    /**
+     * set_charset ( )
+     *
+     * Specifies the character translation for communications with the database server.
+     *
+     * @param $charset      Character Set
+     * @throws Exception    if not connected to a database
+     */
     public function set_charset($charset)
     {
-        if (is_null($this->connection)) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
         $this->connection->set_charset($charset);
     }
 
+    /**
+     * destruct ( )
+     *
+     * Safely closes a database connection if it exists.
+     *
+     * @throws Exception
+     */
     public function __destruct()
     {
-        $this->disconnect();
+        if ($this->is_connected()) {
+            $this->disconnect();
+        }
     }
 
+    /**
+     * error ( )
+     *
+     * Returns error message if previous database query caused an error, false otherwise
+     *
+     * @return mixed
+     */
     public function error()
     {
         if ($this->connection->errno != 0) {
             return $this->connection->error;
         }
 
-        return null;
+        return false;
+    }
+
+    /**
+     * has_error ( )
+     *
+     * Returns true if previous database query caused an error, false otherwise
+     *
+     * @return bool
+     */
+    public function has_error()
+    {
+        if ($this->error()) {
+            return true;
+        }
+
+        return false;
     }
 
     public function query($sql)
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
@@ -122,7 +181,7 @@ class database
 
     public function select($table, $cols = null, $where = null, $groupby = null, $having = null, $orderby = null, $limit = null)
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
@@ -161,7 +220,7 @@ class database
 
     public function insert($table, $data)
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
@@ -195,7 +254,7 @@ class database
 
     public function update($table, $where, $data)
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
@@ -227,7 +286,7 @@ class database
 
     public function delete($table, $where)
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
@@ -247,7 +306,7 @@ class database
 
     public function result()
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
@@ -260,7 +319,7 @@ class database
 
     public function row_count()
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
@@ -273,7 +332,7 @@ class database
 
     public function affected_rows()
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
@@ -286,7 +345,7 @@ class database
 
     public function clean($string)
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
@@ -295,7 +354,7 @@ class database
 
     public function get_insert_id()
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
