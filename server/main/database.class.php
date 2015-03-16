@@ -81,7 +81,7 @@ class database
     /**
      * is_connected ( )
      *
-     * Returns true if a database connection is open, false otherwise.
+     * Returns true if a database connection is open, false otherwise
      *
      * @return bool
      */
@@ -93,7 +93,7 @@ class database
     /**
      * disconnect ( )
      *
-     * Closes an existing database connection.
+     * Closes an existing database connection
      *
      * @throws Exception if not connected to a database
      */
@@ -110,7 +110,7 @@ class database
     /**
      * set_charset ( )
      *
-     * Specifies the character translation for communications with the database server.
+     * Specifies the character translation for communications with the database server
      *
      * @param $charset      Character Set
      * @throws Exception    if not connected to a database
@@ -127,7 +127,7 @@ class database
     /**
      * destruct ( )
      *
-     * Safely closes a database connection if it exists.
+     * Safely closes a database connection if it exists
      *
      * @throws Exception
      */
