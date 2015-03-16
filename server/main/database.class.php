@@ -99,7 +99,7 @@ class database
      */
     public function disconnect()
     {
-        if ($this->connection == null) {
+        if (!$this->is_connected()) {
             throw new Exception("Not connected to a database.");
         }
 
