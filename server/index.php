@@ -9,7 +9,7 @@
  *
  * File:			/server/index.php
  * Created:			2014-11-03
- * Last modified:	2015-01-17
+ * Last modified:	2015-03-19
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -109,12 +109,10 @@ try {
      */
     if ($config->get_config_value("main", "debug")) {
         errorhandling::set_error_handling(true);
-        $app->config("debug", true);
-        $app->config("mode", "debug");
+        $app->config("debug", false);
     } else {
         errorhandling::set_error_handling(false);
         $app->config("debug", false);
-        $app->config("mode", "production");
     }
 
     /*
