@@ -20,6 +20,7 @@ use Exception;
 
 use main\config;
 use main\database;
+use Rhumsaa\Uuid\Uuid;
 use Slim\Slim;
 
 class auth
@@ -74,7 +75,7 @@ class auth
                     /*
                      * Generate API Key
                      */
-                    $api_key = $this->generate_api_key();
+                    $api_key = Uuid::uuid4()->toString();
 
                     $granted    = $GLOBALS['timestamp'];
                     $expiry     = $granted + $this->config->get_config_value("auth", "session_lifetime");
@@ -274,11 +275,6 @@ class auth
     public function clear_expired_tokens()
     {
         $this->database->delete("user_tokens", "`expiry` < ".$GLOBALS['timestamp']);
-    }
-
-    private function generate_api_key()
-    {
-        return sha1(uniqid(rand(), true));
     }
 
 }
