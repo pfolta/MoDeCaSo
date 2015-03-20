@@ -9,7 +9,7 @@
  *
  * File:			/server/main/database.class.php
  * Created:			2014-11-03
- * Last modified:	2015-03-16
+ * Last modified:	2015-03-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -112,7 +112,7 @@ class database
      *
      * Specifies the character translation for communications with the database server
      *
-     * @param $charset      Character Set
+     * @param $charset      string  Character Set
      * @throws Exception    if not connected to a database
      */
     public function set_charset($charset)

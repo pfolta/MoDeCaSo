@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/participants.class.php
  * Created:			2015-01-13
- * Last modified:	2015-01-21
+ * Last modified:	2015-03-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -18,6 +18,7 @@ namespace model;
 use data\participant_statuses;
 use Exception;
 use main\database;
+use Rhumsaa\Uuid\Uuid;
 
 class participants
 {
@@ -46,6 +47,7 @@ class participants
          * Insert new participant into database
          */
         $this->database->insert("project_participants", array(
+            'id'            => Uuid::uuid4()->toString(),
             'project'       => $project_id,
             'order'         => $participant_count + 1,
             'first_name'    => $first_name,
@@ -279,6 +281,7 @@ class participants
 
             if (!empty($first_name) && !empty($last_name) && !empty($email)) {
                 $this->database->insert("project_participants", array(
+                    'id'            => Uuid::uuid4()->toString(),
                     'project'       => $project_id,
                     'order'         => $participant_count + $i,
                     'first_name'    => $first_name,

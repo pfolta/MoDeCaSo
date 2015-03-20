@@ -9,7 +9,7 @@
  *
  * File:			/server/server_svc.php
  * Created:			2015-03-09
- * Last modified:	2015-03-09
+ * Last modified:	2015-03-20
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -42,6 +42,7 @@ use data\project_statuses;
 use main\config;
 use main\database;
 use main\errorhandling;
+use tools\mail;
 
 try {
     /*
@@ -108,15 +109,15 @@ try {
      */
     print("\n\nPROJECT LIST\n\n");
 
-    $projects = $database->select("projects", null);
+    $database->select("projects", null);
     $projects = $database->result();
 
     $mask = "%5.5s     %-40.40s     %-10.10s     %-8.8s\n";
     printf($mask, "ID", "Title", "Key", "Status");
     print("------------------------------------------------------------------------------\n");
 
-    for ($i = 0; $i < count($projects); $i++) {
-        printf($mask, $projects[$i]['id'], $projects[$i]['title'], $projects[$i]['key'], project_statuses::$values[$projects[$i]['status']]);
+    foreach ($projects as $project) {
+        printf($mask, $project['id'], $project['title'], $project['key'], project_statuses::$values[$project['status']]);
     }
 
     /*
@@ -124,10 +125,10 @@ try {
      */
     print("\n\nSERVICING PROJECTS...\n\n");
 
-    for ($i = 0; $i < count($projects); $i++) {
-        print("Servicing Project [".$projects[$i]['id'].": ".$projects[$i]['key']."]\n");
+    foreach ($projects as $project) {
+        print("Servicing Project [".$project['id'].": ".$project['key']."]\n");
 
-        switch($projects[$i]['status']) {
+        switch($project['status']) {
             case project_statuses::RUNNING:
                 print("Project is running.\n");
 
@@ -136,15 +137,154 @@ try {
                  */
                 print("\n\nPARTICIPANT LIST\n\n");
 
-                $participants = $database->select("project_participants", null);
+                $database->select("project_participants", null, "`project` = '".$project['id']."'", null, null, "`order` ASC");
                 $participants = $database->result();
 
                 $mask = "%5.5s     %-20.20s     %-20.20s     %-8.8s\n";
-                printf($mask, "ID", "First Name", "Last Name", "Status");
+                printf($mask, "Order", "First Name", "Last Name", "Status");
                 print("------------------------------------------------------------------------------\n");
 
-                for ($i = 0; $i < count($participants); $i++) {
-                    printf($mask, $participants[$i]['id'], $participants[$i]['first_name'], $participants[$i]['last_name'], participant_statuses::$values[$participants[$i]['status']]);
+                foreach ($participants as $participant) {
+                    printf($mask, $participant['order'], $participant['first_name'], $participant['last_name'], participant_statuses::$values[$participant['status']]);
+                }
+
+                print("\n");
+
+                /*
+                 * Check for notified participants
+                 */
+                $notified = false;
+
+                foreach ($participants as $participant) {
+                    if ($participant['status'] == participant_statuses::NOTIFIED) {
+                        print("Notified participant found: ".$participant['first_name']." ".$participant['last_name']." (".$participant['email'].").\n");
+                        $notified = true;
+
+                        /*
+                         * Check if notified participant needs reminder email
+                         */
+                        if ($participant['notified'] + $project['reminder'] < $timestamp) {
+                            print("Sending reminder email to participant ".$participant['first_name']." ".$participant['last_name']." (".$participant['email'].")...\n");
+
+                            /*
+                             * Retrieve email text
+                             */
+                            $database->select("project_messages", null, "`project` = '".$project['id']."' AND `type` = 'email_reminder'");
+                            $message = $database->result()[0]['message'];
+
+                            /*
+                             * Send email
+                             */
+                            email_participant($message, "Card Sorting Experiment - Reminder", $participant['first_name'], $participant['last_name'], $participant['notified'] + $project['completion'], $participant['id'], $participant['email']);
+
+                            /*
+                             * Set participant status to REMINDED
+                             */
+                            $database->update("project_participants", "`id` = '".$participant['id']."'", array(
+                                'status'    => participant_statuses::REMINDED,
+                                'reminded'  => $timestamp
+                            ));
+                        }
+
+                        break;
+                    }
+                }
+
+                if (!$notified) {
+                    print("No notified participants found.\n");
+
+                    /*
+                     * Check for reminded participants
+                     */
+                    $reminded = false;
+
+                    foreach ($participants as $participant) {
+                        if ($participant['status'] == participant_statuses::REMINDED) {
+                            print("Reminded participant found: ".$participant['first_name']." ".$participant['last_name']." (".$participant['email'].").\n");
+                            $reminded = true;
+
+                            /*
+                             * Check if reminded participant reached timeout
+                             */
+                            if ($participant['notified'] + $project['completion'] < $timestamp) {
+                                print("Sending timeout email to participant ".$participant['first_name']." ".$participant['last_name']." (".$participant['email'].")...\n");
+
+                                /*
+                                 * Retrieve email text
+                                 */
+                                $database->select("project_messages", null, "`project` = '".$project['id']."' AND `type` = 'email_timeout'");
+                                $message = $database->result()[0]['message'];
+
+                                /*
+                                 * Send email
+                                 */
+                                email_participant($message, "Card Sorting Experiment - Timeout", $participant['first_name'], $participant['last_name'], $participant['notified'] + $project['completion'], $participant['id'], $participant['email']);
+
+                                /*
+                                 * Set participant status to TIMEOUT
+                                 */
+                                $database->update("project_participants", "`id` = '".$participant['id']."'", array(
+                                    'status'    => participant_statuses::TIMEOUT
+                                ));
+                            }
+
+                            break;
+                        }
+                    }
+
+                    if (!$reminded) {
+                        print("No reminded participants found.\n");
+
+                        /*
+                         * Notify next added participant
+                         */
+                        print("Notifying next added participant...\n");
+
+                        for ($i = 0; $i <= count($participants); $i++) {
+                            if ($participants[$i]['status'] == participant_statuses::ADDED) {
+                                print("Notifying participant ".$participants[$i]['first_name']." ".$participants[$i]['last_name']." (".$participants[$i]['email'].")...");
+
+                                /*
+                                 * Is seed participant?
+                                 */
+                                $is_seed = true;
+
+                                if ($participants[$i]['order'] > 1) {
+                                    for ($j = $participants[$i]['order']; $j >= 1; $j--) {
+                                        if ($participants[$j]['status'] == participant_statuses::COMPLETED) {
+                                            $is_seed = false;
+                                        }
+                                    }
+                                }
+
+                                /*
+                                 * Retrieve email text
+                                 */
+                                if ($is_seed) {
+                                    $database->select("project_messages", null, "`project` = '".$project['id']."' AND `type` = 'sp_email_invitation'");
+                                } else {
+                                    $database->select("project_messages", null, "`project` = '".$project['id']."' AND `type` = 'email_invitation'");
+                                }
+
+                                $message = $database->result()[0]['message'];
+
+                                /*
+                                 * Send email
+                                 */
+                                email_participant($message, "Card Sorting Experiment - Invitation", $participants[$i]['first_name'], $participants[$i]['last_name'], $timestamp + $project['completion'], $participants[$i]['id'], $participants[$i]['email']);
+
+                                /*
+                                 * Set participant status to NOTIFIED
+                                 */
+                                $database->update("project_participants", "`id` = '".$participants[$i]['id']."'", array(
+                                    'status'    => participant_statuses::NOTIFIED,
+                                    'notified'  => $timestamp
+                                ));
+
+                                break;
+                            }
+                        }
+                    }
                 }
 
                 break;
@@ -160,4 +300,23 @@ try {
     print("\n\nProcess Finished: ".date("n/j/Y g:i:s A")."\n");
 } catch (Exception $exception) {
     print("\n\nA fatal error has occured: ".$exception->getMessage()."\n");
+}
+
+function email_participant($message, $subject, $first_name, $last_name, $completion_timestamp, $uuid, $email)
+{
+    $config = config::get_instance();
+
+    /*
+     * Replace custom variables
+     */
+    $message = str_replace("%first_name%", $first_name, $message);
+    $message = str_replace("%last_name%", $last_name, $message);
+    $message = str_replace("%completion_timestamp%", date("n/j/Y g:i:s A", $completion_timestamp), $message);
+    $message = str_replace("%experiment_link%", $config->get_config_value("main", "application_url")."/frontend/experiment/".$uuid, $message);
+
+    /*
+     * Send email
+     */
+    $mail = new mail("MoDeCaSo <".$config->get_config_value("email", "sender_address").">", $first_name." ".$last_name." <".$email.">", $subject, $message);
+    $mail->send();
 }
