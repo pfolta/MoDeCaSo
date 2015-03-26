@@ -37,6 +37,14 @@ class messages_controller extends controller
                     )
                 );
 
+                $this->app->get(
+                    "/get_welcome_message/:uuid",
+                    array(
+                        $this,
+                        'get_welcome_message'
+                    )
+                );
+
                 $this->app->post(
                     "/edit_message",
                     array(
@@ -65,6 +73,16 @@ class messages_controller extends controller
         } else {
             throw new Exception("Insufficient rights");
         }
+    }
+
+    public function get_welcome_message($project_key, $uuid)
+    {
+        $result = $this->model->get_welcome_message($project_key, $uuid);
+
+        $this->app->render(
+            200,
+            $result
+        );
     }
 
     public function edit_message($project_key)

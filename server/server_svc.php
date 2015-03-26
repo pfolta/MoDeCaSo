@@ -175,7 +175,7 @@ try {
                             /*
                              * Send email
                              */
-                            email_participant($message, "Card Sorting Experiment - Reminder", $participant['first_name'], $participant['last_name'], $participant['notified'] + $project['completion'], $participant['id'], $participant['email']);
+                            email_participant($project['key'], $message, "Card Sorting Experiment - Reminder", $participant['first_name'], $participant['last_name'], $participant['notified'] + $project['completion'], $participant['id'], $participant['email']);
 
                             /*
                              * Set participant status to REMINDED
@@ -218,7 +218,7 @@ try {
                                 /*
                                  * Send email
                                  */
-                                email_participant($message, "Card Sorting Experiment - Timeout", $participant['first_name'], $participant['last_name'], $participant['notified'] + $project['completion'], $participant['id'], $participant['email']);
+                                email_participant($project['key'], $message, "Card Sorting Experiment - Timeout", $participant['first_name'], $participant['last_name'], $participant['notified'] + $project['completion'], $participant['id'], $participant['email']);
 
                                 /*
                                  * Set participant status to TIMEOUT
@@ -271,7 +271,7 @@ try {
                                 /*
                                  * Send email
                                  */
-                                email_participant($message, "Card Sorting Experiment - Invitation", $participants[$i]['first_name'], $participants[$i]['last_name'], $timestamp + $project['completion'], $participants[$i]['id'], $participants[$i]['email']);
+                                email_participant($project['key'], $message, "Card Sorting Experiment - Invitation", $participants[$i]['first_name'], $participants[$i]['last_name'], $timestamp + $project['completion'], $participants[$i]['id'], $participants[$i]['email']);
 
                                 /*
                                  * Set participant status to NOTIFIED
@@ -302,7 +302,7 @@ try {
     print("\n\nA fatal error has occured: ".$exception->getMessage()."\n");
 }
 
-function email_participant($message, $subject, $first_name, $last_name, $completion_timestamp, $uuid, $email)
+function email_participant($project_key, $message, $subject, $first_name, $last_name, $completion_timestamp, $uuid, $email)
 {
     $config = config::get_instance();
 
@@ -312,7 +312,7 @@ function email_participant($message, $subject, $first_name, $last_name, $complet
     $message = str_replace("%first_name%", $first_name, $message);
     $message = str_replace("%last_name%", $last_name, $message);
     $message = str_replace("%completion_timestamp%", date("n/j/Y g:i:s A", $completion_timestamp), $message);
-    $message = str_replace("%experiment_link%", $config->get_config_value("main", "application_url")."/frontend/experiment/".$uuid, $message);
+    $message = str_replace("%experiment_link%", $config->get_config_value("main", "application_url")."/frontend/experiment/".$project_key."/".$uuid."/start", $message);
 
     /*
      * Send email

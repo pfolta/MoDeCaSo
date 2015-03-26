@@ -51,6 +51,47 @@ class messages
         return $result;
     }
 
+    public function get_welcome_message($project_key, $uuid)
+    {
+        /*
+         * Get Project ID
+         */
+        $project_id = projects::get_project_id($project_key);
+
+        $this->database->select("project_participants", null, "`project` = '".$project_id."'", null, null, "`order` ASC");
+        $participants = $this->database->result();
+
+        /*
+         * Is seed participant?
+         */
+        $is_seed = true;
+
+        if ($participants[$i]['order'] > 1) {
+            for ($j = $participants[$i]['order']; $j >= 1; $j--) {
+                if ($participants[$j]['status'] == participant_statuses::COMPLETED) {
+                    $is_seed = false;
+                }
+            }
+        }
+
+
+
+        $this->database->select("project_messages", null, "`type` = '".$type."' AND `project` = '".$project_id."'");
+
+        if ($this->database->row_count() == 1) {
+            $message = $this->database->result()[0];
+
+            $result = array(
+                'error'         => false,
+                'message'       => $message
+            );
+        } else {
+            throw new Exception("Invalid Message");
+        }
+
+        return $result;
+    }
+
     public function edit_message($project_key, $type, $message)
     {
         /*

@@ -824,6 +824,66 @@ webapp.config([
                     }
                 ]
             }
+        )
+        .state(
+            "/experiment",
+            {
+                url: "/frontend/experiment/:project_key/:uuid",
+                role: "UNAUTHENTICATED",
+                title: "Experiment",
+                views: {
+                    "mainView": {
+                        controller:     "experiment_controller",
+                        templateUrl:    "/frontend/tpl/experiment/experiment.tpl"
+                    },
+                    "headerView": {
+                        templateUrl:    "/frontend/tpl/header.tpl"
+                    },
+                    "footerView": {
+                        templateUrl:    "/frontend/tpl/footer.tpl"
+                    }
+                }
+            }
+        )
+        .state(
+            "/experiment/start",
+            {
+                url: "/start",
+                role: "UNAUTHENTICATED",
+                parent: "/experiment",
+                title: "Welcome",
+                onEnter: [
+                    "$state",
+                    "$stateParams",
+                    "$modal",
+                    function($state, $stateParams, $modal)
+                    {
+                        $modal.open(
+                            {
+                                controller:     "experiment_welcome_controller",
+                                resolve:        {
+                                    project_key:    function()
+                                    {
+                                        return $stateParams.project_key;
+                                    },
+                                    uuid:           function()
+                                    {
+                                        return $stateParams.uuid;
+                                    }
+                                },
+                                templateUrl:    "/frontend/tpl/experiment/welcome.tpl",
+                                backdrop:       "static",
+                                keyboard:       false
+                            }
+                        ).result.then(
+                            function(result)
+                            {
+                                $state.go("/experiment");
+                            }
+                        );
+                    }
+                ]
+            }
         );
     }
 ]);
