@@ -844,46 +844,6 @@ webapp.config([
                     }
                 }
             }
-        )
-        .state(
-            "/experiment/start",
-            {
-                url: "/start",
-                role: "UNAUTHENTICATED",
-                parent: "/experiment",
-                title: "Welcome",
-                onEnter: [
-                    "$state",
-                    "$stateParams",
-                    "$modal",
-                    function($state, $stateParams, $modal)
-                    {
-                        $modal.open(
-                            {
-                                controller:     "experiment_welcome_controller",
-                                resolve:        {
-                                    project_key:    function()
-                                    {
-                                        return $stateParams.project_key;
-                                    },
-                                    uuid:           function()
-                                    {
-                                        return $stateParams.uuid;
-                                    }
-                                },
-                                templateUrl:    "/frontend/tpl/experiment/welcome.tpl",
-                                backdrop:       "static",
-                                keyboard:       false
-                            }
-                        ).result.then(
-                            function(result)
-                            {
-                                $state.go("/experiment");
-                            }
-                        );
-                    }
-                ]
-            }
         );
     }
 ]);

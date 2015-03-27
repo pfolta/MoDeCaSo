@@ -312,7 +312,7 @@ function email_participant($project_key, $message, $subject, $first_name, $last_
     $message = str_replace("%first_name%", $first_name, $message);
     $message = str_replace("%last_name%", $last_name, $message);
     $message = str_replace("%completion_timestamp%", date("n/j/Y g:i:s A", $completion_timestamp), $message);
-    $message = str_replace("%experiment_link%", $config->get_config_value("main", "application_url")."/frontend/experiment/".$project_key."/".$uuid."/start", $message);
+    $message = str_replace("%experiment_link%", $config->get_config_value("main", "application_url")."/frontend/experiment/".$project_key."/".$uuid, $message);
 
     /*
      * Send email

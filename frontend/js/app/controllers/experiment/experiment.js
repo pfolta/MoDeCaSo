@@ -15,9 +15,15 @@ controllers.controller(
     "experiment_controller",
     [
         "$scope",
-        function($scope)
+        "$modal",
+        function($scope, $modal)
         {
-
+            $modal.open(
+                {
+                    templateUrl:    "/frontend/tpl/experiment/welcome.tpl",
+                    backdrop:       "static"
+                }
+            );
         }
     ]
 );
