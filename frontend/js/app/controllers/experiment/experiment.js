@@ -31,7 +31,15 @@ controllers.controller(
                 function(response)
                 {
                     if (response.data.proceed) {
+                        $scope.message = response.data.message.replace(/\n/gi, "<br>");
 
+                        $modal.open(
+                            {
+                                templateUrl:    "/frontend/tpl/experiment/welcome.tpl",
+                                scope:          $scope,
+                                backdrop:       "static"
+                            }
+                        );
                     } else {
                         $modal.open(
                             {
