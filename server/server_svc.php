@@ -9,7 +9,7 @@
  *
  * File:			/server/server_svc.php
  * Created:			2015-03-09
- * Last modified:	2015-03-20
+ * Last modified:	2015-03-31
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -255,6 +255,15 @@ try {
                                             $is_seed = false;
                                         }
                                     }
+                                }
+
+                                /*
+                                 * Save seed participant information in database
+                                 */
+                                if ($is_seed) {
+                                    $database->update("projects", "`id` = '".$project['id']."'", array(
+                                        'seed'  => $participants[$i]['id']
+                                    ));
                                 }
 
                                 /*

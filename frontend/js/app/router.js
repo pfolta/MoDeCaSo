@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
- * Last modified:	2015-01-17
+ * Last modified:	2015-03-31
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -834,6 +834,22 @@ webapp.config([
                 views: {
                     "mainView": {
                         controller:     "experiment_controller",
+                        resolve:        {
+                            project_key: [
+                                "$stateParams",
+                                function($stateParams)
+                                {
+                                    return $stateParams.project_key;
+                                }
+                            ],
+                            uuid: [
+                                "$stateParams",
+                                function($stateParams)
+                                {
+                                    return $stateParams.uuid;
+                                }
+                            ]
+                        },
                         templateUrl:    "/frontend/tpl/experiment/experiment.tpl"
                     },
                     "headerView": {

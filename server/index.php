@@ -9,7 +9,7 @@
  *
  * File:			/server/index.php
  * Created:			2014-11-03
- * Last modified:	2015-03-19
+ * Last modified:	2015-03-31
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -32,6 +32,7 @@ require "tools/url.class.php";
 
 require "controllers/administration/server_maintenance_service_controller.class.php";
 require "controllers/administration/user_management_controller.class.php";
+require "controllers/experiment/experiment_controller.class.php";
 require "controllers/projects/cards_controller.class.php";
 require "controllers/projects/messages_controller.class.php";
 require "controllers/projects/participants_controller.class.php";
@@ -40,12 +41,14 @@ require "controllers/auth_controller.class.php";
 
 require "model/administration/server_maintenance_service.class.php";
 require "model/administration/user_management.class.php";
+require "model/experiment/experiment.class.php";
 require "model/projects/cards.class.php";
 require "model/projects/messages.class.php";
 require "model/projects/participants.class.php";
 require "model/projects/projects.class.php";
 require "model/auth.class.php";
 
+use controllers\experiment_controller;
 use \Slim\Slim;
 
 use main\config;
@@ -134,13 +137,14 @@ try {
     /*
      * Instantiate controllers
      */
-    $auth_controller = new auth_controller();
-    $server_maintenance_service_controller = new server_maintenance_service_controller();
-    $user_management_controller = new user_management_controller();
-    $projects_controller = new projects_controller();
-    $cards_controller = new cards_controller();
-    $participants_controller = new participants_controller();
-    $messages_controller = new messages_controller();
+    new auth_controller();
+    new server_maintenance_service_controller();
+    new user_management_controller();
+    new experiment_controller();
+    new projects_controller();
+    new cards_controller();
+    new participants_controller();
+    new messages_controller();
 
     /*
      * Finally, handle requests
