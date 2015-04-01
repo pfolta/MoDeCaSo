@@ -33,7 +33,7 @@ controllers.controller(
                     if (response.data.proceed) {
                         $scope.message = response.data.message.replace(/\n/gi, "<br>");
 
-                        $modal.open(
+                        $scope.welcome = $modal.open(
                             {
                                 templateUrl:    "/frontend/tpl/experiment/welcome.tpl",
                                 scope:          $scope,
@@ -59,10 +59,14 @@ controllers.controller(
                 }).then(
                     function(response)
                     {
-                        $("#welcome_do_not_participate_button").prop("disabled", "true");
-                        $("#welcome_start_button").prop("disabled", "true");
+                        $scope.welcome.close();
 
-                        $("#welcome_message").text("Your participation has been canceled. Thank you.");
+                        $modal.open(
+                            {
+                                templateUrl:    "/frontend/tpl/experiment/do_not_participate.tpl",
+                                backdrop:       "static"
+                            }
+                        );
                     }
                 );
             };
