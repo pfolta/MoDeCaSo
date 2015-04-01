@@ -9,7 +9,7 @@
  *
  * File:			/server/model/experiment/experiment.class.php
  * Created:			2015-03-31
- * Last modified:	2015-03-31
+ * Last modified:	2015-04-01
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -91,6 +91,15 @@ class experiment
                     'proceed'   => false
                 );
         }
+    }
+
+    public function do_not_participate($uuid)
+    {
+        $this->database->update("project_participants", "`id` = '".$uuid."'", array(
+            'status'    => participant_statuses::CANCELED
+        ));
+
+        return true;
     }
 
 }
