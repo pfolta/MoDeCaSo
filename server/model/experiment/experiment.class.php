@@ -85,10 +85,41 @@ class experiment
                 $this->database->select("project_cards", "`id`, `text`, `tooltip`", "`project` = '".$project_id."'");
                 $cards = $this->database->result();
 
+                /*
+                 * Get Experiment data
+                 * Categories
+                 */
+                $this->database->select("experiment_categories", "`id`, `text`", "`project` = '".$project_id."' AND `participant` = '".$participant['id']."'");
+                $categories = $this->database->result();
+
+                for ($i = 0; $i < count($categories); $i++) {
+                    /*
+                     * Get Cards in Category
+                     */
+                    $this->database->select("experiment_models", "`card`", "`project` = '".$project_id."' AND `participant` = '".$participant['id']."' AND `category` = '".$categories[$i]['id']."'");
+                    $cards_in_category = $this->database->result();
+
+                    foreach ($cards_in_category as $card_in_category) {
+                        $this->database->select("project_cards", "`id`, `text`, `tooltip`", "`id` = '".$card_in_category['card']."'");
+                        $card = $this->database->result()[0];
+
+                        for ($j = 0; $j < count($cards); $j++) {
+                            if ($cards[$j]['id'] == $card_in_category['card']) {
+                                array_splice($cards, $j, 1);
+                            }
+                        }
+
+                        $cards_model[] = $card;
+                    }
+
+                    $categories[$i]['cards'] = $cards_model;
+                }
+
                 return array(
-                    'proceed'   => true,
-                    'message'   => $message,
-                    'cards'     => $cards
+                    'proceed'           => true,
+                    'message'           => $message,
+                    'unsorted_cards'    => $cards,
+                    'categories'        => $categories
                 );
             default:
                 /*

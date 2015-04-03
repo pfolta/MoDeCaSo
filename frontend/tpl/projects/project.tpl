@@ -365,7 +365,7 @@
                 <div class="pull-right text-right" style="width: 25%;">
                     <div class="btn-group">
                         <button class="btn btn-primary" ng-disabled="!participants_order_changed" ng-click="participants_save_order()"><span class="glyphicon glyphicon-floppy-disk"></span> Save Order</button>
-                        <button class="btn btn-default" ng-disabled="!participants_order_changed" ng-click="load_project()"><span class="glyphicon glyphicon-share-alt rotate"></span> Revert Order</button>
+                        <button class="btn btn-default" ng-disabled="!participants_order_changed" ng-click="load_project()"><span class="glyphicon glyphicon-share-alt flip-h"></span> Revert Order</button>
                     </div>
                 </div>
             </div>

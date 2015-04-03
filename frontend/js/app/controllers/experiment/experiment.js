@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/experiment/experiment.js
  * Created:			2015-03-26
- * Last modified:	2015-04-01
+ * Last modified:	2015-04-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -31,7 +31,9 @@ controllers.controller(
                 function(response)
                 {
                     if (response.data.proceed) {
-                        $scope.message = response.data.message.replace(/\n/gi, "<br>");
+                        $scope.message          = response.data.message.replace(/\n/gi, "<br>");
+                        $scope.categories       = response.data.categories;
+                        $scope.unsorted_cards   = response.data.unsorted_cards;
 
                         $scope.welcome = $modal.open(
                             {

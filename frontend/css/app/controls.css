@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/controls.css
  * Created:			2014-12-10
- * Last modified:	2015-01-17
+ * Last modified:	2015-04-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -15,6 +15,75 @@
 
 div.card-container {
     float: left;
+}
+
+div.experiment-container {
+    float: left;
+    height: calc(100% - 175px);
+    position: absolute;
+    width: 100%;
+}
+
+div.card-container-col {
+    background-color: #eeeeee;
+    border: 1px #aaaaaa solid;
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 0;
+    width: 245px;
+}
+
+div.workspace {
+    background-color: #eeeeee;
+    border: 1px #aaaaaa solid;
+    height: 100%;
+    left: 255px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+div.category {
+    background-color: #dddddd;
+    display: inline-block;
+    margin: 5px;
+    vertical-align: top;
+}
+
+div.category-header {
+    background-color: #f0ad4e;
+    background-size: contain;
+
+    border: 1px #aaaaaa solid;
+    -moz-box-shadow: 3px 3px 5px #cccccc;
+    -webkit-box-shadow: 3px 3px 5px #cccccc;
+    box-shadow: 3px 3px 5px #cccccc;
+
+    font-family: "Halogen";
+    font-size: 22px;
+    font-weight: bold;
+
+    line-height: 35px;
+
+    min-height: 45px;
+    width: 200px;
+
+    margin: 13px;
+    padding: 5px;
+}
+
+div.category-header:hover > div.category-controls {
+    visibility: visible;
+}
+
+div.category-controls {
+    visibility: hidden;
+    float: right;
 }
 
 div.card {
