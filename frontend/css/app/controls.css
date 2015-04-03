@@ -40,17 +40,22 @@ div.workspace {
     border: 1px #aaaaaa solid;
     height: 100%;
     left: 255px;
+
     overflow-x: scroll;
     overflow-y: scroll;
-    padding: 10px;
+
     position: absolute;
     right: 0;
     top: 0;
 }
 
+div.category-wrapper {
+    padding: 10px;
+}
+
 div.category {
     background-color: #dddddd;
-    display: inline-block;
+    float: left;
     margin: 5px;
     vertical-align: top;
 }
@@ -105,6 +110,8 @@ div.card {
 
     margin: 13px;
     padding: 10px;
+
+    z-index: 99999 !important;
 }
 
 div.card:hover > div.card-controls {

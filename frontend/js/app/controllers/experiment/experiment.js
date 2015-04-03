@@ -24,6 +24,25 @@ controllers.controller(
             $scope.project_key = project_key;
             $scope.uuid = uuid;
 
+            $scope.sortable_options = {
+                "cursor":                   "url('/frontend/cur/closedhand.cur'), move",
+                "forcePlaceholderSize":     true,
+                "opacity":                  0.8,
+                "helper":                   "clone",
+                "connectWith":              ".sortable",
+                "placeholder":              "card-sortable-highlight",
+                "scroll":                   false,
+                "appendTo":                 "body",
+                "start":                    function(e, ui)
+                {
+
+                },
+                "stop":                     function(e, ui)
+                {
+
+                }
+            };
+
             $http({
                 method:     "get",
                 url:        "/server/experiment/" + $scope.project_key + "/init/" + $scope.uuid

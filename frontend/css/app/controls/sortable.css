@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/controls/sortable.css
  * Created:			2015-01-14
- * Last modified:	2015-01-14
+ * Last modified:	2015-04-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -18,4 +18,14 @@
 
 .table-sortable-highlight td {
     background-color: #fffdd0 !important;
+}
+
+.card-sortable-highlight {
+    border: 2px #888888 dashed !important;
+    height: 150px;
+    margin: 13px;
+}
+
+.sortable-target {
+    min-height: 50px;
 }

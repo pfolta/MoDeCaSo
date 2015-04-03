@@ -4,7 +4,7 @@
     <div class="form-group" style="padding-bottom: 50px; ">
         <div class="pull-left">
             <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Save</button>
-            <button type="button" class="btn btn-success" disabled><span class="glyphicon glyphicon-log-out"></span> Save and Exit</button>
+            <button type="button" class="btn btn-success" ng-disabled="unsorted_cards.length != 0;"><span class="glyphicon glyphicon-log-out"></span> Save and Submit</button>
             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Start Over</button>
         </div>
         <div class="pull-left" style="margin-left: 15px;">
@@ -16,8 +16,8 @@
     </div>
 
     <div class="experiment-container">
-        <div class="card-container-col">
-            <div class="card" ng-repeat="card in unsorted_cards">
+        <div class="card-container-col sortable" ui-sortable="sortable_options" ng-model="unsorted_cards">
+            <div class="card grab" ng-repeat="card in unsorted_cards">
                 <div class="btn-group btn-group-sm card-controls">
                     <button ng-disabled="!card.tooltip" class="btn btn-info" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="top" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
                 </div>
@@ -27,20 +27,24 @@
             </div>
         </div>
         <div class="workspace">
-            <div class="category" ng-repeat="category in categories">
-                <div class="category-header">
-                    <div class="btn-group btn-group-sm category-controls">
-                        <button type="button" class="btn btn-warning" tooltip="Edit Category" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
-                        <button type="button" class="btn btn-danger" tooltip="Remove Category" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></button>
+            <div class="category-wrapper" style="width: {{ categories.length * 241 }}px;">
+                <div class="category" ng-repeat="category in categories">
+                    <div class="category-header">
+                        <div class="btn-group btn-group-sm category-controls">
+                            <button type="button" class="btn btn-warning" tooltip="Edit Category" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                            <button type="button" class="btn btn-danger" tooltip="Remove Category" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></button>
+                        </div>
+                        {{ category.text }}
                     </div>
-                    {{ category.text }}
-                </div>
-                <div class="card" ng-repeat="card in category.cards">
-                    <div class="btn-group btn-group-sm card-controls">
-                        <button ng-disabled="!card.tooltip" class="btn btn-info" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="top" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
-                    </div>
-                    <div class="card-text">
-                        {{ card.text }}
+                    <div ui-sortable="sortable_options" class="sortable sortable-target" ng-model="category.cards">
+                        <div class="card grab" ng-repeat="card in category.cards">
+                            <div class="btn-group btn-group-sm card-controls">
+                                <button ng-disabled="!card.tooltip" class="btn btn-info" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="top" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
+                            </div>
+                            <div class="card-text">
+                                {{ card.text }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

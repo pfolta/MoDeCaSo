@@ -99,6 +99,8 @@ class experiment
                     $this->database->select("experiment_models", "`card`", "`project` = '".$project_id."' AND `participant` = '".$participant['id']."' AND `category` = '".$categories[$i]['id']."'");
                     $cards_in_category = $this->database->result();
 
+                    $cards_model = array();
+
                     foreach ($cards_in_category as $card_in_category) {
                         $this->database->select("project_cards", "`id`, `text`, `tooltip`", "`id` = '".$card_in_category['card']."'");
                         $card = $this->database->result()[0];
