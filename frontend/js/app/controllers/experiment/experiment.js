@@ -39,7 +39,11 @@ controllers.controller(
                 },
                 "stop":                     function(e, ui)
                 {
+                    $scope.unsorted_cards.sort(sort_by("text", false, function(a){return a.toUpperCase()}));
 
+                    for (var i = 0; i < $scope.categories.length; i++) {
+                        $scope.categories[i].cards.sort(sort_by("text", false, function(a){return a.toUpperCase()}));
+                    }
                 }
             };
 
@@ -53,6 +57,8 @@ controllers.controller(
                         $scope.message          = response.data.message.replace(/\n/gi, "<br>");
                         $scope.categories       = response.data.categories;
                         $scope.unsorted_cards   = response.data.unsorted_cards;
+
+                        $scope.unsorted_cards.sort(sort_by("text", false, function(a){return a.toUpperCase()}));
 
                         $scope.welcome = $modal.open(
                             {
@@ -71,6 +77,18 @@ controllers.controller(
                     }
                 }
             );
+
+            $scope.start_over = function()
+            {
+                for (var i = 0; i < $scope.categories.length; i++) {
+                    for (var j = 0; j < $scope.categories[i].cards.length; j++) {
+                        $scope.unsorted_cards.push($scope.categories[i].cards[j]);
+                        $scope.unsorted_cards.sort(sort_by("text", false, function(a){return a.toUpperCase()}));
+                    }
+                }
+
+                $scope.categories = null;
+            };
 
             $scope.do_not_participate = function()
             {
@@ -94,3 +112,16 @@ controllers.controller(
         }
     ]
 );
+
+var sort_by = function(field, reverse, primer){
+
+    var key = primer ?
+        function(x) {return primer(x[field])} :
+        function(x) {return x[field]};
+
+    reverse = !reverse ? 1 : -1;
+
+    return function (a, b) {
+        return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+    }
+}
