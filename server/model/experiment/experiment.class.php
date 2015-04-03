@@ -9,7 +9,7 @@
  *
  * File:			/server/model/experiment/experiment.class.php
  * Created:			2015-03-31
- * Last modified:	2015-04-01
+ * Last modified:	2015-04-03
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -79,9 +79,16 @@ class experiment
                 $message = str_replace("%completion_timestamp%", date("n/j/Y g:i:s A", $project['completion']), $message);
                 $message = str_replace("%experiment_link%", $this->config->get_config_value("main", "application_url")."/frontend/experiment/".$project_key."/".$uuid, $message);
 
+                /*
+                 * Load all cards
+                 */
+                $this->database->select("project_cards", "`id`, `text`, `tooltip`", "`project` = '".$project_id."'");
+                $cards = $this->database->result();
+
                 return array(
                     'proceed'   => true,
-                    'message'   => $message
+                    'message'   => $message,
+                    'cards'     => $cards
                 );
             default:
                 /*
