@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/controls.css
  * Created:			2014-12-10
- * Last modified:	2015-04-03
+ * Last modified:	2015-04-04
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -44,13 +44,15 @@ div.workspace {
     overflow-x: scroll;
     overflow-y: scroll;
 
+    padding: 10px 0 10px 0;
+
     position: absolute;
     right: 0;
     top: 0;
 }
 
 div.category-wrapper {
-    padding: 10px;
+    margin: 0 10px !important;
 }
 
 div.category {
