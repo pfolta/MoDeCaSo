@@ -44,15 +44,36 @@ div.workspace {
     overflow-x: scroll;
     overflow-y: scroll;
 
-    padding: 10px 0 10px 0;
-
     position: absolute;
     right: 0;
     top: 0;
 }
 
+div.workspace-blank {
+    border: 2px #888888 dashed !important;
+    color: #888888;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    font-family: "Halogen";
+    font-size: 30px;
+    font-weight: bold;
+
+    line-height: 25px;
+
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    right: 15px;
+    bottom: 15px;
+}
+
 div.category-wrapper {
-    margin: 0 10px !important;
+    margin: 10px !important;
 }
 
 div.category {

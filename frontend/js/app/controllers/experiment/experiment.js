@@ -42,7 +42,9 @@ controllers.controller(
                     $scope.unsorted_cards.sort(sort_by("text", false, function(a){return a.toUpperCase()}));
 
                     for (var i = 0; i < $scope.categories.length; i++) {
-                        $scope.categories[i].cards.sort(sort_by("text", false, function(a){return a.toUpperCase()}));
+                        $scope.categories[i].cards.sort(sort_by("text", false, function (a) {
+                            return a.toUpperCase()
+                        }));
                     }
                 }
             };
@@ -84,15 +86,51 @@ controllers.controller(
 
             $scope.start_over = function()
             {
-                if ($scope.categories != null) {
-                    for (var i = 0; i < $scope.categories.length; i++) {
+                for (var i = 0; i < $scope.categories.length; i++) {
+                    for (var j = 0; j < $scope.categories[i].cards.length; j++) {
+                        $scope.unsorted_cards.push($scope.categories[i].cards[j]);
+                        $scope.unsorted_cards.sort(sort_by("text", false, function(a){return a.toUpperCase()}));
+                    }
+                }
+
+                $scope.categories = [];
+            };
+
+            $scope.add_category = function()
+            {
+                $scope.add_category_text = null;
+
+                var dialog = $modal.open(
+                    {
+                        templateUrl:    "/frontend/tpl/experiment/add_category.tpl",
+                        scope:          $scope,
+                        backdrop:       "static"
+                    }
+                );
+
+                dialog.result.then(function(text) {
+                    if (text) {
+                        var category = {
+                            "text":     text,
+                            "cards":    []
+                        };
+
+                        $scope.categories.push(category);
+                    }
+                });
+            };
+
+            $scope.remove_category = function(category)
+            {
+                for (var i = 0; i < $scope.categories.length; i++) {
+                    if ($scope.categories[i].text == category) {
                         for (var j = 0; j < $scope.categories[i].cards.length; j++) {
                             $scope.unsorted_cards.push($scope.categories[i].cards[j]);
                             $scope.unsorted_cards.sort(sort_by("text", false, function(a){return a.toUpperCase()}));
                         }
-                    }
 
-                    $scope.categories = null;
+                        $scope.categories.splice(i, 1);
+                    }
                 }
             };
 
