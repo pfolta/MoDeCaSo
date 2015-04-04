@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/services/http_auth_interceptor.js
  * Created:			2015-01-13
- * Last modified:	2015-03-02
+ * Last modified:	2015-04-04
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -31,7 +31,7 @@ services.factory(
 
                 responseError: function(response)
                 {
-                    if (response.status == 401 && response.data.msg != "invalid_credentials") {
+                    if (response.status == 401 && response.config.url != "/server/auth/login") {
                         session_service.clear();
 
                         session_service.set("login_message", "session_timeout");
