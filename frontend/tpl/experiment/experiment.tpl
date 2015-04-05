@@ -34,7 +34,7 @@
                 <div class="category" ng-repeat="category in categories">
                     <div class="category-header">
                         <div class="btn-group btn-group-sm category-controls">
-                            <button type="button" class="btn btn-warning" tooltip="Edit Category" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
+                            <button type="button" class="btn btn-warning" ng-click="edit_category(category.text);" tooltip="Edit Category" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></button>
                             <button type="button" class="btn btn-danger" ng-click="remove_category(category.text);" tooltip="Remove Category" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></button>
                         </div>
                         {{ category.text }}

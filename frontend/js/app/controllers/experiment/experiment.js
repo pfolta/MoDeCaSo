@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/experiment/experiment.js
  * Created:			2015-03-26
- * Last modified:	2015-04-04
+ * Last modified:	2015-04-05
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -116,6 +116,29 @@ controllers.controller(
                         };
 
                         $scope.categories.push(category);
+                    }
+                });
+            };
+
+            $scope.edit_category = function(category)
+            {
+                $scope.edit_category_text = category;
+
+                var dialog = $modal.open(
+                    {
+                        templateUrl:    "/frontend/tpl/experiment/edit_category.tpl",
+                        scope:          $scope,
+                        backdrop:       "static"
+                    }
+                );
+
+                dialog.result.then(function(text) {
+                    if (text) {
+                        for (var i = 0; i < $scope.categories.length; i++) {
+                            if ($scope.categories[i].text == category) {
+                                $scope.categories[i].text = text;
+                            }
+                        }
                     }
                 });
             };
