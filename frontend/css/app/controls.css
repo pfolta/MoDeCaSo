@@ -106,7 +106,7 @@ div.category-header {
     width: 200px;
 
     margin: 13px;
-    padding: 5px;
+    padding: 10px;
 }
 
 div.category-header:hover > div.category-controls {
