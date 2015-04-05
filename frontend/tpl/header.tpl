@@ -31,6 +31,9 @@
         </div>
         <div class="navbar-right" id="top-right">
             <ul class="nav navbar-nav">
+                <li ng-class="{active: is_fullscreen}">
+                    <a ng-click="toggle_fullscreen();"><span class="glyphicon glyphicon-fullscreen"></span> Fullscreen</a>
+                </li>
                 <li ui-sref-active="active" dropdown>
                     <a dropdown-toggle><span class="glyphicon glyphicon-question-sign"></span> Help <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">

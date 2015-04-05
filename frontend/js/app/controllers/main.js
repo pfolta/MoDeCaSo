@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/main.js
  * Created:			2014-10-19
- * Last modified:	2015-01-13
+ * Last modified:	2015-04-05
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -205,6 +205,47 @@ controllers.controller(
             );
 
             $rootScope.$broadcast("load_projects");
+
+            $scope.is_fullscreen = false;
+
+            $scope.toggle_fullscreen = function()
+            {
+                if ($scope.is_fullscreen) {
+                    $scope.quit_fullscreen();
+                } else {
+                    $scope.enter_fullscreen();
+                }
+            };
+
+            $scope.enter_fullscreen = function()
+            {
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) {
+                    document.documentElement.msRequestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullscreen) {
+                    document.documentElement.webkitRequestFullscreen();
+                }
+
+                $scope.is_fullscreen = true;
+            };
+
+            $scope.quit_fullscreen = function()
+            {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                }
+
+                $scope.is_fullscreen = false;
+            };
         }
     ]
 );
