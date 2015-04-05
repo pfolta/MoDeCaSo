@@ -46,6 +46,8 @@ controllers.controller(
                             return a.toUpperCase()
                         }));
                     }
+
+                    $scope.dirty = true;
                 }
             };
 
@@ -65,6 +67,8 @@ controllers.controller(
                         for (var i = 0; i < $scope.categories.length; i++) {
                             $scope.categories[i].cards.sort(sort_by("text", false, function(a){return a.toUpperCase()}));
                         }
+
+                        $scope.dirty = false;
 
                         $scope.welcome = $modal.open(
                             {
@@ -87,10 +91,7 @@ controllers.controller(
             $scope.start_over = function()
             {
                 for (var i = 0; i < $scope.categories.length; i++) {
-                    for (var j = 0; j < $scope.categories[i].cards.length; j++) {
-                        $scope.unsorted_cards.push($scope.categories[i].cards[j]);
-                        $scope.unsorted_cards.sort(sort_by("text", false, function(a){return a.toUpperCase()}));
-                    }
+                    $scope.remove_category($scope.categories[i].text);
                 }
 
                 $scope.categories = [];
@@ -116,6 +117,8 @@ controllers.controller(
                         };
 
                         $scope.categories.push(category);
+
+                        $scope.dirty = true;
                     }
                 });
             };
@@ -139,6 +142,8 @@ controllers.controller(
                                 $scope.categories[i].text = text;
                             }
                         }
+
+                        $scope.dirty = true;
                     }
                 });
             };
@@ -155,6 +160,8 @@ controllers.controller(
                         $scope.categories.splice(i, 1);
                     }
                 }
+
+                $scope.dirty = true;
             };
 
             $scope.do_not_participate = function()
@@ -175,6 +182,27 @@ controllers.controller(
                         );
                     }
                 );
+            };
+
+            $scope.save = function()
+            {
+                $http({
+                    method:     "post",
+                    url:        "/server/experiment/" + $scope.project_key + "/save/" + $scope.uuid,
+                    data:       {
+                        data:     $scope.categories
+                    }
+                }).then(
+                    function(response)
+                    {
+                        $scope.dirty = false;
+                    }
+                );
+            };
+
+            $scope.save_and_submit = function()
+            {
+                alert("Save and Submit called!");
             };
         }
     ]

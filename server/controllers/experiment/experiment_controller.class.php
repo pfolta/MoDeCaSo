@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/experiment/experiment_controller.class.php
  * Created:			2015-03-31
- * Last modified:	2015-04-01
+ * Last modified:	2015-04-05
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -42,6 +42,14 @@ class experiment_controller extends controller
                         'do_not_participate'
                     )
                 );
+
+                $this->app->post(
+                    "/save/:uuid",
+                    array(
+                        $this,
+                        'save'
+                    )
+                );
             }
         );
     }
@@ -68,6 +76,21 @@ class experiment_controller extends controller
             array(
                 'error'     => false,
                 'msg'       => "Participation canceled."
+            )
+        );
+    }
+
+    public function save($project_key, $uuid)
+    {
+        $data = $this->request->data;
+
+        $this->model->save($project_key, $uuid, $data);
+
+        $this->app->render(
+            200,
+            array(
+                'error'     => false,
+                'msg'       => "Data saved."
             )
         );
     }

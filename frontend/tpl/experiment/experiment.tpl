@@ -3,8 +3,8 @@
 
     <div class="form-group" style="padding-bottom: 50px; ">
         <div class="pull-left">
-            <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Save</button>
-            <button type="button" class="btn btn-success" ng-disabled="unsorted_cards.length != 0;"><span class="glyphicon glyphicon-log-out"></span> Save and Submit</button>
+            <button type="button" class="btn btn-success" ng-click="save();" ng-disabled="!dirty"><span class="glyphicon glyphicon-save"></span> Save</button>
+            <button type="button" class="btn btn-success" ng-click="save_and_submit();" ng-disabled="unsorted_cards.length != 0;"><span class="glyphicon glyphicon-log-out"></span> Save and Submit</button>
             <button type="button" class="btn btn-default" ng-click="start_over();"><span class="glyphicon glyphicon-refresh"></span> Start Over</button>
         </div>
         <div class="pull-left" style="margin-left: 15px;">

@@ -9,7 +9,7 @@
  *
  * File:			/server/model/experiment/experiment.class.php
  * Created:			2015-03-31
- * Last modified:	2015-04-03
+ * Last modified:	2015-04-05
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -133,11 +133,68 @@ class experiment
         }
     }
 
-    public function do_not_participate($uuid)
+    public function do_not_participate($participant)
     {
-        $this->database->update("project_participants", "`id` = '".$uuid."'", array(
+        $this->database->update("project_participants", "`id` = '".$participant."'", array(
             'status'    => participant_statuses::CANCELED
         ));
+
+        return true;
+    }
+
+    public function save($project_key, $participant, $data)
+    {
+        $project_id = projects::get_project_id($project_key);
+
+        /*
+         * Delete all categories associated with this project and this participant
+         */
+        $this->database->delete("experiment_categories", "`project` = '".$project_id."' AND `participant` = '".$participant."'");
+
+        /*
+         * Delete all cards associated with this project and this participant
+         */
+        $this->database->delete("experiment_models", "`project` = '".$project_id."' AND `participant` = '".$participant."'");
+
+        /*
+         * Iterate over categories
+         */
+        foreach ($data as $category) {
+            $category_text = $category->text;
+
+            /*
+             * Save category in database
+             */
+            $this->database->insert("experiment_categories", array(
+                'project'       => $project_id,
+                'participant'   => $participant,
+                'text'          => $category_text,
+                'created'       => $GLOBALS['timestamp']
+            ));
+
+            /*
+             * Get category ID
+             */
+            $category_id = $this->database->get_insert_id();
+
+            /*
+             * Iterate over cards in category
+             */
+            foreach ($category->cards as $card) {
+                $card_id = $card->id;
+
+                /*
+                 * Save card in database
+                 */
+                $this->database->insert("experiment_models", array(
+                    'project'       => $project_id,
+                    'participant'   => $participant,
+                    'category'      => $category_id,
+                    'card'          => $card_id,
+                    'created'       => $GLOBALS['timestamp']
+                ));
+            }
+        }
 
         return true;
     }
