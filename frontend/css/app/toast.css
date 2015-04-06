@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/toast.css
  * Created:			2014-11-19
- * Last modified:	2014-11-24
+ * Last modified:	2015-04-06
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -29,6 +29,7 @@
 
 .toast-danger {
     background-color: #d9534f !important;
+    color: #ffffff;
 }
 
 .toast-default {

@@ -137,6 +137,15 @@ controllers.controller(
 
                 dialog.result.then(function(text) {
                     if (text) {
+                        for (var i = 0; i < $scope.categories.length; i++) {
+                            if ($scope.categories[i].text == text) {
+                                toaster.danger("Error", "This category already exists.", false);
+                                hide_toast(3000);
+
+                                return;
+                            }
+                        }
+
                         var category = {
                             "text":     text,
                             "cards":    []
@@ -163,6 +172,17 @@ controllers.controller(
 
                 dialog.result.then(function(text) {
                     if (text) {
+                        for (var i = 0; i < $scope.categories.length; i++) {
+                            if ($scope.categories[i].text == text) {
+                                if ($scope.categories[i].text == text) {
+                                    toaster.danger("Error", "This category already exists.", false);
+                                    hide_toast(3000);
+
+                                    return;
+                                }
+                            }
+                        }
+
                         for (var i = 0; i < $scope.categories.length; i++) {
                             if ($scope.categories[i].text == category) {
                                 $scope.categories[i].text = text;
