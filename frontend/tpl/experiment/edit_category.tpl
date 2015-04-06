@@ -7,7 +7,7 @@
     </div>
     <div class="modal-body">
         <p>
-            Please fill out this form to add a new category.
+            Change the details of an existing category.
         </p>
         <div class="form-group" id="edit_category_text_group" style="padding-top: 20px;">
             <label for="edit_category_text" class="col-sm-3 control-label">Category</label>
