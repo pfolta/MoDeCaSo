@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top" id="main_navbar" role="navigation">
-    <div class="container">
+    <div ng-class="{ 'container_restricted': !is_fullscreen }" style="padding: 0 5px;">
         <div class="navbar-header">
             <a class="navbar-brand" ui-sref="/dashboard">
                 <img src="/frontend/img/modecaso-logo.svg" class="header-icon">
