@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:			2014-10-18
- * Last modified:	2015-03-08
+ * Last modified:	2015-04-06
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -63,7 +63,7 @@ webapp.config([
     "$httpProvider",
     function($httpProvider)
     {
-        $httpProvider.interceptors.push("http_auth_interceptor_service");
+        $httpProvider.interceptors.push("http_interceptor_service");
     }
 ]);
 

@@ -5,14 +5,14 @@
  * Project:			UPB-BTHESIS
  * Version:			0.0.1
  *
- * File:            /frontend/js/app/services/http_auth_interceptor.js
+ * File:            /frontend/js/app/services/http_interceptor.js
  * Created:			2015-01-13
- * Last modified:	2015-04-04
+ * Last modified:	2015-04-06
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 services.factory(
-    "http_auth_interceptor_service",
+    "http_interceptor_service",
     [
         "session_service",
         function(session_service)
@@ -39,6 +39,8 @@ services.factory(
                         window.location.reload();
                         return;
                     }
+
+                    toaster.danger("Network Error", "Request couldn't be completed.", false);
 
                     return response;
                 }
