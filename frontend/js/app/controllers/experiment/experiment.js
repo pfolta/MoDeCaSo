@@ -24,6 +24,20 @@ controllers.controller(
             $scope.project_key = project_key;
             $scope.uuid = uuid;
 
+            $scope.categories = [];
+
+            $scope.$watch(
+                function()
+                {
+                    return $scope.categories.length;
+                },
+
+                function(value)
+                {
+                    $(".category-wrapper").css("min-width", (value * 239) + "px");
+                }
+            );
+
             $scope.dirty = false;
 
             $scope.$watch(

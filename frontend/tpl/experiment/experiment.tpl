@@ -30,7 +30,7 @@
             <div class="workspace-blank" ng-show="categories.length == 0;">
                 Start here
             </div>
-            <div class="category-wrapper" ng-show="categories.length > 0;" style="height: 100px; min-width: {{ categories.length * 239 }}px !important;">
+            <div class="category-wrapper" ng-show="categories.length > 0;">
                 <div class="category" ng-repeat="category in categories">
                     <div class="category-header">
                         <div class="btn-group btn-group-sm category-controls">

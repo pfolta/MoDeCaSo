@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/controls.css
  * Created:			2014-12-10
- * Last modified:	2015-04-04
+ * Last modified:	2015-04-06
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -70,6 +70,10 @@ div.workspace-blank {
     top: 15px;
     right: 15px;
     bottom: 15px;
+}
+
+div.category-wrapper {
+    display: table;
 }
 
 div.category {
