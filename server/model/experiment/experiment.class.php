@@ -85,18 +85,36 @@ class experiment
                 $this->database->select("project_cards", "`id`, `text`, `tooltip`", "`project` = '".$project_id."'");
                 $cards = $this->database->result();
 
+                $categories = array();
+
+                if ($participant['last_save'] > 0) {
+                    $load_from = $participant['id'];
+                } else {
+                    if (!$is_seed) {
+                        $this->database->select("project_participants");
+                        $participants = $this->database->result();
+
+                        for ($i = $participant['order']; $i >= 1; $i--) {
+                            if ($participants[$i]['status'] == participant_statuses::COMPLETED) {
+                                $load_from = $participants[$i]['id'];
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 /*
                  * Get Experiment data
                  * Categories
                  */
-                $this->database->select("experiment_categories", "`id`, `text`", "`project` = '".$project_id."' AND `participant` = '".$participant['id']."'");
+                $this->database->select("experiment_categories", "`id`, `text`", "`project` = '".$project_id."' AND `participant` = '".$load_from."'");
                 $categories = $this->database->result();
 
                 for ($i = 0; $i < count($categories); $i++) {
                     /*
                      * Get Cards in Category
                      */
-                    $this->database->select("experiment_models", "`card`", "`project` = '".$project_id."' AND `participant` = '".$participant['id']."' AND `category` = '".$categories[$i]['id']."'");
+                    $this->database->select("experiment_models", "`card`", "`project` = '".$project_id."' AND `participant` = '".$load_from."' AND `category` = '".$categories[$i]['id']."'");
                     $cards_in_category = $this->database->result();
 
                     $cards_model = array();
@@ -201,6 +219,22 @@ class experiment
          */
         $this->database->update("project_participants", "`id` = '".$participant."'", array(
             'last_save'     => $GLOBALS['timestamp']
+        ));
+
+        return true;
+    }
+
+    public function save_and_submit($project_key, $participant, $data) {
+        /*
+         * Invoke saving routine
+         */
+        $this->save($project_key, $participant, $data);
+
+        /*
+         * Set participant status to completed
+         */
+        $this->database->update("project_participants", "`id` = '".$participant."'", array(
+            'status'        => participant_statuses::COMPLETED
         ));
 
         return true;

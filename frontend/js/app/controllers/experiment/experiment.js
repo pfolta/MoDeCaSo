@@ -204,6 +204,8 @@ controllers.controller(
                 }).then(
                     function(response)
                     {
+                        $scope.dirty = false;
+
                         $scope.welcome.close();
 
                         $modal.open(
@@ -234,7 +236,18 @@ controllers.controller(
 
             $scope.save_and_submit = function()
             {
-                alert("Save and Submit called!");
+                $http({
+                    method:     "post",
+                    url:        "/server/experiment/" + $scope.project_key + "/save_and_submit/" + $scope.uuid,
+                    data:       {
+                        data:     $scope.categories
+                    }
+                }).then(
+                    function(response)
+                    {
+                        alert("Save and submit completed.");
+                    }
+                );
             };
         }
     ]

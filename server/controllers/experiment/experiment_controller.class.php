@@ -50,6 +50,14 @@ class experiment_controller extends controller
                         'save'
                     )
                 );
+
+                $this->app->post(
+                    "/save_and_submit/:uuid",
+                    array(
+                        $this,
+                        'save_and_submit'
+                    )
+                );
             }
         );
     }
@@ -91,6 +99,21 @@ class experiment_controller extends controller
             array(
                 'error'     => false,
                 'msg'       => "Data saved."
+            )
+        );
+    }
+
+    public function save_and_submit($project_key, $uuid)
+    {
+        $data = $this->request->data;
+
+        $this->model->save_and_submit($project_key, $uuid, $data);
+
+        $this->app->render(
+            200,
+            array(
+                'error'     => false,
+                'msg'       => "Data saved and participation completed."
             )
         );
     }

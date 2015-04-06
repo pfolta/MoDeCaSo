@@ -24,5 +24,5 @@
     </p>
 </div>
 <div class="modal-footer">
-    <button id="edit_message_submit_button" type="button" class="btn btn-close" ui-sref="/login" ng-click="$close()">Close</button>
+    <button id="edit_message_submit_button" type="button" class="btn btn-default" ui-sref="/login" ng-click="$close()">Close</button>
 </div>
