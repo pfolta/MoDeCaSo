@@ -102,13 +102,7 @@ controllers.controller(
 
                         $scope.dirty = false;
 
-                        $scope.welcome = $modal.open(
-                            {
-                                templateUrl:    "/frontend/tpl/experiment/welcome.tpl",
-                                scope:          $scope,
-                                backdrop:       "static"
-                            }
-                        );
+                        $scope.show_welcome_message();
                     } else {
                         $modal.open(
                             {
@@ -246,6 +240,17 @@ controllers.controller(
                     function(response)
                     {
                         alert("Save and submit completed.");
+                    }
+                );
+            };
+
+            $scope.show_welcome_message = function()
+            {
+                $scope.welcome = $modal.open(
+                    {
+                        templateUrl:    "/frontend/tpl/experiment/welcome.tpl",
+                        scope:          $scope,
+                        backdrop:       "static"
                     }
                 );
             };

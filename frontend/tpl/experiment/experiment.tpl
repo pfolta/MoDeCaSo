@@ -11,6 +11,7 @@
             <button type="button" class="btn btn-primary" ng-click="add_category();"><span class="glyphicon glyphicon-plus-sign"></span> Add Category</button>
         </div>
         <div class="pull-right">
+            <button type="button" class="btn btn-info" ng-click="show_welcome_message();"><span class="glyphicon glyphicon-info-sign"></span> Welcome Message</button>
             <button type="button" class="btn btn-danger" ng-click="do_not_participate();"><span class="glyphicon glyphicon-ban-circle"></span> Do Not Participate</button>
         </div>
     </div>
