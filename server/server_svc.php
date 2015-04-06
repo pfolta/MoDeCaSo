@@ -9,7 +9,7 @@
  *
  * File:			/server/server_svc.php
  * Created:			2015-03-09
- * Last modified:	2015-03-31
+ * Last modified:	2015-04-06
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -224,7 +224,8 @@ try {
                                  * Set participant status to TIMEOUT
                                  */
                                 $database->update("project_participants", "`id` = '".$participant['id']."'", array(
-                                    'status'    => participant_statuses::TIMEOUT
+                                    'status'    => participant_statuses::TIMEOUT,
+                                    'timedout'  => $timestamp
                                 ));
                             }
 
