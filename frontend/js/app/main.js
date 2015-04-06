@@ -11,6 +11,8 @@
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
+var show_unload_prompt = false;
+
 function main()
 {
     if (is_mobile()) {
@@ -24,6 +26,20 @@ function main()
     angular.element(document).ready(function() {
         angular.bootstrap(document, ["webapp"]);
     });
+}
+
+function unload()
+{
+    if (show_unload_prompt) {
+        var message = "You changed your model but did not click \"Save\". All changes will be lost if you leave the page without saving.";
+        var evt = window.event;
+
+        if (evt) {
+            evt.returnValue = message;
+        }
+
+        return message;
+    }
 }
 
 var services = angular.module(

@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/experiment/experiment.js
  * Created:			2015-03-26
- * Last modified:	2015-04-05
+ * Last modified:	2015-04-06
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -23,6 +23,24 @@ controllers.controller(
         {
             $scope.project_key = project_key;
             $scope.uuid = uuid;
+
+            $scope.dirty = false;
+
+            $scope.$watch(
+                function()
+                {
+                    return $scope.dirty;
+                },
+
+                function(dirty)
+                {
+                    if (dirty) {
+                        show_unload_prompt = true;
+                    } else {
+                        show_unload_prompt = false;
+                    }
+                }
+            );
 
             $scope.sortable_options = {
                 "cursor":                   "url('/frontend/cur/closedhand.cur'), move",

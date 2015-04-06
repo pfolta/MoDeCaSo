@@ -7,8 +7,9 @@
  *
  * File:            /frontend/js/app/init.js
  * Created:			2015-03-08
- * Last modified:	2015-03-08
+ * Last modified:	2015-04-06
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 window.onload = main;
+window.onbeforeunload = unload;
