@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/experiment/experiment.js
  * Created:			2015-03-26
- * Last modified:	2015-04-06
+ * Last modified:	2015-04-07
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -117,8 +117,10 @@ controllers.controller(
 
             $scope.start_over = function()
             {
-                for (var i = 0; i < $scope.categories.length; i++) {
-                    $scope.remove_category($scope.categories[i].text);
+                var categories = $scope.categories.length;
+
+                for (var i = 0; i < categories; i++) {
+                    $scope.remove_category($scope.categories[0].text);
                 }
 
                 $scope.categories = [];
