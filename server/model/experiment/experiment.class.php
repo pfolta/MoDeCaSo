@@ -9,7 +9,7 @@
  *
  * File:			/server/model/experiment/experiment.class.php
  * Created:			2015-03-31
- * Last modified:	2015-04-06
+ * Last modified:	2015-04-07
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -242,7 +242,8 @@ class experiment
          * Set participant status to completed
          */
         $this->database->update("project_participants", "`id` = '".$participant."'", array(
-            'status'        => participant_statuses::COMPLETED
+            'status'        => participant_statuses::COMPLETED,
+            'completed'     => $GLOBALS['timestamp']
         ));
 
         return true;

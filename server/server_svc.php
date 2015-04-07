@@ -9,7 +9,7 @@
  *
  * File:			/server/server_svc.php
  * Created:			2015-03-09
- * Last modified:	2015-04-06
+ * Last modified:	2015-04-07
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -221,12 +221,31 @@ try {
                                 email_participant($project['key'], $message, "Card Sorting Experiment - Timeout", $participant['first_name'], $participant['last_name'], $participant['notified'] + $project['completion'], $participant['id'], $participant['email']);
 
                                 /*
-                                 * Set participant status to TIMEOUT
+                                 * Check if there is a saved model that contains all cards
                                  */
-                                $database->update("project_participants", "`id` = '".$participant['id']."'", array(
-                                    'status'    => participant_statuses::TIMEOUT,
-                                    'timedout'  => $timestamp
-                                ));
+                                $database->select("project_cards", null, "`project` = '".$project['id']."'");
+                                $total_card_count = $database->row_count();
+
+                                $database->select("experiment_models", null, "`project` = '".$project['id']."' AND `participant` = '".$participant['id']."'");
+                                $saved_card_count = $database->row_count();
+
+                                if ($saved_card_count == $total_card_count) {
+                                    /*
+                                     * Set participant status to COMPLETED
+                                     */
+                                    $database->update("project_participants", "`id` = '".$participant['id']."'", array(
+                                        'status'    => participant_statuses::COMPLETED,
+                                        'completed' => $timestamp
+                                    ));
+                                } else {
+                                    /*
+                                     * Set participant status to TIMEOUT
+                                     */
+                                    $database->update("project_participants", "`id` = '".$participant['id']."'", array(
+                                        'status'    => participant_statuses::TIMEOUT,
+                                        'timedout'  => $timestamp
+                                    ));
+                                }
                             }
 
                             break;

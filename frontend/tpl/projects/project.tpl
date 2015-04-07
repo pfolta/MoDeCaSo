@@ -276,9 +276,7 @@
                             <a href="/frontend/projects/{{ project.key }}/edit_message/email_invitation" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
-                    <p>
-                        {{ messages['email_invitation']['message'] }}
-                    </p>
+                    <p ng-bind-html="html_save(messages['email_invitation']['message'])"></p>
                 </div>
                 <div class="col-md-4 message">
                     <h4>
@@ -287,9 +285,7 @@
                             <a href="/frontend/projects/{{ project.key }}/edit_message/sp_email_invitation" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
-                    <p>
-                        {{ messages['sp_email_invitation']['message'] }}
-                    </p>
+                    <p ng-bind-html="html_save(messages['sp_email_invitation']['message'])"></p>
                 </div>
                 <div class="col-md-4 message">
                     <h4>
@@ -298,9 +294,7 @@
                             <a href="/frontend/projects/{{ project.key }}/edit_message/welcome_message" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
-                    <p>
-                        {{ messages['welcome_message']['message'] }}
-                    </p>
+                    <p ng-bind-html="html_save(messages['welcome_message']['message'])"></p>
                 </div>
             </div>
             <div class="row">
@@ -311,9 +305,7 @@
                             <a href="/frontend/projects/{{ project.key }}/edit_message/sp_welcome_message" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
-                    <p>
-                        {{ messages['sp_welcome_message']['message'] }}
-                    </p>
+                    <p ng-bind-html="html_save(messages['sp_welcome_message']['message'])"></p>
                 </div>
                 <div class="col-md-4 message">
                     <h4>
@@ -322,9 +314,7 @@
                             <a href="/frontend/projects/{{ project.key }}/edit_message/email_reminder" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
-                    <p>
-                        {{ messages['email_reminder']['message'] }}
-                    </p>
+                    <p ng-bind-html="html_save(messages['email_reminder']['message'])"></p>
                 </div>
                 <div class="col-md-4 message">
                     <h4>
@@ -333,9 +323,7 @@
                             <a href="/frontend/projects/{{ project.key }}/edit_message/email_timeout" class="btn btn-xs btn-warning" tooltip="Edit Text" tooltip-append-to-body="true"><span class="glyphicon glyphicon-edit"></span></a>
                         </span>
                     </h4>
-                    <p>
-                        {{ messages['email_timeout']['message'] }}
-                    </p>
+                    <p ng-bind-html="html_save(messages['email_timeout']['message'])"></p>
                 </div>
             </div>
         </div>
