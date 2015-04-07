@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <button id="edit_message_close_button" type="button" class="close" ui-sref="/login" ng-click="$close()" tooltip="Close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <button type="button" class="close" ui-sref="/login" ng-click="$close()" tooltip="Close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
     <h3 class="modal-title text-danger">
         Participation not allowed
     </h3>

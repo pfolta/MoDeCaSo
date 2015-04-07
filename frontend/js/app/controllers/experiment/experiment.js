@@ -262,7 +262,12 @@ controllers.controller(
                 }).then(
                     function(response)
                     {
-                        alert("Save and submit completed.");
+                        $modal.open(
+                            {
+                                templateUrl:    "/frontend/tpl/experiment/thank_you.tpl",
+                                backdrop:       "static"
+                            }
+                        );
                     }
                 );
             };
