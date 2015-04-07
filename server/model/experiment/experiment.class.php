@@ -100,6 +100,8 @@ class experiment
                                 break;
                             }
                         }
+                    } else {
+                        $load_from = $participant['id'];
                     }
                 }
 
@@ -135,8 +137,14 @@ class experiment
                     $categories[$i]['cards'] = $cards_model;
                 }
 
+                $project = array(
+                    'title'     => $project['title'],
+                    'key'       => $project['key']
+                );
+
                 return array(
                     'proceed'           => true,
+                    'project'           => $project,
                     'message'           => $message,
                     'unsorted_cards'    => $cards,
                     'categories'        => $categories

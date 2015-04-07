@@ -294,7 +294,7 @@
                             promise.then(_completeAnimation);
                         }
                         $animate.leave(spinner);
-                        hide_toast(0);
+                        hide_toast(500);
                     }, 500);
                 }
 

@@ -90,6 +90,7 @@ controllers.controller(
                 function(response)
                 {
                     if (response.data.proceed) {
+                        $scope.project          = response.data.project;
                         $scope.message          = response.data.message.replace(/\n/gi, "<br>");
                         $scope.categories       = response.data.categories;
                         $scope.unsorted_cards   = response.data.unsorted_cards;

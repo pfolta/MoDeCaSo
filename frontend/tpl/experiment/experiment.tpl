@@ -1,5 +1,5 @@
 <div class="page">
-    <h1>Card Sorting Experiment</h1>
+    <h1>{{ project.title }} ({{ project.key }})</h1>
 
     <div class="form-group" style="padding-bottom: 50px; ">
         <div class="pull-left">

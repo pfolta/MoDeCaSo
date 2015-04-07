@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/tools/toast.js
  * Created:			2014-11-19
- * Last modified:	2014-11-20
+ * Last modified:	2015-04-06
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -49,7 +49,12 @@ function show_toast(title, text, type, loading_animation)
     }
 
     $("body").append(toast);
-    toast.hide().fadeIn(500);
+
+    toast.css("right", "-=325px").css("opacity", "0").animate({
+        "right":    "+=325px",
+        "opacity":  "1"
+    },
+    "slow");
 }
 
 var toaster = {
@@ -81,8 +86,9 @@ var toaster = {
 
 function hide_toast(delay)
 {
-    toast.delay(delay).fadeOut(500).queue(function()
-    {
-        $(this).remove().dequeue();
-    });
+    toast.delay(delay).animate({
+        "right":    "-=325px",
+        "opacity":  "0"
+    },
+    "slow");
 }
