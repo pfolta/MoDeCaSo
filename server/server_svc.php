@@ -260,7 +260,7 @@ try {
                          */
                         print("Notifying next added participant...\n");
 
-                        for ($i = 0; $i <= count($participants); $i++) {
+                        for ($i = 0; $i < count($participants); $i++) {
                             if ($participants[$i]['status'] == participant_statuses::ADDED) {
                                 print("Notifying participant ".$participants[$i]['first_name']." ".$participants[$i]['last_name']." (".$participants[$i]['email'].")...");
 
@@ -270,7 +270,9 @@ try {
                                 $is_seed = true;
 
                                 if ($participants[$i]['order'] > 1) {
-                                    for ($j = $participants[$i]['order']; $j >= 1; $j--) {
+                                    for ($j = $participants[$i]['order'] - 1; $j >= 0; $j--) {
+                                        print $participants[$j]['first_name'];
+
                                         if ($participants[$j]['status'] == participant_statuses::COMPLETED) {
                                             $is_seed = false;
                                         }
