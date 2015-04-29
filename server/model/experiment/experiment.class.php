@@ -1,11 +1,11 @@
 <?php
 
 /*
- * UPB-BTHESIS
+ * MoDeCaSo - A Web Application for Modified Delphi Card Sorting Experiments
  * Copyright (C) 2014-2015 Peter Folta. All rights reserved.
  *
- * Project:			UPB-BTHESIS
- * Version:			0.0.1
+ * Project:			MoDeCaSo
+ * Version:			1.0.0
  *
  * File:			/server/model/experiment/experiment.class.php
  * Created:			2015-03-31
@@ -91,10 +91,10 @@ class experiment
                     $load_from = $participant['id'];
                 } else {
                     if (!$is_seed) {
-                        $this->database->select("project_participants");
+                        $this->database->select("project_participants", null, "`project` = '".$project_id."'", null, null, "`order` ASC");
                         $participants = $this->database->result();
 
-                        for ($i = $participant['order']; $i >= 1; $i--) {
+                        for ($i = $participant['order'] - 1; $i >= 0; $i--) {
                             if ($participants[$i]['status'] == participant_statuses::COMPLETED) {
                                 $load_from = $participants[$i]['id'];
                                 break;

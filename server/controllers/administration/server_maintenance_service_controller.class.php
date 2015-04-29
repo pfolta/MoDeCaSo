@@ -1,11 +1,11 @@
 <?php
 
 /*
- * UPB-BTHESIS
+ * MoDeCaSo - A Web Application for Modified Delphi Card Sorting Experiments
  * Copyright (C) 2014-2015 Peter Folta. All rights reserved.
  *
- * Project:			UPB-BTHESIS
- * Version:			0.0.1
+ * Project:			MoDeCaSo
+ * Version:			1.0.0
  *
  * File:			/server/controllers/administration/server_maintenance_service_controller.class.php
  * Created:			2015-03-09

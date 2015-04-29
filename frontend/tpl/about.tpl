@@ -10,7 +10,7 @@
             <p>
                 <strong>MoDeCaSo</strong><br>
                 <em>A Web Application for Modified Delphi Card Sorting Experiments</em><br>
-                Version 0.0.1
+                Version 1.0.0
             </p>
             <p>
                 Copyright &copy; 2014–2015 Peter Folta. All rights reserved.
