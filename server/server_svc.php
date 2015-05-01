@@ -255,6 +255,8 @@ try {
                     if (!$reminded) {
                         print("No reminded participants found.\n");
 
+                        $notified = false;
+
                         /*
                          * Notify next added participant
                          */
@@ -310,8 +312,19 @@ try {
                                     'notified'  => $timestamp
                                 ));
 
+                                $notified = true;
+
                                 break;
                             }
+                        }
+
+                        if (!$notified) {
+                            print "No participant found to notify. Completing project.\n";
+
+                            $database->update("projects", "`id` = '".$project['id']."'", array(
+                                'status'    => project_statuses::FINISHED,
+                                'completed' => $timestamp
+                            ));
                         }
                     }
                 }
