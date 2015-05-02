@@ -9,7 +9,7 @@
  *
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
- * Last modified:	2015-03-09
+ * Last modified:	2015-05-02
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -374,6 +374,45 @@ class projects
         } else {
             throw new Exception("Project '".$project_key."' not ready to be started.");
         }
+    }
+
+    public function get_results($project_key, $participant)
+    {
+        $project_id = projects::get_project_id($project_key);
+
+        /*
+         * Get Experiment data
+         * Categories
+         */
+        $this->database->select("experiment_categories", "`id`, `text`", "`project` = '".$project_id."' AND `participant` = '".$participant."'");
+        $categories = $this->database->result();
+
+        for ($i = 0; $i < count($categories); $i++) {
+            /*
+             * Get Cards in Category
+             */
+            $this->database->select("experiment_models", "`card`", "`project` = '".$project_id."' AND `participant` = '".$participant."' AND `category` = '".$categories[$i]['id']."'");
+            $cards_in_category = $this->database->result();
+
+            $cards_model = array();
+
+            foreach ($cards_in_category as $card_in_category) {
+                $this->database->select("project_cards", "`id`, `text`, `tooltip`", "`id` = '".$card_in_category['card']."'");
+                $card = $this->database->result()[0];
+
+                $cards_model[] = $card;
+            }
+
+            $categories[$i]['cards'] = $cards_model;
+        }
+
+        $this->database->select("project_participants", null, "`id` = '".$participant."'");
+        $participant = $this->database->result()[0];
+
+        return array(
+            'categories'        => $categories,
+            'participant'       => $participant
+        );
     }
 
 }

@@ -84,7 +84,7 @@
                         <div class="btn-group btn-group-sm">
                             <a href="/frontend/projects/{{ project.key }}" class="btn btn-warning" tooltip="Configure Project" tooltip-append-to-body="true"><span class="glyphicon glyphicon-cog"></span></a>
                             <a href="/frontend/projects/delete_project/{{ project.key }}" class="btn btn-danger" tooltip="Delete Project" tooltip-append-to-body="true"><span class="glyphicon glyphicon-trash"></span></a>
-                            <a disabled="!project.status == 'FINISHED'" href="/frontend/projects/{{ project.key }}" class="btn btn-success" tooltip="View Results" tooltip-append-to-body="true"><span class="glyphicon glyphicon-eye-open"></span></a>
+                            <a ng-disabled="project.status != 'FINISHED'" href="/frontend/projects/results/{{ project.key }}" class="btn btn-success" tooltip="View Results" tooltip-append-to-body="true"><span class="glyphicon glyphicon-eye-open"></span></a>
                         </div>
                     </td>
                 </tr>

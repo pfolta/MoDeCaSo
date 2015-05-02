@@ -3,6 +3,6 @@
         Help
     </h1>
     <p>
-        Sorry, help is not available yet.
+        For information on how to use MoDeCaSo, please read chapter <strong>5 Installing, Configuring and Using MoDeCaSo</strong> of the written thesis work.
     </p>
 </div>

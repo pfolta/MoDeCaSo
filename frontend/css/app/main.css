@@ -7,7 +7,7 @@
  *
  * File:			/frontend/css/app/main.css
  * Created:			2014-10-18
- * Last modified:	2015-04-06
+ * Last modified:	2015-05-02
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -113,4 +113,8 @@ iframe[name=download_iframe] {
 
 .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
     background-color: white;
+}
+
+.dontshow {
+    visibility: hidden;
 }

@@ -7,6 +7,8 @@
                 <h3 class="panel-title">
                     <span class="glyphicon glyphicon-log-in"></span> <strong>Log In</strong>
                     <span class="pull-right">
+                        <a ng-click="toggle_fullscreen();" tooltip="Fullscreen" tooltip-append-to-body="true" style="color: #ffffff;"><span class="glyphicon glyphicon-fullscreen"></span></a>
+                        &nbsp;
                         <span class="dropdown" dropdown>
                             <a class="dropdown-toggle" dropdown-toggle tooltip="Help" tooltip-append-to-body="true"><span class="glyphicon glyphicon-question-sign" style="color: #ffffff;"></span></a>
                             <ul class="dropdown-menu pull-right" role="menu">

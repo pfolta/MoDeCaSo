@@ -826,6 +826,35 @@ webapp.config([
             }
         )
         .state(
+            "/projects/results",
+            {
+                url: "/frontend/projects/results/:key",
+                role: "MODERATOR",
+                title: "Project Results",
+                views: {
+                    "mainView": {
+                        controller:     "project_results_controller",
+                        resolve:        {
+                            key: [
+                                "$stateParams",
+                                function($stateParams)
+                                {
+                                    return $stateParams.key;
+                                }
+                            ]
+                        },
+                        templateUrl:    "/frontend/tpl/projects/results.tpl"
+                    },
+                    "headerView": {
+                        templateUrl:    "/frontend/tpl/header.tpl"
+                    },
+                    "footerView": {
+                        templateUrl:    "/frontend/tpl/footer.tpl"
+                    }
+                }
+            }
+        )
+        .state(
             "/experiment",
             {
                 url: "/frontend/experiment/:project_key/:uuid",
@@ -851,6 +880,42 @@ webapp.config([
                             ]
                         },
                         templateUrl:    "/frontend/tpl/experiment/experiment.tpl"
+                    },
+                    "headerView": {
+                        templateUrl:    "/frontend/tpl/header.tpl"
+                    },
+                    "footerView": {
+                        templateUrl:    "/frontend/tpl/footer.tpl"
+                    }
+                }
+            }
+        )
+        .state(
+            "/projects/participant_results",
+            {
+                url: "/frontend/projects/participant_results/:project_key/:uuid",
+                role: "MODERATOR",
+                title: "Participant Model",
+                views: {
+                    "mainView": {
+                        controller:     "participant_results_controller",
+                        resolve:        {
+                            project_key: [
+                                "$stateParams",
+                                function($stateParams)
+                                {
+                                    return $stateParams.project_key;
+                                }
+                            ],
+                            uuid: [
+                                "$stateParams",
+                                function($stateParams)
+                                {
+                                    return $stateParams.uuid;
+                                }
+                            ]
+                        },
+                        templateUrl:    "/frontend/tpl/projects/participant_results.tpl"
                     },
                     "headerView": {
                         templateUrl:    "/frontend/tpl/header.tpl"

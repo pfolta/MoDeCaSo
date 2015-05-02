@@ -9,12 +9,13 @@
  *
  * File:			/server/controllers/administration/server_maintenance_service_controller.class.php
  * Created:			2015-03-09
- * Last modified:	2015-03-09
+ * Last modified:	2015-05-02
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
 namespace controllers;
 
+use data\user_roles;
 use main\controller;
 use model\server_maintenance_service;
 
@@ -44,7 +45,14 @@ class server_maintenance_service_controller extends controller
 
     public function run()
     {
-        $output = server_maintenance_service::run();
+        if ($this->auth->authenticate($this->get_api_key(), user_roles::ADMINISTRATOR)) {
+            $this->app->render(
+                200,
+                array(
+                    'output'    => server_maintenance_service::run()
+                )
+            );
+        }
     }
 
 }

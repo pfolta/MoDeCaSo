@@ -6,25 +6,6 @@
     </p>
 
     <div class="panel panel-default">
-        <div class="panel-heading pointer collapsible" ng-click="active_projects_collapse = !active_projects_collapse">
-            <h3 class="panel-title">
-                <span class="glyphicon glyphicon-th-large upb-blue"></span> Active Projects
-                <span class="pull-right">
-                    <button class="btn btn-default btn-circle-xs">
-                        <span class="glyphicon glyphicon-chevron-up" ng-show="!active_projects_collapse"></span>
-                        <span class="glyphicon glyphicon-chevron-down" ng-show="active_projects_collapse"></span>
-                    </button>
-                </span>
-            </h3>
-        </div>
-        <div class="panel-body" collapse="active_projects_collapse">
-            <p>
-                Information about currently active projects
-            </p>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
         <div class="panel-heading pointer collapsible" ng-click="session_information_collapse = !session_information_collapse">
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-info-sign upb-blue"></span> Session Information

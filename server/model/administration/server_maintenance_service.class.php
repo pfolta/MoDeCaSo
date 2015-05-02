@@ -9,7 +9,7 @@
  *
  * File:			/server/model/administration/server_maintenance_service.class.php
  * Created:			2015-03-09
- * Last modified:	2015-03-09
+ * Last modified:	2015-05-02
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -31,7 +31,7 @@ class server_maintenance_service
     {
         exec("php ".url::get_physical_path().DIRECTORY_SEPARATOR."server_svc.php", $output);
 
-        return implode($output);
+        return implode("\n", $output);
     }
 
 }

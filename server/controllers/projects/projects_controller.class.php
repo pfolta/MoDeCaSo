@@ -9,7 +9,7 @@
  *
  * File:			/server/controllers/projects/projects_controller.class.php
  * Created:			2014-11-24
- * Last modified:	2015-03-09
+ * Last modified:	2015-05-02
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -57,6 +57,14 @@ class projects_controller extends controller
                     array(
                         $this,
                         'get_project'
+                    )
+                );
+
+                $this->app->get(
+                    "/participant_results/:project_key/:participant",
+                    array(
+                        $this,
+                        'get_results'
                     )
                 );
             }
@@ -270,6 +278,14 @@ class projects_controller extends controller
                 )
             );
         }
+    }
+
+    public function get_results($project_key, $participant)
+    {
+        $this->app->render(
+            200,
+            $this->model->get_results($project_key, $participant)
+        );
     }
 
 }

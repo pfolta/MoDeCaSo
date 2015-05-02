@@ -19,8 +19,8 @@
     <div class="experiment-container">
         <div class="card-container-col sortable" ui-sortable="sortable_options" ng-model="unsorted_cards">
             <div class="card grab" ng-repeat="card in unsorted_cards">
-                <div class="btn-group btn-group-sm card-controls">
-                    <button ng-disabled="!card.tooltip" class="btn btn-info" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="top" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
+                <div class="btn-group btn-group-sm card-controls" style="visibility: visible;">
+                    <button ng-class="get_tooltip_class(card.tooltip);" class="btn btn-info" tooltip="{{ card.tooltip }}" tooltip-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
                 </div>
                 <div class="card-text">
                     {{ card.text }}
@@ -42,8 +42,8 @@
                     </div>
                     <div ui-sortable="sortable_options" class="sortable sortable-target" ng-model="category.cards">
                         <div class="card grab" ng-repeat="card in category.cards">
-                            <div class="btn-group btn-group-sm card-controls">
-                                <button ng-disabled="!card.tooltip" class="btn btn-info" popover="{{ card.tooltip }}" popover-title="{{ card.text }}" popover-placement="top" popover-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
+                            <div class="btn-group btn-group-sm card-controls" style="visibility: visible;">
+                                <button ng-class="get_tooltip_class(card.tooltip);" class="btn btn-info" tooltip="{{ card.tooltip }}" tooltip-append-to-body="true"><span class="glyphicon glyphicon-question-sign"></span></button>
                             </div>
                             <div class="card-text">
                                 {{ card.text }}
