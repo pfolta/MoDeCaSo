@@ -7,7 +7,7 @@
  *
  * File:            /frontend/js/app/controllers/experiment/experiment.js
  * Created:			2015-03-26
- * Last modified:	2015-04-07
+ * Last modified:	2015-05-04
  * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
  */
 
@@ -37,6 +37,13 @@ controllers.controller(
                     $(".category-wrapper").css("min-width", (value * 239) + "px");
                 }
             );
+
+            $scope.get_tooltip_class = function (tooltip)
+            {
+                if (!tooltip) {
+                    return "dontshow";
+                }
+            };
 
             $scope.dirty = false;
 
