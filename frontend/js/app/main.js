@@ -58,7 +58,7 @@ var filters = angular.module(
     "filters",
     [
     ]
-)
+);
 
 var webapp = angular.module(
     "webapp",
