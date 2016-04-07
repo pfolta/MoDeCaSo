@@ -1,0 +1,17 @@
+# OS X
+**/.DS_Store
+
+# Windows
+**/Thumbs.db
+**/ehthumbs.db
+**/Desktop.ini
+**/$RECYCLE.BIN
+**/*.lnk
+
+# PhpStorm Project Files
+/.idea
+/*.iml
+
+# Composer
+/server/composer.phar
+/server/vendor
