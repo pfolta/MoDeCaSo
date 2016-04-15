@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/controllers/projects/participants/add_participant.js
- * Created:			2015-01-13
+ * Created:         2015-01-13
  * Last modified:	2015-01-13
  * Author:          Peter Folta <mail@peterfolta.net>
  */

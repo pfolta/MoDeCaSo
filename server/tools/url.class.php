@@ -8,7 +8,7 @@
  * Version:			1.0.0
  *
  * File:			/server/tools/url.class.php
- * Created:			2014-11-11
+ * Created:         2014-11-11
  * Last modified:	2014-12-20
  * Author:          Peter Folta <mail@peterfolta.net>
  */

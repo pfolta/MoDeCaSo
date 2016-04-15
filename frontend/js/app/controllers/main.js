@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/controllers/main.js
- * Created:			2014-10-19
+ * Created:         2014-10-19
  * Last modified:	2015-04-05
  * Author:          Peter Folta <mail@peterfolta.net>
  */

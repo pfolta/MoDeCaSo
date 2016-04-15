@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/controllers/projects/cards/add_card.js
- * Created:			2014-12-10
+ * Created:         2014-12-10
  * Last modified:	2015-01-13
  * Author:          Peter Folta <mail@peterfolta.net>
  */

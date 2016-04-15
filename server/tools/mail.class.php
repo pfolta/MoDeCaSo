@@ -8,7 +8,7 @@
  * Version:			1.0.0
  *
  * File:			/server/tools/mail.class.php
- * Created:			2014-11-17
+ * Created:         2014-11-17
  * Last modified:	2015-01-10
  * Author:          Peter Folta <mail@peterfolta.net>
  */

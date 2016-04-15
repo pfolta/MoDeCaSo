@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/controllers/projects/cards/edit_card.js
- * Created:			2014-12-17
+ * Created:         2014-12-17
  * Last modified:	2015-01-13
  * Author:          Peter Folta <mail@peterfolta.net>
  */

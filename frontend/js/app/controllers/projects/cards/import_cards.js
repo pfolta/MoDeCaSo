@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/controllers/projects/cards/import_cards.js
- * Created:			2014-12-22
+ * Created:         2014-12-22
  * Last modified:	2014-12-22
  * Author:          Peter Folta <mail@peterfolta.net>
  */

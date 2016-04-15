@@ -8,7 +8,7 @@
  * Version:			1.0.0
  *
  * File:			/server/index.php
- * Created:			2014-11-03
+ * Created:         2014-11-03
  * Last modified:	2015-04-03
  * Author:          Peter Folta <mail@peterfolta.net>
  */

@@ -6,7 +6,7 @@
 # Version:			1.0.0
 #
 # File:			    /server/server_svc.sh
-# Created:			2015-03-23
+# Created:         2015-03-23
 # Last modified:	2015-03-23
 # Author:          Peter Folta <mail@peterfolta.net>
 #

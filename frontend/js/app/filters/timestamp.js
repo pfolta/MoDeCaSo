@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/filters/timestamp.js
- * Created:			2014-11-17
+ * Created:         2014-11-17
  * Last modified:	2015-01-21
  * Author:          Peter Folta <mail@peterfolta.net>
  */

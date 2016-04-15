@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/services/auth.js
- * Created:			2014-10-20
+ * Created:         2014-10-20
  * Last modified:	2015-01-15
  * Author:          Peter Folta <mail@peterfolta.net>
  */

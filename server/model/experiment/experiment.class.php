@@ -8,7 +8,7 @@
  * Version:			1.0.0
  *
  * File:			/server/model/experiment/experiment.class.php
- * Created:			2015-03-31
+ * Created:         2015-03-31
  * Last modified:	2015-04-07
  * Author:          Peter Folta <mail@peterfolta.net>
  */

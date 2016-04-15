@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/controllers/experiment/experiment.js
- * Created:			2015-03-26
+ * Created:         2015-03-26
  * Last modified:	2015-05-04
  * Author:          Peter Folta <mail@peterfolta.net>
  */

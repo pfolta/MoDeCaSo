@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/tools/url.js
- * Created:			2014-11-24
+ * Created:         2014-11-24
  * Last modified:	2014-11-24
  * Author:          Peter Folta <mail@peterfolta.net>
  */

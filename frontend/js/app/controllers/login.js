@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/controllers/login.js
- * Created:			2014-10-19
+ * Created:         2014-10-19
  * Last modified:	2015-01-13
  * Author:          Peter Folta <mail@peterfolta.net>
  */

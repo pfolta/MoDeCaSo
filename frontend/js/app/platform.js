@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/platform.js
- * Created:			2015-03-08
+ * Created:         2015-03-08
  * Last modified:	2015-03-08
  * Author:          Peter Folta <mail@peterfolta.net>
  */

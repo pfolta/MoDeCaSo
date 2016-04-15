@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/router.js
- * Created:			2014-10-18
+ * Created:         2014-10-18
  * Last modified:	2015-03-31
  * Author:          Peter Folta <mail@peterfolta.net>
  */

@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/tools/animations.js
- * Created:			2014-11-03
+ * Created:         2014-11-03
  * Last modified:	2014-11-03
  * Author:          Peter Folta <mail@peterfolta.net>
  */

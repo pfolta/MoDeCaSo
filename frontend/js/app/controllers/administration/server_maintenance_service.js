@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/controllers/administration/user_management/user_management.js
- * Created:			2015-03-09
+ * Created:         2015-03-09
  * Last modified:	2015-05-02
  * Author:          Peter Folta <mail@peterfolta.net>
  */

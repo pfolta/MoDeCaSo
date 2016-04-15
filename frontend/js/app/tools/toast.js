@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/tools/toast.js
- * Created:			2014-11-19
+ * Created:         2014-11-19
  * Last modified:	2015-04-06
  * Author:          Peter Folta <mail@peterfolta.net>
  */

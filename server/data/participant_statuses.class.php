@@ -8,7 +8,7 @@
  * Version:			1.0.0
  *
  * File:			/server/data/participant_statuses.class.php
- * Created:			2015-01-14
+ * Created:         2015-01-14
  * Last modified:	2015-01-14
  * Author:          Peter Folta <mail@peterfolta.net>
  */

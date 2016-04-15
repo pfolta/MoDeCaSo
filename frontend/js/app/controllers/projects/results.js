@@ -6,7 +6,7 @@
  * Version:			1.0.0
  *
  * File:            /frontend/js/app/controllers/projects/results.js
- * Created:			2015-05-02
+ * Created:         2015-05-02
  * Last modified:	2015-05-02
  * Author:          Peter Folta <mail@peterfolta.net>
  */

@@ -8,7 +8,7 @@
  * Version:			1.0.0
  *
  * File:			/server/model/projects/messages.class.php
- * Created:			2015-01-17
+ * Created:         2015-01-17
  * Last modified:	2015-01-21
  * Author:          Peter Folta <mail@peterfolta.net>
  */
