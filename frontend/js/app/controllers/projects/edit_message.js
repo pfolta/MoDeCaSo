@@ -7,7 +7,6 @@
  *
  * File:            /frontend/js/app/controllers/projects/edit_message.js
  * Created:         2015-01-17
- * Last modified:	2015-01-17
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

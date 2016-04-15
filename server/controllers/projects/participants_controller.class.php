@@ -9,7 +9,6 @@
  *
  * File:            /server/controllers/projects/participants_controller.class.php
  * Created:         2015-01-13
- * Last modified:	2015-01-14
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

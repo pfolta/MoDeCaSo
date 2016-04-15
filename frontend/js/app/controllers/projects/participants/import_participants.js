@@ -7,7 +7,6 @@
  *
  * File:            /frontend/js/app/controllers/projects/participants/import_participants.js
  * Created:         2015-01-13
- * Last modified:	2015-01-13
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

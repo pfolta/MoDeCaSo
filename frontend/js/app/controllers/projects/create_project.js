@@ -7,7 +7,6 @@
  *
  * File:            /frontend/js/app/controllers/projects/create_project.js
  * Created:         2014-11-19
- * Last modified:	2015-01-21
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

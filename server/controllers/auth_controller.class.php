@@ -9,7 +9,6 @@
  *
  * File:            /server/controllers/auth.class.php
  * Created:         2014-11-04
- * Last modified:	2014-11-15
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

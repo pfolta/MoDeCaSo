@@ -9,7 +9,6 @@
  *
  * File:            /server/tools/error.class.php
  * Created:         2015-01-14
- * Last modified:	2015-01-14
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

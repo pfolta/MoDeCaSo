@@ -9,7 +9,6 @@
  *
  * File:            /server/controllers/administration/server_maintenance_service_controller.class.php
  * Created:         2015-03-09
- * Last modified:	2015-05-02
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

@@ -9,7 +9,6 @@
  *
  * File:            /server/model/projects/participants.class.php
  * Created:         2015-01-13
- * Last modified:	2015-03-20
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

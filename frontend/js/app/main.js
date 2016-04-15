@@ -7,7 +7,6 @@
  *
  * File:            /frontend/js/app/main.js
  * Created:         2014-10-18
- * Last modified:	2015-04-06
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

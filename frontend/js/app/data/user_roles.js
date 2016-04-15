@@ -7,7 +7,6 @@
  *
  * File:            /frontend/js/app/data/user_roles.js
  * Created:         2014-11-12
- * Last modified:	2014-11-12
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

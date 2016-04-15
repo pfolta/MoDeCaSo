@@ -9,7 +9,6 @@
  *
  * File:            /server/data/user_roles.class.php
  * Created:         2014-11-12
- * Last modified:	2014-11-24
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

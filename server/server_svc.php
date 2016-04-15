@@ -9,7 +9,6 @@
  *
  * File:            /server/server_svc.php
  * Created:         2015-03-09
- * Last modified:	2015-04-07
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

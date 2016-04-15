@@ -7,7 +7,6 @@
  *
  * File:            /frontend/js/app/controllers/administration/user_management/edit_user.js
  * Created:         2014-11-17
- * Last modified:	2015-01-15
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

@@ -9,7 +9,6 @@
  *
  * File:            /server/main/controller.class.php
  * Created:         2014-11-04
- * Last modified:	2014-12-22
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

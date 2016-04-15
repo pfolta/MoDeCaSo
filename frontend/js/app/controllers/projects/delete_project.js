@@ -7,7 +7,6 @@
  *
  * File:            /frontend/js/app/controllers/projects/delete_user.js
  * Created:         2014-11-24
- * Last modified:	2015-01-17
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

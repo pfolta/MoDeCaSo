@@ -7,7 +7,6 @@
  *
  * File:            /frontend/js/app/controllers/projects/overview.js
  * Created:         2014-11-24
- * Last modified:	2015-01-13
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

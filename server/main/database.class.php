@@ -9,7 +9,6 @@
  *
  * File:            /server/main/database.class.php
  * Created:         2014-11-03
- * Last modified:	2015-03-20
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

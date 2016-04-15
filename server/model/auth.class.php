@@ -9,7 +9,6 @@
  *
  * File:            /server/model/auth.class.php
  * Created:         2014-11-05
- * Last modified:	2015-01-17
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 

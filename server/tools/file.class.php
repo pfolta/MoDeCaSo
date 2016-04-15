@@ -9,7 +9,6 @@
  *
  * File:            /server/tools/file.class.php
  * Created:         2014-12-22
- * Last modified:	2014-12-22
  * Author:          Peter Folta <mail@peterfolta.net>
  */
 
