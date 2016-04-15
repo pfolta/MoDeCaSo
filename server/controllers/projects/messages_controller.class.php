@@ -10,7 +10,7 @@
  * File:			/server/controllers/projects/messages_controller.class.php
  * Created:			2015-01-17
  * Last modified:	2015-01-17
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 namespace controllers;

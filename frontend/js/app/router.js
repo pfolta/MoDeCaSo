@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/router.js
  * Created:			2014-10-18
  * Last modified:	2015-03-31
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 webapp.config([

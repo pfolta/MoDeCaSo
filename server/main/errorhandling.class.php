@@ -10,7 +10,7 @@
  * File:			/server/main/errorhandling.class.php
  * Created:			2014-11-03
  * Last modified:	2014-11-12
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 namespace main;

@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/tools/sort.js
  * Created:			2015-04-04
  * Last modified:	2015-04-04
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 /**

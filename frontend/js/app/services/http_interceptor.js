@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/services/http_interceptor.js
  * Created:			2015-01-13
  * Last modified:	2015-04-06
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 services.factory(

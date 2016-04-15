@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/platform.js
  * Created:			2015-03-08
  * Last modified:	2015-03-08
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 function is_mobile()

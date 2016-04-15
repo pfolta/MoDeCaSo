@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/controllers/projects/cards/import_cards.js
  * Created:			2014-12-22
  * Last modified:	2014-12-22
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 controllers.controller(

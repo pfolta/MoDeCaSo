@@ -10,7 +10,7 @@
  * File:			/server/controllers/experiment/experiment_controller.class.php
  * Created:			2015-03-31
  * Last modified:	2015-04-05
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 namespace controllers;

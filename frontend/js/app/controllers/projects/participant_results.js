@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/controllers/experiment/participant_results.js
  * Created:			2015-05-02
  * Last modified:	2015-05-02
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 controllers.controller(

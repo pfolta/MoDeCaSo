@@ -10,7 +10,7 @@
  * File:			/server/model/projects/cards.class.php
  * Created:			2014-12-10
  * Last modified:	2015-01-21
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 namespace model;

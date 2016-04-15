@@ -10,7 +10,7 @@
  * File:			/server/tools/url.class.php
  * Created:			2014-11-11
  * Last modified:	2014-12-20
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 namespace tools;

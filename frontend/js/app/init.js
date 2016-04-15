@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/init.js
  * Created:			2015-03-08
  * Last modified:	2015-04-06
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 window.onload = main;

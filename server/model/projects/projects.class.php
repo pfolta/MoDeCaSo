@@ -10,7 +10,7 @@
  * File:			/server/model/projects/projects.class.php
  * Created:			2014-11-24
  * Last modified:	2015-05-02
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 namespace model;

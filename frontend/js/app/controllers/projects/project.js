@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/controllers/projects/project.js
  * Created:			2014-12-03
  * Last modified:	2015-03-09
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 controllers.controller(

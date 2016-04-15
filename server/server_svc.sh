@@ -8,7 +8,7 @@
 # File:			    /server/server_svc.sh
 # Created:			2015-03-23
 # Last modified:	2015-03-23
-# Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+# Author:          Peter Folta <mail@peterfolta.net>
 #
 
 #!/bin/sh

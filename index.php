@@ -10,7 +10,7 @@
  * File:			/index.php
  * Created:			2014-10-18
  * Last modified:	2014-10-18
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 /*

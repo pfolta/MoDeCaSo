@@ -10,7 +10,7 @@
  * File:			/server/index.php
  * Created:			2014-11-03
  * Last modified:	2015-04-03
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 require "vendor/autoload.php";

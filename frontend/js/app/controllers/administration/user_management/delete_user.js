@@ -8,7 +8,7 @@
  * File:            /frontend/js/app/controllers/administration/user_management/delete_user.js
  * Created:			2014-11-12
  * Last modified:	2015-01-15
- * Author:			Peter Folta <pfolta@mail.uni-paderborn.de>
+ * Author:          Peter Folta <mail@peterfolta.net>
  */
 
 controllers.controller(
