@@ -4,10 +4,10 @@
  * MoDeCaSo - A Web Application for Modified Delphi Card Sorting Experiments
  * Copyright (C) 2014-2015 Peter Folta. All rights reserved.
  *
- * Project:			MoDeCaSo
- * Version:			1.0.0
+ * Project:         MoDeCaSo
+ * Version:         1.0.0
  *
- * File:			/server/model/experiment/experiment.class.php
+ * File:            /server/model/experiment/experiment.class.php
  * Created:         2015-03-31
  * Last modified:	2015-04-07
  * Author:          Peter Folta <mail@peterfolta.net>
